@@ -2336,11 +2336,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdc381b4af3665e49b4b4c5add32fac9, type: 2}
   m_IsPrefabAsset: 0
---- !u!61 &695596304 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 61432998368770464, guid: 539ac2d0803113e4297860b8f48298da,
-    type: 2}
-  m_PrefabInternal: {fileID: 1061616094}
 --- !u!1001 &740784151
 Prefab:
   m_ObjectHideFlags: 0
@@ -3965,28 +3960,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114461033509040820, guid: 539ac2d0803113e4297860b8f48298da,
-        type: 2}
-      propertyPath: speedMovement
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 66852184865750982, guid: 539ac2d0803113e4297860b8f48298da,
-        type: 2}
-      propertyPath: m_GeometryType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 66852184865750982, guid: 539ac2d0803113e4297860b8f48298da,
-        type: 2}
-      propertyPath: m_GenerationType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4490063501354572, guid: 539ac2d0803113e4297860b8f48298da, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.75
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 66852184865750982, guid: 539ac2d0803113e4297860b8f48298da, type: 2}
-    - {fileID: 2569400268503941294, guid: 539ac2d0803113e4297860b8f48298da, type: 2}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 539ac2d0803113e4297860b8f48298da, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1068367617
@@ -4955,11 +4929,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94c2e1b51f7b5c34b8bf4287503d73af, type: 2}
   m_IsPrefabAsset: 0
---- !u!61 &1243641315 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 61756320538328534, guid: 539ac2d0803113e4297860b8f48298da,
-    type: 2}
-  m_PrefabInternal: {fileID: 1061616094}
 --- !u!4 &1253411921 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4243951941438470, guid: 259488a21eae93645b1e3aadc28d9234,
@@ -110630,11 +110599,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a00dd5ec208e0974189ef4a51f7e3d3e, type: 2}
   m_IsPrefabAsset: 0
---- !u!61 &2110300377 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 61974822780920368, guid: 539ac2d0803113e4297860b8f48298da,
-    type: 2}
-  m_PrefabInternal: {fileID: 1061616094}
 --- !u!1001 &2112905190
 Prefab:
   m_ObjectHideFlags: 0
@@ -110686,65 +110650,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4243951941438470, guid: 259488a21eae93645b1e3aadc28d9234,
     type: 2}
   m_PrefabInternal: {fileID: 1127055708}
---- !u!1 &2121111038 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1651197481384404, guid: 539ac2d0803113e4297860b8f48298da,
-    type: 2}
-  m_PrefabInternal: {fileID: 1061616094}
---- !u!66 &2121111039
-CompositeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2121111038}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
-  m_GenerationType: 0
-  m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 1243641315}
-    m_ColliderPaths:
-    - - X: 0
-        Y: 0
-      - X: -5000000
-        Y: 0
-      - X: -5000000
-        Y: -5000000
-      - X: 0
-        Y: -5000000
-  - m_Collider: {fileID: 695596304}
-    m_ColliderPaths:
-    - - X: 5000000
-        Y: 0
-      - X: 0
-        Y: 0
-      - X: 0
-        Y: -5000000
-      - X: 5000000
-        Y: -5000000
-  - m_Collider: {fileID: 2110300377}
-    m_ColliderPaths:
-    - - X: 10000000
-        Y: 0
-      - X: 5000000
-        Y: 0
-      - X: 5000000
-        Y: -5000000
-      - X: 10000000
-        Y: -5000000
-  m_CompositePaths:
-    m_Paths:
-    - - {x: -0.5, y: -0.5}
-      - {x: 1, y: -0.5}
-      - {x: 1, y: 0}
-      - {x: -0.5, y: 0}
-  m_VertexDistance: 0.0005
 --- !u!1001 &2125109978
 Prefab:
   m_ObjectHideFlags: 0

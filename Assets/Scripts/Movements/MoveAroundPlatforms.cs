@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveArroundPlatforms : MonoBehaviour {
+public class MoveAroundPlatforms : MonoBehaviour {
 
     public float speed;
     Rigidbody2D rigi;
