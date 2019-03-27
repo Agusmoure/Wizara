@@ -23,18 +23,11 @@ public class AlternativePlatformMovement : MonoBehaviour {
         //comprueba si la plataforma ha llegado al punto
         if (platform.transform.position == currentPoint.transform.position)
         {
-            selector++; //si es así, se selecciona el siguiente
+            //si es así, cambia al siguiente punto (la fórmula hace que si llega al máximo de puntos vuelve al primero)
+            selector = (selector + 1) % points.Length;
+            currentPoint = points[selector];
 
-            //comprueba si ha llegado al último punto
-            if (selector == points.Length) selector = 0; //si es así, vuelve al primero
-
-            currentPoint = points[selector]; //se indica el siguiente punto al que se deberá mover la plataforma
         }
 
 	}
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        
-    }
 }
