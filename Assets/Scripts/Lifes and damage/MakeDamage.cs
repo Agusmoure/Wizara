@@ -9,6 +9,6 @@ public class MakeDamage : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Life>() != null) collision.GetComponent<Life>().LoseLife(damage);
+        if (collision.GetComponent<Life>() != null && !GameManager.instance.GetInvulnerablePlayer()) collision.GetComponent<Life>().LoseLife(damage);
     }
 }

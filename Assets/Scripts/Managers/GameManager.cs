@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     string currentScene, lastScene;
     bool paused = false;
     bool fireBall = true;
-    bool doubleJump = false, wallJump = false, dash = false;
+    bool doubleJump = false, wallJump = false, dash = false, shield = true,invulnerable=false;
 
     //Los checkpoints son structs en los que se guardan dos datos: El transform, para la posición, y la escena, para cargar la escena necesaria al reaparecer.
     [System.Serializable]
@@ -147,6 +147,9 @@ public class GameManager : MonoBehaviour
             case "Fireball":
                 fireBall = true;
                 break;
+            case "Shield":
+                shield = true;
+                break;
         }
     }
     public bool GetAbility(string nombreHabilidad)
@@ -157,9 +160,21 @@ public class GameManager : MonoBehaviour
                 return fireBall;
             case "WallJump":
                 return wallJump;
+            case "Shield":
+                return shield;
             default:
                 return false;
 
         }
+    }
+    //Metodo para comprobar si se puede hacer daño al jugador (lo utiliza el MakeDamage).
+    public bool GetInvulnerablePlayer()
+    {
+        return invulnerable;
+    }
+    //Metodo para activar/desactivar la invulnerabilidad (llamado por el escudo).
+    public void InvulnerablePlayer()
+    {
+        invulnerable = !invulnerable;
     }
 }

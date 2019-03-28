@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CastAbility : MonoBehaviour {
-    public FireBall fireBall;
+    public GameObject fireBall,shield;
     public Transform projectilePool;
     public float fireBallCooldown, shieldCooldown, thunderboltCooldown;
     bool fireBallOnCD, shieldOnCD, thunderBoldOnCD;
 
     // Update is called once per frame
-
     void Update()
     {
         FireBallInput();
@@ -30,7 +29,7 @@ public class CastAbility : MonoBehaviour {
 
     void ShieldInput()
     {
-      //  if (Input.GetKeyDown(KeyCode.W) && GameManager.instance.GetAbility("Shield") && !shieldOnCD)
+        if (Input.GetKeyDown(KeyCode.W) && GameManager.instance.GetAbility("Shield") && !shieldOnCD)
         {
             InstantiateShield();
             shieldOnCD = true;
@@ -42,7 +41,7 @@ public class CastAbility : MonoBehaviour {
     {
      //   if (Input.GetKeyDown(KeyCode.E) && GameManager.instance.GetAbility("Thunderbolt") && !thunderBoldOnCD)
         {
-            InstantiateShield();
+            InstantiateThunderbolt();
             thunderBoldOnCD = true;
             Invoke("ThunderboltCD", thunderboltCooldown);
         }
@@ -51,14 +50,15 @@ public class CastAbility : MonoBehaviour {
     //Metodos para instanciar las habilidades.
     void InstantiateFireBall()
     {
-        FireBall newFireBall = Instantiate(fireBall.GetComponent<FireBall>(), transform.position, Quaternion.identity, projectilePool);
+        GameObject newFireball = Instantiate(fireBall, transform.position, Quaternion.identity, projectilePool);
         Vector2 newDirection = transform.lossyScale.x * transform.right;
-        newFireBall.ChangeDirection(newDirection);
+        newFireball.GetComponent<FireBall>().ChangeDirection(newDirection);
     }
 
     void InstantiateShield()
     {
-
+        //El escudo se hace hijo del jugador para seguir su movimiento.
+        GameObject newShield = Instantiate(shield,transform.position, Quaternion.identity, gameObject.transform);
     }
 
     void InstantiateThunderbolt()
