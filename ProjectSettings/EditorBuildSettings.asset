@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Hito1/Hito1_Game.unity
     guid: 226a606394cf49845ab7546ba053fa45
+  - enabled: 1
+    path: Assets/Scenes/Sprint22-03/UICooldown.unity
+    guid: dfef21d39006f6246ad9d5422bb75bda
   m_configObjects: {}

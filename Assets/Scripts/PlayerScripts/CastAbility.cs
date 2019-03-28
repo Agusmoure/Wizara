@@ -5,8 +5,8 @@ using UnityEngine;
 public class CastAbility : MonoBehaviour {
     public FireBall fireBall;
     public Transform projectilePool;
-    public float fireBallCooldown, shieldCooldown, thunderboltCooldown;
     bool fireBallOnCD, shieldOnCD, thunderBoldOnCD;
+    public UIManager uIManager;
 
     // Update is called once per frame
 
@@ -20,11 +20,11 @@ public class CastAbility : MonoBehaviour {
     //Metodos que recogen el input de cada habilidad.
     public void FireBallInput()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && GameManager.instance.GetAbility("Fireball") && !fireBallOnCD)
+        if (Input.GetKeyDown(KeyCode.Q) && GameManager.instance.ReturnAbilityValue("Fireball") && !fireBallOnCD)
         {
             InstantiateFireBall();
             fireBallOnCD = true;
-            Invoke("FireBallCD", fireBallCooldown);
+            Invoke("FireBallCD", GameManager.instance.ReturnCooldown("Fireball"));
         }
     }
 
@@ -34,7 +34,7 @@ public class CastAbility : MonoBehaviour {
         {
             InstantiateShield();
             shieldOnCD = true;
-            Invoke("ShieldCD", shieldCooldown);
+            Invoke("ShieldCD", GameManager.instance.ReturnCooldown("Shield"));
         }
     }
 
@@ -44,7 +44,7 @@ public class CastAbility : MonoBehaviour {
         {
             InstantiateShield();
             thunderBoldOnCD = true;
-            Invoke("ThunderboltCD", thunderboltCooldown);
+            Invoke("ThunderboltCD", GameManager.instance.ReturnCooldown("Lightning"));
         }
     }
 
@@ -54,6 +54,7 @@ public class CastAbility : MonoBehaviour {
         FireBall newFireBall = Instantiate(fireBall.GetComponent<FireBall>(), transform.position, Quaternion.identity, projectilePool);
         Vector2 newDirection = transform.lossyScale.x * transform.right;
         newFireBall.ChangeDirection(newDirection);
+        uIManager.GetSliderValue(0f, "Fireball");
     }
 
     void InstantiateShield()
@@ -71,10 +72,12 @@ public class CastAbility : MonoBehaviour {
     {
         fireBallOnCD = !fireBallOnCD;
     }
+
     void ShieldCD()
     {
         shieldOnCD = !shieldOnCD;
     }
+
     void ThunderboltCD()
     {
         thunderBoldOnCD = !thunderBoldOnCD;

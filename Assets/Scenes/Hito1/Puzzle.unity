@@ -1277,7 +1277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2295b7560f751040a26e616652d9d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: Hito1_Game
+  scene: UICooldown
   diagonalDistance: {x: 2, y: 2}
 --- !u!4 &2055892386
 Transform:
@@ -1334,9 +1334,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edebbb0336ead6e43a52e43bb36abffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camara: {fileID: 0}
-  player: {fileID: 0}
-  levelManager: {fileID: 0}
   currentCheckpoint:
     playerPosition: {x: 0, y: 0}
     cameraRoom: {x: 0, y: 0}
