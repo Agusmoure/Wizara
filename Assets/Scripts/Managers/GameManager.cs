@@ -135,6 +135,8 @@ public class GameManager : MonoBehaviour
                 wallJump = true;
                 break;
             case "Double Jump":
+                PlayerMovement playerM=player.GetComponent<PlayerMovement>();
+                if (playerM != null) playerM.DoubleJumpActive();
                 doubleJump = true;
                 break;
             case "Fireball":

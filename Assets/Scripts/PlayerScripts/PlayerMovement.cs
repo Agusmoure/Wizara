@@ -6,8 +6,8 @@ public class PlayerMovement : MonoBehaviour {
 
 
     public float velocity, jumpForce, dashForce;
-    public int maxJump;
-    public int jump;
+    int maxJump=1;
+    int jump;
     float inputX;
     public bool movmentRestriction = false;
     bool dash = true;
@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour {
         player = gameObject.GetComponent<Rigidbody2D>();
         GameManager.instance.GetPlayer(gameObject);
         scale = transform.localScale;
-        jump = 0;
+        jump = maxJump;
         anime = GetComponent<Animator>();
     }
 	
@@ -151,5 +151,9 @@ public class PlayerMovement : MonoBehaviour {
         //Tras finalizar el dash.
         movmentRestriction = false;
         player.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
+    public void DoubleJumpActive()
+    {
+        maxJump = 2;
     }
 }
