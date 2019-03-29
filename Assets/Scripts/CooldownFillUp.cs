@@ -12,7 +12,7 @@ public class CooldownFillUp : MonoBehaviour {
     void Start()
     {
         ReturnName();
-        //Llama al metodo SetCooldowns del AbilityManager, el cual devuelve el cooldown especifico de esta habilidad
+        //Llama al metodo ReturnCooldowns del AbilityManager, el cual devuelve el cooldown especifico de esta habilidad
         cooldown = GameManager.instance.ReturnCooldown(name);
         sliderValue = 1;
         uIManager.SetSliderValue(sliderValue, name);
