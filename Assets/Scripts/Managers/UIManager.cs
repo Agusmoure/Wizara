@@ -6,13 +6,17 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public Image[] HeartIcons;
+    public GameObject fireballIcon, shieldIcon, lightningIcon;
+    public Slider fireballSlider, shieldSlider, lightningSlider;
     GameObject player;
+    float fireballSliderValue, shieldSliderValue, lightningSliderValue;
 
     void Start()
     {
         GameManager.instance.ThisUIManager(this);
         player = GameObject.FindGameObjectWithTag("Player");
-        Invoke("UpdateLifeUI", 0.01f);
+        Invoke("UpdateLifeUI", 0.5f * Time.deltaTime);
+        Invoke("EnableAbilityIcons", 2f * Time.deltaTime);
     }
 
     private void Update()
@@ -76,5 +80,46 @@ public class UIManager : MonoBehaviour
             }
         }
         
+    }
+
+    public void EnableAbilityIcons()
+    {
+        if (fireballIcon != null) fireballIcon.SetActive(GameManager.instance.ReturnAbilityValue("Fireball"));
+        if (shieldIcon != null) shieldIcon.SetActive(GameManager.instance.ReturnAbilityValue("Shield"));
+        if (lightningIcon != null) lightningIcon.SetActive(GameManager.instance.ReturnAbilityValue("Lightning"));
+    }
+
+    public void SetSliderValue(float value, string slider)
+    {
+        switch (slider)
+        {
+            case "Fireball":
+                fireballSliderValue = value;
+                fireballSlider.value = fireballSliderValue;
+                break;
+            case "Shield":
+                shieldSliderValue = value;
+                shieldSlider.value = shieldSliderValue;
+                break;
+            case "Lightning":
+                lightningSliderValue = value;
+                lightningSlider.value = lightningSliderValue;
+                break;
+        }
+    }
+
+    public float ReturnSliderValue(string slider)
+    {
+        switch (slider)
+        {
+            case "Fireball":
+                return fireballSliderValue;
+            case "Shield":
+                return shieldSliderValue;
+            case "Lightning":
+                return lightningSliderValue;
+            default:
+                return 0;
+        }
     }
 }

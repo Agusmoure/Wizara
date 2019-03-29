@@ -13,6 +13,7 @@ public class LevelManager : MonoBehaviour {
         GameManager.instance.GetLevelManager(this);
         player = GameManager.instance.ReturnPlayer();
         player = GameObject.FindGameObjectWithTag("Player");
+        Invoke("SpawnPlayer", 1f * Time.deltaTime);
     }
 
     public void GetCamera(GameObject thisCamera)
