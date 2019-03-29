@@ -152,6 +152,7 @@ public class PlayerMovement : MonoBehaviour {
         movmentRestriction = false;
         player.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
+    //Método que pasa el maxJump a 2
     public void DoubleJumpActive()
     {
         maxJump = 2;
