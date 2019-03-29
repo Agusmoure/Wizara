@@ -54,7 +54,7 @@ public class CastAbility : MonoBehaviour {
         FireBall newFireBall = Instantiate(fireBall.GetComponent<FireBall>(), transform.position, Quaternion.identity, projectilePool);
         Vector2 newDirection = transform.lossyScale.x * transform.right;
         newFireBall.ChangeDirection(newDirection);
-        uIManager.GetSliderValue(0f, "Fireball");
+        uIManager.SetSliderValue(0f, "Fireball");
     }
 
     void InstantiateShield()

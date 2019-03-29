@@ -15,7 +15,7 @@ public class CooldownFillUp : MonoBehaviour {
         //Llama al metodo SetCooldowns del AbilityManager, el cual devuelve el cooldown especifico de esta habilidad
         cooldown = GameManager.instance.ReturnCooldown(name);
         sliderValue = 1;
-        uIManager.GetSliderValue(sliderValue, name);
+        uIManager.SetSliderValue(sliderValue, name);
     }
 
     void Update()
@@ -41,7 +41,7 @@ public class CooldownFillUp : MonoBehaviour {
         {
             timePassed += 8; //Aumentamos el valor del tiempo que ha pasado desde el comienzo del bucle
             sliderValue = timePassed / cooldown / 100; //Para que el valor del slider aumente al ritmo que marca el cooldown debemos dividir el tiempo que ha pasado entre el cooldown, obteniendo así el porcentaje de tiempo transcurrido
-            uIManager.GetSliderValue(sliderValue, name); //Actualizamos el valor del slider correspondiente en el UIManager y hacemos que se muestre en pantalla
+            uIManager.SetSliderValue(sliderValue, name); //Actualizamos el valor del slider correspondiente en el UIManager y hacemos que se muestre en pantalla
             yield return new WaitForSeconds(8f / 100); //Este bucle se repetira al ritmo que marquemos aqui
         }
     }

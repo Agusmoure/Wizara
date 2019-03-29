@@ -89,7 +89,7 @@ public class UIManager : MonoBehaviour
         if (lightningIcon != null) lightningIcon.SetActive(GameManager.instance.ReturnAbilityValue("Lightning"));
     }
 
-    public void GetSliderValue(float value, string slider)
+    public void SetSliderValue(float value, string slider)
     {
         switch (slider)
         {
