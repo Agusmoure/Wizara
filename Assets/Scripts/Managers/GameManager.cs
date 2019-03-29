@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     LevelManager levelManager;
     UIManager uIManager;
     bool paused = false;
-    bool doubleJump = false, wallJump = false, dash = false, fireBall = false, shield = false, lightning = false, invulnerable=false;
+    bool doubleJump = false, wallJump = false, dash = false, fireBall = false, shield = true, lightning = false, invulnerable=false;
 
     //Los checkpoints son structs en los que se guardan dos datos: El transform, para la posición, y la escena, para cargar la escena necesaria al reaparecer.
     [System.Serializable]

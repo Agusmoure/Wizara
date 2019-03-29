@@ -29,7 +29,7 @@ public class CastAbility : MonoBehaviour {
 
     void ShieldInput()
     {
-        if (Input.GetKeyDown(KeyCode.E) && GameManager.instance.GetAbility("Shield") && !shieldOnCD)
+        if (Input.GetKeyDown(KeyCode.E) && GameManager.instance.ReturnAbilityValue("Shield") && !shieldOnCD)
         {
             InstantiateShield();
             shieldOnCD = true;
