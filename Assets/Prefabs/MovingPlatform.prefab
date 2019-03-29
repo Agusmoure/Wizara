@@ -52,7 +52,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4665724765120870}
   - component: {fileID: 2569400268138902674}
-  - component: {fileID: 114461033509040820}
   m_Layer: 0
   m_Name: MovingPlatform
   m_TagString: Untagged
@@ -100,9 +99,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4063159477233610}
-  - component: {fileID: 2569400268503941294}
   - component: {fileID: 50244526145400818}
-  - component: {fileID: 66852184865750982}
+  - component: {fileID: 66506218532647506}
+  - component: {fileID: 114987024830240872}
   m_Layer: 0
   m_Name: AlternativePlatform
   m_TagString: MovingPlatform
@@ -202,7 +201,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1438293813056622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.78, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4063159477233610}
@@ -319,7 +318,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
---- !u!66 &66852184865750982
+--- !u!66 &66506218532647506
 CompositeCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -336,16 +335,6 @@ CompositeCollider2D:
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
-  - m_Collider: {fileID: 0}
-    m_ColliderPaths:
-    - - X: 0
-        Y: 57518
-      - X: -5000000
-        Y: 57518
-      - X: -5000000
-        Y: -168473
-      - X: 0
-        Y: -168473
   - m_Collider: {fileID: 61756320538328534}
     m_ColliderPaths:
     - - X: 0
@@ -378,25 +367,22 @@ CompositeCollider2D:
         Y: -5000000
   m_CompositePaths:
     m_Paths:
-    - - {x: 0, y: 0.0057518003}
-      - {x: -0.5, y: 0.0057518003}
-      - {x: -0.5, y: -0.5}
+    - - {x: -0.5, y: -0.5}
       - {x: 1, y: -0.5}
       - {x: 1, y: 0}
-      - {x: 0, y: 0}
+      - {x: -0.5, y: 0}
   m_VertexDistance: 0.0005
---- !u!114 &114461033509040820
+--- !u!114 &114987024830240872
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1438293813056622}
+  m_GameObject: {fileID: 1651197481384404}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c6a8dc0deb702c42b569704dedc5093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platform: {fileID: 1651197481384404}
   speedMovement: 2
   points:
   - {fileID: 4924458037716594}
@@ -546,17 +532,6 @@ Grid:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1438293813056622}
-  m_Enabled: 1
-  m_CellSize: {x: 0.5, y: 0.5, z: 0}
-  m_CellGap: {x: 0, y: 0, z: 0}
-  m_CellLayout: 0
-  m_CellSwizzle: 0
---- !u!156049354 &2569400268503941294
-Grid:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1651197481384404}
   m_Enabled: 1
   m_CellSize: {x: 0.5, y: 0.5, z: 0}
   m_CellGap: {x: 0, y: 0, z: 0}

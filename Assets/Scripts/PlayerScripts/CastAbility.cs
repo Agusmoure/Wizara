@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CastAbility : MonoBehaviour {
-    public FireBall fireBall;
+    public GameObject fireBall,shield;
     public Transform projectilePool;
-    public float fireBallCooldown, shieldCooldown, thunderboltCooldown;
     bool fireBallOnCD, shieldOnCD, thunderBoldOnCD;
+    public UIManager uIManager;
 
     // Update is called once per frame
-
     void Update()
     {
         FireBallInput();
@@ -20,45 +19,48 @@ public class CastAbility : MonoBehaviour {
     //Metodos que recogen el input de cada habilidad.
     public void FireBallInput()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && GameManager.instance.GetAbility("Fireball") && !fireBallOnCD)
+        if (Input.GetKeyDown(KeyCode.Q) && GameManager.instance.ReturnAbilityValue("Fireball") && !fireBallOnCD)
         {
             InstantiateFireBall();
             fireBallOnCD = true;
-            Invoke("FireBallCD", fireBallCooldown);
+            Invoke("FireBallCD", GameManager.instance.ReturnCooldown("Fireball"));
         }
     }
 
     void ShieldInput()
     {
-      //  if (Input.GetKeyDown(KeyCode.W) && GameManager.instance.GetAbility("Shield") && !shieldOnCD)
+        if (Input.GetKeyDown(KeyCode.E) && GameManager.instance.ReturnAbilityValue("Shield") && !shieldOnCD)
         {
             InstantiateShield();
             shieldOnCD = true;
-            Invoke("ShieldCD", shieldCooldown);
+            Invoke("ShieldCD", GameManager.instance.ReturnCooldown("Shield"));
         }
     }
 
     void ThunderboltInput()
     {
-     //   if (Input.GetKeyDown(KeyCode.E) && GameManager.instance.GetAbility("Thunderbolt") && !thunderBoldOnCD)
+     //   if (Input.GetKeyDown(KeyCode.W) && GameManager.instance.GetAbility("Thunderbolt") && !thunderBoldOnCD)
         {
-            InstantiateShield();
+            InstantiateThunderbolt();
             thunderBoldOnCD = true;
-            Invoke("ThunderboltCD", thunderboltCooldown);
+            Invoke("ThunderboltCD", GameManager.instance.ReturnCooldown("Lightning"));
         }
     }
 
     //Metodos para instanciar las habilidades.
     void InstantiateFireBall()
     {
-        FireBall newFireBall = Instantiate(fireBall.GetComponent<FireBall>(), transform.position, Quaternion.identity, projectilePool);
+        GameObject newFireball = Instantiate(fireBall, transform.position, Quaternion.identity, projectilePool);
         Vector2 newDirection = transform.lossyScale.x * transform.right;
-        newFireBall.ChangeDirection(newDirection);
+
+        newFireball.GetComponent<FireBall>().ChangeDirection(newDirection);
+        uIManager.SetSliderValue(0f, "Fireball");
     }
 
     void InstantiateShield()
     {
-
+        //El escudo se hace hijo del jugador para seguir su movimiento.
+        GameObject newShield = Instantiate(shield, transform.position, Quaternion.identity, gameObject.transform);
     }
 
     void InstantiateThunderbolt()
@@ -71,10 +73,12 @@ public class CastAbility : MonoBehaviour {
     {
         fireBallOnCD = !fireBallOnCD;
     }
+
     void ShieldCD()
     {
         shieldOnCD = !shieldOnCD;
     }
+
     void ThunderboltCD()
     {
         thunderBoldOnCD = !thunderBoldOnCD;

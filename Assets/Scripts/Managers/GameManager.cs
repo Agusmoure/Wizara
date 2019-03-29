@@ -7,13 +7,12 @@ public class GameManager : MonoBehaviour
 {
 
     public static GameManager instance = null;
+    public float fireBallCooldown, shieldCooldown, lightningCooldown;
     GameObject player;
     LevelManager levelManager;
     UIManager uIManager;
-    string currentScene, lastScene;
     bool paused = false;
-    bool fireBall = true;
-    bool doubleJump = false, wallJump = false, dash = false;
+    bool doubleJump = false, wallJump = false, dash = false, fireBall = false, shield = true, lightning = false, invulnerable=false;
 
     //Los checkpoints son structs en los que se guardan dos datos: El transform, para la posición, y la escena, para cargar la escena necesaria al reaparecer.
     [System.Serializable]
@@ -87,7 +86,6 @@ public class GameManager : MonoBehaviour
     public void ChangeScene(string Scene)
     {
         SceneManager.LoadScene(Scene);
-        if (levelManager != null) Invoke("MakeLevelManagerRespawn", 0.5f * Time.deltaTime);
     }
 
     public void Pausa()
@@ -105,7 +103,6 @@ public class GameManager : MonoBehaviour
     public void Respawn()
     {
         SceneManager.LoadScene(currentCheckpoint.scene);
-        Invoke("MakeLevelManagerRespawn", 0.5f * Time.deltaTime);
     }
 
     //Cuando el jugador llegue a un checkpoint este avisará al GameManager para que cambie la información del checkpoint actual. Como es lógico la escena de este checkpoint será aquella en la que nos encontremos en este momento.
@@ -127,10 +124,6 @@ public class GameManager : MonoBehaviour
         return currentCheckpoint.cameraRoom;
     }
 
-    void MakeLevelManagerRespawn()
-    {
-        levelManager.SpawnPlayer();
-    }
     public void SetAbilityTrue(string ability)
     {
         switch (ability)
@@ -147,19 +140,55 @@ public class GameManager : MonoBehaviour
             case "Fireball":
                 fireBall = true;
                 break;
+            case "Shield":
+                shield = true;
+                break;
+            case "Lightning":
+                lightning = true;
+                break;
         }
     }
-    public bool GetAbility(string nombreHabilidad)
+
+    public bool ReturnAbilityValue(string ability)
     {
-        switch (nombreHabilidad)
+        switch (ability)
         {
-            case "Fireball":
-                return fireBall;
+            case "Dash":
+                return dash;
             case "WallJump":
                 return wallJump;
-            default:
-                return false;
-
+            case "DoubleJump":
+                return doubleJump;
+            case "Fireball":
+                return fireBall;
+            case "Shield":
+                return shield;
+            case "Lightning":
+                return lightning;
+            default: return false;
         }
+    }
+    //Metodo para comprobar si se puede hacer daño al jugador (lo utiliza el MakeDamage).
+    public bool GetInvulnerablePlayer()
+    {
+        return invulnerable;
+    }
+
+    //Metodo para activar/desactivar la invulnerabilidad (llamado por el escudo).
+    public void InvulnerablePlayer()
+    {
+        invulnerable = !invulnerable;
+    }
+
+    //Devuelve el cooldown de una habilidad, la cual se determina a partir del nombre que se le da al método
+    public float ReturnCooldown(string name)
+    {
+        if (name.Contains("Fireball")) return fireBallCooldown;
+
+        else if (name.Contains("Shield")) return shieldCooldown;
+
+        else if (name.Contains("Lightning")) return lightningCooldown;
+
+        else return 0;
     }
 }
