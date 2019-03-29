@@ -29,7 +29,7 @@ public class CastAbility : MonoBehaviour {
 
     void ShieldInput()
     {
-        if (Input.GetKeyDown(KeyCode.W) && GameManager.instance.GetAbility("Shield") && !shieldOnCD)
+        if (Input.GetKeyDown(KeyCode.E) && GameManager.instance.GetAbility("Shield") && !shieldOnCD)
         {
             InstantiateShield();
             shieldOnCD = true;
@@ -39,7 +39,7 @@ public class CastAbility : MonoBehaviour {
 
     void ThunderboltInput()
     {
-     //   if (Input.GetKeyDown(KeyCode.E) && GameManager.instance.GetAbility("Thunderbolt") && !thunderBoldOnCD)
+     //   if (Input.GetKeyDown(KeyCode.W) && GameManager.instance.GetAbility("Thunderbolt") && !thunderBoldOnCD)
         {
             InstantiateThunderbolt();
             thunderBoldOnCD = true;
@@ -58,7 +58,7 @@ public class CastAbility : MonoBehaviour {
     void InstantiateShield()
     {
         //El escudo se hace hijo del jugador para seguir su movimiento.
-        GameObject newShield = Instantiate(shield,transform.position, Quaternion.identity, gameObject.transform);
+        GameObject newShield = Instantiate(shield, transform.position, Quaternion.identity, gameObject.transform);
     }
 
     void InstantiateThunderbolt()

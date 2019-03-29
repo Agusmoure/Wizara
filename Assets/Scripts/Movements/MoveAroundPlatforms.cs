@@ -2,20 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveArroundPlatforms : MonoBehaviour {
+public class MoveAroundPlatforms : MonoBehaviour {
 
     public float speed;
-    Rigidbody2D rigi;
+    Rigidbody2D rigidbody;
+
 	// Use this for initialization
 	void Start () {
-        rigi = GetComponent<Rigidbody2D>();
+        rigidbody = GetComponent<Rigidbody2D>();
 	}
 
     private void FixedUpdate()
     {
         //Mueve el gameObject en su dirección derecha.
-        rigi.velocity = transform.right * speed;
+        rigidbody.velocity = transform.right * speed;
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Si el trigger tiene el mismo padre, cambia su rotación.

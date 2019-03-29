@@ -172,6 +172,7 @@ public class GameManager : MonoBehaviour
     {
         return invulnerable;
     }
+
     //Metodo para activar/desactivar la invulnerabilidad (llamado por el escudo).
     public void InvulnerablePlayer()
     {
