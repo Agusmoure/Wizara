@@ -12,6 +12,7 @@ TagManager:
   - Obstacle
   - Enemy
   - MovingPlatform
+  - Mirror
   layers:
   - Default
   - TransparentFX
