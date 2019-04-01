@@ -13,6 +13,7 @@ public class Charge : MonoBehaviour {
     // Update is called once per frame
     private void FixedUpdate()
     {
+        if (GameManager.instance.ReturnBossManager().Executing())
         rigidB.AddForce(Vector2.left*speed,ForceMode2D.Force);
     }
     private void OnCollisionEnter2D(Collision2D collision)

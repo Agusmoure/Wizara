@@ -6,6 +6,7 @@ public class JumpToPlayer : MonoBehaviour {
     GameObject player;
     Vector2 playerPosition;
     bool jumpInCd=false;
+
     Rigidbody2D rigibody;
     public float angles;
     public float jumpCD=4;

@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public float fireBallCooldown, shieldCooldown, lightningCooldown;
     GameObject player;
     LevelManager levelManager;
+    BossManager boss;
     UIManager uIManager;
     bool paused = false;
     bool doubleJump = false, wallJump = false, dash = false, fireBall = false, shield = true, lightning = false, invulnerable=false;
@@ -193,5 +194,13 @@ public class GameManager : MonoBehaviour
         else if (name.Contains("Lightning")) return lightningCooldown;
 
         else return 0;
+    }
+    public void GetBossManager(BossManager bossM)
+    {
+        boss = bossM;
+    }
+    public BossManager ReturnBossManager()
+    {
+        return boss;
     }
 }
