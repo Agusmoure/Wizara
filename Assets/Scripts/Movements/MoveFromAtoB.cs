@@ -8,6 +8,7 @@ public class MoveFromAtoB : MonoBehaviour {
     public Transform pointA, pointB;
     public float speedX, speedY;
     Animator anime;
+
     // Use this for initialization
     void Start()
     {
@@ -15,17 +16,20 @@ public class MoveFromAtoB : MonoBehaviour {
         transform.position = pointA.position;
         anime = GetComponent<Animator>();
     }
+
     private void Update()
     {
         ChangeXSpeed();
         ChangeYspeed();
         ChangeScale();
     }
+
     //fisicas
     private void FixedUpdate()
     {
         bat.velocity = new Vector2(speedX, speedY);
     }
+
     //si collisiona con algo !=jugador o != de su caca cambia la velocidad en X e Y
     public void ChangeBouthSpeed()
     {
@@ -33,6 +37,7 @@ public class MoveFromAtoB : MonoBehaviour {
             speedX = -speedX;
             speedY = -speedY;
     }
+
     //cambiamos la velocidad en X
     void ChangeXSpeed()
     {
@@ -40,11 +45,13 @@ public class MoveFromAtoB : MonoBehaviour {
             {
                 speedX = -Mathf.Abs(speedX);
             }
+
             else if (this.transform.position.x <= pointA.position.x)
             {
                 speedX = Mathf.Abs(speedX);
             }
     }
+
     //cambaimos la velocidad en Y
     void ChangeYspeed()
     {
@@ -57,6 +64,7 @@ public class MoveFromAtoB : MonoBehaviour {
             speedY = -Mathf.Abs(speedY);
         }
     }
+
     //cambiamos la escala
     void ChangeScale()
     {
@@ -65,6 +73,7 @@ public class MoveFromAtoB : MonoBehaviour {
         else if (speedX < 0) scaleX = -Mathf.Abs(scaleX);
         transform.localScale = new Vector2(scaleX, transform.localScale.y);
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
