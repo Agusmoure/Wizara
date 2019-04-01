@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomEnemyManager : MonoBehaviour {
+public class RoomEnemyRespawn : MonoBehaviour {
 
     public GameObject rat, bat, enemyWizard, slime;
     
@@ -21,15 +21,7 @@ public class RoomEnemyManager : MonoBehaviour {
     void Start ()
     {
         StoreInfo();
-	}
-
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.R))
-        {
-            RespawnEnemies();
-            Debug.Log("Respawn");
-        }
+        DestroyEnemies();
     }
 
     void StoreInfo()
@@ -82,15 +74,20 @@ public class RoomEnemyManager : MonoBehaviour {
 
     public void RespawnEnemies()
     {
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            Destroy(transform.GetChild(i).gameObject);
-        }
+        DestroyEnemies();
 
         for (int i = 0; i < enemyArray.Length; i++)
         {
             GameObject enemySpawned = Instantiate(enemyArray[i].enemyObject, enemyArray[i].spawnPosition, Quaternion.identity, transform);
             enemySpawned.GetComponent<EnemyRespawn>().Respawn(enemyArray[i].wayPointPositions);
+        }
+    }
+
+    public void DestroyEnemies()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Destroy(transform.GetChild(i).gameObject);
         }
     }
 }

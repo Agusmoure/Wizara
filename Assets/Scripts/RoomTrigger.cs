@@ -10,6 +10,9 @@ public class RoomTrigger : MonoBehaviour {
     void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
-        GameManager.instance.SetLevelManager().MoveCamera(new Vector2 (room.transform.position.x, room.transform.position.y));
+        {
+            GameManager.instance.SetLevelManager().MoveCamera(new Vector2(room.transform.position.x, room.transform.position.y));
+            if (room.GetComponentInChildren<RoomEnemyRespawn>() != null) room.GetComponentInChildren<RoomEnemyRespawn>().RespawnEnemies();
+        }
     }
 }
