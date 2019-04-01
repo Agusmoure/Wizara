@@ -19,7 +19,8 @@ public class JumpToPlayer : MonoBehaviour {
     {
         if (!jumpInCd)
         {
-            rigibody.AddForce(Jump(), ForceMode2D.Impulse);
+            Vector2 jump=Jump();
+            rigibody.AddForce(jump, ForceMode2D.Impulse);
             Invoke("JumpCD",jumpCD);
         }
             
@@ -50,24 +51,34 @@ public class JumpToPlayer : MonoBehaviour {
     {
         //guarda la posicion del jugador al inicio del salto.
         playerPosition = player.transform.position;
-        Debug.Log(playerPosition);
         //activa el CD del salto
         jumpInCd = true;
         float angle, speed;
         CalculateValues(out angle, out speed);
-        //asigna el vector de la fuerza que debe ejecutar
-        Vector2 forces = new Vector2(-speed * Mathf.Cos(angle), speed * Mathf.Sin(angle));
+        //asigna el vector de la fuerza que debe ejecutar teniendo en cuenta hacia donde la debe ejecutar
+        Vector2 forces;
+        if (playerPosition.x<transform.position.x)
+         forces = new Vector2(-speed * Mathf.Cos(angle), speed * Mathf.Sin(angle));
+        else
+          forces = new Vector2(speed * Mathf.Cos(angle), speed * Mathf.Sin(angle));
         return forces;
     }
 
     //método para calcular tanto ángulo como velocidad.
     private void CalculateValues(out float angle, out float speed)
     {
-        //calcula la distancia en X
-        float distance = Mathf.Abs(playerPosition.x) + Mathf.Abs(transform.position.x);
+        //calcula la distancia en X teniendo en cuenta las 3 posibilidades
+        float playerX = playerPosition.x, thisX = transform.position.x, distance;
+        if (playerX>0&& thisX < 0|| thisX > 0 && playerX < 0)
+        {
+             distance = Mathf.Abs(playerX) + Mathf.Abs(thisX);
+        }
+        else if(Mathf.Abs(thisX) > Mathf.Abs(playerX)) distance = Mathf.Abs(thisX) - Mathf.Abs(playerX);
+        else distance = Mathf.Abs(playerX) - Mathf.Abs(thisX);
+
         angle = GetAngleInRad(angles);
         //calcula la velocidad
-        speed = Mathf.Sqrt((-(Physics2D.gravity.y) * distance) / Mathf.Sin(angle * 2));
+        speed = Mathf.Sqrt((-(Physics2D.gravity.y) * distance) / Mathf.Sin(angle * 2)) * rigibody.mass;
     }
 
     //pasa el ángulo a Radianes
