@@ -3,30 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class JumpToPlayer : MonoBehaviour {
-    public GameObject player;
+    GameObject player;
     Vector2 playerPosition;
     bool jumpInCd=false;
     Rigidbody2D rigibody;
     public float angles;
+    public float jumpCD=4;
 	// Use this for initialization
 	void Start () {
+        player = GameManager.instance.ReturnPlayer();
         rigibody = GetComponent<Rigidbody2D>();
     }
    
-    // Update is called once per frame
-    void Update () {
-
-	}
     private void FixedUpdate()
     {
         if (!jumpInCd)
+        {
             rigibody.AddForce(Jump(), ForceMode2D.Impulse);
+            Invoke("JumpCD",jumpCD);
+        }
+            
     }
-    //método que obtiene la posición del jugador
-    public void GetPlayerPosition()
-    {
-        playerPosition = player.transform.position;
-    }
+
     /*Método que devuelve la fuerza que se le debe aplicar al objeto para realizar el movimiento parábolico para saltar hacia el jugador
     Fórmulas a tener en cuenta
     Nomenclatura:
@@ -50,22 +48,36 @@ public class JumpToPlayer : MonoBehaviour {
     */
     Vector2 Jump()
     {
-        GetPlayerPosition();
+        //guarda la posicion del jugador al inicio del salto.
+        playerPosition = player.transform.position;
+        Debug.Log(playerPosition);
         //activa el CD del salto
         jumpInCd = true;
-        //calcula la distancia en X
-        float distance = Mathf.Abs(playerPosition.x) + Mathf.Abs(transform.position.x);
-       float angle= GetAngleInRad(angles);
-        //calcula la velocidad
-        float speed = Mathf.Sqrt((-(Physics2D.gravity.y) * distance) / Mathf.Sin(angle*2));
+        float angle, speed;
+        CalculateValues(out angle, out speed);
         //asigna el vector de la fuerza que debe ejecutar
         Vector2 forces = new Vector2(-speed * Mathf.Cos(angle), speed * Mathf.Sin(angle));
         return forces;
     }
+
+    //método para calcular tanto ángulo como velocidad.
+    private void CalculateValues(out float angle, out float speed)
+    {
+        //calcula la distancia en X
+        float distance = Mathf.Abs(playerPosition.x) + Mathf.Abs(transform.position.x);
+        angle = GetAngleInRad(angles);
+        //calcula la velocidad
+        speed = Mathf.Sqrt((-(Physics2D.gravity.y) * distance) / Mathf.Sin(angle * 2));
+    }
+
     //pasa el ángulo a Radianes
     float GetAngleInRad(float angleInGrades)
     {
         float angle = (angleInGrades * Mathf.PI) / 180;
         return angle;
+    }
+    void JumpCD()
+    {
+        jumpInCd = false;
     }
 }
