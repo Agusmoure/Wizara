@@ -61,6 +61,7 @@ public class CastAbility : MonoBehaviour {
     {
         //El escudo se hace hijo del jugador para seguir su movimiento.
         GameObject newShield = Instantiate(shield, transform.position, Quaternion.identity, gameObject.transform);
+        uIManager.SetSliderValue(0f, "Shield");
     }
 
     void InstantiateThunderbolt()
