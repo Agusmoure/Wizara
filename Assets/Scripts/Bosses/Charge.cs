@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class Charge : MonoBehaviour {
     public int speed;
-    Rigidbody2D rigidbody2D;
+    Rigidbody2D rigidB;
 	// Use this for initialization
 	void Start () {
-        rigidbody2D = transform.parent.GetComponent<Rigidbody2D>();
+        rigidB = GetComponent<Rigidbody2D>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    // Update is called once per frame
+    private void FixedUpdate()
+    {
+        rigidB.AddForce(Vector2.left*speed,ForceMode2D.Force);
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         
