@@ -5,7 +5,7 @@ using UnityEngine;
 public class JumpToPlayer : MonoBehaviour {
     GameObject player;
     Vector2 playerPosition;
-    bool jumpInCd=false;
+    bool jumpInCd=true;
 
     Rigidbody2D rigibody;
     public float angles;
@@ -14,13 +14,17 @@ public class JumpToPlayer : MonoBehaviour {
 	void Start () {
         player = GameManager.instance.ReturnPlayer();
         rigibody = GetComponent<Rigidbody2D>();
+        Invoke("JumpCD", 5);
     }
    
     private void FixedUpdate()
     {
-        if (!jumpInCd)
+        if (!jumpInCd&& !GameManager.instance.ReturnBossManager().Executing())
         {
-            Vector2 jump=Jump();
+            //le dice al BossManager que esta ejecutando un ataque , activa el cD y salta
+            GameManager.instance.ReturnBossManager().ChangeExecuting();
+            jumpInCd = true;
+            Vector2 jump =Jump();
             rigibody.AddForce(jump, ForceMode2D.Impulse);
             Invoke("JumpCD",jumpCD);
         }
@@ -88,8 +92,10 @@ public class JumpToPlayer : MonoBehaviour {
         float angle = (angleInGrades * Mathf.PI) / 180;
         return angle;
     }
+    //cambia el valor del booleano a falso;
     void JumpCD()
     {
         jumpInCd = false;
+
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BossManager : MonoBehaviour {
-    bool executingAttack=false;
+   public bool executingAttack=false;
 	// Use this for initialization
 	void Start () {
         GameManager.instance.GetBossManager(this);
