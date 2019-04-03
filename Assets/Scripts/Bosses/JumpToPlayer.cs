@@ -16,7 +16,13 @@ public class JumpToPlayer : MonoBehaviour {
         rigibody = GetComponent<Rigidbody2D>();
         Invoke("JumpCD", 5);
     }
-   
+    private void Update()
+    {
+        if(jumpInCd&& !GameManager.instance.ReturnBossManager().Executing())
+        {
+            Invoke("JumpCD", jumpCD);
+        }
+    }
     private void FixedUpdate()
     {
         if (!jumpInCd&& !GameManager.instance.ReturnBossManager().Executing())
@@ -26,7 +32,6 @@ public class JumpToPlayer : MonoBehaviour {
             jumpInCd = true;
             Vector2 jump =Jump();
             rigibody.AddForce(jump, ForceMode2D.Impulse);
-            Invoke("JumpCD",jumpCD);
         }
             
     }
