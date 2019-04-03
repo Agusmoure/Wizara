@@ -13,6 +13,7 @@ TagManager:
   - Enemy
   - MovingPlatform
   - Mirror
+  - NPC
   layers:
   - Default
   - TransparentFX
@@ -31,7 +32,7 @@ TagManager:
   - Checkpoints
   - Enemy things
   - limit
-  - 
+  - NPC
   - 
   - 
   - 
