@@ -21,11 +21,14 @@ public class BossManager : MonoBehaviour
     {
         return wolfState;
     }
-    //cambia el valor del booleano
+    //cambia el estado del boss
     public void ChangeBossState(string bossName, string attack)
     {
+        //tomamos el nombre del boss y lo pasamos a minúsculas asi no debemos preocuparnos de si pusimos la mayúscula o no
         switch (bossName.ToLower())
         {
+            //en caso de que sea el lobo
+            //tomamos el nombre del ataque y lo pasamos a minúsculas asi no debemos preocuparnos de si pusimos la mayúscula o no
             case "wolf":
                 switch (attack.ToLower())
                 {
@@ -39,6 +42,11 @@ public class BossManager : MonoBehaviour
                         wolfState = WolfEnums.idle;
                         break;
                 }
+                break;
+                //en caso de que sea la serpiente
+            case "snake":
+                break;
+            default:
                 break;
         }
     }
