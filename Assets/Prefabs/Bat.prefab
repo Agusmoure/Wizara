@@ -467,8 +467,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 4095004452778208}
   pointB: {fileID: 4067650399951764}
-  speedX: 3
-  speedY: 3
+  speed:
+    x: 2
+    y: 2
 --- !u!114 &114985325120156380
 MonoBehaviour:
   m_ObjectHideFlags: 1

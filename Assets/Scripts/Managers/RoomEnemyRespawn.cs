@@ -9,6 +9,22 @@ public class RoomEnemyRespawn : MonoBehaviour {
     [System.Serializable]
     struct Enemy
     {
+        [System.Serializable]
+        public struct Scale
+        {
+            public float x, y;
+        }
+
+        [System.Serializable]
+        public struct Speed
+        {
+            public float x, y;
+        }
+
+        [SerializeField]
+        public Scale enemyScale;
+        [SerializeField]
+        public Speed enemySpeed;
         public GameObject enemyObject;
         public Vector3 spawnPosition;
         public Vector3[] wayPointPositions;
@@ -46,6 +62,8 @@ public class RoomEnemyRespawn : MonoBehaviour {
                 StoreWaypoints(i, "Point");
             }
 
+            StoreScale(i);
+            StoreSpeed(i);
             enemyArray[i].spawnPosition = transform.GetChild(i).transform.position;
         }
     }
@@ -72,6 +90,45 @@ public class RoomEnemyRespawn : MonoBehaviour {
         }
     }
 
+    void StoreScale(int i)
+    {
+        if (transform.GetChild(i).name.Contains("Wizard"))
+        {
+            enemyArray[i].enemyScale.x = transform.GetChild(i).transform.localScale.x;
+            enemyArray[i].enemyScale.y = transform.GetChild(i).transform.localScale.y;
+        }
+
+        else for (int j = 0; j < transform.GetChild(i).childCount; j++)
+        {
+            if (transform.GetChild(i).transform.GetChild(j).name.Contains("Rat") || transform.GetChild(i).transform.GetChild(j).name.Contains("Bat") || transform.GetChild(i).transform.GetChild(j).name.Contains("Slime"))
+            {
+                enemyArray[i].enemyScale.x = transform.GetChild(i).transform.GetChild(j).transform.localScale.x;
+                enemyArray[i].enemyScale.y = transform.GetChild(i).transform.GetChild(j).transform.localScale.y;
+            }
+        }
+    }
+
+    void StoreSpeed(int i)
+    {
+        if (transform.GetChild(i).GetComponentInChildren<Move>() != null)
+        {
+            enemyArray[i].enemySpeed.x = transform.GetChild(i).GetComponentInChildren<Move>().ReturnSpeed();
+            enemyArray[i].enemySpeed.y = 0f;
+        }
+
+        else if (transform.GetChild(i).GetComponentInChildren<MoveAroundPlatforms>() != null)
+        {
+            enemyArray[i].enemySpeed.x = transform.GetChild(i).GetComponentInChildren<MoveAroundPlatforms>().ReturnSpeed();
+            enemyArray[i].enemySpeed.y = 0f;
+        }
+
+        else if (transform.GetChild(i).GetComponentInChildren<MoveFromAtoB>() != null)
+        {
+            enemyArray[i].enemySpeed.x = transform.GetChild(i).GetComponentInChildren<MoveFromAtoB>().ReturnSpeed().x;
+            enemyArray[i].enemySpeed.y = transform.GetChild(i).GetComponentInChildren<MoveFromAtoB>().ReturnSpeed().y;
+        }
+    }
+
     public void RespawnEnemies()
     {
         DestroyEnemies();
@@ -79,7 +136,7 @@ public class RoomEnemyRespawn : MonoBehaviour {
         for (int i = 0; i < enemyArray.Length; i++)
         {
             GameObject enemySpawned = Instantiate(enemyArray[i].enemyObject, enemyArray[i].spawnPosition, Quaternion.identity, transform);
-            enemySpawned.GetComponent<EnemyRespawn>().Respawn(enemyArray[i].wayPointPositions);
+            enemySpawned.GetComponent<EnemyRespawn>().Respawn(enemyArray[i].wayPointPositions, enemyArray[i].enemyScale.x, enemyArray[i].enemyScale.y, enemyArray[i].enemySpeed.x, enemyArray[i].enemySpeed.y);
         }
     }
 

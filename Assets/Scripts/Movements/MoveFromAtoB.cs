@@ -6,8 +6,16 @@ public class MoveFromAtoB : MonoBehaviour {
 
     Rigidbody2D bat;
     public Transform pointA, pointB;
-    public float speedX, speedY;
     Animator anime;
+
+    [System.Serializable]
+    public struct Speed
+    {
+        public float x, y;
+    }
+
+    [SerializeField]
+    public Speed speed;
 
     // Use this for initialization
     void Start()
@@ -27,15 +35,15 @@ public class MoveFromAtoB : MonoBehaviour {
     //fisicas
     private void FixedUpdate()
     {
-        bat.velocity = new Vector2(speedX, speedY);
+        bat.velocity = new Vector2(speed.x, speed.y);
     }
 
     //si collisiona con algo !=jugador o != de su caca cambia la velocidad en X e Y
     public void ChangeBouthSpeed()
     {
    
-            speedX = -speedX;
-            speedY = -speedY;
+            speed.x = -speed.x;
+            speed.y = -speed.y;
     }
 
     //cambiamos la velocidad en X
@@ -43,12 +51,12 @@ public class MoveFromAtoB : MonoBehaviour {
     {
             if (this.transform.position.x >= pointB.position.x)
             {
-                speedX = -Mathf.Abs(speedX);
+                speed.x = -Mathf.Abs(speed.x);
             }
 
             else if (this.transform.position.x <= pointA.position.x)
             {
-                speedX = Mathf.Abs(speedX);
+                speed.x = Mathf.Abs(speed.x);
             }
     }
 
@@ -57,11 +65,11 @@ public class MoveFromAtoB : MonoBehaviour {
     {
         if (transform.position.y <= pointA.position.y )
         {
-            speedY = Mathf.Abs(speedY);
+            speed.y = Mathf.Abs(speed.y);
         }
         else if (transform.position.y >= pointB.position.y)
         {
-            speedY = -Mathf.Abs(speedY);
+            speed.y = -Mathf.Abs(speed.y);
         }
     }
 
@@ -69,13 +77,19 @@ public class MoveFromAtoB : MonoBehaviour {
     void ChangeScale()
     {
         float       scaleX = transform.localScale.x;
-        if (speedX > 0) scaleX = Mathf.Abs(scaleX);
-        else if (speedX < 0) scaleX = -Mathf.Abs(scaleX);
+        if (speed.x > 0) scaleX = Mathf.Abs(scaleX);
+        else if (speed.x < 0) scaleX = -Mathf.Abs(scaleX);
         transform.localScale = new Vector2(scaleX, transform.localScale.y);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public Speed ReturnSpeed()
     {
-        
+        return speed;
+    }
+
+    public void UpdateSpeed(float updatedSpeedX, float updatedSpeedY)
+    {
+        speed.x = updatedSpeedX;
+        speed.y = updatedSpeedY;
     }
 }
