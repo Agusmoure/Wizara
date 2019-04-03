@@ -5,13 +5,13 @@ using UnityEngine;
 public class Move : MonoBehaviour {
 
     public float speed;
-    Rigidbody2D rigidbody2D;
+    Rigidbody2D ratRigidbody;
     Animator animator;
 
 	// Use this for initialization
 	void Start () {
 
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        ratRigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 	}
 	
@@ -22,12 +22,22 @@ public class Move : MonoBehaviour {
 	}
     private void FixedUpdate()
     {
-        rigidbody2D.velocity = new Vector2(speed,rigidbody2D.velocity.y);
+        ratRigidbody.velocity = new Vector2(speed,ratRigidbody.velocity.y);
     }
 
     public void ChangeDirection()
     {
         transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
         speed = -speed;
+    }
+
+    public float ReturnSpeed()
+    {
+        return speed;
+    }
+
+    public void UpdateSpeed(float updatedSpeed)
+    {
+        speed = updatedSpeed;
     }
 }
