@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4240342105262616}
   - component: {fileID: 114909188771488932}
   m_Layer: 0
-  m_Name: RoomEnemyManager
+  m_Name: oomResetManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,4 +56,5 @@ MonoBehaviour:
   enemyWizard: {fileID: 1519275494232146, guid: 2082c496c36752c49a64de9de12b7ebd,
     type: 2}
   slime: {fileID: 1329780807682100, guid: f78bb499fd096b04b8f3c1059b662e8b, type: 2}
+  movingPlatform: {fileID: 0}
   enemyArray: []

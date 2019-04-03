@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomResetRespawn : MonoBehaviour {
+public class RoomResetManager : MonoBehaviour {
 
     public GameObject rat, bat, enemyWizard, slime, movingPlatform;
     
