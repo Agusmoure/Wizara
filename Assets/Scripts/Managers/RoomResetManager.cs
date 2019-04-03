@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomEnemyRespawn : MonoBehaviour {
+public class RoomResetRespawn : MonoBehaviour {
 
-    public GameObject rat, bat, enemyWizard, slime;
+    public GameObject rat, bat, enemyWizard, slime, movingPlatform;
     
     [System.Serializable]
-    struct Enemy
+    struct ResettableObject
     {
         [System.Serializable]
         public struct Scale
@@ -31,7 +31,7 @@ public class RoomEnemyRespawn : MonoBehaviour {
     }
 
     [SerializeField]
-    Enemy[] enemyArray;
+    ResettableObject[] enemyArray;
 
     // Use this for initialization
     void Start ()
@@ -42,7 +42,7 @@ public class RoomEnemyRespawn : MonoBehaviour {
 
     void StoreInfo()
     {
-        enemyArray = new Enemy[transform.childCount];
+        enemyArray = new ResettableObject[transform.childCount];
 
         for (int i = 0; i < enemyArray.Length; i++)
         {

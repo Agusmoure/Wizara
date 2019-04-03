@@ -12,7 +12,7 @@ public class RoomTrigger : MonoBehaviour {
         if (collision.CompareTag("Player"))
         {
             GameManager.instance.SetLevelManager().MoveCamera(new Vector2(room.transform.position.x, room.transform.position.y));
-            if (room.GetComponentInChildren<RoomEnemyRespawn>() != null) room.GetComponentInChildren<RoomEnemyRespawn>().RespawnEnemies();
+            if (room.GetComponentInChildren<RoomResetManager>() != null) room.GetComponentInChildren<RoomResetManager>().RespawnEnemies();
         }
     }
 }
