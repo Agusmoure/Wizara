@@ -5,7 +5,7 @@ using UnityEngine;
 public class JumpToPlayer : MonoBehaviour {
     GameObject player;
     Vector2 playerPosition;
-    bool jumpInCd=true;
+    public bool jumpInCd=true;
 
     Rigidbody2D rigibody;
     public float angles;
@@ -14,14 +14,7 @@ public class JumpToPlayer : MonoBehaviour {
 	void Start () {
         player = GameManager.instance.ReturnPlayer();
         rigibody = GetComponent<Rigidbody2D>();
-        Invoke("JumpCD", 5);
-    }
-    private void Update()
-    {
-        if(jumpInCd&& !GameManager.instance.ReturnBossManager().Executing())
-        {
-            Invoke("JumpCD", jumpCD);
-        }
+        Invoke("JumpCD", jumpCD);
     }
     private void FixedUpdate()
     {
@@ -32,8 +25,10 @@ public class JumpToPlayer : MonoBehaviour {
             jumpInCd = true;
             Vector2 jump =Jump();
             rigibody.AddForce(jump, ForceMode2D.Impulse);
+            Invoke("JumpCD", jumpCD);
+
         }
-            
+
     }
 
     /*Método que devuelve la fuerza que se le debe aplicar al objeto para realizar el movimiento parábolico para saltar hacia el jugador

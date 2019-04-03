@@ -15,10 +15,6 @@ public class Charge : MonoBehaviour {
     private void Update()
     {
         LooktoPlayer(out starter);
-        if (cD && !GameManager.instance.ReturnBossManager().Executing())
-        {
-            Invoke("ChangeCD", time);
-        }
         Debug.DrawRay(starter, charge, Color.yellow);
     }
     // Update is called once per frame
@@ -31,6 +27,8 @@ public class Charge : MonoBehaviour {
             GameManager.instance.ReturnBossManager().ChangeExecuting();
             // rigidB.AddForce(Vector2.left * speed*rigidB.mass, ForceMode2D.Impulse);
             rigidB.velocity = charge * speed;
+            Invoke("ChangeCD", 2);
+
         }
     }
     //para la carga
