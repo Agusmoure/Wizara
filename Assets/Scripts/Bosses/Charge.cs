@@ -17,7 +17,7 @@ public class Charge : MonoBehaviour {
         LooktoPlayer(out starter);
         if (cD && !GameManager.instance.ReturnBossManager().Executing())
         {
-            Invoke("JumpCD", time);
+            Invoke("ChangeCD", time);
         }
         Debug.DrawRay(starter, charge, Color.yellow);
     }
@@ -27,7 +27,7 @@ public class Charge : MonoBehaviour {
         if (!GameManager.instance.ReturnBossManager().Executing() && !cD)
         {
             //cambia el CD y lo activa, le dice al BossManager que esta atacando y carga en la direccion dada
-            ChangeCD();
+            cD = true ;
             GameManager.instance.ReturnBossManager().ChangeExecuting();
             // rigidB.AddForce(Vector2.left * speed*rigidB.mass, ForceMode2D.Impulse);
             rigidB.velocity = charge * speed;
@@ -43,7 +43,7 @@ public class Charge : MonoBehaviour {
     //Cambia el CD
     void ChangeCD()
     {
-        cD = !cD;
+        cD = false;
     
     }
     //COmprueba hacia que lado esta el jugador y carga hacia él

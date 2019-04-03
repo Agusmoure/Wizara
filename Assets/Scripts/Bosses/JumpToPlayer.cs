@@ -101,6 +101,5 @@ public class JumpToPlayer : MonoBehaviour {
     void JumpCD()
     {
         jumpInCd = false;
-
     }
 }
