@@ -5,6 +5,7 @@ using UnityEngine;
 public class JumpToPlayer : MonoBehaviour {
     GameObject player;
     Vector2 playerPosition;
+    public string bossName;
     public bool jumpInCd=true;
 
     Rigidbody2D rigibody;
@@ -18,10 +19,10 @@ public class JumpToPlayer : MonoBehaviour {
     }
     private void FixedUpdate()
     {
-        if (!jumpInCd&& !GameManager.instance.ReturnBossManager().Executing())
+        if (!jumpInCd&& GameManager.instance.ReturnBossManager().WolfState()==WolfEnums.idle)
         {
             //le dice al BossManager que esta ejecutando un ataque , activa el cD y salta
-            GameManager.instance.ReturnBossManager().ChangeExecuting();
+            GameManager.instance.ReturnBossManager().ChangeBossState(bossName,"Jump");
             jumpInCd = true;
             Vector2 jump =Jump();
             rigibody.AddForce(jump, ForceMode2D.Impulse);

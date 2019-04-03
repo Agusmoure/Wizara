@@ -2213,6 +2213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e895bcdb5e714514b9682bd8843df013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpInCd: 1
   angles: 60
   jumpCD: 6
 --- !u!114 &538874454
@@ -2626,6 +2627,7 @@ GameObject:
   - component: {fileID: 1358327034}
   - component: {fileID: 1358327035}
   - component: {fileID: 1358327036}
+  - component: {fileID: 1358327037}
   m_Layer: 9
   m_Name: Down
   m_TagString: Untagged
@@ -2682,6 +2684,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6399df58289a49643ae5d00ddb73b67b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1358327037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1358327033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 332b02b7dc538db42bb06e705178604e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1414984954
 Prefab:
   m_ObjectHideFlags: 0
@@ -2730,6 +2743,11 @@ Prefab:
         type: 2}
       propertyPath: m_UseAutoMass
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983798974601146, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d,
+        type: 2}
+      propertyPath: dashForce
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d, type: 2}

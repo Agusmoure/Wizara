@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Charge : MonoBehaviour {
     public int speed, time;
+    public string bossName;
     Rigidbody2D rigidB;
     bool cD = true;
     Vector2 charge,starter;
@@ -20,11 +21,11 @@ public class Charge : MonoBehaviour {
     // Update is called once per frame
     private void FixedUpdate()
     {
-        if (!GameManager.instance.ReturnBossManager().Executing() && !cD)
+        if (GameManager.instance.ReturnBossManager().WolfState()==WolfEnums.idle && !cD)
         {
             //cambia el CD y lo activa, le dice al BossManager que esta atacando y carga en la direccion dada
             cD = true ;
-            GameManager.instance.ReturnBossManager().ChangeExecuting();
+            GameManager.instance.ReturnBossManager().ChangeBossState(bossName,"Charge");
             // rigidB.AddForce(Vector2.left * speed*rigidB.mass, ForceMode2D.Impulse);
             rigidB.velocity = charge * speed;
             Invoke("ChangeCD", 2);
@@ -34,8 +35,8 @@ public class Charge : MonoBehaviour {
     //para la carga
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       if (GameManager.instance.ReturnBossManager().Executing())
-        GameManager.instance.ReturnBossManager().ChangeExecuting();
+       if (GameManager.instance.ReturnBossManager().WolfState()==WolfEnums.charging)
+        GameManager.instance.ReturnBossManager().ChangeBossState(bossName, "stop");
         rigidB.velocity = new Vector2(0,0);
     }
     //Cambia el CD
