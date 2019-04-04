@@ -47,18 +47,24 @@ public class BossManager : MonoBehaviour
                 switch (state.ToLower())
                 {
                     case "jump":
-                        wolfState = WolfEnums.jumping;
-                        boss.GetComponent<JumpToPlayer>().DoJump();
+                        if (wolfState == WolfEnums.idle)
+                        {
+                            wolfState = WolfEnums.jumping;
+                            boss.GetComponent<JumpToPlayer>().DoJump();
+                        }
                         break;
                     case "charge":
-                        wolfState = WolfEnums.charging;
-                        boss.GetComponent<Charge>().DoCharge();
+                        if (wolfState == WolfEnums.idle)
+                        {
+                            wolfState = WolfEnums.charging;
+                            boss.GetComponent<Charge>().DoCharge();
+                        }
                         break;
                     default:
                         break;
                 }
                 break;
-                //en caso de que sea la serpiente
+            //en caso de que sea la serpiente
             case "snake":
                 break;
             default:
