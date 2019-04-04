@@ -6,12 +6,19 @@ public class MakeDamageEverySeconds : MonoBehaviour {
 
     public int damage;
     Collider2D collider;
+    bool stay = false, alreadyInvoke = false;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         print("esqueletinho");
+        stay = true;
         GetCollider2D(collision);
-        Invoke("MakeDamage", 2);
-
+        if(!alreadyInvoke)
+        InvokeRepeating("MakeDamage", 0, 1);
+        alreadyInvoke = true;
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        stay = false;
     }
     void GetCollider2D(Collider2D collision)
     {
@@ -19,6 +26,9 @@ public class MakeDamageEverySeconds : MonoBehaviour {
     }
     void MakeDamage()
     {
-        if (collider.GetComponent<Life>() != null && !GameManager.instance.GetInvulnerablePlayer()) collider.GetComponent<Life>().LoseLife(damage);
+        if (stay) {
+            if (collider.gameObject.GetComponent<Life>() != null && !GameManager.instance.GetInvulnerablePlayer()) collider.gameObject.GetComponent<Life>().LoseLife(damage);
+        }
+
     }
 }
