@@ -5,13 +5,27 @@ using UnityEngine;
 public class BossManager : MonoBehaviour
 {
     public WolfEnums wolfState = WolfEnums.idle;
+    public GameObject boss;
+    public string bossName;
     // Use this for initialization
     void Start()
     {
         GameManager.instance.GetBossManager(this);
+        InvokeRepeating("RandomAbility", 3, 2);
     }
 
     // Update is called once per frame
+    void RandomAbility()
+    {
+        if (Random.Range(3, 6) <= 3)
+        {
+            ChangeBossState("wolf", "jump");
+        }
+        else
+        {
+            ChangeBossState("wolf", "charge");
+        }
+    }
     void Update()
     {
 
@@ -37,6 +51,7 @@ public class BossManager : MonoBehaviour
                         break;
                     case "charge":
                         wolfState = WolfEnums.charging;
+                        boss.GetComponent<Charge>().DoCharge();
                         break;
                     default:
                         wolfState = WolfEnums.idle;

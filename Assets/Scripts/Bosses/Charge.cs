@@ -6,32 +6,19 @@ public class Charge : MonoBehaviour {
     public int speed, time;
     public string bossName;
     Rigidbody2D rigidB;
-    bool cD = true;
+    bool ChargeCD = false;
     Vector2 charge,starter;
 	// Use this for initialization
 	void Start () {
         rigidB = GetComponent<Rigidbody2D>();
-        Invoke("ChangeCD", 2);
+
     }
     private void Update()
     {
         LooktoPlayer(out starter);
         Debug.DrawRay(starter, charge, Color.yellow);
     }
-    // Update is called once per frame
-    private void FixedUpdate()
-    {
-        if (GameManager.instance.ReturnBossManager().WolfState()==WolfEnums.idle && !cD)
-        {
-            //cambia el CD y lo activa, le dice al BossManager que esta atacando y carga en la direccion dada
-            cD = true ;
-            GameManager.instance.ReturnBossManager().ChangeBossState(bossName,"Charge");
-            // rigidB.AddForce(Vector2.left * speed*rigidB.mass, ForceMode2D.Impulse);
-            rigidB.velocity = charge * speed;
-            Invoke("ChangeCD", 2);
 
-        }
-    }
     //para la carga
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -42,8 +29,7 @@ public class Charge : MonoBehaviour {
     //Cambia el CD
     void ChangeCD()
     {
-        cD = false;
-    
+        ChargeCD = false;
     }
     //COmprueba hacia que lado esta el jugador y carga hacia él
     void LooktoPlayer(out Vector2 starter)
@@ -62,6 +48,15 @@ public class Charge : MonoBehaviour {
         {
             transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), Mathf.Abs(transform.localScale.y));
             charge = Vector2.left;
+        }
+    }
+    public void DoCharge()
+    {
+        if (!ChargeCD)
+        {
+            ChargeCD = true;
+            rigidB.AddForce(charge * speed * rigidB.mass, ForceMode2D.Force);
+            Invoke("ChangeCD", 2);
         }
     }
 }
