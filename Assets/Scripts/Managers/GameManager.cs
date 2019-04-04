@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     LevelManager levelManager;
     BossManager boss;
     UIManager uIManager;
-    DialogueManager dialogueManager;
     bool paused = false;
     bool doubleJump = false, wallJump = false, dash = false, fireBall = true, shield = true, lightning = false, invulnerable=false;
 
@@ -200,18 +199,9 @@ public class GameManager : MonoBehaviour
     {
         boss = bossM;
     }
+
     public BossManager ReturnBossManager()
     {
         return boss;
-    }
-
-    public void GetDialogueManager(DialogueManager dialogueM)
-    {
-        dialogueManager = dialogueM;
-    }
-
-    public DialogueManager ReturnDialogueManager()
-    {
-        return dialogueManager;
     }
 }

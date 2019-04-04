@@ -3,16 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DialogueManager : MonoBehaviour {
-    
-    private Queue<string> sentences;
 
-	// Use this for initialization
-	void Start ()
+    string npcName;
+    string[] sentences;
+    int currentSentence;
+
+    private void Update()
     {
-        GameManager.instance.GetDialogueManager(this);
-        sentences = new Queue<string>();
+        if (Input.GetKey(KeyCode.Return)) NextSentence();
     }
-	
-	// Update is called once per frame
-	void Update () {}
+
+    public void GetSentences(string newNPCName, string[] newSentences)
+    {
+        npcName = newNPCName;
+        sentences = newSentences;
+        currentSentence = 0;
+    }
+
+    public void NextSentence()
+    {
+        if (currentSentence < sentences.Length)
+        {
+            WriteText();
+            currentSentence++;
+        }
+
+        else GameManager.instance.ReturnUIManager().DisableDialogueBox();
+    }
+
+    public void WriteText()
+    {
+        GameManager.instance.ReturnUIManager().WriteDialogue(npcName, sentences[currentSentence]);
+    }
 }

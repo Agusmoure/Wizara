@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public Image[] HeartIcons;
-    public GameObject fireballIcon, shieldIcon, lightningIcon;
+    public GameObject fireballIcon, shieldIcon, lightningIcon, dialogueBox;
     public Slider fireballSlider, shieldSlider, lightningSlider;
     GameObject player;
     float fireballSliderValue, shieldSliderValue, lightningSliderValue;
@@ -90,6 +90,32 @@ public class UIManager : MonoBehaviour
         if (lightningIcon != null) lightningIcon.SetActive(GameManager.instance.ReturnAbilityValue("Lightning"));
     }
 
+    public void EnableDialogueBox(string npcName, string[] sentences)
+    {
+        if (dialogueBox != null)
+        {
+            dialogueBox.SetActive(true);
+            dialogueBox.GetComponent<DialogueManager>().GetSentences(npcName, sentences);
+        }
+    }
+
+    public void DisableDialogueBox()
+    {
+        dialogueBox.SetActive(false);
+    }
+
+    public void WriteDialogue(string npcName, string sentence)
+    {
+        if (dialogueBox != null)
+        {
+            for (int i = 0; i < dialogueBox.transform.childCount; i++)
+            {
+                if (dialogueBox.transform.GetChild(i).name.Contains("TextCharacter")) dialogueBox.transform.GetChild(i).GetComponent<Text>().text = npcName;
+
+                else if (dialogueBox.transform.GetChild(i).name.Contains("TextDialogue")) dialogueBox.transform.GetChild(i).GetComponent<Text>().text = sentence;
+            }
+        }
+    }
     public void SetSliderValue(float value, string slider)
     {
         switch (slider)
