@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SpikesKnockback : MonoBehaviour {
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Player") collision.GetComponent<Bounce>().BounceUp();
+        if (collision.GetComponent<Bounce>() != null && !GameManager.instance.GetInvulnerablePlayer()) collision.GetComponent<Bounce>().BounceUp();
     }
 
 }
