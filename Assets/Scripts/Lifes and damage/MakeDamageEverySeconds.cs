@@ -6,7 +6,7 @@ public class MakeDamageEverySeconds : MonoBehaviour {
 
     public int damage;
     Collider2D collider;
-    bool stay = false, alreadyInvoke = false;
+    bool stay = false, alreadyInvoke = false;   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         print("esqueletinho");
