@@ -7,7 +7,7 @@ public class JumpToPlayer : MonoBehaviour
     GameObject player;
     Vector2 playerPosition;
     public string bossName;
-    public bool jumpInCd = true;
+    public bool jumpOnCd = true;
 
     Rigidbody2D rigibody;
     public float angles;
@@ -19,28 +19,21 @@ public class JumpToPlayer : MonoBehaviour
         rigibody = GetComponent<Rigidbody2D>();
         Invoke("JumpCD", jumpCD);
     }
-    private void FixedUpdate()
+
+    public void DoJump()
     {
-        if (!jumpInCd && GameManager.instance.ReturnBossManager().WolfState() == WolfEnums.idle)
-        {
-            //le dice al BossManager que esta ejecutando un ataque , activa el cD y salta
-            GameManager.instance.ReturnBossManager().ChangeBossState(bossName, "Jump");
-            jumpInCd = true;
-            Vector2 jump = Jump();
-            rigibody.AddForce(jump, ForceMode2D.Impulse);
-            Invoke("JumpCD", jumpCD);
-
-        }
-
+        jumpOnCd = true;
+        Vector2 jump = Jump();
+        rigibody.AddForce(jump, ForceMode2D.Impulse);
+        Invoke("JumpCD", jumpCD);
     }
-
     Vector2 Jump()
     {
         player = GameManager.instance.ReturnPlayer();
         //guarda la posicion del jugador al inicio del salto.
         playerPosition = player.transform.position;
         //activa el CD del salto
-        jumpInCd = true;
+        jumpOnCd = true;
         float angle, speed;
         CalculateValues(out angle, out speed);
         //asigna el vector de la fuerza que debe ejecutar teniendo en cuenta hacia donde la debe ejecutar
@@ -99,6 +92,6 @@ Ta=Vy/g
     //cambia el valor del booleano a falso;
     void JumpCD()
     {
-        jumpInCd = false;
+        jumpOnCd = false;
     }
 }

@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Charge : MonoBehaviour {
-    public int speed, time;
-    public string bossName;
+    public int speed, chargeCD=2;
     Rigidbody2D rigidB;
-    bool ChargeCD = false;
+    bool ChargeOnCD = false;
     Vector2 charge,starter;
 	// Use this for initialization
 	void Start () {
@@ -21,7 +20,7 @@ public class Charge : MonoBehaviour {
     //Cambia el CD
     void ChangeCD()
     {
-        ChargeCD = false;
+        ChargeOnCD = false;
     }
     //COmprueba hacia que lado esta el jugador y carga hacia él
     void LooktoPlayer(out Vector2 starter)
@@ -44,11 +43,11 @@ public class Charge : MonoBehaviour {
     }
     public void DoCharge()
     {
-        if (!ChargeCD)
+        if (!ChargeOnCD)
         {
-            ChargeCD = true;
+            ChargeOnCD = true;
             rigidB.AddForce(charge * speed * rigidB.mass, ForceMode2D.Force);
-            Invoke("ChangeCD", 2);
+            Invoke("ChangeCD", chargeCD);
         }
     }
 }

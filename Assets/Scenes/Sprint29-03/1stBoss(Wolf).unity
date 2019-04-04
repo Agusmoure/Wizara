@@ -2176,6 +2176,7 @@ GameObject:
   - component: {fileID: 538874456}
   - component: {fileID: 538874454}
   - component: {fileID: 538874453}
+  - component: {fileID: 538874458}
   - component: {fileID: 538874457}
   - component: {fileID: 538874455}
   m_Layer: 9
@@ -2213,7 +2214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossName: Wolf
-  jumpInCd: 1
+  jumpOnCd: 1
   angles: 60
   jumpCD: 4
 --- !u!114 &538874454
@@ -2319,6 +2320,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &538874458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 538874451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94534257831053046b2d53874eacad5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  chargeCD: 2
 --- !u!1 &601658057
 GameObject:
   m_ObjectHideFlags: 0
@@ -2360,6 +2374,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wolfState: 0
+  boss: {fileID: 538874451}
+  bossName: wolf
 --- !u!1 &688076225
 GameObject:
   m_ObjectHideFlags: 0

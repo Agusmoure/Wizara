@@ -17,7 +17,7 @@ public class BossManager : MonoBehaviour
     // Update is called once per frame
     void RandomAbility()
     {
-        if (Random.Range(3, 6) <= 3)
+        if (Random.Range(1, 7) <= 3)
         {
             ChangeBossState("wolf", "jump");
         }
@@ -48,6 +48,7 @@ public class BossManager : MonoBehaviour
                 {
                     case "jump":
                         wolfState = WolfEnums.jumping;
+                        boss.GetComponent<JumpToPlayer>().DoJump();
                         break;
                     case "charge":
                         wolfState = WolfEnums.charging;
