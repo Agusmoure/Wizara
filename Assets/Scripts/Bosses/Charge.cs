@@ -46,7 +46,7 @@ public class Charge : MonoBehaviour {
         if (!ChargeOnCD)
         {
             ChargeOnCD = true;
-            rigidB.AddForce(charge * speed * rigidB.mass, ForceMode2D.Force);
+            rigidB.AddForce(charge * speed * rigidB.mass);
             Invoke("ChangeCD", chargeCD);
         }
     }
