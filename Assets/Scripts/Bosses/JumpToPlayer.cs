@@ -15,7 +15,7 @@ public class JumpToPlayer : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        player = GameManager.instance.ReturnPlayer();
+
         rigibody = GetComponent<Rigidbody2D>();
         Invoke("JumpCD", jumpCD);
     }
@@ -36,6 +36,7 @@ public class JumpToPlayer : MonoBehaviour
 
     Vector2 Jump()
     {
+        player = GameManager.instance.ReturnPlayer();
         //guarda la posicion del jugador al inicio del salto.
         playerPosition = player.transform.position;
         //activa el CD del salto
