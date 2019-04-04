@@ -11,21 +11,13 @@ public class Charge : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         rigidB = GetComponent<Rigidbody2D>();
-
     }
     private void Update()
     {
         LooktoPlayer(out starter);
         Debug.DrawRay(starter, charge, Color.yellow);
     }
-
-    //para la carga
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-       if (GameManager.instance.ReturnBossManager().WolfState()==WolfEnums.charging)
-        GameManager.instance.ReturnBossManager().ChangeBossState(bossName, "stop");
-        rigidB.velocity = new Vector2(0,0);
-    }
+    
     //Cambia el CD
     void ChangeCD()
     {
