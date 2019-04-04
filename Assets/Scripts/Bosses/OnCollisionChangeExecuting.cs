@@ -6,6 +6,6 @@ public class OnCollisionChangeExecuting : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(GameManager.instance.ReturnBossManager().WolfState()!=WolfEnums.idle)
-        GameManager.instance.ReturnBossManager().ChangeBossState("wolf","stop");
+        GameManager.instance.ReturnBossManager().ChangeBossState("wolf","idle");
     }
 }

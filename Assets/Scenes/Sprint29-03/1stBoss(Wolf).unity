@@ -2315,7 +2315,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: dc8e05d37d42df446b99d6e1e8d1a413, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -2331,7 +2331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94534257831053046b2d53874eacad5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 800
+  speed: 320
   chargeCD: 2
 --- !u!1 &601658057
 GameObject:
@@ -2375,6 +2375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wolfState: 0
   boss: {fileID: 538874451}
+  bossMaterial: {fileID: 6200000, guid: dc8e05d37d42df446b99d6e1e8d1a413, type: 2}
   bossName: wolf
 --- !u!1 &688076225
 GameObject:
