@@ -36,7 +36,7 @@ public class BossManager : MonoBehaviour
         return wolfState;
     }
     //cambia el estado del boss
-    public void ChangeBossState(string bossName, string attack)
+    public void ChangeBossState(string bossName, string state)
     {
         //tomamos el nombre del boss y lo pasamos a minúsculas asi no debemos preocuparnos de si pusimos la mayúscula o no
         switch (bossName.ToLower())
@@ -44,7 +44,7 @@ public class BossManager : MonoBehaviour
             //en caso de que sea el lobo
             //tomamos el nombre del ataque y lo pasamos a minúsculas asi no debemos preocuparnos de si pusimos la mayúscula o no
             case "wolf":
-                switch (attack.ToLower())
+                switch (state.ToLower())
                 {
                     case "jump":
                         wolfState = WolfEnums.jumping;
@@ -55,7 +55,6 @@ public class BossManager : MonoBehaviour
                         boss.GetComponent<Charge>().DoCharge();
                         break;
                     default:
-                        wolfState = WolfEnums.idle;
                         break;
                 }
                 break;
