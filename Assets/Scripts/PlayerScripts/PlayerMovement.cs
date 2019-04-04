@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
 
-    public float velocity, jumpForce, dashForce;
-    int maxJump=1;
+    public float velocity, jumpForce, dashForce, maxFallSpeed, yVelocity;
+    int maxJump = 1;
     int jump;
     float inputX;
     public bool movmentRestriction = false;
@@ -35,8 +35,10 @@ public class PlayerMovement : MonoBehaviour {
         ChangeVelocity();
 
         JumpInput();
-
         DashInput();
+
+        if (player.velocity.y < -maxFallSpeed) player.velocity = new Vector2(player.velocity.x, -maxFallSpeed);
+        yVelocity = player.velocity.y;
     }
 
     private void OnCollisionStay2D(Collision2D collision)

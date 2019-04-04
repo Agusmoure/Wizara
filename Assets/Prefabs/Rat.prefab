@@ -411,7 +411,7 @@ MonoBehaviour:
   probability: 100
   droppedObject: {fileID: 1823006112532908, guid: 2a1ba307356fbf44fb281c9f6a57ca10,
     type: 2}
-  objectPool: {fileID: 0}
+  objectPool: {fileID: 4774606858418642, guid: c54fc5de624be2541ab56a0e387d1ef1, type: 2}
 --- !u!114 &114713718229494844
 MonoBehaviour:
   m_ObjectHideFlags: 1
