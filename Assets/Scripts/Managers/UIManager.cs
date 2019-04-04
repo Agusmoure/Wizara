@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         Invoke("UpdateLifeUI", 0.5f * Time.deltaTime);
         Invoke("EnableAbilityIcons", 2f * Time.deltaTime);
+        
     }
 
     private void Update()
