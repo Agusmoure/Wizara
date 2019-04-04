@@ -12,7 +12,6 @@ public class JumpToPlayer : MonoBehaviour
     Rigidbody2D rigibody;
     public float angles;
     public float jumpCD = 4;
-   public  float realCD;
     // Use this for initialization
     void Start()
     {
@@ -88,8 +87,6 @@ Ta=Vy/g
         angle = GetAngleInRad(angles);
         //calcula la velocidad
         speed = Mathf.Sqrt((-(Physics2D.gravity.y) * distance) / Mathf.Sin(angle * 2)) * rigibody.mass;
-        //se calcula el tiempo que va a tardar el lobo en caer al suelo y se le suma el coolDown
-        realCD =jumpCD+ (2*(speed*Mathf.Sin(angle)/ -Physics2D.gravity.y))*Time.fixedDeltaTime;
     }
 
     //pasa el ángulo a Radianes
