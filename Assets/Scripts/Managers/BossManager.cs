@@ -6,6 +6,7 @@ public class BossManager : MonoBehaviour
 {
     public WolfEnums wolfState = WolfEnums.idle;
     public GameObject boss;
+    public PhysicsMaterial2D bossMaterial;
     public string bossName;
     // Use this for initialization
     void Start()
@@ -49,6 +50,7 @@ public class BossManager : MonoBehaviour
                     case "jump":
                         if (wolfState == WolfEnums.idle)
                         {
+                            bossMaterial.friction = 100;
                             wolfState = WolfEnums.jumping;
                             boss.GetComponent<JumpToPlayer>().DoJump();
                         }
@@ -56,11 +58,15 @@ public class BossManager : MonoBehaviour
                     case "charge":
                         if (wolfState == WolfEnums.idle)
                         {
+                            bossMaterial.friction = 0;
                             wolfState = WolfEnums.charging;
                             boss.GetComponent<Charge>().DoCharge();
                         }
                         break;
-                    default:
+
+                    case "idle":
+                        bossMaterial.friction = 0;
+                        wolfState = WolfEnums.idle;
                         break;
                 }
                 break;
