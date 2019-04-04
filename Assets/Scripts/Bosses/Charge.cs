@@ -11,7 +11,7 @@ public class Charge : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         rigidB = GetComponent<Rigidbody2D>();
-        Invoke("ChangeCD", 2);
+        Invoke("ChangeCD", time);
     }
     private void Update()
     {
@@ -28,16 +28,9 @@ public class Charge : MonoBehaviour {
             GameManager.instance.ReturnBossManager().ChangeBossState(bossName,"Charge");
             // rigidB.AddForce(Vector2.left * speed*rigidB.mass, ForceMode2D.Impulse);
             rigidB.velocity = charge * speed;
-            Invoke("ChangeCD", 2);
+            Invoke("ChangeCD", time);
 
         }
-    }
-    //para la carga
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-       if (GameManager.instance.ReturnBossManager().WolfState()==WolfEnums.charging)
-        GameManager.instance.ReturnBossManager().ChangeBossState(bossName, "stop");
-        rigidB.velocity = new Vector2(0,0);
     }
     //Cambia el CD
     void ChangeCD()
