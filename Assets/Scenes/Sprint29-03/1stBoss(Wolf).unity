@@ -3118,6 +3118,34 @@ MonoBehaviour:
   boss: {fileID: 538874451}
   bossName: wolf
   wolfWaitTime: 8
+--- !u!1 &612404515
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 612404516}
+  m_Layer: 0
+  m_Name: ProjectilePool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &612404516
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 612404515}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &673826327
 GameObject:
   m_ObjectHideFlags: 0
@@ -4472,6 +4500,28 @@ Prefab:
       propertyPath: bounceForce
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114049586320647788, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d,
+        type: 2}
+      propertyPath: shield
+      value: 
+      objectReference: {fileID: 1960320302740486, guid: 78df1723b26a2414b999df0ff99e35c5,
+        type: 2}
+    - target: {fileID: 114049586320647788, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d,
+        type: 2}
+      propertyPath: fireBall
+      value: 
+      objectReference: {fileID: 1932105882264238, guid: c8eeb266559cbcb4fa440b5881e32342,
+        type: 2}
+    - target: {fileID: 114049586320647788, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d,
+        type: 2}
+      propertyPath: projectilePool
+      value: 
+      objectReference: {fileID: 612404516}
+    - target: {fileID: 114049586320647788, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d,
+        type: 2}
+      propertyPath: uIManager
+      value: 
+      objectReference: {fileID: 114167355}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d, type: 2}
   m_IsPrefabAsset: 0
