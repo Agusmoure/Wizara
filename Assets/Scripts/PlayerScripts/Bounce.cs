@@ -18,4 +18,8 @@ public class Bounce : MonoBehaviour {
     {
         player.AddForce(new Vector2(0, bounceForce), ForceMode2D.Impulse);
     }
+    public void PlayKnockback(Vector2 where)
+    {
+        player.AddForce(where, ForceMode2D.Impulse);    //Reproduce el knockback.
+    }
 }
