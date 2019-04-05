@@ -25,7 +25,7 @@ public class JumpOnTop : MonoBehaviour {
             if (collision.gameObject.GetComponent<Bounce>() != null)
             {
                 Bounce player = collision.gameObject.GetComponent<Bounce>();
-                player.BounceUp();
+                player.BounceTo(0,1);
             }
          }
     }

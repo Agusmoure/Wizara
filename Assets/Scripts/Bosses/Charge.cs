@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Charge : MonoBehaviour {
-    public int speed, chargeCD=2;
+    public int speed, chargeCDTime=2;
     Rigidbody2D rigidB;
     bool chargeOnCD = false;
     Vector2 charge,starter,chargeDirection;
@@ -18,17 +18,13 @@ public class Charge : MonoBehaviour {
     }
     void FixedUpdate()
     {
+        //Realizará la carga siempre que el estado del boss sea charging.
         if(GameManager.instance.ReturnBossManager().WolfState() == WolfEnums.charging)
         {
             rigidB.AddForce(chargeDirection * speed * rigidB.mass);
         }
     }
-    //Cambia el CD
-    void ChangeCD()
-    {
-        chargeOnCD = false;
-    }
-    //COmprueba hacia que lado esta el jugador y carga hacia él
+    //Comprueba hacia que lado esta el jugador para dirigir su mirada hacia él y saber el lado de la carga.
     void LooktoPlayer(out Vector2 starter)
     {
         //obtenemos la layerMask del jugador
@@ -47,14 +43,19 @@ public class Charge : MonoBehaviour {
             charge = Vector2.left;
         }
     }
+    //Método llamado por el bossManager que inicia el tiempo de enfriamiento.
     public void StartChargeCD()
     {
-     
             chargeDirection = charge;
             chargeOnCD = true;
-            Invoke("ChangeCD", chargeCD);
-        
+            Invoke("ChangeCD", chargeCDTime);
     }
+    //Cambia el CD para que la habilidad vuelva a estar disponible tras el tiempo "chargeCDTime".
+    void ChangeCD()
+    {
+        chargeOnCD = false;
+    }
+    //Este método permite ver al bossManager si la carga está en cooldown, para no empezar otra al mismo tiempo.
     public bool ChargeCD()
     {
         return chargeOnCD;

@@ -26,10 +26,6 @@ public class BossManager : MonoBehaviour
             ChangeBossState("wolf", "charge");
         }
     }
-    void Update()
-    {
-
-    }
     //devuelve el valor del booleano
     public WolfEnums WolfState()
     {
@@ -49,7 +45,6 @@ public class BossManager : MonoBehaviour
                     case "jump":
                         if (wolfState == WolfEnums.idle)
                         {
-                           
                             wolfState = WolfEnums.jumping;
                             boss.GetComponent<JumpToPlayer>().DoJump();
                         }
@@ -57,10 +52,11 @@ public class BossManager : MonoBehaviour
                     case "charge":
                         if (wolfState == WolfEnums.idle)
                         {
+                            //La carga funciona diferente, necesitamos saber el enfriamiento de la carga antes de usarla (se entiendo viendo el script Charge).
                             if (!boss.GetComponent<Charge>().ChargeCD())
                             {
-                                
                                 wolfState = WolfEnums.charging;
+                                //Se inicia el enfriamiento de la carga.
                                 boss.GetComponent<Charge>().StartChargeCD();
                             }
                         }

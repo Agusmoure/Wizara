@@ -1,0 +1,32 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class KnockBackEverySec : MonoBehaviour {
+
+    public float seconds;
+    Collider2D triggerCollider;
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        GetCollider(other);
+        InvokeRepeating("KnockBack", 0, seconds);
+
+
+    }
+    //Método para realizar KnockBack con el componente Bounce del jugador.
+    void KnockBack()
+    {
+        if (triggerCollider.GetComponent<Bounce>() != null && !GameManager.instance.GetInvulnerablePlayer()) triggerCollider.GetComponent<Bounce>().BounceTo(1,0);
+    }
+    //Se guarda other detectado por el trigger para que Damage lo pueda usar, ya que en Invoke no se puede pasar parámetros a los métodos.
+    void GetCollider(Collider2D collider)
+    {
+        triggerCollider = collider;
+    }
+    //Al salir del trigger se detiene el invoke, permitiendo que se inicie otro si se entra de nuevo (de esta forma no se superponen).
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        CancelInvoke("KnockBack");
+    }
+}

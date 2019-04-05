@@ -15,7 +15,7 @@ public class MakeDamageEverySec : MonoBehaviour {
         
 
     }
-    //Método para realizar daño (también afecta a enemigos).
+    //Método para realizar daño.
     void Damage()
     {
         if (triggerCollider.GetComponent<Life>() != null && !GameManager.instance.GetInvulnerablePlayer()) triggerCollider.GetComponent<Life>().LoseLife(damage);

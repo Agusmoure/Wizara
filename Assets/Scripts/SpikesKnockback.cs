@@ -6,7 +6,7 @@ public class SpikesKnockback : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.GetComponent<Bounce>() != null && !GameManager.instance.GetInvulnerablePlayer()) collision.GetComponent<Bounce>().BounceUp();
+        if (collision.GetComponent<Bounce>() != null && !GameManager.instance.GetInvulnerablePlayer()) collision.GetComponent<Bounce>().BounceTo(0,1);
     }
 
 }
