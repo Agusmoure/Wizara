@@ -5,7 +5,7 @@ using UnityEngine;
 public class Life : MonoBehaviour {
 
     public int lifePoints;
-    int actualLife;
+ int actualLife;
 
     private void Start()
     {
