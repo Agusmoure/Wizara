@@ -3,26 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Charge : MonoBehaviour {
-    public float animationTime;
-    public int speed, chargeCDTime=2;
+    public float animationTime, maxSpeed=60;
+    public int aceleration=10, chargeCDTime=2;
     Rigidbody2D rigidB;
+    Animator wolfAnim;
     bool chargeOnCD = false;
+    bool onAnimation = false;
     Vector2 charge,starter,chargeDirection;
 	// Use this for initialization
 	void Start () {
         rigidB = GetComponent<Rigidbody2D>();
+        wolfAnim = GetComponent<Animator>();
     }
     private void Update()
     {
+        wolfAnim.SetFloat("Velocity",Mathf.Abs(rigidB.velocity.x));
         LooktoPlayer(out starter);
         Debug.DrawRay(starter, charge, Color.yellow);
     }
     void FixedUpdate()
     {
         //Realizará la carga siempre que el estado del boss sea charging.
-        if(GameManager.instance.ReturnBossManager().WolfState() == WolfEnums.charging)
+        if(GameManager.instance.ReturnBossManager().WolfState() == WolfEnums.charging && !onAnimation)
         {
-            rigidB.AddForce(chargeDirection * speed * rigidB.mass);
+            rigidB.AddForce(chargeDirection * aceleration * rigidB.mass);
+            rigidB.velocity = new Vector2(Mathf.Clamp(rigidB.velocity.x,-maxSpeed,maxSpeed), rigidB.velocity.y);
         }
     }
     //Comprueba hacia que lado esta el jugador para dirigir su mirada hacia él y saber el lado de la carga.
@@ -48,10 +53,16 @@ public class Charge : MonoBehaviour {
     public void StartChargeCD()
     {
         //Aqui se inicia la animación.
-            Invoke("AnimationTime",animationTime);
+        onAnimation = true;
+            Invoke("AnimationFinished",animationTime);
             chargeDirection = charge;
             chargeOnCD = true;
             Invoke("ChangeCD", chargeCDTime);
+    }
+    //No permite realizar la carga hasta que se realice este método dentro de "animationTime" segundos.
+    void AnimationFinished()
+    {
+        onAnimation = false;
     }
     //Cambia el CD para que la habilidad vuelva a estar disponible tras el tiempo "chargeCDTime".
     void ChangeCD()
