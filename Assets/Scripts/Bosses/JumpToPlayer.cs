@@ -7,32 +7,24 @@ public class JumpToPlayer : MonoBehaviour
     GameObject player;
     Vector2 playerPosition;
     public string bossName;
-    public bool jumpOnCd = true;
-
     Rigidbody2D rigibody;
     public float angles;
-    public float jumpCD = 4;
     // Use this for initialization
     void Start()
     {
         rigibody = GetComponent<Rigidbody2D>();
-        Invoke("JumpCD", jumpCD);
     }
 
     public void DoJump()
     {
-        jumpOnCd = true;
         Vector2 jump = Jump();
         rigibody.AddForce(jump, ForceMode2D.Impulse);
-        Invoke("JumpCD", jumpCD);
     }
     Vector2 Jump()
     {
         player = GameManager.instance.ReturnPlayer();
         //guarda la posicion del jugador al inicio del salto.
         playerPosition = player.transform.position;
-        //activa el CD del salto
-        jumpOnCd = true;
         float angle, speed;
         CalculateValues(out angle, out speed);
         //asigna el vector de la fuerza que debe ejecutar teniendo en cuenta hacia donde la debe ejecutar
@@ -88,9 +80,5 @@ Ta=Vy/g
         float angle = (angleInGrades * Mathf.PI) / 180;
         return angle;
     }
-    //cambia el valor del booleano a falso;
-    void JumpCD()
-    {
-        jumpOnCd = false;
-    }
+    
 }

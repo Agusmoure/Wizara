@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Charge : MonoBehaviour {
-    public float animationTime, maxSpeed=60;
-    public int aceleration=10, chargeCDTime=2;
+    public float animationTime, maxSpeed=40;
+    public int aceleration=8, chargeCDTime=2;
     Rigidbody2D rigidB;
     Animator wolfAnim;
     bool chargeOnCD = false;
