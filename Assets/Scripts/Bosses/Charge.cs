@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Charge : MonoBehaviour {
+    public float animationTime;
     public int speed, chargeCDTime=2;
     Rigidbody2D rigidB;
     bool chargeOnCD = false;
@@ -46,6 +47,8 @@ public class Charge : MonoBehaviour {
     //Método llamado por el bossManager que inicia el tiempo de enfriamiento.
     public void StartChargeCD()
     {
+        //Aqui se inicia la animación.
+            Invoke("AnimationTime",animationTime);
             chargeDirection = charge;
             chargeOnCD = true;
             Invoke("ChangeCD", chargeCDTime);

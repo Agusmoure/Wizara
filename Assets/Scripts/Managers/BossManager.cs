@@ -11,7 +11,9 @@ public class BossManager : MonoBehaviour
     void Start()
     {
         GameManager.instance.GetBossManager(this);
-        InvokeRepeating("RandomAbility", 3, 2);
+        //Inicia habilidades en 3 segundos. Cada 2 segundos intenta ejecutar una habilidad.
+        InvokeRepeating("RandomAbility", 2, 2);
+        InvokeRepeating("WolfToIdle", 0, 3);
     }
 
     // Update is called once per frame
@@ -25,6 +27,11 @@ public class BossManager : MonoBehaviour
         {
             ChangeBossState("wolf", "charge");
         }
+    }
+    //Método para evitar que se atasque en un estado cuando sus colliders detectan colision a la vez.
+    void WolfToIdle()
+    {
+        ChangeBossState("wolf", "idle");
     }
     //devuelve el valor del booleano
     public WolfEnums WolfState()

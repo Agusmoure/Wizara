@@ -15,7 +15,6 @@ public class JumpToPlayer : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
         rigibody = GetComponent<Rigidbody2D>();
         Invoke("JumpCD", jumpCD);
     }
