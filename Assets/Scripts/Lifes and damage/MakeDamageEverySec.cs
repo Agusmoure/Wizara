@@ -10,11 +10,9 @@ public class MakeDamageEverySec : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
-        {
             GetCollider(other);
             InvokeRepeating("Damage", 0, seconds);
-        }
+        
 
     }
     //Método para realizar daño (también afecta a enemigos).
@@ -29,9 +27,7 @@ public class MakeDamageEverySec : MonoBehaviour {
     //Al salir del ácido se detiene el invoke, permitiendo que se inicie otro si se entra de nuevo (de esta forma no se superponen).
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player")
-        {
             CancelInvoke("Damage");
-        }
+        
     }
 }
