@@ -5,17 +5,17 @@ using UnityEngine;
 public class MoveAroundPlatforms : MonoBehaviour {
 
     public float speed;
-    Rigidbody2D rigidbody;
+    Rigidbody2D slimeRigidbody;
 
 	// Use this for initialization
 	void Start () {
-        rigidbody = GetComponent<Rigidbody2D>();
+        slimeRigidbody = GetComponent<Rigidbody2D>();
 	}
 
     private void FixedUpdate()
     {
         //Mueve el gameObject en su dirección derecha.
-        rigidbody.velocity = transform.right * speed;
+        slimeRigidbody.velocity = transform.right * speed;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -27,5 +27,15 @@ public class MoveAroundPlatforms : MonoBehaviour {
             if(speed>0) transform.Rotate(new Vector3(0, 0, 1), -90);
             else transform.Rotate(new Vector3(0, 0, 1), 90);
         }
+    }
+
+    public float ReturnSpeed()
+    {
+        return speed;
+    }
+
+    public void UpdateSpeed(float updatedSpeed)
+    {
+        speed = updatedSpeed;
     }
 }
