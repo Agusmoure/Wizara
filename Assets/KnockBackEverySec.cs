@@ -11,8 +11,6 @@ public class KnockBackEverySec : MonoBehaviour {
     {
         GetCollider(other);
         InvokeRepeating("KnockBack", 0, seconds);
-
-
     }
     //Método para realizar KnockBack con el componente Bounce del jugador.
     void KnockBack()

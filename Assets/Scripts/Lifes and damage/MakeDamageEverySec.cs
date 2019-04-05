@@ -12,8 +12,6 @@ public class MakeDamageEverySec : MonoBehaviour {
     {
             GetCollider(other);
             InvokeRepeating("Damage", 0, seconds);
-        
-
     }
     //Método para realizar daño.
     void Damage()

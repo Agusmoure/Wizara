@@ -12,7 +12,7 @@ public class BossManager : MonoBehaviour
     {
         GameManager.instance.GetBossManager(this);
         //Inicia habilidades en 3 segundos. Cada 2 segundos intenta ejecutar una habilidad.
-        InvokeRepeating("RandomAbility", 2, 2);
+        InvokeRepeating("RandomAbility", 10, 2);
         InvokeRepeating("WolfToIdle", 0, 3.5f);
     }
 
