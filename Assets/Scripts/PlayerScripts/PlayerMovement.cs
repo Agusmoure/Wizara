@@ -127,7 +127,7 @@ public class PlayerMovement : MonoBehaviour {
     
     void DashInput()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && dash && !GameManager.instance.IsPaused())
+        if (Input.GetKeyDown(KeyCode.Space) && dash && !GameManager.instance.IsPaused() && GameManager.instance.ReturnAbilityValue("Dash"))
         {
             //Frena el movimiento horizontal del jugador.
             player.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
