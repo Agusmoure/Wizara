@@ -9,7 +9,7 @@ public class Charge : MonoBehaviour {
     Animator wolfAnim;
     bool chargeOnCD = false;
     bool onAnimation = false;
-    Vector2 charge,starter,chargeDirection;
+    Vector2 charge, starter;
 	// Use this for initialization
 	void Start () {
         rigidB = GetComponent<Rigidbody2D>();
@@ -26,7 +26,7 @@ public class Charge : MonoBehaviour {
         //Realizará la carga siempre que el estado del boss sea charging.
         if(GameManager.instance.ReturnBossManager().WolfState() == WolfEnums.charging && !onAnimation)
         {
-            rigidB.AddForce(chargeDirection * aceleration * rigidB.mass);
+            rigidB.AddForce(charge * aceleration * rigidB.mass);
             rigidB.velocity = new Vector2(Mathf.Clamp(rigidB.velocity.x,-maxSpeed,maxSpeed), rigidB.velocity.y);
         }
     }
@@ -55,7 +55,6 @@ public class Charge : MonoBehaviour {
         //Aqui se inicia la animación.
         onAnimation = true;
             Invoke("AnimationFinished",animationTime);
-            chargeDirection = charge;
             chargeOnCD = true;
             Invoke("ChangeCD", chargeCDTime);
     }
