@@ -5,8 +5,8 @@ using UnityEngine;
 public class Charge : MonoBehaviour {
     public int speed, chargeCD=2;
     Rigidbody2D rigidB;
-    bool ChargeOnCD = false;
-    Vector2 charge,starter;
+    bool chargeOnCD = false;
+    Vector2 charge,starter,chargeDirection;
 	// Use this for initialization
 	void Start () {
         rigidB = GetComponent<Rigidbody2D>();
@@ -16,11 +16,17 @@ public class Charge : MonoBehaviour {
         LooktoPlayer(out starter);
         Debug.DrawRay(starter, charge, Color.yellow);
     }
-    
+    void FixedUpdate()
+    {
+        if(GameManager.instance.ReturnBossManager().WolfState() == WolfEnums.charging)
+        {
+            rigidB.AddForce(chargeDirection * speed * rigidB.mass);
+        }
+    }
     //Cambia el CD
     void ChangeCD()
     {
-        ChargeOnCD = false;
+        chargeOnCD = false;
     }
     //COmprueba hacia que lado esta el jugador y carga hacia él
     void LooktoPlayer(out Vector2 starter)
@@ -41,13 +47,16 @@ public class Charge : MonoBehaviour {
             charge = Vector2.left;
         }
     }
-    public void DoCharge()
+    public void StartChargeCD()
     {
-        if (!ChargeOnCD)
-        {
-            ChargeOnCD = true;
-            rigidB.AddForce(charge * speed * rigidB.mass);
+     
+            chargeDirection = charge;
+            chargeOnCD = true;
             Invoke("ChangeCD", chargeCD);
-        }
+        
+    }
+    public bool ChargeCD()
+    {
+        return chargeOnCD;
     }
 }
