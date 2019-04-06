@@ -18,7 +18,7 @@ public class Charge : MonoBehaviour {
     private void Update()
     {
         wolfAnim.SetFloat("Velocity",Mathf.Abs(rigidB.velocity.x));
-        LooktoPlayer(out starter);
+        LookToPlayer(out starter);
         Debug.DrawRay(starter, charge, Color.yellow);
     }
     void FixedUpdate()
@@ -31,7 +31,7 @@ public class Charge : MonoBehaviour {
         }
     }
     //Comprueba hacia que lado esta el jugador para dirigir su mirada hacia él y saber el lado de la carga.
-    void LooktoPlayer(out Vector2 starter)
+    void LookToPlayer(out Vector2 starter)
     {
         //obtenemos la layerMask del jugador
         int layerMask = 1 << 8;

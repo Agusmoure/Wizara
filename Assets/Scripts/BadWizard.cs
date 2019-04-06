@@ -13,11 +13,11 @@ public class BadWizard : MonoBehaviour
 
     void Update()
     {
-        LooktoPlayer(out origin, distance);
+        LookToPlayer(out origin, distance);
     }
 
     //Comprueba hacia que lado esta el jugador para dirigir su mirada hacia él y saber el lado de disparo.
-    void LooktoPlayer(out Vector2 origin, float distance)
+    void LookToPlayer(out Vector2 origin, float distance)
     {
         //obtenemos la layerMask del jugador
         int layerMask = 1 << 8;
