@@ -7,86 +7,64 @@ public class BadWizard : MonoBehaviour
     public float distance;
     public int Cooldown;
     public Transform projectilePool;
-    public FireBall fireBall;
-    int layermask;
-    bool isActive;
-    SpriteRenderer sp;
-    Vector2 direction;
-
-    // Use this for initialization
-    void Start()
-    {
-        layermask = 1 << 8;
-        isActive = false;
-        sp = GetComponent<SpriteRenderer>();
-    }
+    public GameObject fireBall;
+    bool FBOnCD =false;
+    Vector2 origin, direction;
 
     void Update()
     {
-        Flip();
-        Shoot();
+        LooktoPlayer(out origin, distance);
+    }
+
+    //Comprueba hacia que lado esta el jugador para dirigir su mirada hacia él y saber el lado de disparo.
+    void LooktoPlayer(out Vector2 origin, float distance)
+    {
+        //obtenemos la layerMask del jugador
+        int layerMask = 1 << 8;
+        //establecemos desde donde saldrá el raycast
+        origin = new Vector2(transform.position.x,transform.position.y);
+        //comprobamos en que lado esta el jugador y miramos y establecemos el lado de carga
+        if (Physics2D.Raycast(origin, Vector2.right, distance, layerMask))
+        {
+            //Cambia la direccion del mago y guarda el lado en direction para indicarselo a la bola.
+            transform.localScale = new Vector2(-Mathf.Abs(transform.localScale.x), Mathf.Abs(transform.localScale.y));
+            direction = Vector2.right;
+            //Si la bola no está en CD, dispara.
+            if (!FBOnCD)
+            {
+                InstantiateFireBall();
+                FBOnCD = true;
+                Invoke("FireBallCD", Cooldown);
+            }
+        }
+        else if (Physics2D.Raycast(origin, Vector2.left, distance, layerMask))
+        {
+            //Cambia la direccion del mago y guarda el lado en direction para indicarselo a la bola.
+            transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), Mathf.Abs(transform.localScale.y));
+            direction = Vector2.left;
+            //Si la bola no está en CD, dispara.
+            if (!FBOnCD)
+            {
+                InstantiateFireBall();
+                FBOnCD = true;
+                Invoke("FireBallCD", Cooldown);
+            }
+        }
+    }
+
+    //Control de CD de la bola.
+    void FireBallCD()
+    {
+        FBOnCD = !FBOnCD;
     }
 
     void InstantiateFireBall()
     {
-        FireBall newFireBall = Instantiate(fireBall.GetComponent<FireBall>(), transform.position, Quaternion.identity, projectilePool);
-        newFireBall.ChangeDirection(direction);
-    }
-
-    void Shoot()
-    {
-        if (!sp.flipX) // Mira a la Izquierda
-        {
-            if (Physics2D.Raycast(transform.position, -transform.right, distance, layermask) && !isActive)
-            {
-                direction = -transform.right;
-                InstantiateFireBall();
-                isActive = true;
-                Invoke("FireBallCD", Cooldown);
-            }
-        }
-        if (sp.flipX) // Mira a la Derecha
-        {
-            if (Physics2D.Raycast(transform.position, transform.right, distance, layermask) && !isActive)
-            {
-                direction = transform.right;
-                InstantiateFireBall();
-                isActive = true;
-                Invoke("FireBallCD", Cooldown);
-            }
-        }
-    }
-
-    void FireBallCD()
-    {
-        isActive = !isActive;
-    }
-
-    void Flip()
-    {
-
-        if (Physics2D.Raycast(transform.position, transform.right, distance, layermask) && !sp.flipX)
-        {
-            sp.flipX = true;
-
-        }
-        else if (Physics2D.Raycast(transform.position, -transform.right, distance, layermask) && sp.flipX)
-        {
-            sp.flipX = false;
-        }
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        Vector2 towards = new Vector2(10, -10);
-        if (Mathf.Abs(Vector2.Angle(collision.GetContact(0).normal, Vector2.up) - 180) < 0.5)
-        {
-            if (sp.flipX)
-                towards = new Vector2(towards.x, towards.y * collision.GetContact(0).normal.y);
-            else if (!sp.flipX)
-                towards = new Vector2(towards.x, towards.y * collision.GetContact(0).normal.y);
-
-            collision.gameObject.GetComponent<Bounce>().PlayKnockback(towards); //Reproduce el knockback. 
-        }
+        GameObject newFireBall = Instantiate(fireBall, transform.position, Quaternion.identity, projectilePool);
+        //Asigna el tag y layer Enemy a la bola.
+        newFireBall.tag = "Enemy";
+        newFireBall.layer = 9;
+        //Se cambia su dirección.
+        newFireBall.GetComponent<FireBall>().ChangeDirection(direction);
     }
 }
