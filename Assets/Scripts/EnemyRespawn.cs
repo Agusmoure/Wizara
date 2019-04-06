@@ -23,11 +23,15 @@ public class EnemyRespawn : MonoBehaviour {
 
     void UpdateSpeed(float speedX, float speedY)
     {
-        if (gameObject.GetComponentInChildren<Move>() != null) gameObject.GetComponentInChildren<Move>().UpdateSpeed(speedX);
+        if (gameObject.GetComponentInChildren<AlternativePlatformMovement>() != null) gameObject.GetComponentInChildren<AlternativePlatformMovement>().UpdateSpeed(speedX);
+
+        else if (gameObject.GetComponentInChildren<Move>() != null) gameObject.GetComponentInChildren<Move>().UpdateSpeed(speedX);
 
         else if (gameObject.GetComponentInChildren<MoveAroundPlatforms>() != null) gameObject.GetComponentInChildren<MoveAroundPlatforms>().UpdateSpeed(speedX);
 
         else if (gameObject.GetComponentInChildren<MoveFromAtoB>() != null) gameObject.GetComponentInChildren<MoveFromAtoB>().UpdateSpeed(speedX, speedY);
+
+
     }
 }
  
