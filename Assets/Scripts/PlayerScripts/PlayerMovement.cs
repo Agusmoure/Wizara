@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour {
 
 
     public float velocity, jumpForce, dashForce;
-    int maxJump=1;
+    int maxJump = 1;
     int jump;
     float inputX;
     public bool movmentRestriction = false;
@@ -115,7 +115,7 @@ public class PlayerMovement : MonoBehaviour {
 
     void JumpInput()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) && jump > 0 && !GameManager.instance.IsPaused())
+        if (Input.GetKeyDown(KeyCode.UpArrow) && jump > 0 && !GameManager.instance.IsOnMenu() && !GameManager.instance.IsOnDialogue())
         {
             player.velocity = new Vector2(player.velocity.x, 0);
             player.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
@@ -125,7 +125,7 @@ public class PlayerMovement : MonoBehaviour {
     
     void DashInput()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && dash && !GameManager.instance.IsPaused())
+        if (Input.GetKeyDown(KeyCode.Space) && dash && !GameManager.instance.IsOnMenu())
         {
             //Frena el movimiento horizontal del jugador.
             player.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;

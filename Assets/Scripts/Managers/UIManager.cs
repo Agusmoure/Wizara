@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Pausa();
+            Pausa("Escape");
         }
     }
 
@@ -54,11 +54,44 @@ public class UIManager : MonoBehaviour
         return null;
     }
 
-    public void Pausa()
+    public void Pausa(string cause)
     {
-        if (GetActiveMenu() != null) GetActiveMenu().SetActive(false);
-        else gameObject.transform.GetChild(0).gameObject.SetActive(true);
-        GameManager.instance.Pausa();
+        if (cause == "Escape")
+        {
+            if (!GameManager.instance.IsOnDialogue())
+            {
+                if (GetActiveMenu() != null) GetActiveMenu().SetActive(false);
+                else gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                GameManager.instance.Pause("Menu");
+            }
+
+            else if (GameManager.instance.IsOnDialogue())
+            {
+                DisableDialogueBox();
+                GameManager.instance.Pause("Dialogue");
+            }
+        }
+
+        else if (cause == "Enter")
+        {
+            if (!GameManager.instance.IsOnDialogue())
+            {
+                if (GetActiveMenu() != null) GetActiveMenu().SetActive(false);
+                else gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                GameManager.instance.Pause("Menu");
+            }
+
+            else if (GameManager.instance.IsOnDialogue())
+            {
+                DisableDialogueBox();
+                GameManager.instance.Pause("Dialogue");
+            }
+        }
+
+        else if (cause == "NPC")
+        {
+            GameManager.instance.Pause("Dialogue");
+        }
     }
 
     public void ChangeMenu(GameObject menu)
@@ -96,6 +129,7 @@ public class UIManager : MonoBehaviour
         {
             dialogueBox.SetActive(true);
             dialogueBox.GetComponent<DialogueManager>().GetSentences(npcName, sentences);
+            Pausa("NPC");
         }
     }
 

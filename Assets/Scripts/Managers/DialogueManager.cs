@@ -28,7 +28,7 @@ public class DialogueManager : MonoBehaviour {
             WriteText();
         }
 
-        else GameManager.instance.ReturnUIManager().DisableDialogueBox();
+        else GameManager.instance.ReturnUIManager().Pausa("Enter");
     }
 
     public void WriteText()
