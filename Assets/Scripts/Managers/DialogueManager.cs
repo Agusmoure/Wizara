@@ -10,7 +10,7 @@ public class DialogueManager : MonoBehaviour {
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Return)) NextSentence();
+        if (Input.GetKeyDown(KeyCode.Return)) NextSentence();
     }
 
     public void GetSentences(string newNPCName, string[] newSentences)
@@ -18,6 +18,7 @@ public class DialogueManager : MonoBehaviour {
         npcName = newNPCName;
         sentences = newSentences;
         currentSentence = 0;
+        WriteText();
     }
 
     public void NextSentence()
@@ -25,7 +26,6 @@ public class DialogueManager : MonoBehaviour {
         if (currentSentence < sentences.Length)
         {
             WriteText();
-            currentSentence++;
         }
 
         else GameManager.instance.ReturnUIManager().DisableDialogueBox();
@@ -34,5 +34,6 @@ public class DialogueManager : MonoBehaviour {
     public void WriteText()
     {
         GameManager.instance.ReturnUIManager().WriteDialogue(npcName, sentences[currentSentence]);
+        currentSentence++;
     }
 }
