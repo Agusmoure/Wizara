@@ -29,4 +29,14 @@ public class AlternativePlatformMovement : MonoBehaviour {
         }
 
 	}
+
+    public float ReturnSpeed()
+    {
+        return speedMovement;
+    }
+
+    public void UpdateSpeed(float updatedSpeed)
+    {
+        speedMovement = updatedSpeed;
+    }
 }

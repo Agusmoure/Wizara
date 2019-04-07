@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour {
         jump = maxJump;
         anime = GetComponent<Animator>();
     }
-	
+
 	// Update is called once per frame
 	void Update ()
     {
@@ -117,17 +117,17 @@ public class PlayerMovement : MonoBehaviour {
 
     void JumpInput()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) && jump > 0 && !GameManager.instance.IsPaused())
+        if (Input.GetKeyDown(KeyCode.UpArrow) && jump > 0 && !GameManager.instance.IsOnMenu() && !GameManager.instance.IsOnDialogue())
         {
             player.velocity = new Vector2(player.velocity.x, 0);
             player.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
             jump--;
         }
     }
-    
+
     void DashInput()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && dash && !GameManager.instance.IsPaused() && GameManager.instance.ReturnAbilityValue("Dash"))
+        if (Input.GetKeyDown(KeyCode.Space) && dash && !GameManager.instance.IsOnMenu() && !GameManager.instance.IsOnDialogue() && GameManager.instance.ReturnAbilityValue("Dash"))
         {
             //Frena el movimiento horizontal del jugador.
             player.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
