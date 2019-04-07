@@ -26,8 +26,8 @@ public class Emitter : MonoBehaviour
         //Bucle para reflexion de "reflections" veces.
         for (int i = 0; i < reflections && !stop; i++)
         {
-            Debug.Log(ray.direction);
-            Debug.Log(ray.origin);
+            Debug.Log("ray.direction" + ray.direction);
+            Debug.Log("ray.origin" + ray.origin);
             //Se detecta si hay colision en el raycast con "hit".
             if (Physics.Raycast(ray.origin, ray.direction, out hit, 10))
             {
