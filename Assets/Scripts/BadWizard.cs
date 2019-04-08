@@ -4,34 +4,67 @@ using UnityEngine;
 
 public class BadWizard : MonoBehaviour
 {
-    public int VAR;
-    public int fireBallCooldown;
+    public float distance;
+    public int Cooldown;
     public Transform projectilePool;
-    bool cerca;
-    GameObject go;
-    // Use this for initialization
-    void Update ()
+    public GameObject fireBall;
+    bool FBOnCD =false;
+    Vector2 origin, direction;
+
+    void Update()
     {
-        go = GameObject.Find("Player");
-        cerca = Mathf.Abs(transform.position.x - go.transform.position.x) <= go.transform.localScale.x * VAR;
-        cerca = true; //quitar
-	}
-	
-	// Update is called once per frame
-	void Cast ()
-    {
-        if(cerca)
-            FireBallInput();
+        LookToPlayer(out origin, distance);
     }
-    void FireBallInput()
+
+    //Comprueba hacia que lado esta el jugador para dirigir su mirada hacia él y saber el lado de disparo.
+    void LookToPlayer(out Vector2 origin, float distance)
     {
-        InstantiateFireBall();
-        Invoke("FireBallCD", fireBallCooldown);
+        //obtenemos la layerMask del jugador
+        int layerMask = 1 << 8;
+        //establecemos desde donde saldrá el raycast
+        origin = new Vector2(transform.position.x,transform.position.y);
+        //comprobamos en que lado esta el jugador y miramos y establecemos el lado de carga
+        if (Physics2D.Raycast(origin, Vector2.right, distance, layerMask))
+        {
+            //Cambia la direccion del mago y guarda el lado en direction para indicarselo a la bola.
+            transform.localScale = new Vector2(-Mathf.Abs(transform.localScale.x), Mathf.Abs(transform.localScale.y));
+            direction = Vector2.right;
+            //Si la bola no está en CD, dispara.
+            if (!FBOnCD)
+            {
+                InstantiateFireBall();
+                FBOnCD = true;
+                Invoke("FireBallCD", Cooldown);
+            }
+        }
+        else if (Physics2D.Raycast(origin, Vector2.left, distance, layerMask))
+        {
+            //Cambia la direccion del mago y guarda el lado en direction para indicarselo a la bola.
+            transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), Mathf.Abs(transform.localScale.y));
+            direction = Vector2.left;
+            //Si la bola no está en CD, dispara.
+            if (!FBOnCD)
+            {
+                InstantiateFireBall();
+                FBOnCD = true;
+                Invoke("FireBallCD", Cooldown);
+            }
+        }
     }
+
+    //Control de CD de la bola.
+    void FireBallCD()
+    {
+        FBOnCD = !FBOnCD;
+    }
+
     void InstantiateFireBall()
     {
-        FireBall newFireBall = Instantiate(go.GetComponent<FireBall>(), transform.position, Quaternion.identity, projectilePool);
-        Vector2 newDirection = transform.lossyScale.x * transform.right;
-        newFireBall.ChangeDirection(newDirection);
+        GameObject newFireBall = Instantiate(fireBall, transform.position, Quaternion.identity, projectilePool);
+        //Asigna el tag y layer Enemy a la bola.
+        newFireBall.tag = "Enemy";
+        newFireBall.layer = 9;
+        //Se cambia su dirección.
+        newFireBall.GetComponent<FireBall>().ChangeDirection(direction);
     }
 }
