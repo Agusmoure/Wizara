@@ -521,6 +521,7 @@ MonoBehaviour:
   fireballIcon: {fileID: 0}
   shieldIcon: {fileID: 0}
   lightningIcon: {fileID: 0}
+  dialogueBox: {fileID: 0}
   fireballSlider: {fileID: 0}
   shieldSlider: {fileID: 0}
   lightningSlider: {fileID: 0}
@@ -3052,7 +3053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94534257831053046b2d53874eacad5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationTime: 0
+  animationTime: 1
   maxSpeed: 70
   aceleration: 10
   chargeCDTime: 2
@@ -3252,6 +3253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seconds: 0.4
+  knockbackBoost: 1
 --- !u!114 &688076229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4522,6 +4524,11 @@ Prefab:
       propertyPath: uIManager
       value: 
       objectReference: {fileID: 114167355}
+    - target: {fileID: 114983798974601146, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d,
+        type: 2}
+      propertyPath: maxFallSpeed
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d, type: 2}
   m_IsPrefabAsset: 0

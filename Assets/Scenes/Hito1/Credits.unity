@@ -140,6 +140,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edebbb0336ead6e43a52e43bb36abffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireBallCooldown: 0
+  shieldCooldown: 0
+  lightningCooldown: 0
+  currentCheckpoint:
+    playerPosition: {x: 0, y: 0}
+    cameraRoom: {x: 0, y: 0}
+    scene: 
 --- !u!4 &18759932
 Transform:
   m_ObjectHideFlags: 0
@@ -262,7 +269,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 113, y: -23}
+  m_AnchoredPosition: {x: 113, y: 2}
   m_SizeDelta: {x: 319.6, y: 188.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &337164638
@@ -285,7 +292,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 3b564238df167eb4bbce9a9b0e92b340, type: 3}
+    m_Font: {fileID: 12800000, guid: ac758bb823f81b545b1b4212280bb2f1, type: 3}
     m_FontSize: 27
     m_FontStyle: 0
     m_BestFit: 0
@@ -296,16 +303,9 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 'William Molina Cumba
-
-
-    Agustin Moure Rodriguez
-
-
-    Adrian Zamarra Alvarez
-
-'
+    m_LineSpacing: 0.8
+  m_Text: "William Molina Cumba\n\nAgust\xEDn Moure Rodr\xEDguez\n\nAdri\xE1n Zamarra
+    \xC1lvarez\n"
 --- !u!222 &337164639
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -422,7 +422,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -223, y: -23}
+  m_AnchoredPosition: {x: -224, y: 0}
   m_SizeDelta: {x: 319.6, y: 188.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &814156572
@@ -445,7 +445,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 3b564238df167eb4bbce9a9b0e92b340, type: 3}
+    m_Font: {fileID: 12800000, guid: ac758bb823f81b545b1b4212280bb2f1, type: 3}
     m_FontSize: 26
     m_FontStyle: 0
     m_BestFit: 0
@@ -456,16 +456,9 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 'Jorge Bello Martin
-
-
-    Pedro Pablo Cubells Talavera
-
-
-    Tomas Lopez Anton
-
-'
+    m_LineSpacing: 0.8
+  m_Text: "Jorge Bello Mart\xEDn\n\nPedro Pablo Cubells Talavera\n\nTom\xE1s L\xF3pez
+    Ant\xF3n\n"
 --- !u!222 &814156573
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -505,8 +498,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -62.1, y: 158.6}
-  m_SizeDelta: {x: 710.1, y: 36.1}
+  m_AnchoredPosition: {x: -62.1, y: 145}
+  m_SizeDelta: {x: 710.1, y: 63.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1024721672
 MonoBehaviour:
@@ -528,19 +521,19 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 3b564238df167eb4bbce9a9b0e92b340, type: 3}
-    m_FontSize: 35
-    m_FontStyle: 0
+    m_Font: {fileID: 12800000, guid: ac758bb823f81b545b1b4212280bb2f1, type: 3}
+    m_FontSize: 40
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 73
-    m_Alignment: 1
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Un proyecto de Swan Games:
+  m_Text: 'Un proyecto de Flip & Floop:
 
 '
 --- !u!222 &1024721673
@@ -580,6 +573,7 @@ Transform:
   - {fileID: 1024721671}
   - {fileID: 814156571}
   - {fileID: 337164637}
+  - {fileID: 2003133773}
   m_Father: {fileID: 1618061518}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -594,6 +588,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69a850b2177ebbe4ab393f44d1dcfa25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HeartIcons: []
+  fireballIcon: {fileID: 0}
+  shieldIcon: {fileID: 0}
+  lightningIcon: {fileID: 0}
+  dialogueBox: {fileID: 0}
+  fireballSlider: {fileID: 0}
+  shieldSlider: {fileID: 0}
+  lightningSlider: {fileID: 0}
 --- !u!1 &1244087838
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,6 +822,81 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1708811792}
   m_CullTransparentMesh: 0
+--- !u!1 &2003133772
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2003133773}
+  - component: {fileID: 2003133775}
+  - component: {fileID: 2003133774}
+  m_Layer: 0
+  m_Name: TextCredits4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2003133773
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2003133772}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1213817008}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -62.1, y: -100}
+  m_SizeDelta: {x: 256.26, y: 41.4}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2003133774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2003133772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0.9215687, b: 0.86666673, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: ac758bb823f81b545b1b4212280bb2f1, type: 3}
+    m_FontSize: 24
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 0
+  m_Text: flipnfloop@gmail.com
+--- !u!222 &2003133775
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2003133772}
+  m_CullTransparentMesh: 0
 --- !u!1 &2059503194
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,7 +931,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -62.7, y: -152}
+  m_AnchoredPosition: {x: -62.7, y: -160}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2059503196
