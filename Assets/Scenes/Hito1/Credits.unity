@@ -304,15 +304,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.8
-  m_Text: 'William Molina Cumba
-
-
-    Agustin Moure Rodriguez
-
-
-    Adrian Zamarra Alvarez
-
-'
+  m_Text: "William Molina Cumba\n\nAgust\xEDn Moure Rodr\xEDguez\n\nAdri\xE1n Zamarra
+    \xC1lvarez\n"
 --- !u!222 &337164639
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -464,15 +457,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.8
-  m_Text: 'Jorge Bello Martin
-
-
-    Pedro Pablo Cubells Talavera
-
-
-    Tomas Lopez Anton
-
-'
+  m_Text: "Jorge Bello Mart\xEDn\n\nPedro Pablo Cubells Talavera\n\nTom\xE1s L\xF3pez
+    Ant\xF3n\n"
 --- !u!222 &814156573
 CanvasRenderer:
   m_ObjectHideFlags: 0
