@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomResetManager : MonoBehaviour {
+public class RoomResetManager : MonoBehaviour
+{
 
     public GameObject rat, bat, enemyWizard, slime, movingPlatform, slimePlatform;
-    
+
     [System.Serializable]
     struct ResettableObject
     {
@@ -34,7 +35,7 @@ public class RoomResetManager : MonoBehaviour {
     ResettableObject[] enemyArray;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         StoreInfo();
         DestroyEnemies();
@@ -50,7 +51,7 @@ public class RoomResetManager : MonoBehaviour {
 
             else if (transform.GetChild(i).gameObject.name.Contains("Wizard")) enemyArray[i].enemyObject = enemyWizard;
 
-            else if (transform.GetChild(i).gameObject.name.Contains("Slime" ) && !transform.GetChild(i).gameObject.name.Contains("Slime"))
+            else if (transform.GetChild(i).gameObject.name.Contains("Slime") && !transform.GetChild(i).gameObject.name.Contains("Slime"))
             {
                 enemyArray[i].enemyObject = slime;
                 StoreWaypoints(i, "Rotation");
@@ -111,14 +112,14 @@ public class RoomResetManager : MonoBehaviour {
         }
 
         else for (int j = 0; j < transform.GetChild(i).childCount; j++)
-        {
-            if (transform.GetChild(i).transform.GetChild(j).name.Contains("Rat") || transform.GetChild(i).transform.GetChild(j).name.Contains("Bat") 
-                    || transform.GetChild(i).transform.GetChild(j).name.Contains("Slime") || transform.GetChild(i).transform.GetChild(j).name.Contains("Platform"))
             {
-                enemyArray[i].enemyScale.x = transform.GetChild(i).transform.GetChild(j).transform.localScale.x;
-                enemyArray[i].enemyScale.y = transform.GetChild(i).transform.GetChild(j).transform.localScale.y;
+                if (transform.GetChild(i).transform.GetChild(j).name.Contains("Rat") || transform.GetChild(i).transform.GetChild(j).name.Contains("Bat")
+                        || transform.GetChild(i).transform.GetChild(j).name.Contains("Slime") || transform.GetChild(i).transform.GetChild(j).name.Contains("Platform"))
+                {
+                    enemyArray[i].enemyScale.x = transform.GetChild(i).transform.GetChild(j).transform.localScale.x;
+                    enemyArray[i].enemyScale.y = transform.GetChild(i).transform.GetChild(j).transform.localScale.y;
+                }
             }
-        }
     }
 
     void StoreSpeed(int i)
@@ -163,14 +164,7 @@ public class RoomResetManager : MonoBehaviour {
     {
         for (int i = 0; i < transform.childCount; i++)
         {
-            bool player = false;
-
-            foreach (Transform child in transform.GetChild(i))
-            {
-                if (child.gameObject.CompareTag("Player")) player = true;
-            }
-
-            if (!player) Destroy(transform.GetChild(i).gameObject);
+            Destroy(transform.GetChild(i).gameObject);
         }
     }
 }
