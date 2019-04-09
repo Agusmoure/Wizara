@@ -52,6 +52,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 2539025103
+    locked: 0
+  - name: BackgroundDetails
+    uniqueID: 1462634491
+    locked: 0
+  - name: Room
+    uniqueID: 435620235
+    locked: 0
   - name: Enemy
     uniqueID: 549085075
     locked: 0
@@ -60,4 +69,7 @@ TagManager:
     locked: 0
   - name: items
     uniqueID: 2822607303
+    locked: 0
+  - name: ForegroundDetails
+    uniqueID: 56095979
     locked: 0
