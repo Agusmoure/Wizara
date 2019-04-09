@@ -404,7 +404,7 @@ MonoBehaviour:
   probability: 100
   droppedObject: {fileID: 1823006112532908, guid: 2a1ba307356fbf44fb281c9f6a57ca10,
     type: 2}
-  objectPool: {fileID: 4237946544743628, guid: 8c35c856f11bd6c40ac7f70c0a909330, type: 2}
+  objectPool: {fileID: 0}
 --- !u!114 &114422870815136156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -440,8 +440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyProjectile: {fileID: 1575353207133300, guid: 0cb2e7b2b4da09e4798afcc001de9da4,
     type: 2}
-  projectilePool: {fileID: 4776794256410364, guid: e6870392589a0a84085f6cca9be5ed54,
-    type: 2}
+  projectilePool: {fileID: 0}
   time: 2
 --- !u!114 &114904221367645836
 MonoBehaviour:
