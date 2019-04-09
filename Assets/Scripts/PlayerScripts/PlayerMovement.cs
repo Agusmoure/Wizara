@@ -31,9 +31,10 @@ public class PlayerMovement : MonoBehaviour {
 	void Update ()
     {
         inputX = Input.GetAxis("Horizontal");
-        PlayerSpriteAnimation();
+        PlayerDirection();
         ChangeVelocity();
-
+        anime.SetFloat("VelocityX",Mathf.Abs(player.velocity.x));
+        anime.SetFloat("VelocityY",Mathf.Abs(player.velocity.y));
         JumpInput();
         DashInput();
 
@@ -94,25 +95,20 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-    void PlayerSpriteAnimation()
+    void PlayerDirection()
     {
         if (inputX < 0)
         {
-            if (jump == 0) anime.Play("Walk");
-
             scale.x = -Mathf.Abs(scale.x);
             transform.localScale = scale;
         }
 
         else if (inputX > 0)
         {
-            if (jump == 0) anime.Play("Walk");
-
             scale.x = Mathf.Abs(scale.x);
             transform.localScale = scale;
         }
 
-        else anime.Play("Static");
     }
 
     void JumpInput()
