@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4240342105262616}
   - component: {fileID: 114909188771488932}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemies
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,4 +57,5 @@ MonoBehaviour:
     type: 2}
   slime: {fileID: 1329780807682100, guid: f78bb499fd096b04b8f3c1059b662e8b, type: 2}
   movingPlatform: {fileID: 0}
+  slimePlatform: {fileID: 0}
   enemyArray: []
