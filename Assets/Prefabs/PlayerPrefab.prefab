@@ -41,7 +41,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1602436603072820}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.5, y: -3.5, z: 0}
+  m_LocalPosition: {x: -2.51, y: -3.54, z: 0}
   m_LocalScale: {x: 1.3, y: 1.3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,7 +83,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.3, y: 0.56}
+    oldSize: {x: 0.5714286, y: 0.5714286}
     newSize: {x: 0.3, y: 0.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -121,11 +121,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d8ea3380ea86974a9a97f7fd53fef38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireBall: {fileID: 114030986892653088, guid: c8eeb266559cbcb4fa440b5881e32342, type: 2}
+  fireBall: {fileID: 1932105882264238, guid: c8eeb266559cbcb4fa440b5881e32342, type: 2}
+  shield: {fileID: 1960320302740486, guid: 78df1723b26a2414b999df0ff99e35c5, type: 2}
   projectilePool: {fileID: 0}
-  fireBallCooldown: 1
-  shieldCooldown: 0
-  thunderboltCooldown: 0
+  uIManager: {fileID: 0}
 --- !u!114 &114150469810062456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -149,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf9a5cde2f312294b9be356cbabad656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounceForce: 23
+  bounceForce: 12
 --- !u!114 &114983798974601146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -161,11 +160,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be3b89b9bd19dea43875cff7afaff910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 5
-  jumpForce: 14
+  velocity: 3
+  jumpForce: 11
   dashForce: 10
-  maxJump: 2
-  jump: 0
+  maxFallSpeed: 5
+  yVelocity: 0
   movmentRestriction: 0
 --- !u!212 &212786977097245734
 SpriteRenderer:
@@ -199,10 +198,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 223347747
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300006, guid: 447820865aeb7024a80f7226103bda2e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2470bf0a1f4eb1a40818da09500ab734, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
