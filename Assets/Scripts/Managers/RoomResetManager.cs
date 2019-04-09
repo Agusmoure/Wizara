@@ -170,7 +170,7 @@ public class RoomResetManager : MonoBehaviour {
                 if (child.gameObject.CompareTag("Player")) player = true;
             }
 
-            if (player) Destroy(transform.GetChild(i).gameObject);
+            if (!player) Destroy(transform.GetChild(i).gameObject);
         }
     }
 }
