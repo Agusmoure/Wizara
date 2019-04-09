@@ -167,7 +167,7 @@ public class RoomResetManager : MonoBehaviour {
 
             foreach (Transform child in transform.GetChild(i))
             {
-                if (child.gameObject.CompareTag("Player") != null) player = true;
+                if (child.gameObject.CompareTag("Player")) player = true;
             }
 
             if (player) Destroy(transform.GetChild(i).gameObject);
