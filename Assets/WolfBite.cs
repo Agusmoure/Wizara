@@ -33,7 +33,7 @@ public class WolfBite : MonoBehaviour {
             x = Random.Range(-1, 2);
         }
         //En este caso se realiza tanto el daño como el knockback.
-        if (triggerCollider.GetComponent<Bounce>() != null && !GameManager.instance.GetInvulnerablePlayer()) triggerCollider.GetComponent<Bounce>().BounceTo(x, 1);
+        if (triggerCollider.GetComponent<Bounce>() != null && !GameManager.instance.GetInvulnerablePlayer()) triggerCollider.GetComponent<Bounce>().BounceTo(x/2, 1);
         if (triggerCollider.GetComponent<Life>() != null && !GameManager.instance.GetInvulnerablePlayer()) triggerCollider.GetComponent<Life>().LoseLife(damage);
     }
     private void OnTriggerExit2D(Collider2D collision)

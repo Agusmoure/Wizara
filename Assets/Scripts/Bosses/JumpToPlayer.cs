@@ -7,18 +7,23 @@ public class JumpToPlayer : MonoBehaviour
     GameObject player;
     Vector2 playerPosition;
     public string bossName;
-    Rigidbody2D rigibody;
+    Rigidbody2D rigidB;
     public float angles;
+    Animator wolfAnim;
     // Use this for initialization
     void Start()
     {
-        rigibody = GetComponent<Rigidbody2D>();
+        rigidB = GetComponent<Rigidbody2D>();
+        wolfAnim = GetComponent<Animator>();
     }
-
+    private void Update()
+    {
+        wolfAnim.SetFloat("VelocityY", Mathf.Abs(rigidB.velocity.y));
+    }
     public void DoJump()
     {
         Vector2 jump = Jump();
-        rigibody.AddForce(jump, ForceMode2D.Impulse);
+        rigidB.AddForce(jump, ForceMode2D.Impulse);
     }
     Vector2 Jump()
     {
@@ -71,7 +76,7 @@ Ta=Vy/g
 
         angle = GetAngleInRad(angles);
         //calcula la velocidad
-        speed = Mathf.Sqrt((-(Physics2D.gravity.y) * distance) / Mathf.Sin(angle * 2)) * rigibody.mass;
+        speed = Mathf.Sqrt((-(Physics2D.gravity.y) * distance) / Mathf.Sin(angle * 2)) * rigidB.mass;
     }
 
     //pasa el ángulo a Radianes

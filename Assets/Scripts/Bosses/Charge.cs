@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Charge : MonoBehaviour {
-    public float animationTime, maxSpeed=40;
+    public float animationTime=1, maxSpeed=40;
     public int aceleration=8, chargeCDTime=2;
     Rigidbody2D rigidB;
     Animator wolfAnim;
@@ -17,7 +17,7 @@ public class Charge : MonoBehaviour {
     }
     private void Update()
     {
-        wolfAnim.SetFloat("Velocity",Mathf.Abs(rigidB.velocity.x));
+        wolfAnim.SetFloat("VelocityX",Mathf.Abs(rigidB.velocity.x));
         LookToPlayer(out starter);
         Debug.DrawRay(starter, charge, Color.yellow);
     }
@@ -54,6 +54,7 @@ public class Charge : MonoBehaviour {
     {
         //Aqui se inicia la animación.
         onAnimation = true;
+        wolfAnim.SetBool("PreCharge", true);
             Invoke("AnimationFinished",animationTime);
             chargeOnCD = true;
             Invoke("ChangeCD", chargeCDTime);
@@ -62,6 +63,7 @@ public class Charge : MonoBehaviour {
     void AnimationFinished()
     {
         onAnimation = false;
+        wolfAnim.SetBool("PreCharge", false);
     }
     //Cambia el CD para que la habilidad vuelva a estar disponible tras el tiempo "chargeCDTime".
     void ChangeCD()
