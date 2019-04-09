@@ -53,9 +53,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rat: {fileID: 1142935226820926, guid: bdc381b4af3665e49b4b4c5add32fac9, type: 2}
   bat: {fileID: 1496672959093568, guid: 4095e92c0a3a15c4fa38df923fadc3ac, type: 2}
-  enemyWizard: {fileID: 1519275494232146, guid: 2082c496c36752c49a64de9de12b7ebd,
+  enemyWizard: {fileID: 1920334070155926, guid: 765781def919d8e45809d41657ff0559,
     type: 2}
   slime: {fileID: 1329780807682100, guid: f78bb499fd096b04b8f3c1059b662e8b, type: 2}
-  movingPlatform: {fileID: 0}
-  slimePlatform: {fileID: 0}
+  movingPlatform: {fileID: 1009456349623572, guid: 539ac2d0803113e4297860b8f48298da,
+    type: 2}
+  slimePlatform: {fileID: 1174499401021406, guid: 05994bf3533235741a67848aec7886b4,
+    type: 2}
   enemyArray: []
