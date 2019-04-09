@@ -185,8 +185,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: Maestro
   sentences:
-  - Texto 1
-  - Texto 2
+  - "Bienvenido a la academia de magia Wizara. Soy tu nuevo Maestro y te dirigir\xE1s\na
+    mi como tal a partir de hoy. Aqu\xED, te ense\xF1ar\xE9 a dominar habilidades
+    que a\xFAn \nno has descubierto..."
+  - "A medida que avances lograr\xE1s despertar estas habilidades, siempre con un\nobjetivo...
+    \xA1Sobrevivir! Desde este momento te someter\xE9 a una serie de pruebas\nque
+    te ayudar\xE1n a avanzar en tu aprendizaje."
+  - "Deber\xE1s encontrar los orbes para adquirir mejoras en tu movimiento. Por otro\nlado,
+    te enfrentar\xE1s a retos mentales que valorar\xE1n tu capacidad de poder, si\nlos
+    superas, obtendr\xE1s una nueva habilidad. F\xE1cil de retener, \xBFverdad?"
+  - 'Dirigete a la siguiente sala para empezar tu aventura. Suerte, e intenta no
+
+    morir demasiado...'
 --- !u!212 &212894390963351510
 SpriteRenderer:
   m_ObjectHideFlags: 1
