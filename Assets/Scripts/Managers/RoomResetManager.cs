@@ -163,7 +163,14 @@ public class RoomResetManager : MonoBehaviour {
     {
         for (int i = 0; i < transform.childCount; i++)
         {
-            Destroy(transform.GetChild(i).gameObject);
+            bool player = false;
+
+            foreach (Transform child in transform.GetChild(i))
+            {
+                if (child.gameObject.CompareTag("Player") != null) player = true;
+            }
+
+            if (player) Destroy(transform.GetChild(i).gameObject);
         }
     }
 }
