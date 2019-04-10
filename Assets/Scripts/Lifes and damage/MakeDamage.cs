@@ -9,6 +9,13 @@ public class MakeDamage : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Life>() != null && !GameManager.instance.GetInvulnerablePlayer()) collision.GetComponent<Life>().LoseLife(damage);
+        if (collision.CompareTag("Player"))
+        {
+            if (collision.GetComponent<Life>() != null && !GameManager.instance.GetInvulnerablePlayer()) collision.GetComponent<Life>().LoseLife(damage);
+        }
+
+        else if (collision.CompareTag("Boss") && collision.transform.parent.GetComponentInChildren<Life>() != null) collision.transform.parent.GetComponentInChildren<Life>().LoseLife(damage);
+
+        else if (collision.GetComponent<Life>() != null) collision.GetComponent<Life>().LoseLife(damage);
     }
 }

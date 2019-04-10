@@ -7,7 +7,7 @@ public class UIManager : MonoBehaviour
 {
     public Image[] HeartIcons;
     public GameObject fireballIcon, shieldIcon, lightningIcon, dialogueBox;
-    public Slider fireballSlider, shieldSlider, lightningSlider;
+    public Slider fireballSlider, shieldSlider, lightningSlider, bossSlider;
     GameObject player;
     float fireballSliderValue, shieldSliderValue, lightningSliderValue;
 
@@ -166,6 +166,10 @@ public class UIManager : MonoBehaviour
                 lightningSliderValue = value;
                 lightningSlider.value = lightningSliderValue;
                 break;
+            case "Boss":
+                bossSlider.value = value;
+                break;
+
         }
     }
 

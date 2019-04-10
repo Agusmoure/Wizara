@@ -8,7 +8,6 @@ public class BossLifebar : MonoBehaviour {
 
     public void UpdateLifebar(int lifePoints, int currentLife)
     {
-
         sliderValue =  (float)currentLife / lifePoints;
         GameManager.instance.ReturnUIManager().SetSliderValue(sliderValue, "Boss");
     }
