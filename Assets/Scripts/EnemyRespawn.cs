@@ -6,7 +6,8 @@ public class EnemyRespawn : MonoBehaviour {
 
     public void Respawn(Vector3[] wayPointPositions, float scaleX, float scaleY, float speedX, float speedY)
     {
-        transform.localScale = new Vector3(scaleX, scaleY, transform.localScale.z);
+        if (name.Contains("Rat")) transform.GetChild(0).localScale = new Vector3(scaleX, scaleY, transform.localScale.z);
+        else transform.localScale = new Vector3(scaleX, scaleY, transform.localScale.z);
         UpdateSpeed(speedX, speedY);
 
         int currentWayPoint = 0;
