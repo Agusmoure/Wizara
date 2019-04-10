@@ -13,6 +13,7 @@ TagManager:
   - Enemy
   - MovingPlatform
   - Mirror
+  - EndMirror
   layers:
   - Default
   - TransparentFX

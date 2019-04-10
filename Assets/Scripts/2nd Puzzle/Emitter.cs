@@ -7,6 +7,7 @@ public class Emitter : MonoBehaviour
     Ray ray;
     RaycastHit hit;
     public int reflections = 5;
+    public Material End;
     LineRenderer lineRen;
     bool stop;
     
@@ -32,7 +33,7 @@ public class Emitter : MonoBehaviour
             if (Physics.Raycast(ray.origin, ray.direction, out hit, 10))
             {
                 //we hit, update line renderer
-                lineRen.positionCount ++;
+                lineRen.positionCount++;
                 lineRen.SetPosition(lineRen.positionCount - 1, hit.point);
                 //Se crea el vector de reflexion.
                 Vector3 relfection = Vector3.Reflect(ray.direction, hit.normal);
@@ -41,11 +42,17 @@ public class Emitter : MonoBehaviour
                 //Si no tocamos un objeto con tag "Mirror", detenemos bucle.
                 if (hit.collider.tag != "Mirror")
                     stop = true;
+                //Comprueba si ha finalizado.
+                if (hit.transform.tag == "EndMirror")
+                {
+                    MeshRenderer mesh = hit.transform.GetComponent<MeshRenderer>();
+                    mesh.material = End;
+                }
             }
             else
             {
                 // We didn't hit anything, draw line to end of ramainingLength
-                lineRen.positionCount ++;
+                lineRen.positionCount++;
                 lineRen.SetPosition(lineRen.positionCount - 1, ray.origin + ray.direction * 20);
                 stop = true;
             }
