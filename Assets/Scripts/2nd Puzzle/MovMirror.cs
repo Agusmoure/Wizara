@@ -5,6 +5,8 @@ using UnityEngine;
 public class MovMirror : MonoBehaviour
 {
     public Material select, defau;
+    //public GameObject[] mirrors = new GameObject[3];
+    public string letter;
     MeshRenderer mesh;
     bool selected;
 
@@ -19,7 +21,7 @@ public class MovMirror : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		if(Input.GetMouseButtonUp(0))
+		if(Input.GetButtonUp("a"))
         {
             Debug.Log("Click");
             selected = !selected;
