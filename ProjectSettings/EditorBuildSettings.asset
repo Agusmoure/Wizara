@@ -15,12 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Hito1/Puzzle.unity
     guid: 6bd3e15a16f0c0d4fbd89d3faebfd553
   - enabled: 1
-    path: Assets/Scenes/Hito1/Hito1_Game.unity
-    guid: 226a606394cf49845ab7546ba053fa45
-  - enabled: 1
-    path: Assets/Scenes/Sprint22-03/UICooldown.unity
-    guid: dfef21d39006f6246ad9d5422bb75bda
-  - enabled: 1
     path: Assets/Scenes/Sprint03-04/Zona1.unity
     guid: de500a0591ed7f3468fd34fcca92ca93
+  - enabled: 1
+    path: Assets/Scenes/Sprint29-03/1stBoss(Wolf).unity
+    guid: b077d54e5b6ef9348914b45ae4a7485f
   m_configObjects: {}
