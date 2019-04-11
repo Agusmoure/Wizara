@@ -5,14 +5,25 @@ using UnityEngine;
 public class RoomTrigger : MonoBehaviour {
 
     //Room1: Izquierda. Room2: Derecha.
-    public GameObject room;
+    public GameObject leftRoom,rightRoom, cameraPosition;
 
-    void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            GameManager.instance.SetLevelManager().MoveCamera(new Vector2(room.transform.position.x, room.transform.position.y));
-            if (room.GetComponentInChildren<RoomResetManager>() != null) room.GetComponentInChildren<RoomResetManager>().RespawnEnemies();
+            //Compara las distancias entre el jugador y el trigger, para saber el lado del OnTriggerExit. Dependiendo de esto, movera la camara hacia la sala correspondiente.
+            if (transform.position.x < collision.transform.position.x)
+            {
+                GameManager.instance.SetLevelManager().MoveCamera(new Vector2(rightRoom.transform.position.x, rightRoom.transform.position.y));
+                //Si se produce OnTriggerExit en la sala que se encuentra la camara, no se produce el respawn.
+                if (rightRoom.GetComponentInChildren<RoomResetManager>() != null && (Vector2)cameraPosition.transform.position != (Vector2)rightRoom.transform.position) rightRoom.GetComponentInChildren<RoomResetManager>().RespawnEnemies();
+            }
+            else
+            {
+                GameManager.instance.SetLevelManager().MoveCamera(new Vector2(leftRoom.transform.position.x, leftRoom.transform.position.y));
+                if (leftRoom.GetComponentInChildren<RoomResetManager>() != null && (Vector2)cameraPosition.transform.position != (Vector2)leftRoom.transform.position) leftRoom.GetComponentInChildren<RoomResetManager>().RespawnEnemies();
+            }
+
         }
     }
 }
