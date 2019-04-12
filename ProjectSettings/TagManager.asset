@@ -16,6 +16,7 @@ TagManager:
   - NPC
   - DialogueBox
   - Boss
+  - EndMirror
   layers:
   - Default
   - TransparentFX
