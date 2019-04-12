@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KnockBackEverySec : MonoBehaviour {
 
-    public float seconds, knockbackBoost=1;
+    public float seconds, knockbackBoostX=1, knockbackBoostY;
     Collider2D triggerCollider;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -21,7 +21,7 @@ public class KnockBackEverySec : MonoBehaviour {
         {
            x = Random.Range(-1, 2);
         }
-        if (triggerCollider.GetComponent<Bounce>() != null && !GameManager.instance.GetInvulnerablePlayer()) triggerCollider.GetComponent<Bounce>().BounceTo(x*knockbackBoost/2,1);
+        if (triggerCollider.GetComponent<Bounce>() != null && !GameManager.instance.GetInvulnerablePlayer()) triggerCollider.GetComponent<Bounce>().BounceTo(x*knockbackBoostX/2,knockbackBoostY);
     }
     //Se guarda other detectado por el trigger para que Damage lo pueda usar, ya que en Invoke no se puede pasar parámetros a los métodos.
     void GetCollider(Collider2D collider)

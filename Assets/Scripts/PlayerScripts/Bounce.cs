@@ -17,6 +17,6 @@ public class Bounce : MonoBehaviour {
     public void BounceTo(float x, float y)
     {
         player.velocity = new Vector2(player.velocity.x, 0);
-        player.AddForce(new Vector2(0, bounceForce), ForceMode2D.Impulse);
+        player.AddForce(new Vector2(x, y*bounceForce), ForceMode2D.Impulse);
     }
 }
