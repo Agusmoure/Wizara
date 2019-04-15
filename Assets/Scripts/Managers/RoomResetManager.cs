@@ -105,7 +105,7 @@ public class RoomResetManager : MonoBehaviour
 
     void StoreScale(int i)
     {
-        if (transform.GetChild(i).name.Contains("Wizard"))
+        if (transform.GetChild(i).name.Contains("Wizard") || transform.GetChild(i).name.Contains("Platform"))
         {
             enemyArray[i].enemyScale.x = transform.GetChild(i).transform.localScale.x;
             enemyArray[i].enemyScale.y = transform.GetChild(i).transform.localScale.y;
@@ -114,7 +114,7 @@ public class RoomResetManager : MonoBehaviour
         else for (int j = 0; j < transform.GetChild(i).childCount; j++)
             {
                 if (transform.GetChild(i).transform.GetChild(j).name.Contains("Rat") || transform.GetChild(i).transform.GetChild(j).name.Contains("Bat")
-                        || transform.GetChild(i).transform.GetChild(j).name.Contains("Slime") || transform.GetChild(i).transform.GetChild(j).name.Contains("Platform"))
+                        || transform.GetChild(i).transform.GetChild(j).name.Contains("Slime"))
                 {
                     enemyArray[i].enemyScale.x = transform.GetChild(i).transform.GetChild(j).transform.localScale.x;
                     enemyArray[i].enemyScale.y = transform.GetChild(i).transform.GetChild(j).transform.localScale.y;

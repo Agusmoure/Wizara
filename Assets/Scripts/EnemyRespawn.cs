@@ -8,8 +8,6 @@ public class EnemyRespawn : MonoBehaviour {
     {
         if (name.Contains("Rat")) transform.GetChild(0).localScale = new Vector3(scaleX, scaleY, transform.localScale.z);
 
-        else if (name.Contains("Platform")) transform.GetChild(0).localScale = new Vector3(scaleX, scaleY, transform.localScale.z);
-
         else transform.localScale = new Vector3(scaleX, scaleY, transform.localScale.z);
         UpdateSpeed(speedX, speedY);
 
