@@ -83,6 +83,7 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
+
     void ChangeVelocity()
     {
         if(!movmentRestriction) player.velocity = new Vector2(velocity * inputX, player.velocity.y);
