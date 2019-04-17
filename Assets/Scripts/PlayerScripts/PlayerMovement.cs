@@ -130,13 +130,14 @@ public class PlayerMovement : MonoBehaviour {
             player.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
             //Pequeño impulso hacia arriba para levantar al jugador del suelo.
             player.AddForce(new Vector2(0, 1), ForceMode2D.Impulse);
-            //Retraso de 0.03 para que de tiempo a levantar a jugador.
+            //Retraso de 0.02 para que de tiempo a levantar a jugador.
             Invoke("DoDash", 0.02f);
         }
     }
 
     void DoDash()
     {
+        anime.SetBool("Dash", true);
         player.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         player.AddForce(new Vector2(scale.x * dashForce, 0), ForceMode2D.Impulse);
         movmentRestriction = true;
@@ -148,6 +149,7 @@ public class PlayerMovement : MonoBehaviour {
     void DashCast()
     {
         //Tras finalizar el dash.
+        anime.SetBool("Dash", false);
         movmentRestriction = false;
         player.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
