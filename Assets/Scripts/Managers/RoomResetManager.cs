@@ -10,22 +10,9 @@ public class RoomResetManager : MonoBehaviour
     [System.Serializable]
     struct ResettableObject
     {
-        [System.Serializable]
-        public struct Scale
-        {
-            public float x, y;
-        }
-
-        [System.Serializable]
-        public struct Speed
-        {
-            public float x, y;
-        }
-
+        public Vector2 enemyScale;
         [SerializeField]
-        public Scale enemyScale;
-        [SerializeField]
-        public Speed enemySpeed;
+        public Vector2 enemySpeed;
         public GameObject enemyObject;
         public Vector3 spawnPosition;
         public Vector3[] wayPointPositions;
@@ -156,7 +143,7 @@ public class RoomResetManager : MonoBehaviour
         for (int i = 0; i < enemyArray.Length; i++)
         {
             GameObject enemySpawned = Instantiate(enemyArray[i].enemyObject, enemyArray[i].spawnPosition, Quaternion.identity, transform);
-            enemySpawned.GetComponent<EnemyRespawn>().Respawn(enemyArray[i].wayPointPositions, enemyArray[i].enemyScale.x, enemyArray[i].enemyScale.y, enemyArray[i].enemySpeed.x, enemyArray[i].enemySpeed.y);
+            enemySpawned.GetComponent<EnemyRespawn>().Respawn(enemyArray[i].wayPointPositions, enemyArray[i].enemyScale, enemyArray[i].enemySpeed);
         }
     }
 

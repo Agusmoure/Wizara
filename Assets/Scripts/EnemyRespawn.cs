@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EnemyRespawn : MonoBehaviour {
 
-    public void Respawn(Vector3[] wayPointPositions, float scaleX, float scaleY, float speedX, float speedY)
+    public void Respawn(Vector3[] wayPointPositions, Vector2 scale, Vector2 speed)
     {
-        if (name.Contains("Rat")) transform.GetChild(0).localScale = new Vector3(scaleX, scaleY, transform.localScale.z);
+        if (name.Contains("Rat")) transform.GetChild(0).localScale = new Vector3(scale.x, scale.y, transform.localScale.z);
 
-        else transform.localScale = new Vector3(scaleX, scaleY, transform.localScale.z);
-        UpdateSpeed(speedX, speedY);
+        else transform.localScale = new Vector3(scale.x, scale.y, transform.localScale.z);
+        UpdateSpeed(speed);
 
         int currentWayPoint = 0;
 
@@ -23,15 +23,15 @@ public class EnemyRespawn : MonoBehaviour {
         }
     }
 
-    void UpdateSpeed(float speedX, float speedY)
+    void UpdateSpeed(Vector2 speed)
     {
-        if (gameObject.GetComponentInChildren<AlternativePlatformMovement>() != null) gameObject.GetComponentInChildren<AlternativePlatformMovement>().UpdateSpeed(speedX);
+        if (gameObject.GetComponentInChildren<AlternativePlatformMovement>() != null) gameObject.GetComponentInChildren<AlternativePlatformMovement>().UpdateSpeed(speed.x);
 
-        else if (gameObject.GetComponentInChildren<Move>() != null) gameObject.GetComponentInChildren<Move>().UpdateSpeed(speedX);
+        else if (gameObject.GetComponentInChildren<Move>() != null) gameObject.GetComponentInChildren<Move>().UpdateSpeed(speed.x);
 
-        else if (gameObject.GetComponentInChildren<MoveAroundPlatforms>() != null) gameObject.GetComponentInChildren<MoveAroundPlatforms>().UpdateSpeed(speedX);
+        else if (gameObject.GetComponentInChildren<MoveAroundPlatforms>() != null) gameObject.GetComponentInChildren<MoveAroundPlatforms>().UpdateSpeed(speed.x);
 
-        else if (gameObject.GetComponentInChildren<MoveFromAtoB>() != null) gameObject.GetComponentInChildren<MoveFromAtoB>().UpdateSpeed(speedX, speedY);
+        else if (gameObject.GetComponentInChildren<MoveFromAtoB>() != null) gameObject.GetComponentInChildren<MoveFromAtoB>().UpdateSpeed(speed.x, speed.y);
 
 
     }

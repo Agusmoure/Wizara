@@ -18,11 +18,13 @@ public class VerticalRoomTrigger : MonoBehaviour
                 GameManager.instance.SetLevelManager().MoveCamera(new Vector2(downRoom.transform.position.x, downRoom.transform.position.y));
                 //Si se produce OnTriggerExit en la sala que se encuentra la camara, no se produce el respawn.
                 if (downRoom.GetComponentInChildren<RoomResetManager>() != null && (Vector2)cameraPosition.transform.position != (Vector2)downRoom.transform.position) downRoom.GetComponentInChildren<RoomResetManager>().RespawnEnemies();
+                if (upRoom.GetComponentInChildren<RoomResetManager>() != null) upRoom.GetComponentInChildren<RoomResetManager>().DestroyEnemies();
             }
             else
             {
                 GameManager.instance.SetLevelManager().MoveCamera(new Vector2(upRoom.transform.position.x, upRoom.transform.position.y));
                 if (upRoom.GetComponentInChildren<RoomResetManager>() != null && (Vector2)cameraPosition.transform.position != (Vector2)upRoom.transform.position) upRoom.GetComponentInChildren<RoomResetManager>().RespawnEnemies();
+                if (downRoom.GetComponentInChildren<RoomResetManager>() != null) downRoom.GetComponentInChildren<RoomResetManager>().DestroyEnemies();
             }
 
         }
