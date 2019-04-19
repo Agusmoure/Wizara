@@ -34,6 +34,7 @@ public class RoomResetManager : MonoBehaviour
 
         for (int i = 0; i < enemyArray.Length; i++)
         {
+
             if (transform.GetChild(i).gameObject.name.Contains("Rat")) enemyArray[i].enemyObject = rat;
 
             else if (transform.GetChild(i).gameObject.name.Contains("Wizard")) enemyArray[i].enemyObject = enemyWizard;
@@ -50,13 +51,13 @@ public class RoomResetManager : MonoBehaviour
                 StoreWaypoints(i, "Point");
             }
 
-            else if (transform.GetChild(i).gameObject.name == "MovingPlatform")
+            else if (transform.GetChild(i).gameObject.name.Contains("MovingPlatform") && !transform.GetChild(i).gameObject.name.Contains("Slime"))
             {
                 enemyArray[i].enemyObject = movingPlatform;
                 StoreWaypoints(i, "Point");
             }
 
-            else if (transform.GetChild(i).gameObject.name == "SlimeMovingPlatform")
+            else if (transform.GetChild(i).gameObject.name.Contains("SlimeMovingPlatform"))
             {
                 enemyArray[i].enemyObject = slimePlatform;
                 StoreWaypoints(i, "Point");
