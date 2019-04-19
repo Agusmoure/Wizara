@@ -27,7 +27,7 @@ public class RoomResetManager : MonoBehaviour
         DestroyEnemies();
     }
 
-    //Este metodo almacena en un array de structs la información importante de los bjetos a resetear: el prefab, la escala, la velocidad, la posición en la que spawnean y los puntos por los que se guia su movimiento
+    //Este metodo almacena en un array de structs la información importante de los objetos a resetear: el prefab, la escala, la velocidad, la posición en la que spawnean y los puntos por los que se guia su movimiento
     void StoreInfo()
     {
         enemyArray = new ResettableObject[transform.childCount];
@@ -52,7 +52,7 @@ public class RoomResetManager : MonoBehaviour
                 StoreWaypoints(i, "Point");
             }
 
-            else if (transform.GetChild(i).gameObject.name.Contains("MovingPlatform") && transform.GetChild(i).gameObject.name.Contains("Slime"))
+            else if (transform.GetChild(i).gameObject.name.Contains("MovingPlatform") && !transform.GetChild(i).gameObject.name.Contains("Slime"))
             {
                 enemyArray[i].enemyObject = movingPlatform;
                 StoreWaypoints(i, "Point");
