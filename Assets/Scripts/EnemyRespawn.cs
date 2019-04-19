@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyRespawn : MonoBehaviour {
 
+    //El método respawn recibe la información concerniente a este objeto almacenada en el array del script que resetea las salas y la aplica a esta nueva instancia
     public void Respawn(Vector3[] wayPointPositions, Vector2 scale, Vector2 speed)
     {
         if (name.Contains("Rat")) transform.GetChild(0).localScale = new Vector3(scale.x, scale.y, transform.localScale.z);
@@ -23,6 +24,7 @@ public class EnemyRespawn : MonoBehaviour {
         }
     }
 
+    //Este metodo recibe la velocidad guardada al cargarse la escena y la aplica al objeto que se acaba de instanciar
     void UpdateSpeed(Vector2 speed)
     {
         if (gameObject.GetComponentInChildren<AlternativePlatformMovement>() != null) gameObject.GetComponentInChildren<AlternativePlatformMovement>().UpdateSpeed(speed.x);

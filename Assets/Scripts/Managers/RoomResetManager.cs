@@ -10,10 +10,9 @@ public class RoomResetManager : MonoBehaviour
     [System.Serializable]
     struct ResettableObject
     {
-        public Vector2 enemyScale;
-        [SerializeField]
-        public Vector2 enemySpeed;
         public GameObject enemyObject;
+        public Vector2 enemyScale;
+        public Vector2 enemySpeed;
         public Vector3 spawnPosition;
         public Vector3[] wayPointPositions;
     }
@@ -21,13 +20,14 @@ public class RoomResetManager : MonoBehaviour
     [SerializeField]
     ResettableObject[] enemyArray;
 
-    // Use this for initialization
+    //Al cargarse la escena este script almacena toda la información importante de los objetos a resetear en la sala y los destruye
     void Start()
     {
         StoreInfo();
         DestroyEnemies();
     }
 
+    //Este metodo almacena en un array de structs la información importante de los bjetos a resetear: el prefab, la escala, la velocidad, la posición en la que spawnean y los puntos por los que se guia su movimiento
     void StoreInfo()
     {
         enemyArray = new ResettableObject[transform.childCount];
@@ -35,6 +35,7 @@ public class RoomResetManager : MonoBehaviour
         for (int i = 0; i < enemyArray.Length; i++)
         {
 
+            //Dependiendo del nombre del objeto, almacenamos un prefab distinto, y si fuese necesario, también los puntos por los que se guia su movimiento.
             if (transform.GetChild(i).gameObject.name.Contains("Rat")) enemyArray[i].enemyObject = rat;
 
             else if (transform.GetChild(i).gameObject.name.Contains("Wizard")) enemyArray[i].enemyObject = enemyWizard;
@@ -51,7 +52,7 @@ public class RoomResetManager : MonoBehaviour
                 StoreWaypoints(i, "Point");
             }
 
-            else if (transform.GetChild(i).gameObject.name.Contains("MovingPlatform") && !transform.GetChild(i).gameObject.name.Contains("Slime"))
+            else if (transform.GetChild(i).gameObject.name.Contains("MovingPlatform") && transform.GetChild(i).gameObject.name.Contains("Slime"))
             {
                 enemyArray[i].enemyObject = movingPlatform;
                 StoreWaypoints(i, "Point");
@@ -69,6 +70,7 @@ public class RoomResetManager : MonoBehaviour
         }
     }
 
+    //Este metodo almacena los puntos por los que se guia el movimiento de ciertos objetos
     void StoreWaypoints(int i, string pointName)
     {
         int j = 0;
@@ -91,6 +93,7 @@ public class RoomResetManager : MonoBehaviour
         }
     }
 
+    //Este metodo almacena la escala de los objetos. En ciertos casos será la del mismo objeto y en otros la de uno de sus hijos
     void StoreScale(int i)
     {
         if (transform.GetChild(i).name.Contains("Wizard") || transform.GetChild(i).name.Contains("Platform"))
@@ -110,6 +113,7 @@ public class RoomResetManager : MonoBehaviour
             }
     }
 
+    //Este método almacena la velocidad de los objetos dependiendo del tipo de movimiento que tengan
     void StoreSpeed(int i)
     {
         if (transform.GetChild(i).GetComponentInChildren<AlternativePlatformMovement>() != null)
@@ -137,6 +141,7 @@ public class RoomResetManager : MonoBehaviour
         }
     }
 
+    //Este método destruye a los objetos ya existentes (para evitar que se creen más de la cuenta), y los vuelve a hacer respawnear, haciendo que cada uno de ellos ajuste sus variables dependiendo de la información almacenada
     public void RespawnEnemies()
     {
         DestroyEnemies();
@@ -148,6 +153,7 @@ public class RoomResetManager : MonoBehaviour
         }
     }
 
+    //Este método destruye a todos los objetos hijos de el objeto que almacena la información
     public void DestroyEnemies()
     {
         for (int i = 0; i < transform.childCount; i++)
