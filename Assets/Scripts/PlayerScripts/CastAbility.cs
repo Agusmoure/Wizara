@@ -7,7 +7,12 @@ public class CastAbility : MonoBehaviour {
     public Transform projectilePool;
     bool fireBallOnCD, shieldOnCD, thunderBoldOnCD;
     public UIManager uIManager;
+    Animator anim;
 
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -21,6 +26,7 @@ public class CastAbility : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.Q) && GameManager.instance.ReturnAbilityValue("Fireball") && !fireBallOnCD)
         {
+            anim.Play("PlayerShoot");
             InstantiateFireBall();
             fireBallOnCD = true;
             Invoke("FireBallCD", GameManager.instance.ReturnCooldown("Fireball"));
@@ -61,6 +67,7 @@ public class CastAbility : MonoBehaviour {
     {
         //El escudo se hace hijo del jugador para seguir su movimiento.
         GameObject newShield = Instantiate(shield, transform.position, Quaternion.identity, gameObject.transform);
+        uIManager.SetSliderValue(0f, "Shield");
     }
 
     void InstantiateThunderbolt()

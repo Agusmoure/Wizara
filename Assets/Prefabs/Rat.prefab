@@ -42,6 +42,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4700702811207042}
+  - component: {fileID: 114407565474006878}
   m_Layer: 9
   m_Name: Rat
   m_TagString: Untagged
@@ -163,7 +164,7 @@ Transform:
   m_GameObject: {fileID: 1016991508922434}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_Children:
   - {fileID: 4477167913908218}
   - {fileID: 4932424000524956}
@@ -179,7 +180,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1142935226820926}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.64, y: -4.37, z: 0}
+  m_LocalPosition: {x: 0.48, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4692676970348452}
@@ -256,7 +257,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.003307581, y: 0.13327646}
+  m_Offset: {x: 0.003307581, y: 0.102166265}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -267,7 +268,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.45428753, y: 0.063448906}
+  m_Size: {x: 0.45428753, y: 0.03372532}
   m_EdgeRadius: 0
 --- !u!61 &61724544911707450
 BoxCollider2D:
@@ -385,6 +386,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+--- !u!114 &114407565474006878
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1142935226820926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 548469197cb92724eaa386f132065360, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114521104929756340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -396,10 +408,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd58641f407848f43a70b249bae50d5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  probability: 100
+  probability: 50
   droppedObject: {fileID: 1823006112532908, guid: 2a1ba307356fbf44fb281c9f6a57ca10,
     type: 2}
-  objectPool: {fileID: 0}
+  objectPool: {fileID: 4774606858418642, guid: c54fc5de624be2541ab56a0e387d1ef1, type: 2}
 --- !u!114 &114713718229494844
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -20,7 +20,7 @@ public class AlternativePlatformMovement : MonoBehaviour {
         transform.position = Vector2.MoveTowards(transform.position, currentPoint.transform.position, speedMovement * Time.deltaTime);  
 
         //comprueba si la plataforma ha llegado al punto
-        if (transform.position == currentPoint.transform.position)
+        if ( new Vector2 (transform.position.x, transform.position.y) == new Vector2 (currentPoint.transform.position.x, currentPoint.transform.position.y))
         {
             //si es así, cambia al siguiente punto (la fórmula hace que si llega al máximo de puntos vuelve al primero)
             selector = (selector + 1) % points.Length;
@@ -29,4 +29,14 @@ public class AlternativePlatformMovement : MonoBehaviour {
         }
 
 	}
+
+    public float ReturnSpeed()
+    {
+        return speedMovement;
+    }
+
+    public void UpdateSpeed(float updatedSpeed)
+    {
+        speedMovement = updatedSpeed;
+    }
 }

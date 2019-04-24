@@ -13,9 +13,10 @@ public class Bounce : MonoBehaviour {
         player = GetComponent<Rigidbody2D>();
     }
 
-    //Método que aplica la fuerza de rebote hacia arriba, la cual equivale a la variable "bounceForce"
-    public void BounceUp()
+    //Método que aplica la fuerza de rebote.
+    public void BounceTo(float x, float y)
     {
-        player.AddForce(new Vector2(0, bounceForce), ForceMode2D.Impulse);
+        player.velocity = new Vector2(player.velocity.x, 0);
+        player.AddForce(new Vector2(x, y*bounceForce), ForceMode2D.Impulse);
     }
 }

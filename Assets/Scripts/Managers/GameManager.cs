@@ -10,9 +10,10 @@ public class GameManager : MonoBehaviour
     public float fireBallCooldown, shieldCooldown, lightningCooldown;
     GameObject player;
     LevelManager levelManager;
+    BossManager boss;
     UIManager uIManager;
-    bool paused = false;
-    bool doubleJump = false, wallJump = false, dash = false, fireBall = false, shield = true, lightning = false, invulnerable=false;
+    bool onMenu = false, onDialogue = false;
+    bool doubleJump = false, wallJump = false, dash = true, fireBall = true, shield = true, lightning = false, invulnerable=false;
 
     //Los checkpoints son structs en los que se guardan dos datos: El transform, para la posición, y la escena, para cargar la escena necesaria al reaparecer.
     [System.Serializable]
@@ -88,15 +89,29 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(Scene);
     }
 
-    public void Pausa()
+    public void Pause(string currentCase)
     {
-        Time.timeScale = Time.timeScale == 0 ? 1 : 0;
-        paused = !paused;
+        if (currentCase == "Menu")
+        {
+            Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+            onMenu = !onMenu;
+        }
+
+        else if (currentCase == "Dialogue" || currentCase == "NPC")
+        {
+            Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+            onDialogue = !onDialogue;
+        }
     }
 
-    public bool IsPaused()
+    public bool IsOnMenu()
     {
-        return paused;
+        return onMenu;
+    }
+
+    public bool IsOnDialogue()
+    {
+        return onDialogue;
     }
 
     //Este metodo carga la escena en la que se encuentra el checkpoint actual. Para determinar la posición del jugador el LevelManager accederá a el transform del Checkpoint actual en su metodo Start.
@@ -135,6 +150,9 @@ public class GameManager : MonoBehaviour
                 wallJump = true;
                 break;
             case "Double Jump":
+                //Si el player tiene PlayerMovement entonces setea los saltos a dos
+                PlayerMovement playerM=player.GetComponent<PlayerMovement>();
+                if (playerM != null) playerM.DoubleJumpActive();
                 doubleJump = true;
                 break;
             case "Fireball":
@@ -190,5 +208,14 @@ public class GameManager : MonoBehaviour
         else if (name.Contains("Lightning")) return lightningCooldown;
 
         else return 0;
+    }
+    public void GetBossManager(BossManager bossM)
+    {
+        boss = bossM;
+    }
+
+    public BossManager ReturnBossManager()
+    {
+        return boss;
     }
 }

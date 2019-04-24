@@ -5,7 +5,7 @@ using UnityEngine;
 public class Life : MonoBehaviour {
 
     public int lifePoints;
-    int actualLife;
+    int currentLife;
 
     private void Start()
     {
@@ -15,12 +15,14 @@ public class Life : MonoBehaviour {
     //Método que quita vida al jugador.
     public void LoseLife(int damage)
     {
-        actualLife -= damage;
+        currentLife -= damage;
 
         //Cuando la vida sea 0 o menor, el jugador muere.
-        if (actualLife <= 0) Dead();
+        if (currentLife <= 0) Dead();
 
         if (tag == "Player") GameManager.instance.ReturnUIManager().UpdateLifeUI();
+
+        if (CompareTag("Boss") && GetComponent<BossLifebar>() != null) GetComponent<BossLifebar>().UpdateLifebar(lifePoints, currentLife);
     }
 
     //Método que destruye al jugador al morir (es llamado por GM).
@@ -37,12 +39,12 @@ public class Life : MonoBehaviour {
     //Aumenta la vida del jugador 
     public void IncreaseLife(int increase)
     {
-        if ((actualLife + increase) > lifePoints)
+        if ((currentLife + increase) > lifePoints)
         {
-            actualLife = lifePoints;
+            currentLife = lifePoints;
         }
 
-        else actualLife += increase;
+        else currentLife += increase;
 
         if (tag == "Player") GameManager.instance.ReturnUIManager().UpdateLifeUI();
     }
@@ -50,12 +52,12 @@ public class Life : MonoBehaviour {
     //devuelve la vida actual
     public int GetActualLife()
     {
-        return actualLife;
+        return currentLife;
     }
 
     //set actual life se hace en el GM para que no se ponga full vida siempre que cambie de pantalla.
     public void SetLife(int life)
     {
-        actualLife = life;
+        currentLife = life;
     }
 }
