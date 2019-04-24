@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class KeyDoor : MonoBehaviour {
     bool locked = true;
-
     public string dialogueName;
+
+    [TextArea(3, 10)]
     public string[] sentences;
 
-	public void Unlock()
+    
+    public void Unlock()
     {
         locked = false;
     }
