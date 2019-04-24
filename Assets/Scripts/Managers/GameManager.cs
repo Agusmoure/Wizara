@@ -98,6 +98,7 @@ public class GameManager : MonoBehaviour
     public void ChangeScene(string Scene)
     {
         SceneManager.LoadScene(Scene);
+        audioManager.PlayMainAudio(Scene);
     }
 
     public void Pause(string currentCase)
@@ -128,7 +129,7 @@ public class GameManager : MonoBehaviour
     //Este metodo carga la escena en la que se encuentra el checkpoint actual. Para determinar la posición del jugador el LevelManager accederá a el transform del Checkpoint actual en su metodo Start.
     public void Respawn()
     {
-        SceneManager.LoadScene(currentCheckpoint.scene);
+        ChangeScene(currentCheckpoint.scene);
     }
 
     //Cuando el jugador llegue a un checkpoint este avisará al GameManager para que cambie la información del checkpoint actual. Como es lógico la escena de este checkpoint será aquella en la que nos encontremos en este momento.
