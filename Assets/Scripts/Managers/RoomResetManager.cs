@@ -5,7 +5,7 @@ using UnityEngine;
 public class RoomResetManager : MonoBehaviour
 {
 
-    public GameObject rat, bat, enemyWizard, slime, movingPlatform, slimePlatform;
+    public GameObject[] prefabs;
 
     [System.Serializable]
     struct ResettableObject
@@ -34,36 +34,12 @@ public class RoomResetManager : MonoBehaviour
 
         for (int i = 0; i < enemyArray.Length; i++)
         {
-
-            //Dependiendo del nombre del objeto, almacenamos un prefab distinto, y si fuese necesario, también los puntos por los que se guia su movimiento.
-            if (transform.GetChild(i).gameObject.name.Contains("Rat")) enemyArray[i].enemyObject = rat;
-
-            else if (transform.GetChild(i).gameObject.name.Contains("Wizard")) enemyArray[i].enemyObject = enemyWizard;
-
-            else if (transform.GetChild(i).gameObject.name.Contains("Slime") && !transform.GetChild(i).gameObject.name.Contains("Slime"))
+            for (int j = 0; j < prefabs.Length; j++)
             {
-                enemyArray[i].enemyObject = slime;
-                StoreWaypoints(i, "Rotation");
+                if (transform.GetChild(i).gameObject.name.Contains(prefabs[j].name)) enemyArray[i].enemyObject = prefabs[j];
             }
 
-            else if (transform.GetChild(i).gameObject.name.Contains("Bat"))
-            {
-                enemyArray[i].enemyObject = bat;
-                StoreWaypoints(i, "Point");
-            }
-
-            else if (transform.GetChild(i).gameObject.name.Contains("MovingPlatform") && !transform.GetChild(i).gameObject.name.Contains("Slime"))
-            {
-                enemyArray[i].enemyObject = movingPlatform;
-                StoreWaypoints(i, "Point");
-            }
-
-            else if (transform.GetChild(i).gameObject.name.Contains("SlimeMovingPlatform"))
-            {
-                enemyArray[i].enemyObject = slimePlatform;
-                StoreWaypoints(i, "Point");
-            }
-
+            StoreWaypoints(i, "Point");
             StoreScale(i);
             StoreSpeed(i);
             enemyArray[i].spawnPosition = transform.GetChild(i).transform.position;
