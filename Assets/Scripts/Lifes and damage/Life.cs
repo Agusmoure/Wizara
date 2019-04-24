@@ -25,7 +25,7 @@ public class Life : MonoBehaviour {
         if (CompareTag("Boss") && GetComponent<BossLifebar>() != null) GetComponent<BossLifebar>().UpdateLifebar(lifePoints, currentLife);
     }
 
-    //Método que destruye al jugador al morir (es llamado por GM).
+    //Método que destruye al gameObject al morir.
     public void Dead()
     {
         DropObjectOnDeath drop = GetComponent<DropObjectOnDeath>();
