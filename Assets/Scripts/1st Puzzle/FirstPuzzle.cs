@@ -10,12 +10,17 @@ public class FirstPuzzle : MonoBehaviour
     // Distancia diagonal entre piezas
     public Vector2 diagonalDistance;
     PieceMovement[] pieces;
+    PieceMovement frame;
+    bool selected = false;
+    public int pieceSelected;
 
     // Use this for initialization
 
     void Start()
     {
-        pieces = GetComponentsInChildren<PieceMovement>();
+        frame = transform.GetChild(0).GetComponent<PieceMovement>();
+        pieces = transform.GetChild(1).GetComponentsInChildren<PieceMovement>();
+
     }
 
     // Update is called once per frame
@@ -29,36 +34,49 @@ public class FirstPuzzle : MonoBehaviour
         // Se escoge el vector inputVec del metodo CheckSpot dependiendo de la flecha pulsada
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            CheckSpot(new Vector2(-Mathf.Abs(diagonalDistance.x), 0));
+            CheckSpot(new Vector2(-Mathf.Abs(diagonalDistance.x), 0), -1);
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            CheckSpot(new Vector2(Mathf.Abs(diagonalDistance.x), 0));
+            CheckSpot(new Vector2(Mathf.Abs(diagonalDistance.x), 0), 1);
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            CheckSpot(new Vector2(0, Mathf.Abs(diagonalDistance.y)));
+            CheckSpot(new Vector2(0, Mathf.Abs(diagonalDistance.y)), -3);
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            CheckSpot(new Vector2(0, -Mathf.Abs(diagonalDistance.y)));
+            CheckSpot(new Vector2(0, -Mathf.Abs(diagonalDistance.y)), 3);
+        }
+
+        else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            selected = !selected;
+            pieceSelected = FindSelectedPiece();
+            ChangeFrameColour();
         }
     }
 
     // Metodo para analizar si es posible el movimiento de pieza
-    void CheckSpot(Vector2 inputVec)
+    void CheckSpot(Vector2 inputVec, int direction)
     {
-        // Se empieza desde 1 porque i=0 es la pieza "Empty" en la jerarquia.
-        int i = 1;
+        int i = 0;
         bool found = false;
 
         while (i < pieces.Length && !found)
         {
+
             // Si las coordenadas de la pieza "Empty" + el vector input coinciden con la posicion de una de las piezas del array, intercambia la posicion entre ellas 
-            if ((Vector2)pieces[0].transform.position + inputVec == (Vector2)pieces[i].transform.position)
+            if (selected && (Vector2)frame.transform.position + inputVec == (Vector2)pieces[i].transform.position)
             {
-                SwapPosition(i, inputVec);
+                SwapPosition(i, pieceSelected, inputVec);
                 CheckSolved();
+                found = true;
+            }
+
+            else if (!selected && (Vector2)frame.transform.position + inputVec == (Vector2)pieces[i].transform.position)
+            {
+                ChangePosition(inputVec);
                 found = true;
             }
 
@@ -66,11 +84,49 @@ public class FirstPuzzle : MonoBehaviour
         }
     }
 
-    // Metodo para realizar el cambio de posicion entre dos piezas
-    void SwapPosition(int i, Vector2 inputVec)
+    // Metodo para realizar el cambio de posición del marco
+
+    void ChangePosition(Vector2 inputVec)
     {
-        pieces[i].MovePieceTo(pieces[0].transform.position);
-        pieces[0].MovePieceTo((Vector2)pieces[0].transform.position + inputVec);
+        frame.MovePieceTo((Vector2)frame.transform.position + inputVec);
+    }
+
+    // Metodo para realizar el cambio de posicion entre dos piezas
+    void SwapPosition(int i, int j, Vector2 inputVec)
+    {
+        pieces[i].MovePieceTo(frame.transform.position);
+        frame.MovePieceTo((Vector2)frame.transform.position + inputVec);
+        pieces[j].MovePieceTo((Vector2)frame.transform.position);
+    }
+
+    int FindSelectedPiece()
+    {
+        if (selected)
+        {
+            int i = 0;
+            bool found = false;
+
+            while (i < pieces.Length && !found)
+            {
+                if ((Vector2)frame.transform.position == (Vector2)pieces[i].transform.position)
+                {
+                    found = true;
+                }
+
+                else i++;
+            }
+
+            if (found) return i;
+            else return -1;
+        }
+
+        else return -1;
+    }
+
+    void ChangeFrameColour()
+    {
+        if (selected) frame.gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+        else frame.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
     }
 
     // Metodo para revisar si se ha completado
