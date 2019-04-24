@@ -10,4 +10,8 @@ public class ChangeSceneOnTrigger : MonoBehaviour {
     {
         GameManager.instance.ChangeScene(sceneToChange);  
     }
+    public void ForceScenceChange()
+    {
+        GameManager.instance.ChangeScene(sceneToChange);
+    }
 }
