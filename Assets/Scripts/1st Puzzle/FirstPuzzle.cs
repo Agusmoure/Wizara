@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class FirstPuzzle : MonoBehaviour
 {
-    //Escena a la que cambia al terminar el puzle
-    public string scene;
-
     // Distancia diagonal entre piezas
     public Vector2 diagonalDistance;
     PieceMovement[] pieces;
