@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     LevelManager levelManager;
     BossManager boss;
     UIManager uIManager;
+    AudioManager audioManager;
     bool onMenu = false, onDialogue = false;
     bool doubleJump = false, wallJump = false, dash = true, fireBall = true, shield = true, lightning = false, invulnerable=false;
 
@@ -77,6 +78,16 @@ public class GameManager : MonoBehaviour
     public void ThisUIManager(UIManager uI)
     {
         uIManager = uI;
+    }
+
+    public void ThisAudioManager(AudioManager audio)
+    {
+        audioManager = audio;
+    }
+
+    public AudioManager ReturnAudioManager()
+    {
+        return audioManager;
     }
 
     public UIManager ReturnUIManager()

@@ -32,6 +32,8 @@ public class Life : MonoBehaviour {
         if (drop != null) drop.DropObject();
         DestroyParent destroy = GetComponent <DestroyParent>();
         if (destroy != null) destroy.DestroyP();
+        AudioToPlay audio = GetComponent<AudioToPlay>();
+        if (audio != null) audio.SendAudioToPlay(); 
         if (tag == "Player") GameManager.instance.Respawn();
         else Destroy(gameObject);
     }
