@@ -44,12 +44,12 @@ public class AudioManager : MonoBehaviour {
     void Start () {
         // Comunica al GM de quien es el AudioManager.
         GameManager.instance.ThisAudioManager(this);
-        // theme.Play();
     }
 	
 	public void PlayAudio(string name)
     {
         int i = 0;
+        // Busca el componente del array con nombre name.
         while (i<sound.Length && sound[i].name != name)
         {
             i++;
@@ -60,7 +60,8 @@ public class AudioManager : MonoBehaviour {
         }
         catch
         {
-            Debug.LogWarning("No existe el audio con nombre "+name+" que se intenta reproducir.");
+            //Si el índice se sale del array y no se ha podido reproducir el audio, se comunica.
+            Debug.LogWarning("No existe el componente con nombre "+name+" cuyo audio se intenta reproducir.");
         }
     }
 }
