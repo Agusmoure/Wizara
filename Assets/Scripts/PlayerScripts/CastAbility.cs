@@ -26,7 +26,7 @@ public class CastAbility : MonoBehaviour {
     //Metodos que recogen el input de cada habilidad.
     public void FireBallInput()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && GameManager.instance.ReturnAbilityValue("Fireball") && !fireBallOnCD)
+        if (Input.GetKeyDown(KeyCode.Q) && GameManager.instance.ReturnAbilityValue("Fireball") && !fireBallOnCD && !GameManager.instance.IsOnMenu() && !GameManager.instance.IsOnDialogue())
         {
             anim.Play("PlayerShoot");
             InstantiateFireBall();
@@ -37,7 +37,7 @@ public class CastAbility : MonoBehaviour {
 
     void ShieldInput()
     {
-        if (Input.GetKeyDown(KeyCode.E) && GameManager.instance.ReturnAbilityValue("Shield") && !shieldOnCD)
+        if (Input.GetKeyDown(KeyCode.E) && GameManager.instance.ReturnAbilityValue("Shield") && !shieldOnCD && !GameManager.instance.IsOnMenu() && !GameManager.instance.IsOnDialogue())
         {
             InstantiateShield();
             shieldOnCD = true;
