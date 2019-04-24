@@ -11,7 +11,15 @@ public class MakeDamage : MonoBehaviour {
     {
         if (collision.CompareTag("Player"))
         {
-            if (collision.GetComponent<Life>() != null && !GameManager.instance.GetInvulnerablePlayer()) collision.GetComponent<Life>().LoseLife(damage);
+            if (!transform.parent.name.Contains("Rat") && collision.GetComponent<Life>() != null && !GameManager.instance.GetInvulnerablePlayer()) collision.GetComponent<Life>().LoseLife(damage);
+
+            else if (transform.parent.name.Contains("Rat") && collision.GetComponent<Life>() != null && !GameManager.instance.GetInvulnerablePlayer())
+            {
+                ContactPoint2D[] contacts = new ContactPoint2D[1];
+                collision.GetContacts(contacts);
+
+                if(contacts[0].normal.y == 1) collision.GetComponent<Life>().LoseLife(damage);
+            }
         }
 
         else if (collision.CompareTag("Boss") && collision.transform.parent.GetComponentInChildren<Life>() != null) collision.transform.parent.GetComponentInChildren<Life>().LoseLife(damage);
