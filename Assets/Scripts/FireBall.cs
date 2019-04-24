@@ -13,6 +13,8 @@ public class FireBall : MonoBehaviour {
         //cacheo de componentes
         fireB = GetComponent<Rigidbody2D>();
         anime = GetComponent<Animator>();
+        AudioToPlay audio = GetComponent<AudioToPlay>();
+        if (audio != null) audio.SendAudioToPlay();
     }
     // Update is called once per frame
     private void Update()

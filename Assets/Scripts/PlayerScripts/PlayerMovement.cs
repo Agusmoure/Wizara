@@ -142,6 +142,8 @@ public class PlayerMovement : MonoBehaviour {
         player.AddForce(new Vector2(scale.x * dashForce, 0), ForceMode2D.Impulse);
         movmentRestriction = true;
         dash = false;
+        AudioToPlay audio = GetComponent<AudioToPlay>();
+        if (audio != null) audio.SendAudioToPlay();
         //Tiempo en realizar el dash 0.15.
         Invoke("DashCast", 0.15f);
     }

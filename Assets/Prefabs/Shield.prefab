@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4653074335069712}
   - component: {fileID: 212368741840520106}
   - component: {fileID: 114366400201369290}
+  - component: {fileID: 114675208976155860}
   m_Layer: 8
   m_Name: Shield
   m_TagString: Untagged
@@ -53,6 +54,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shieldDuration: 2
+--- !u!114 &114675208976155860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1960320302740486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acbc789c38ec34443a2ca2d438a0f4bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Shield
 --- !u!212 &212368741840520106
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -86,7 +99,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1472359993
-  m_SortingLayer: 3
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300008, guid: 9bcb6208c7b2dff498bb097444501e6f, type: 3}
   m_Color: {r: 1, g: 0.60784316, b: 1, a: 0.5803922}

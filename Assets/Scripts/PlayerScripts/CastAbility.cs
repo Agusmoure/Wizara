@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CastAbility : MonoBehaviour {
-    public GameObject fireBall,shield;
+
+    public GameObject fireBall, shield;
     public Transform projectilePool;
     bool fireBallOnCD, shieldOnCD, thunderBoldOnCD;
     public UIManager uIManager;
@@ -13,6 +14,7 @@ public class CastAbility : MonoBehaviour {
     {
         anim = GetComponent<Animator>();
     }
+
     // Update is called once per frame
     void Update()
     {
