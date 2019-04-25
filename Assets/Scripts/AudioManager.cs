@@ -51,7 +51,6 @@ public class AudioManager : MonoBehaviour {
     void Start () {
         // Comunica al GM de quien es el AudioManager.
         GameManager.instance.ThisAudioManager(this);
-        mainTheme.Play();
     }
 	
 	public void PlayAudio(string name)
@@ -82,8 +81,12 @@ public class AudioManager : MonoBehaviour {
         }
         try
         {
-            mainTheme.clip = sound[i].source.clip;
-            mainTheme.Play();
+            // Si el tema ya esta sonando, no lo vuelve a reproducir.
+            if (mainTheme.clip != sound[i].source.clip)
+            {
+                mainTheme.clip = sound[i].source.clip;
+                mainTheme.Play();
+            }   
         }
         catch
         {
