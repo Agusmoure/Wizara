@@ -5,11 +5,12 @@ using UnityEngine;
 public class ShootEnemyProjectileVertical : MonoBehaviour {
 
     public GameObject enemyProjectile;
-    public Transform projectilePool;
+    PoolManager pools;
     public float time;
     // Use this for initialization
     void Start()
     {
+        pools = GameManager.instance.ReturnPoolManager();
         InvokeRepeating("Instantiate", 0, time);
     }
 
@@ -21,6 +22,6 @@ public class ShootEnemyProjectileVertical : MonoBehaviour {
     //metodo que crea la caca
     void Instantiate()
     {
-        GameObject newProjectile = Instantiate(enemyProjectile, transform.position, Quaternion.identity, projectilePool);
+        GameObject newProjectile = Instantiate(enemyProjectile, transform.position, Quaternion.identity, pools.GetProjectilePool());
     }
 }

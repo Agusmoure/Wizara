@@ -6,7 +6,12 @@ public class DropObjectOnDeath : MonoBehaviour {
 
     public int probability;
     public GameObject droppedObject;
-    public Transform objectPool;
+    PoolManager pools;
+
+    private void Start()
+    {
+        pools = GameManager.instance.ReturnPoolManager();
+    }
 
     public void DropObject()
     {
@@ -14,7 +19,7 @@ public class DropObjectOnDeath : MonoBehaviour {
 
         if (aleatority <= probability)
         {
-            GameObject newObject = Instantiate(droppedObject, transform.position, transform.rotation, objectPool);
+            GameObject newObject = Instantiate(droppedObject, transform.position, transform.rotation, pools.GetObjectPool());
         }
     }
 }
