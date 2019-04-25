@@ -17,7 +17,6 @@ public class FirstPuzzle : MonoBehaviour
     {
         frame = transform.GetChild(0).GetComponent<PieceMovement>();
         pieces = transform.GetChild(1).GetComponentsInChildren<PieceMovement>();
-
     }
 
     // Update is called once per frame
@@ -28,29 +27,32 @@ public class FirstPuzzle : MonoBehaviour
 
     void GetInput()
     {
-        // Se escoge el vector inputVec del metodo CheckSpot dependiendo de la flecha pulsada
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (!GameManager.instance.IsOnMenu())
         {
-            CheckSpot(new Vector2(-Mathf.Abs(diagonalDistance.x), 0), -1);
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            CheckSpot(new Vector2(Mathf.Abs(diagonalDistance.x), 0), 1);
-        }
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            CheckSpot(new Vector2(0, Mathf.Abs(diagonalDistance.y)), -3);
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            CheckSpot(new Vector2(0, -Mathf.Abs(diagonalDistance.y)), 3);
-        }
+            // Se escoge el vector inputVec del metodo CheckSpot dependiendo de la flecha pulsada
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                CheckSpot(new Vector2(-Mathf.Abs(diagonalDistance.x), 0), -1);
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                CheckSpot(new Vector2(Mathf.Abs(diagonalDistance.x), 0), 1);
+            }
+            else if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                CheckSpot(new Vector2(0, Mathf.Abs(diagonalDistance.y)), -3);
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                CheckSpot(new Vector2(0, -Mathf.Abs(diagonalDistance.y)), 3);
+            }
 
-        else if (Input.GetKeyDown(KeyCode.Space))
-        {
-            selected = !selected;
-            pieceSelected = FindSelectedPiece();
-            ChangeFrameColour();
+            else if (Input.GetKeyDown(KeyCode.Space))
+            {
+                selected = !selected;
+                pieceSelected = FindSelectedPiece();
+                ChangeFrameColour();
+            }
         }
     }
 
