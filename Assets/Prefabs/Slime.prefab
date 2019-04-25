@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 95852041461465426}
   - component: {fileID: 114884032338499110}
   - component: {fileID: 114386560717900950}
+  - component: {fileID: 114291519741615280}
   m_Layer: 9
   m_Name: SlimeEnemy
   m_TagString: Untagged
@@ -372,6 +373,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: -1
+--- !u!114 &114291519741615280
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1053951189192652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42064fe1b017fb04abe37f1413032eb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfBlinks: 6
+  timeBetweenBlinks: 0.1
 --- !u!114 &114386560717900950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -395,6 +409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifePoints: 2
+  currentLife: 0
 --- !u!114 &114958757698978744
 MonoBehaviour:
   m_ObjectHideFlags: 1

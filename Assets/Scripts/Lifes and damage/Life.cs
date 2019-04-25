@@ -5,7 +5,7 @@ using UnityEngine;
 public class Life : MonoBehaviour {
 
     public int lifePoints;
-    int currentLife;
+    public int currentLife;
 
     private void Start()
     {
@@ -16,9 +16,10 @@ public class Life : MonoBehaviour {
     public void LoseLife(int damage)
     {
         currentLife -= damage;
+        if (GetComponent<BlinkAfterDamage>() != null) GetComponent<BlinkAfterDamage>().Blink();
 
-        //Cuando la vida sea 0 o menor, el jugador muere.
-        if (currentLife <= 0) Dead();
+            //Cuando la vida sea 0 o menor, el jugador muere.
+            if (currentLife <= 0) Dead();
 
         if (tag == "Player") GameManager.instance.ReturnUIManager().UpdateLifeUI();
 

@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114049586320647788}
   - component: {fileID: 114150469810062456}
   - component: {fileID: 114260210651620432}
+  - component: {fileID: 114910901291271484}
   m_Layer: 8
   m_Name: PlayerPrefab
   m_TagString: Player
@@ -137,6 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifePoints: 12
+  currentLife: 0
 --- !u!114 &114260210651620432
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -149,6 +151,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounceForce: 12.5
+--- !u!114 &114910901291271484
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1602436603072820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42064fe1b017fb04abe37f1413032eb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfBlinks: 6
+  timeBetweenBlinks: 0.1
 --- !u!114 &114983798974601146
 MonoBehaviour:
   m_ObjectHideFlags: 1
