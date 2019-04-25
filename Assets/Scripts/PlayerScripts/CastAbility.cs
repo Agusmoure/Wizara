@@ -47,12 +47,12 @@ public class CastAbility : MonoBehaviour {
 
     void ThunderboltInput()
     {
-     //   if (Input.GetKeyDown(KeyCode.W) && GameManager.instance.GetAbility("Thunderbolt") && !thunderBoldOnCD)
+     /* if (Input.GetKeyDown(KeyCode.W) && GameManager.instance.GetAbility("Thunderbolt") && !thunderBoldOnCD)
         {
             InstantiateThunderbolt();
             thunderBoldOnCD = true;
             Invoke("ThunderboltCD", GameManager.instance.ReturnCooldown("Lightning"));
-        }
+        }*/
     }
 
     //Metodos para instanciar las habilidades.
@@ -63,6 +63,7 @@ public class CastAbility : MonoBehaviour {
 
         newFireball.GetComponent<FireBall>().ChangeDirection(newDirection);
         uIManager.SetSliderValue(0f, "Fireball");
+        //uIManager.PressButton("Fireball");
     }
 
     void InstantiateShield()
@@ -70,6 +71,7 @@ public class CastAbility : MonoBehaviour {
         //El escudo se hace hijo del jugador para seguir su movimiento.
         GameObject newShield = Instantiate(shield, transform.position, Quaternion.identity, gameObject.transform);
         uIManager.SetSliderValue(0f, "Shield");
+        //uIManager.PressButton("Shield");
     }
 
     void InstantiateThunderbolt()

@@ -7,9 +7,10 @@ public class UIManager : MonoBehaviour
 {
     public Image[] HeartIcons;
     public GameObject fireballIcon, shieldIcon, lightningIcon, dialogueBox;
-    public Slider fireballSlider, shieldSlider, lightningSlider, bossSlider;
-    GameObject player;
+    public Slider bossSlider, fireballSlider, shieldSlider, lightningSlider, qSlider, wSlider, eSlider;
     float fireballSliderValue, shieldSliderValue, lightningSliderValue;
+    GameObject player;
+
 
     void Start()
     {
@@ -17,7 +18,6 @@ public class UIManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         Invoke("UpdateLifeUI", 0.5f * Time.deltaTime);
         Invoke("EnableAbilityIcons", 2f * Time.deltaTime);
-        
     }
 
     private void Update()
@@ -150,6 +150,7 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+
     public void SetSliderValue(float value, string slider)
     {
         switch (slider)
@@ -157,19 +158,21 @@ public class UIManager : MonoBehaviour
             case "Fireball":
                 fireballSliderValue = value;
                 fireballSlider.value = fireballSliderValue;
+                qSlider.value = fireballSliderValue;
                 break;
             case "Shield":
                 shieldSliderValue = value;
                 shieldSlider.value = shieldSliderValue;
+                eSlider.value = shieldSliderValue;
                 break;
             case "Lightning":
                 lightningSliderValue = value;
                 lightningSlider.value = lightningSliderValue;
+                wSlider.value = lightningSliderValue;
                 break;
             case "Boss":
                 bossSlider.value = value;
                 break;
-
         }
     }
 
