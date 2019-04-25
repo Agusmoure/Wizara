@@ -11,7 +11,8 @@ public class ShootEnemyProjectileVertical : MonoBehaviour {
     void Start()
     {
         pools = GameManager.instance.ReturnPoolManager();
-        InvokeRepeating("Instantiate", 0, time);
+        // el 0.3 al iniciar se debe a que si es 0, al darle al play da errores en todos los proyectiles de los murcielagos porque no tienen aun la referencia al PoolManager.
+        InvokeRepeating("Instantiate", 0.3f, time);
     }
 
     // Update is called once per frame
