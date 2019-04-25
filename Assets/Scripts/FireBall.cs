@@ -29,7 +29,6 @@ public class FireBall : MonoBehaviour {
     //Cuando coincide con un obstaculo lo destruye, y acto seguido se destruye ella misma si choca con cualquier otra cosa != jugador se destruye
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag.Equals("Obstacle")) Destroy(collision.gameObject);
         Destroy(this.gameObject);
     }
     //cambia la direccion del disparo
