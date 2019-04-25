@@ -60,7 +60,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4579459242661452}
   - component: {fileID: 61464254621007842}
-  m_Layer: 16
+  m_Layer: 15
   m_Name: Point1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4938583362977160}
   - component: {fileID: 61393431272447780}
-  m_Layer: 16
+  m_Layer: 15
   m_Name: Point3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4096740483178086}
   - component: {fileID: 61604450905727636}
-  m_Layer: 16
+  m_Layer: 15
   m_Name: Point4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4549847376720010}
   - component: {fileID: 61432788699450730}
-  m_Layer: 16
+  m_Layer: 15
   m_Name: Point2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
