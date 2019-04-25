@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     BossManager boss;
     UIManager uIManager;
     AudioManager audioManager;
+    PoolManager poolManager;
     bool onMenu = false, onDialogue = false;
     bool doubleJump = false, wallJump = false, dash = false, fireBall = false, shield = true, lightning = false, invulnerable=false;
 
@@ -83,6 +84,16 @@ public class GameManager : MonoBehaviour
     public void ThisAudioManager(AudioManager audio)
     {
         audioManager = audio;
+    }
+
+    public void ThisPoolManager(PoolManager pool)
+    {
+        poolManager = pool;
+    }
+
+    public PoolManager ReturnPoolManager()
+    {
+        return poolManager;
     }
 
     public AudioManager ReturnAudioManager()

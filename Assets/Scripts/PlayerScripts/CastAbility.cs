@@ -5,13 +5,14 @@ using UnityEngine;
 public class CastAbility : MonoBehaviour {
 
     public GameObject fireBall, shield;
-    public Transform projectilePool;
+    PoolManager pool;
     bool fireBallOnCD, shieldOnCD, thunderBoldOnCD;
     public UIManager uIManager;
     Animator anim;
 
     private void Start()
     {
+        pool = GameManager.instance.ReturnPoolManager();
         anim = GetComponent<Animator>();
     }
 
@@ -58,7 +59,7 @@ public class CastAbility : MonoBehaviour {
     //Metodos para instanciar las habilidades.
     void InstantiateFireBall()
     {
-        GameObject newFireball = Instantiate(fireBall, transform.position, Quaternion.identity, projectilePool);
+        GameObject newFireball = Instantiate(fireBall, transform.position, Quaternion.identity, pool.GetProjectilePool());
         Vector2 newDirection = transform.lossyScale.x * transform.right;
 
         newFireball.GetComponent<FireBall>().ChangeDirection(newDirection);
