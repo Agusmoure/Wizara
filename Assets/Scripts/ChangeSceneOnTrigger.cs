@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class ChangeSceneOnTrigger : MonoBehaviour {
 
-    public string sceneToChange;
+    public string sceneToChange, power;
+    private void Start()
+    {
+        if (GameManager.instance.ReturnAbilityValue(power))
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
