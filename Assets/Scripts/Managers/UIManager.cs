@@ -158,17 +158,17 @@ public class UIManager : MonoBehaviour
             case "Fireball":
                 fireballSliderValue = value;
                 fireballSlider.value = fireballSliderValue;
-                qSlider.value = fireballSliderValue;
+                //qSlider.value = fireballSliderValue;
                 break;
             case "Shield":
                 shieldSliderValue = value;
                 shieldSlider.value = shieldSliderValue;
-                eSlider.value = shieldSliderValue;
+                //eSlider.value = shieldSliderValue;
                 break;
             case "Lightning":
                 lightningSliderValue = value;
                 lightningSlider.value = lightningSliderValue;
-                wSlider.value = lightningSliderValue;
+                //wSlider.value = lightningSliderValue;
                 break;
             case "Boss":
                 bossSlider.value = value;
