@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour {
 
     public static AudioManager instance = null;
     public string mainSceneName;
+    float musicVolume;
     public Sound[] sound;
     AudioSource mainTheme;
     [System.Serializable]
@@ -53,6 +54,7 @@ public class AudioManager : MonoBehaviour {
         GameManager.instance.ThisAudioManager(this);
     }
 	
+    // Metodo para efectos de sonido
 	public void PlayAudio(string name)
     {
         int i = 0;
@@ -71,6 +73,8 @@ public class AudioManager : MonoBehaviour {
             Debug.LogWarning("No existe el componente con nombre "+name+" cuyo audio se intenta reproducir.");
         }
     }
+
+    // Metodo para musica de fondo
     public void PlayMainAudio(string name)
     {
         int i = 0;
@@ -86,12 +90,20 @@ public class AudioManager : MonoBehaviour {
             {
                 mainTheme.clip = sound[i].source.clip;
                 mainTheme.Play();
-            }   
+            }
+            mainTheme.volume = musicVolume;
         }
         catch
         {
             //Si el índice se sale del array y no se ha podido reproducir el audio, se comunica.
             Debug.LogWarning("No existe el componente con nombre "+name+" cuyo audio se intenta reproducir.");
         }
+    }
+
+    //Metodo para cambiar volumen de musica
+    public void SetMusicVolume(float volume)
+    {
+        musicVolume = volume;
+        mainTheme.volume = musicVolume;
     }
 }
