@@ -192,19 +192,19 @@ public class GameManager : MonoBehaviour
 
     public bool ReturnAbilityValue(string ability)
     {
-        switch (ability)
+        switch (ability.ToLower())
         {
-            case "Dash":
+            case "dash":
                 return dash;
-            case "WallJump":
+            case "walljump":
                 return wallJump;
-            case "DoubleJump":
+            case "doublejump":
                 return doubleJump;
-            case "Fireball":
+            case "fireball":
                 return fireBall;
-            case "Shield":
+            case "shield":
                 return shield;
-            case "Lightning":
+            case "lightning":
                 return lightning;
             default: return false;
         }
