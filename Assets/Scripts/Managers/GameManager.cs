@@ -241,4 +241,10 @@ public class GameManager : MonoBehaviour
     {
         return boss;
     }
+    public void EnableDebugMode()
+    {
+        dash = true;
+        fireBall = true;
+        shield = true;
+    }
 }

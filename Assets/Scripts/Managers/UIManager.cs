@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public Image[] HeartIcons;
-    public GameObject fireballIcon, shieldIcon, lightningIcon, dialogueBox;
+    public GameObject fireballIcon, shieldIcon, lightningIcon, dialogueBox, debugMode;
     public Slider bossSlider, fireballSlider, shieldSlider, lightningSlider, qSlider, wSlider, eSlider;
     float fireballSliderValue, shieldSliderValue, lightningSliderValue;
     GameObject player;
@@ -189,5 +189,9 @@ public class UIManager : MonoBehaviour
             default:
                 return 0;
         }
+    }
+    public void EnableDebugMode()
+    {
+        debugMode.SetActive(true);
     }
 }
