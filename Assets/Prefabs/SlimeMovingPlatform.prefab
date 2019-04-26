@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4617025220628364}
   - component: {fileID: 61728958667614444}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Point3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4625797054194172}
   - component: {fileID: 61107947059116546}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Point2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4766206217831120}
   - component: {fileID: 61308027280279276}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Point1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4946710040777374}
   - component: {fileID: 61128524164251566}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Point4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -377,7 +377,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1569015547914708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.39, y: 1.01, z: 0}
+  m_LocalPosition: {x: 89.17498, y: -14.610072, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4279890101648480}
@@ -736,6 +736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifePoints: 2
+  currentLife: 0
 --- !u!114 &114116971675177720
 MonoBehaviour:
   m_ObjectHideFlags: 1
