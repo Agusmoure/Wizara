@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4728191513833232}
   - component: {fileID: 212942671743590534}
   - component: {fileID: 61471921303444468}
-  - component: {fileID: 114567809451085438}
-  - component: {fileID: 114422904522202480}
   - component: {fileID: 60647486013144926}
+  - component: {fileID: 114243980265045800}
+  - component: {fileID: 114916835726191536}
   m_Layer: 9
   m_Name: Spikes
   m_TagString: Untagged
@@ -38,15 +38,15 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1906690685511556}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.6302, y: 7.694, z: 0}
-  m_LocalScale: {x: 0.7426758, y: 0.73625, z: 1}
+  m_LocalPosition: {x: -5.158496, y: -21.768782, z: 0}
+  m_LocalScale: {x: 0.7426758, y: 0.7362499, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &60647486013144926
 PolygonCollider2D:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1906690685511556}
@@ -97,7 +97,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1, y: 0.41}
   m_EdgeRadius: 0
---- !u!114 &114422904522202480
+--- !u!114 &114243980265045800
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,21 +105,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 1906690685511556}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 635476b5bbbc7fc42a35b9889246940f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114567809451085438
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1906690685511556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf1a6e2c01aed0443b7f9d2f0fce76a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 035eed2084146084e83387820301cadc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  seconds: 0.1
+--- !u!114 &114916835726191536
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1906690685511556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09e3ec3c470e4ae43a1fe09f6a59e116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seconds: 0.1
+  knockbackBoostX: 0
+  knockbackBoostY: 1
 --- !u!212 &212942671743590534
 SpriteRenderer:
   m_ObjectHideFlags: 1

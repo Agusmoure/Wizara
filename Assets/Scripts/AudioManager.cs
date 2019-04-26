@@ -7,7 +7,7 @@ public class AudioManager : MonoBehaviour {
 
     public static AudioManager instance = null;
     public string mainSceneName;
-    float musicVolume;
+    float musicVolume=1;
     public Sound[] sound;
     AudioSource mainTheme;
     [System.Serializable]
