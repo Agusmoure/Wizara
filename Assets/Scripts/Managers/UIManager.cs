@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
     public Image[] HeartIcons;
     public GameObject fireballIcon, shieldIcon, lightningIcon, dialogueBox, debugMode;
-    public GameObject[] EventsSystems;
+    public GameObject[] FirstsBottons;
     public Slider bossSlider, fireballSlider, shieldSlider, lightningSlider, qSlider, wSlider, eSlider;
     float fireballSliderValue, shieldSliderValue, lightningSliderValue;
     GameObject player;
+    public EventSystem eventSystem;
     void Start()
     {
+        
         GameManager.instance.ThisUIManager(this);
         player = GameObject.FindGameObjectWithTag("Player");
         Invoke("UpdateLifeUI", 0.5f * Time.deltaTime);
@@ -60,8 +63,7 @@ public class UIManager : MonoBehaviour
 
     public void Pausa(string cause)
     {
-        EventsSystems[1].SetActive(false);
-        EventsSystems[0].SetActive(true);
+        eventSystem.SetSelectedGameObject(FirstsBottons[0]);
         if (cause == "Escape")
         {
             if (!GameManager.instance.IsOnDialogue())
@@ -201,11 +203,11 @@ public class UIManager : MonoBehaviour
         debugMode.SetActive(true);
         GameManager.instance.ActivateAll();
     }
+    //te lleva al canvas del menu y activa el segundo event system
     public void ScenesMenu() {
         if (!GameManager.instance.IsOnDialogue()&&!GameManager.instance.IsOnMenu())
         {
-            EventsSystems[0].SetActive(false);
-            EventsSystems[1].SetActive(true);
+        eventSystem.SetSelectedGameObject(FirstsBottons[1]);
             if (GetActiveMenu() != null) GetActiveMenu().SetActive(false);
             else gameObject.transform.GetChild(transform.childCount-1).gameObject.SetActive(true);
             GameManager.instance.Pause("Menu");
