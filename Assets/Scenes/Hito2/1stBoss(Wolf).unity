@@ -493,6 +493,7 @@ MonoBehaviour:
   lightningIcon: {fileID: 1580630574}
   dialogueBox: {fileID: 1185212655}
   debugMode: {fileID: 0}
+  EventsSystems: []
   bossSlider: {fileID: 1013497432}
   fireballSlider: {fileID: 1650191643}
   shieldSlider: {fileID: 202058213}
@@ -6277,6 +6278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1090746739}
   - component: {fileID: 1090746738}
+  - component: {fileID: 1090746740}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -6298,6 +6300,8 @@ MonoBehaviour:
   fireBallCooldown: 1
   shieldCooldown: 4
   lightningCooldown: 0
+  onMenu: 0
+  onDialogue: 0
   currentCheckpoint:
     playerPosition: {x: 0, y: 0}
     cameraRoom: {x: 0, y: 0}
@@ -6315,6 +6319,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1090746740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1090746737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e38e0829dc857a44962d3a1851867f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1132844225
 GameObject:
   m_ObjectHideFlags: 0

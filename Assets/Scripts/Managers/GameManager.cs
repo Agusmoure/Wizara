@@ -108,8 +108,11 @@ public class GameManager : MonoBehaviour
 
     public void ChangeScene(string Scene)
     {
-        onMenu = false;
-        onDialogue = false;
+        if (onMenu || onDialogue) {
+        Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+            onMenu = false;
+            onDialogue = false;
+        }
         SceneManager.LoadScene(Scene);
         audioManager.PlayMainAudio(Scene);
     }
