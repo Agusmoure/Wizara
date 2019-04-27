@@ -7,17 +7,17 @@ public class UIManager : MonoBehaviour
 {
     public Image[] HeartIcons;
     public GameObject fireballIcon, shieldIcon, lightningIcon, dialogueBox, debugMode;
+    public GameObject[] EventsSystems;
     public Slider bossSlider, fireballSlider, shieldSlider, lightningSlider, qSlider, wSlider, eSlider;
     float fireballSliderValue, shieldSliderValue, lightningSliderValue;
     GameObject player;
-
-
     void Start()
     {
         GameManager.instance.ThisUIManager(this);
         player = GameObject.FindGameObjectWithTag("Player");
         Invoke("UpdateLifeUI", 0.5f * Time.deltaTime);
         Invoke("EnableAbilityIcons", 2f * Time.deltaTime);
+
     }
 
     private void Update()
@@ -25,6 +25,10 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Pausa("Escape");
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            ScenesMenu();
         }
     }
 
@@ -56,6 +60,8 @@ public class UIManager : MonoBehaviour
 
     public void Pausa(string cause)
     {
+        EventsSystems[1].SetActive(false);
+        EventsSystems[0].SetActive(true);
         if (cause == "Escape")
         {
             if (!GameManager.instance.IsOnDialogue())
@@ -194,5 +200,15 @@ public class UIManager : MonoBehaviour
     {
         debugMode.SetActive(true);
         GameManager.instance.ActivateAll();
+    }
+    public void ScenesMenu() {
+        if (!GameManager.instance.IsOnDialogue()&&!GameManager.instance.IsOnMenu())
+        {
+            EventsSystems[0].SetActive(false);
+            EventsSystems[1].SetActive(true);
+            if (GetActiveMenu() != null) GetActiveMenu().SetActive(false);
+            else gameObject.transform.GetChild(transform.childCount-1).gameObject.SetActive(true);
+            GameManager.instance.Pause("Menu");
+        }
     }
 }

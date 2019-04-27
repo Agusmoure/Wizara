@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     UIManager uIManager;
     AudioManager audioManager;
     PoolManager poolManager;
-    bool onMenu = false, onDialogue = false;
+   public bool onMenu = false, onDialogue = false;
     bool doubleJump = false, wallJump = false, dash = false, fireBall = false, shield = false, lightning = false, invulnerable = false;
 
     //Los checkpoints son structs en los que se guardan dos datos: El transform, para la posición, y la escena, para cargar la escena necesaria al reaparecer.
@@ -108,6 +108,8 @@ public class GameManager : MonoBehaviour
 
     public void ChangeScene(string Scene)
     {
+        onMenu = false;
+        onDialogue = false;
         SceneManager.LoadScene(Scene);
         audioManager.PlayMainAudio(Scene);
     }

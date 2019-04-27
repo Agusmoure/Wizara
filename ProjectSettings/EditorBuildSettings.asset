@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Hito2/1stBoss(Wolf).unity
     guid: b077d54e5b6ef9348914b45ae4a7485f
+  - enabled: 1
+    path: Assets/Scenes/Sprint24-04/Trucos.unity
+    guid: 622cd0dd59f638f4788aba19f26e5718
   m_configObjects: {}
