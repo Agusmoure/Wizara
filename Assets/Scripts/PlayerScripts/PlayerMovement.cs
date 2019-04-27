@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour {
         scale = transform.localScale;
         jump = maxJump;
         anime = GetComponent<Animator>();
+        if (GameManager.instance.ReturnAbilityValue("DoubleJump")) DoubleJumpActive();
     }
 
 	// Update is called once per frame
