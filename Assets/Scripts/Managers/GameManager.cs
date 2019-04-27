@@ -251,10 +251,10 @@ public class GameManager : MonoBehaviour
     {
         dash = true;
         wallJump = true;
+        doubleJump = true;
         //Si el player tiene PlayerMovement entonces setea los saltos a dos
         PlayerMovement playerM = player.GetComponent<PlayerMovement>();
         if (playerM != null) playerM.DoubleJumpActive();
-        doubleJump = true;
         fireBall = true;
         shield = true;
         lightning = true;

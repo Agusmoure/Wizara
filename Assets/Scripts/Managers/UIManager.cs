@@ -193,5 +193,6 @@ public class UIManager : MonoBehaviour
     public void EnableDebugMode()
     {
         debugMode.SetActive(true);
+        GameManager.instance.ActivateAll();
     }
 }

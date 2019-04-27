@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour {
 
 
     public float velocity, jumpForce, dashForce, maxFallSpeed, yVelocity;
-    int maxJump = 1;
+   public int maxJump = 1;
     int jump;
     float inputX;
     public bool movmentRestriction = false;

@@ -59,7 +59,7 @@ public class CastAbility : MonoBehaviour {
     //Metodos para instanciar las habilidades.
     void InstantiateFireBall()
     {
-        GameObject newFireball = Instantiate(fireBall, transform.position, Quaternion.identity, pool.GetProjectilePool());
+        GameObject newFireball = Instantiate(fireBall, transform.position, Quaternion.identity, /*pool.GetProjectilePool()*/null);
         Vector2 newDirection = transform.lossyScale.x * transform.right;
 
         newFireball.GetComponent<FireBall>().ChangeDirection(newDirection);
