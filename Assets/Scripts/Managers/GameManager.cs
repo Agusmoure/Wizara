@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     AudioManager audioManager;
     PoolManager poolManager;
     bool onMenu = false, onDialogue = false;
-    bool doubleJump = false, wallJump = false, dash = false, fireBall = false, shield = true, lightning = false, invulnerable=false;
+    bool doubleJump = false, wallJump = false, dash = false, fireBall = false, shield = false, lightning = false, invulnerable = false;
 
     //Los checkpoints son structs en los que se guardan dos datos: El transform, para la posición, y la escena, para cargar la escena necesaria al reaparecer.
     [System.Serializable]
@@ -174,7 +174,7 @@ public class GameManager : MonoBehaviour
                 break;
             case "Double Jump":
                 //Si el player tiene PlayerMovement entonces setea los saltos a dos
-                PlayerMovement playerM=player.GetComponent<PlayerMovement>();
+                PlayerMovement playerM = player.GetComponent<PlayerMovement>();
                 if (playerM != null) playerM.DoubleJumpActive();
                 doubleJump = true;
                 break;
@@ -246,5 +246,18 @@ public class GameManager : MonoBehaviour
         dash = true;
         fireBall = true;
         shield = true;
+    }
+    public void ActivateAll()
+    {
+        dash = true;
+        wallJump = true;
+        //Si el player tiene PlayerMovement entonces setea los saltos a dos
+        PlayerMovement playerM = player.GetComponent<PlayerMovement>();
+        if (playerM != null) playerM.DoubleJumpActive();
+        doubleJump = true;
+        fireBall = true;
+        shield = true;
+        lightning = true;
+
     }
 }
