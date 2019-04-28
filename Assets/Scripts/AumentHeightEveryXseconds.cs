@@ -15,12 +15,24 @@ public class AumentHeightEveryXseconds : MonoBehaviour {
 	}
     private void OnCollisionStay2D(Collision2D collision)
     {
-        Debug.Log("X");
-        Destroy(gameObject);
+        Instance inst = GetComponent<Instance>();
+        if (inst != null)
+        {
+            inst.InstanceThis();
+            Destroy(gameObject);
+        }
+        else
+            Destroy(gameObject);
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("X");
+        Instance inst = GetComponent<Instance>();
+        if (inst != null)
+        {
+            inst.InstanceThis();
+            Destroy(gameObject);
+        }
+        else
         Destroy(gameObject);
     }
     void Aument()
