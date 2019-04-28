@@ -21,14 +21,17 @@ public class AumentHeightEveryXseconds : MonoBehaviour
             //inicializamos el tilemap y los puntos de contacto
             Tilemap tile = null;
             ContactPoint2D[] contacts = new ContactPoint2D[1];
+            //si tiene tilemap collider
             if (tilemapCollider != null)
             {
+                //obtenemos el tilemap y los puntos de contacto
                 tile = tilemapCollider.gameObject.GetComponent<Tilemap>();
                 contacts = new ContactPoint2D[1];
                 tilemapCollider.GetContacts(contacts);
-                Debug.Log(contacts[0].point);
+               //llamamos al metodo que instacia el objeto si es en un tilemap
                 inst.InstanceTileMap(contacts[0], tile);
             }
+            //si no tiene tilemap realiza el metodo de no tilemap
             else
             inst.InstanceNoTileMap(collision.gameObject);
             Destroy(gameObject);

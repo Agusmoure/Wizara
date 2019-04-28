@@ -23,7 +23,8 @@ GameObject:
   - component: {fileID: 61024945247237200}
   - component: {fileID: 114930622486702662}
   - component: {fileID: 114585855114162290}
-  m_Layer: 0
+  - component: {fileID: 50382880903427964}
+  m_Layer: 12
   m_Name: Provisonal_lighting_zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,6 +44,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!50 &50382880903427964
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1496152651178424}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &61024945247237200
 BoxCollider2D:
   m_ObjectHideFlags: 1

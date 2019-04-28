@@ -19,9 +19,9 @@ public class Instance : MonoBehaviour
     }
     public void InstanceTileMap( ContactPoint2D contact, Tilemap tile)
     {
+        //Tras recibir el punto de contacto inicializamos ahí el objeto y lo rotamos 90º en el eje z
         Vector3 position;
-        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
-        position = contact.point + Vector2.up * (tile.tileAnchor.y / 2);
+        position = contact.point /*+ Vector2.up * (tile.tileAnchor.y / 2) no sé si deberiamos sumarle el ancho del tilemap*/;
         GameObject newGOgbject = Instantiate(gameObjectToInstance, position, Quaternion.identity, null);
         newGOgbject.transform.Rotate(Vector3.forward, 90);
     }
