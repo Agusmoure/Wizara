@@ -1,19 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Instance : MonoBehaviour {
     public GameObject gameObjectToInstance;
-    ContactPoint2D[] contacts = new ContactPoint2D[1];
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        collision.GetContacts(contacts);
+    public void InstanceThis(GameObject collision) {
+        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+        BoxCollider2D collider2D = collision.GetComponent<BoxCollider2D>();
+        Vector3 position;
+        if (collider2D != null)
+            position = collider2D.gameObject.transform.position-Vector3.right*Mathf.Abs(collider2D.offset.x)-Vector3.up* Mathf.Abs(collider2D.offset.y) + Vector3.up * (collider2D.size.y / 2);
+        else
+        {
+            if (collider2D = null)
+            {
+                CompositeCollider2D compositeCollider2D = collision.GetComponent<CompositeCollider2D>();
+                position = new Vector3(0, 0, 0);
+            }
+            else position = new Vector3(0, 0, 0);
+        }
 
-    }
-    public void InstanceThis() {
-        Debug.Log(contacts[0].point);
-
-        GameObject newGOgbject = Instantiate(gameObjectToInstance, contacts[0].point, Quaternion.identity, null);
+        GameObject newGOgbject = Instantiate(gameObjectToInstance, position, Quaternion.identity, null);
         newGOgbject.transform.Rotate(Vector3.forward, 90);
+        //collider2D.size.y
     }
 }

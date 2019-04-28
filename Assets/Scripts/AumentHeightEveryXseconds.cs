@@ -18,7 +18,7 @@ public class AumentHeightEveryXseconds : MonoBehaviour {
         Instance inst = GetComponent<Instance>();
         if (inst != null)
         {
-            inst.InstanceThis();
+            inst.InstanceThis(collision.gameObject);
             Destroy(gameObject);
         }
         else
@@ -29,7 +29,7 @@ public class AumentHeightEveryXseconds : MonoBehaviour {
         Instance inst = GetComponent<Instance>();
         if (inst != null)
         {
-            inst.InstanceThis();
+            inst.InstanceThis(collision.gameObject);
             Destroy(gameObject);
         }
         else
