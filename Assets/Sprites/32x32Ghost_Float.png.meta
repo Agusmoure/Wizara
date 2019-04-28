@@ -1,15 +1,13 @@
 fileFormatVersion: 2
-guid: 857688fd510d1ec4590f6de5c4dcee92
+guid: 2f9a68457440d434ea5aa730ce2c1669
 TextureImporter:
   fileIDToRecycleName:
-    21300000: 128x80Minotaur_Walk_0
-    21300002: 128x80Minotaur_Walk_1
-    21300004: 128x80Minotaur_Walk_2
-    21300006: 128x80Minotaur_Walk_3
-    21300008: 128x80Minotaur_Walk_4
-    21300010: 128x80Minotaur_Walk_5
-    21300012: 128x80Minotaur_Walk_6
-    21300014: 128x80Minotaur_Walk_7
+    21300000: 32x32Ghost_Float_0
+    21300002: 32x32Ghost_Float_1
+    21300004: 32x32Ghost_Float_2
+    21300006: 32x32Ghost_Float_3
+    21300008: 32x32Ghost_Float_4
+    21300010: 32x32Ghost_Float_5
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -53,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 40
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -92,13 +90,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 128x80Minotaur_Walk_0
+      name: 32x32Ghost_Float_0
       rect:
         serializedVersion: 2
-        x: 18
-        y: 0
-        width: 52
-        height: 44
+        x: 2
+        y: 5
+        width: 23
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -106,19 +104,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c071dc49a2e2e6a46a7cba15d25717ad
+      spriteID: 1e7a0f92308e3d3468ec693f70fdffef
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 128x80Minotaur_Walk_1
+      name: 32x32Ghost_Float_1
       rect:
         serializedVersion: 2
-        x: 144
-        y: 0
-        width: 56
-        height: 45
+        x: 33
+        y: 5
+        width: 25
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -126,19 +124,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43c485f5ae59be44b94814531329c785
+      spriteID: b461ad8d755383c4da9ec6a27ad8d57a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 128x80Minotaur_Walk_2
+      name: 32x32Ghost_Float_2
       rect:
         serializedVersion: 2
-        x: 272
-        y: 0
-        width: 56
-        height: 46
+        x: 66
+        y: 5
+        width: 24
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,19 +144,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9bddde05c9e4c93489fb5833747851fd
+      spriteID: 3fb3f7ac86b9f7444b7db7aa8e34053c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 128x80Minotaur_Walk_3
+      name: 32x32Ghost_Float_3
       rect:
         serializedVersion: 2
-        x: 399
-        y: 0
-        width: 56
-        height: 45
+        x: 97
+        y: 6
+        width: 24
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,19 +164,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f53a5a33d68afa438c67a73a1da44e1
+      spriteID: 0fb8004781632e143b1fd8c1d67064e1
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 128x80Minotaur_Walk_4
+      name: 32x32Ghost_Float_4
       rect:
         serializedVersion: 2
-        x: 528
-        y: 0
-        width: 56
-        height: 45
+        x: 133
+        y: 6
+        width: 20
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -186,19 +184,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54ad03ddb56d4674bb07d680e26f0e98
+      spriteID: 752e92e70ab07914a92b4c9830ff35c9
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 128x80Minotaur_Walk_5
+      name: 32x32Ghost_Float_5
       rect:
         serializedVersion: 2
-        x: 656
-        y: 0
-        width: 56
-        height: 46
+        x: 163
+        y: 6
+        width: 22
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,47 +204,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbb5d281ad7325d41be800278aef7e21
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 128x80Minotaur_Walk_6
-      rect:
-        serializedVersion: 2
-        x: 785
-        y: 0
-        width: 53
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 39f19153bc6cfef4fbf4c5889d13ff21
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 128x80Minotaur_Walk_7
-      rect:
-        serializedVersion: 2
-        x: 917
-        y: 0
-        width: 47
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e2aba8de1f8e1da47bc8f3cad3e53745
+      spriteID: 72e6c40134a621b4caa76123accc8cdd
       vertices: []
       indices: 
       edges: []
@@ -254,7 +212,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 92550a996d0aa3b49a58e9069668cc9e
+    spriteID: 1c58c947a8c69be43bb7515c4ebc2449
     vertices: []
     indices: 
     edges: []
