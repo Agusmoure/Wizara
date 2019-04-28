@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CastAbility : MonoBehaviour {
 
-    public GameObject fireBall, shield;
+    public GameObject fireBall, shield, lighting;
     PoolManager pool;
     bool fireBallOnCD, shieldOnCD, thunderBoldOnCD;
     public UIManager uIManager;
@@ -79,11 +79,13 @@ public class CastAbility : MonoBehaviour {
     {
         int layerMask = 1 << 21;
         RaycastHit2D hit2D = Physics2D.Raycast(transform.position,Vector2.up,80,layerMask);
-
-        //If something was hit.
+        //Si choca con algo 
         if (hit2D.collider != null)
         {
-            Debug.Log(hit2D.point);
+            GameObject newLighting = Instantiate(lighting, hit2D.point, Quaternion.identity, null);
+
+            //muestra en el editor una linea que cubre toda la pantalla
+            Debug.DrawLine(hit2D.point, hit2D.point + 10 * Vector2.down, Color.yellow,5);
         }
     }
 

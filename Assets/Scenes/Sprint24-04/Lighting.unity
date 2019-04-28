@@ -6598,6 +6598,16 @@ Prefab:
       propertyPath: m_SortingLayer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1602436603072820, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114049586320647788, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d,
+        type: 2}
+      propertyPath: lighting
+      value: 
+      objectReference: {fileID: 1101762702090946, guid: cc0b2d9226b66ce40950b34983f5a392,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d, type: 2}
   m_IsPrefabAsset: 0
@@ -7096,7 +7106,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1568786259}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.72697544, y: 4.17, z: 1.982673}
+  m_LocalPosition: {x: -0.72697544, y: 4.76, z: 1.982673}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
