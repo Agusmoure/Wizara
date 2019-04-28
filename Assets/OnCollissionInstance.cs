@@ -9,8 +9,13 @@ public class Instance : MonoBehaviour
     public void InstanceNoTileMap(GameObject collision)
     {
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
-        BoxCollider2D collider2D = collision.GetComponent<BoxCollider2D>();
+        CompositeCollider2D compositeCollider2D = collision.GetComponent<CompositeCollider2D>();
         Vector3 position;
+        if (compositeCollider2D != null)
+        {
+            //position = compositeCollider2D.gameObject.transform.position - Vector3.right * Mathf.Abs(compositeCollider2D.offset.x) - Vector3.up * Mathf.Abs(compositeCollider2D.offset.y) + Vector3.up * (obtener tamaño / 2);
+        }
+        BoxCollider2D collider2D = collision.GetComponent<BoxCollider2D>();
         if (collider2D != null)
             position = collider2D.gameObject.transform.position - Vector3.right * Mathf.Abs(collider2D.offset.x) - Vector3.up * Mathf.Abs(collider2D.offset.y) + Vector3.up * (collider2D.size.y / 2);
         else position = new Vector3(0, 0, 0);

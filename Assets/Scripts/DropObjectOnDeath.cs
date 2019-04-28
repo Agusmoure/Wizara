@@ -19,7 +19,7 @@ public class DropObjectOnDeath : MonoBehaviour {
 
         if (aleatority <= probability)
         {
-            GameObject newObject = Instantiate(droppedObject, transform.position, transform.rotation, pools.GetObjectPool());
+            GameObject newObject = Instantiate(droppedObject, transform.position, transform.rotation, /*pools.GetObjectPool()*/ null);
         }
     }
 }
