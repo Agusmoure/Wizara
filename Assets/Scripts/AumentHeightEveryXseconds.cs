@@ -16,9 +16,11 @@ public class AumentHeightEveryXseconds : MonoBehaviour
         Instance inst = GetComponent<Instance>();
         if (inst != null)
         {
+            //Guardamos el tilemap collider del objeto con el que collisionamos
             TilemapCollider2D tilemapCollider = collision.gameObject.GetComponent<TilemapCollider2D>();
+            //inicializamos el tilemap y los puntos de contacto
             Tilemap tile = null;
-            ContactPoint2D[] contacts = null;
+            ContactPoint2D[] contacts = new ContactPoint2D[1];
             if (tilemapCollider != null)
             {
                 tile = tilemapCollider.gameObject.GetComponent<Tilemap>();
