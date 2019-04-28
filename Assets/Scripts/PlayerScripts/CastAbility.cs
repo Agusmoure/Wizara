@@ -48,12 +48,12 @@ public class CastAbility : MonoBehaviour {
 
     void ThunderboltInput()
     {
-     /* if (Input.GetKeyDown(KeyCode.W) && GameManager.instance.GetAbility("Thunderbolt") && !thunderBoldOnCD)
+      if (Input.GetKeyDown(KeyCode.W) && GameManager.instance.ReturnAbilityValue("Lightning") && !thunderBoldOnCD)
         {
             InstantiateThunderbolt();
             thunderBoldOnCD = true;
             Invoke("ThunderboltCD", GameManager.instance.ReturnCooldown("Lightning"));
-        }*/
+        }
     }
 
     //Metodos para instanciar las habilidades.
@@ -77,7 +77,14 @@ public class CastAbility : MonoBehaviour {
 
     void InstantiateThunderbolt()
     {
+        int layerMask = 1 << 21;
+        RaycastHit2D hit2D = Physics2D.Raycast(transform.position,Vector2.up,80,layerMask);
 
+        //If something was hit.
+        if (hit2D.collider != null)
+        {
+            Debug.Log(hit2D.point);
+        }
     }
 
     //Metodos para control de tiempo de enfriamiento.
