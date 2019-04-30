@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class AumentHeightEveryXseconds : MonoBehaviour
 {
@@ -27,13 +26,8 @@ public class AumentHeightEveryXseconds : MonoBehaviour
         else
             Destroy(gameObject);
     }
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        Debug.Log("C" + hit.point);
-    }
     void Aument()
     {
-
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
         float aumented = sprite.size.y + aument;
         sprite.size = new Vector2(sprite.size.x, aumented);
