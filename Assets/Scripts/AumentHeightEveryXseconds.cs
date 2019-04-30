@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AumentHeightEveryXseconds : MonoBehaviour
 {
+    //le pasamos cuanto aumenta y cada cuanto tiempo
     public float seconds, aument;
     // Use this for initialization
     void Start()
