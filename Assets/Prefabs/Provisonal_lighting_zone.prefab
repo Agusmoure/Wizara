@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114930622486702662}
   - component: {fileID: 114585855114162290}
   - component: {fileID: 50382880903427964}
+  - component: {fileID: 95502020112353202}
   m_Layer: 12
   m_Name: Provisonal_lighting_zone
   m_TagString: Untagged
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1496152651178424}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -3.1844041, y: 0.3757819, z: 0}
+  m_LocalPosition: {x: 5.555981, y: -2.017362, z: 0}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -89,6 +90,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6406571, y: 6.153207}
   m_EdgeRadius: 0
+--- !u!95 &95502020112353202
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1496152651178424}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1744646b60fc6a945954d1c7cbc1ba54, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114585855114162290
 MonoBehaviour:
   m_ObjectHideFlags: 1
