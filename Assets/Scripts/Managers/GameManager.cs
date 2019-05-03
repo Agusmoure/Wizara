@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     UIManager uIManager;
     AudioManager audioManager;
     PoolManager poolManager;
-   public bool onMenu = false, onDialogue = false;
+    public bool onMenu = false, onDialogue = false, girl = true;
     bool doubleJump = false, wallJump = false, dash = false, fireBall = false, shield = false, lightning = true, invulnerable = false;
 
     //Los checkpoints son structs en los que se guardan dos datos: El transform, para la posición, y la escena, para cargar la escena necesaria al reaparecer.
@@ -264,5 +264,13 @@ public class GameManager : MonoBehaviour
         shield = true;
         lightning = true;
 
+    }
+    public bool GetGender()
+    {
+        return girl;
+    }
+    public void AreYouAGirl(bool areYou)
+    {
+        girl = areYou;
     }
 }

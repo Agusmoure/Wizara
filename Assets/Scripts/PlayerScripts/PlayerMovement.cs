@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
-
     public float velocity, jumpForce, dashForce, maxFallSpeed, yVelocity;
    public int maxJump = 1;
     int jump;
@@ -20,6 +19,7 @@ public class PlayerMovement : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+
         player = gameObject.GetComponent<Rigidbody2D>();
         GameManager.instance.GetPlayer(gameObject);
         scale = transform.localScale;
