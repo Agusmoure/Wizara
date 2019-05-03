@@ -15,7 +15,6 @@ public class Cheat : MonoBehaviour {
         {
             GameManager.instance.ActivateAll();
             GameManager.instance.ReturnUIManager().EnableAbilityIcons();
-        
         }
 	}
 }

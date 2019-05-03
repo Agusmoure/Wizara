@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Hito1/Credits.unity
     guid: 7c96d087b74d4fd45ab503c000725260
   - enabled: 1
+    path: Assets/Scenes/Sprint24-04/GenderMenu.unity
+    guid: 2b69242f181191a4d83abab7cf69ddd6
+  - enabled: 1
     path: Assets/Scenes/Hito1/Puzzle.unity
     guid: 6bd3e15a16f0c0d4fbd89d3faebfd553
   - enabled: 1

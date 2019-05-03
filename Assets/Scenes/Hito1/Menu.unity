@@ -143,6 +143,9 @@ MonoBehaviour:
   fireBallCooldown: 1
   shieldCooldown: 4
   lightningCooldown: 0
+  onMenu: 0
+  onDialogue: 0
+  girl: 1
   currentCheckpoint:
     playerPosition: {x: -5.5, y: -3.8}
     cameraRoom: {x: 0, y: 0}
@@ -1512,7 +1515,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Guerrilla
+          m_StringArgument: GenderMenu
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -1603,6 +1606,7 @@ MonoBehaviour:
   lightningIcon: {fileID: 0}
   dialogueBox: {fileID: 0}
   debugMode: {fileID: 215980097}
+  FirstsBottons: []
   bossSlider: {fileID: 0}
   fireballSlider: {fileID: 0}
   shieldSlider: {fileID: 0}
@@ -1610,6 +1614,7 @@ MonoBehaviour:
   qSlider: {fileID: 0}
   wSlider: {fileID: 0}
   eSlider: {fileID: 0}
+  eventSystem: {fileID: 0}
 --- !u!1 &1244087838
 GameObject:
   m_ObjectHideFlags: 0
