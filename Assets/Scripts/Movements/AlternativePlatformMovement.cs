@@ -5,12 +5,32 @@ using UnityEngine;
 public class AlternativePlatformMovement : MonoBehaviour {
 
     public float speedMovement;
-    public Transform[] points; // trazado que realizará el movimiento
+    Transform[] points; // trazado que realizará el movimiento
     Transform currentPoint; // punto actual al que se moverá la plataforma
     public int selector; //variable que indica a qué plataforma se moverá
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
+        int numberOfPoints = 0;
+
+        for (int i = 0; i < transform.parent.childCount; i++)
+        {
+            if (transform.parent.GetChild(i).name.Contains("Point")) numberOfPoints++;
+        }
+
+        points = new Transform[numberOfPoints];
+        int j = 0;
+
+        for (int i = 0; i < transform.parent.childCount; i++)
+        {
+            if (transform.parent.GetChild(i).name.Contains("Point"))
+            {
+                points[j] = transform.parent.GetChild(i).transform;
+                j++;
+            }
+        }
+
         currentPoint = points[selector];    //se indica el punto de inicio del movimiento
 	}
 	

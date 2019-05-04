@@ -393,6 +393,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 548469197cb92724eaa386f132065360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointPrefab: {fileID: 1578763608846338, guid: 7469d067133a405428d638df0aa6cd32,
+    type: 2}
 --- !u!114 &114286569912600504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -420,7 +422,6 @@ MonoBehaviour:
   probability: 60
   droppedObject: {fileID: 1823006112532908, guid: 2a1ba307356fbf44fb281c9f6a57ca10,
     type: 2}
-  objectPool: {fileID: 0}
 --- !u!114 &114399865612435588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -468,7 +469,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyProjectile: {fileID: 1575353207133300, guid: 0cb2e7b2b4da09e4798afcc001de9da4,
     type: 2}
-  projectilePool: {fileID: 0}
   time: 2
 --- !u!114 &114904221367645836
 MonoBehaviour:

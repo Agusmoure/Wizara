@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyRespawn : MonoBehaviour {
 
+    public GameObject pointPrefab;
+
     //El método respawn recibe la información concerniente a este objeto almacenada en el array del script que resetea las salas y la aplica a esta nueva instancia
     public void Respawn(Vector3[] wayPointPositions, Vector2 scale, Vector2 speed)
     {
@@ -22,6 +24,15 @@ public class EnemyRespawn : MonoBehaviour {
                 currentWayPoint++;
             }
         }
+
+        for (int i = currentWayPoint; i < wayPointPositions.Length; i++)
+        {
+            if (pointPrefab != null)
+            {
+                GameObject newPoint = Instantiate(pointPrefab, wayPointPositions[currentWayPoint], Quaternion.identity, transform);
+                currentWayPoint++;
+            }
+        }
     }
 
     //Este metodo recibe la velocidad guardada al cargarse la escena y la aplica al objeto que se acaba de instanciar
@@ -34,8 +45,6 @@ public class EnemyRespawn : MonoBehaviour {
         else if (gameObject.GetComponentInChildren<MoveAroundPlatforms>() != null) gameObject.GetComponentInChildren<MoveAroundPlatforms>().UpdateSpeed(speed.x);
 
         else if (gameObject.GetComponentInChildren<MoveFromAtoB>() != null) gameObject.GetComponentInChildren<MoveFromAtoB>().UpdateSpeed(speed.x, speed.y);
-
-
     }
 }
  
