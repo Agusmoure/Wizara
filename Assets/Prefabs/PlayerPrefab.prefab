@@ -124,7 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireBall: {fileID: 1932105882264238, guid: c8eeb266559cbcb4fa440b5881e32342, type: 2}
   shield: {fileID: 1960320302740486, guid: 78df1723b26a2414b999df0ff99e35c5, type: 2}
-  projectilePool: {fileID: 0}
+  lighting: {fileID: 0}
   uIManager: {fileID: 0}
 --- !u!114 &114150469810062456
 MonoBehaviour:
@@ -177,9 +177,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: 3
   jumpForce: 11
-  dashForce: 10
+  dashForce: 13
   maxFallSpeed: 5
   yVelocity: 0
+  maxJump: 1
   movmentRestriction: 0
 --- !u!212 &212786977097245734
 SpriteRenderer:

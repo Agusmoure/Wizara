@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b2dada95ebab3b4e9aa0e8b8810d298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldDuration: 2
+  shieldDuration: 3
 --- !u!114 &114675208976155860
 MonoBehaviour:
   m_ObjectHideFlags: 1
