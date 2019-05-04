@@ -80,11 +80,13 @@ public class RoomResetManager : MonoBehaviour
 
         else for (int j = 0; j < transform.GetChild(i).childCount; j++)
             {
-                if (transform.GetChild(i).transform.GetChild(j).name.Contains("Rat") || transform.GetChild(i).transform.GetChild(j).name.Contains("Bat")
-                        || transform.GetChild(i).transform.GetChild(j).name.Contains("Slime"))
+                for (int k = 0; k < prefabs.Length; k++)
                 {
-                    enemyArray[i].enemyScale.x = transform.GetChild(i).transform.GetChild(j).transform.localScale.x;
-                    enemyArray[i].enemyScale.y = transform.GetChild(i).transform.GetChild(j).transform.localScale.y;
+                    if (transform.GetChild(i).transform.GetChild(j).name.Contains(prefabs[k].name) && !transform.GetChild(i).name.Contains("Wizard") && !transform.GetChild(i).name.Contains("Platform"))
+                    {
+                        enemyArray[i].enemyScale.x = transform.GetChild(i).transform.GetChild(j).transform.localScale.x;
+                        enemyArray[i].enemyScale.y = transform.GetChild(i).transform.GetChild(j).transform.localScale.y;
+                    }
                 }
             }
     }
