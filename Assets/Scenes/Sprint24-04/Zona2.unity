@@ -2850,6 +2850,61 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &925858023
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 657949212}
+    m_Modifications:
+    - target: {fileID: 4271068488620430, guid: 539ac2d0803113e4297860b8f48298da, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -3.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4271068488620430, guid: 539ac2d0803113e4297860b8f48298da, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 4271068488620430, guid: 539ac2d0803113e4297860b8f48298da, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4271068488620430, guid: 539ac2d0803113e4297860b8f48298da, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4271068488620430, guid: 539ac2d0803113e4297860b8f48298da, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4271068488620430, guid: 539ac2d0803113e4297860b8f48298da, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4271068488620430, guid: 539ac2d0803113e4297860b8f48298da, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4271068488620430, guid: 539ac2d0803113e4297860b8f48298da, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4185979726947652, guid: 539ac2d0803113e4297860b8f48298da, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4185979726947652, guid: 539ac2d0803113e4297860b8f48298da, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 114974905778749788, guid: 539ac2d0803113e4297860b8f48298da,
+        type: 2}
+      propertyPath: speedMovement
+      value: 1.2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 539ac2d0803113e4297860b8f48298da, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!4 &965604850 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4483812276989030, guid: 2cb5b585cad457842980da836123a785,
