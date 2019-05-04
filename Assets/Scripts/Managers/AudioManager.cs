@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour {
 
@@ -10,6 +11,7 @@ public class AudioManager : MonoBehaviour {
     float musicVolume=1;
     public Sound[] sound;
     AudioSource mainTheme;
+    Slider volume;
     [System.Serializable]
     public struct Sound
     {
@@ -52,10 +54,16 @@ public class AudioManager : MonoBehaviour {
     void Start () {
         // Comunica al GM de quien es el AudioManager.
         GameManager.instance.ThisAudioManager(this);
+        
     }
-	
+    private void Update()
+    {
+        volume = GameManager.instance.GetVolumeSlider();
+        SetMusicVolume(volume.value);
+    }
+
     // Metodo para efectos de sonido
-	public void PlayAudio(string name)
+    public void PlayAudio(string name)
     {
         int i = 0;
         // Busca el componente del array con nombre name.
@@ -104,6 +112,7 @@ public class AudioManager : MonoBehaviour {
     public void SetMusicVolume(float volume)
     {
         musicVolume = volume;
+        GameManager.instance.SetCurrentVolume(musicVolume);
         mainTheme.volume = musicVolume;
     }
 }
