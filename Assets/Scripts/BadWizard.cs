@@ -10,6 +10,12 @@ public class BadWizard : MonoBehaviour
     public GameObject fireBall;
     bool FBOnCD =false;
     Vector2 origin, direction;
+    Animator anim;
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -32,6 +38,7 @@ public class BadWizard : MonoBehaviour
             //Si la bola no está en CD, dispara.
             if (!FBOnCD)
             {
+                anim.Play("EnemyWizardAttack");
                 InstantiateFireBall();
                 FBOnCD = true;
                 Invoke("FireBallCD", Cooldown);
