@@ -11,6 +11,7 @@ public class KnockBackEverySec : MonoBehaviour {
     {
         GetCollider(other);
         InvokeRepeating("KnockBack", 0, seconds);
+        
     }
     //Método para realizar KnockBack con el componente Bounce del jugador.
     void KnockBack()
@@ -19,7 +20,8 @@ public class KnockBackEverySec : MonoBehaviour {
         //El valor de la x es aleatorio entre -1 y 1. No puede valer 0 para poder hacer un bounce diagonal.
         while( x == 0)
         {
-           x = Random.Range(-1, 2);
+            x = Random.Range(-1, 2); 
+           
         }
         if (triggerCollider.GetComponent<Bounce>() != null && !GameManager.instance.GetInvulnerablePlayer()) triggerCollider.GetComponent<Bounce>().BounceTo(x*knockbackBoostX/2,knockbackBoostY);
     }
