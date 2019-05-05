@@ -54,11 +54,18 @@ public class AudioManager : MonoBehaviour {
     void Start () {
         // Comunica al GM de quien es el AudioManager.
         GameManager.instance.ThisAudioManager(this);
+        // recoge la referencia del Slider que controla el volumen.
+        Invoke("SetSliderReference", 0.1f);
         
+
+    }
+    void SetSliderReference()
+    {
+        volume = GameManager.instance.GetVolumeSlider();
     }
     private void Update()
     {
-        volume = GameManager.instance.GetVolumeSlider();
+        if (volume!=null)
         SetMusicVolume(volume.value);
     }
 
@@ -85,6 +92,8 @@ public class AudioManager : MonoBehaviour {
     // Metodo para musica de fondo
     public void PlayMainAudio(string name)
     {
+        // recoge la referencia del Slider que controla el volumen.
+        Invoke("SetSliderReference", 0.1f);
         int i = 0;
         // Busca el componente del array con nombre name.
         while (i<sound.Length && sound[i].name != name)
