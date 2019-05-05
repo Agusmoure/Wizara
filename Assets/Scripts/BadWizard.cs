@@ -30,28 +30,25 @@ public class BadWizard : MonoBehaviour
         //establecemos desde donde saldrá el raycast
         origin = new Vector2(transform.position.x,transform.position.y);
         //comprobamos en que lado esta el jugador y miramos y establecemos el lado de carga
-        if (Physics2D.Raycast(origin, Vector2.right, distance, layerMask))
+        if (Physics2D.Raycast(origin, Vector2.right, distance, layerMask) || Physics2D.Raycast(origin, Vector2.left, distance, layerMask))
         {
-            //Cambia la direccion del mago y guarda el lado en direction para indicarselo a la bola.
-            transform.localScale = new Vector2(-Mathf.Abs(transform.localScale.x), Mathf.Abs(transform.localScale.y));
-            direction = Vector2.right;
+            if (Physics2D.Raycast(origin, Vector2.right, distance, layerMask))
+            {
+                //Cambia la direccion del mago y guarda el lado en direction para indicarselo a la bola.
+                transform.localScale = new Vector2(-Mathf.Abs(transform.localScale.x), Mathf.Abs(transform.localScale.y));
+                direction = Vector2.right;
+            }
+
+            else if (Physics2D.Raycast(origin, Vector2.left, distance, layerMask))
+            {
+                transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), Mathf.Abs(transform.localScale.y));
+                direction = Vector2.left;
+            }
+
             //Si la bola no está en CD, dispara.
             if (!FBOnCD)
             {
                 anim.Play("EnemyWizardAttack");
-                InstantiateFireBall();
-                FBOnCD = true;
-                Invoke("FireBallCD", Cooldown);
-            }
-        }
-        else if (Physics2D.Raycast(origin, Vector2.left, distance, layerMask))
-        {
-            //Cambia la direccion del mago y guarda el lado en direction para indicarselo a la bola.
-            transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), Mathf.Abs(transform.localScale.y));
-            direction = Vector2.left;
-            //Si la bola no está en CD, dispara.
-            if (!FBOnCD)
-            {
                 InstantiateFireBall();
                 FBOnCD = true;
                 Invoke("FireBallCD", Cooldown);
