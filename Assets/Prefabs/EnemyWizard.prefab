@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 4628301643251130}
   - component: {fileID: 50196621655309138}
   - component: {fileID: 61586497122128800}
-  m_Layer: 9
+  m_Layer: 19
   m_Name: EnemyWizardBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
