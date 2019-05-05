@@ -137,9 +137,9 @@ public class PlayerMovement : MonoBehaviour {
             //Frena el movimiento horizontal del jugador.
             player.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
             //Pequeño impulso hacia arriba para levantar al jugador del suelo.
-            player.AddForce(new Vector2(0, 1), ForceMode2D.Impulse);
-            //Retraso de 0.02 para que de tiempo a levantar a jugador.
-            Invoke("DoDash", 0.02f);
+            player.AddForce(new Vector2(0, 4), ForceMode2D.Impulse);
+            //Retraso de 0.04 para que de tiempo a levantar a jugador.
+            Invoke("DoDash", 0.04f);
         }
     }
 
@@ -148,7 +148,11 @@ public class PlayerMovement : MonoBehaviour {
         anime.SetBool("Dash", true);
         player.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         player.AddForce(new Vector2(scale.x * dashForce, 0), ForceMode2D.Impulse);
-        movRestrictionL = true;
+
+        // de esta forma se comprueba hacia el lado al que mira el jugador para saber que movimiento debe restringir
+        if (scale.x < 0)
+            movRestrictionL = true;
+        else movRestrictionR = true;
         dash = false;
         AudioToPlay audio = GetComponent<AudioToPlay>();
         if (audio != null) audio.SendAudioToPlay();
@@ -161,6 +165,7 @@ public class PlayerMovement : MonoBehaviour {
         //Tras finalizar el dash.
         anime.SetBool("Dash", false);
         movRestrictionL = false;
+        movRestrictionR = false;
         player.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
     //Método que pasa el maxJump a 2
