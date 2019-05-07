@@ -11,23 +11,15 @@ public class GenderManager : MonoBehaviour {
         {
             Destroy(boy);
             girl.SetActive(true);
+            GameManager.instance.GetPlayer(girl);
+
 
         }
         else {
             Destroy(girl);
             boy.SetActive(true);
+            GameManager.instance.GetPlayer(boy);
+
         }
-    }
-
-    public void Boy()
-    {
-        GameManager.instance.AreYouAGirl(false);
-        GameManager.instance.ChangeScene(scene);
-    }
-    public void Girl()
-    {
-        GameManager.instance.AreYouAGirl(true);
-        GameManager.instance.ChangeScene(scene);
-
     }
 }

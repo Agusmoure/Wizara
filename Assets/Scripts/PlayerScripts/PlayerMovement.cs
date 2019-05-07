@@ -21,7 +21,6 @@ public class PlayerMovement : MonoBehaviour {
     {
 
         player = gameObject.GetComponent<Rigidbody2D>();
-        GameManager.instance.GetPlayer(gameObject);
         scale = transform.localScale;
         jump = maxJump;
         anime = GetComponent<Animator>();

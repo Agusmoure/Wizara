@@ -213,4 +213,15 @@ public class UIManager : MonoBehaviour
             GameManager.instance.Pause("Menu");
         }
     }
+    public void Boy(string scene)
+    {
+        GameManager.instance.AreYouAGirl(false);
+        GameManager.instance.ChangeScene(scene);
+    }
+    public void Girl(string scene)
+    {
+        GameManager.instance.AreYouAGirl(true);
+        GameManager.instance.ChangeScene(scene);
+
+    }
 }
