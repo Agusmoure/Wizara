@@ -47,7 +47,6 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(player.name);
     }
 
     //obtiene el level manager
