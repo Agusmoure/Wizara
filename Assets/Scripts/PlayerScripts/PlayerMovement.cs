@@ -5,11 +5,11 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
 
-    public float velocity, jumpForce, dashForce, maxFallSpeed, yVelocity;
-   public int maxJump = 1;
-    int jump;
+    public float velocity, jumpForce, dashForce, maxFallSpeed, yVelocity, xVelovity, wallJumpForce;
+    public int maxJump = 1, maxWallJump = 2;
+    int jump, wallJump;
     float inputX;
-    public bool movmentRestriction = false;
+    public bool movmentRestriction = false, noInput = false;
     bool dash = true;
     Rigidbody2D player;
     Vector3 scale;
@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour {
         GameManager.instance.GetPlayer(gameObject);
         scale = transform.localScale;
         jump = maxJump;
+        wallJump = maxWallJump;
         anime = GetComponent<Animator>();
         if (GameManager.instance.ReturnAbilityValue("DoubleJump")) DoubleJumpActive();
     }
@@ -41,6 +42,7 @@ public class PlayerMovement : MonoBehaviour {
 
         if (player.velocity.y < -maxFallSpeed) player.velocity = new Vector2(player.velocity.x, -maxFallSpeed);
         yVelocity = player.velocity.y;
+        xVelovity = player.velocity.x;
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -55,6 +57,7 @@ public class PlayerMovement : MonoBehaviour {
         else if (contact[0].normal.y > 0.9 && contact[0].normal.y < 1.1)
         {
             jump = maxJump;
+            wallJump = maxWallJump;
             movmentRestriction = false;
             dash = true;
         }
@@ -87,9 +90,9 @@ public class PlayerMovement : MonoBehaviour {
 
     void ChangeVelocity()
     {
-        if(!movmentRestriction) player.velocity = new Vector2(velocity * inputX, player.velocity.y);
+        if(!movmentRestriction && !noInput) player.velocity = new Vector2(velocity * inputX, player.velocity.y);
 
-        if (movmentRestriction)
+        if (movmentRestriction && !noInput)
         {
             if (contact[0].normal.x < 0 && inputX < 0) player.velocity = new Vector2(velocity * inputX, player.velocity.y);
 
@@ -99,13 +102,13 @@ public class PlayerMovement : MonoBehaviour {
 
     void PlayerDirection()
     {
-        if (inputX < 0)
+        if (inputX < 0 && !noInput)
         {
             scale.x = -Mathf.Abs(scale.x);
             transform.localScale = scale;
         }
 
-        else if (inputX > 0)
+        else if (inputX > 0 && !noInput)
         {
             scale.x = Mathf.Abs(scale.x);
             transform.localScale = scale;
@@ -115,7 +118,16 @@ public class PlayerMovement : MonoBehaviour {
 
     void JumpInput()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) && jump > 0 && !GameManager.instance.IsOnMenu() && !GameManager.instance.IsOnDialogue())
+        if (Input.GetKeyDown(KeyCode.UpArrow) && jump != maxJump && wallJump > 0 && !GameManager.instance.IsOnMenu() && !GameManager.instance.IsOnDialogue() && movmentRestriction && !noInput)
+        {
+            StartCoroutine(NoInput());
+            player.velocity = new Vector2(0, 0);
+            player.AddForce(new Vector2(-Mathf.Sign(transform.localScale.x) * wallJumpForce, wallJumpForce), ForceMode2D.Impulse);
+            transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
+            wallJump--;
+        }
+
+        if (Input.GetKeyDown(KeyCode.UpArrow) && jump > 0 && !GameManager.instance.IsOnMenu() && !GameManager.instance.IsOnDialogue() && !noInput)
         {
             player.velocity = new Vector2(player.velocity.x, 0);
             player.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
@@ -125,7 +137,7 @@ public class PlayerMovement : MonoBehaviour {
 
     void DashInput()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && dash && !GameManager.instance.IsOnMenu() && !GameManager.instance.IsOnDialogue() && GameManager.instance.ReturnAbilityValue("Dash"))
+        if (Input.GetKeyDown(KeyCode.Space) && dash && !GameManager.instance.IsOnMenu() && !GameManager.instance.IsOnDialogue() && GameManager.instance.ReturnAbilityValue("Dash") && !noInput)
         {
             //Frena el movimiento horizontal del jugador.
             player.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
@@ -160,5 +172,12 @@ public class PlayerMovement : MonoBehaviour {
     public void DoubleJumpActive()
     {
         maxJump = 2;
+    }
+
+    IEnumerator NoInput()
+    {
+        noInput = true;
+        yield return new WaitForSeconds(0.5f);
+        noInput = false;
     }
 }
