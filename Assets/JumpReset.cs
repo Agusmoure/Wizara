@@ -14,6 +14,7 @@ public class JumpReset : MonoBehaviour {
         ContactPoint2D contact = collision.GetContact(0);
         if (contact.normal.y > 0.9 && contact.normal.y < 1.1)
         {
+            Debug.Log("Error");
             player.JumpReset();
         }
     }

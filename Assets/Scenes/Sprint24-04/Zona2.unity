@@ -159,8 +159,9 @@ MonoBehaviour:
   lightningCooldown: 0
   onMenu: 0
   onDialogue: 0
+  girl: 1
   currentCheckpoint:
-    playerPosition: {x: -5.5, y: -3.8}
+    playerPosition: {x: -5.5, y: -1}
     cameraRoom: {x: 0, y: 0}
     scene: Zona2
 --- !u!114 &20493877
@@ -746,7 +747,7 @@ Transform:
   - {fileID: 1917501288}
   - {fileID: 1629123688}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &85813544 stripped
 Transform:
@@ -13458,7 +13459,7 @@ Transform:
   m_Children:
   - {fileID: 1893546412}
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1063599711
 Prefab:
@@ -13815,21 +13816,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114049586320647788, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d,
         type: 2}
-      propertyPath: projectilePool
-      value: 
-      objectReference: {fileID: 1012300191}
-    - target: {fileID: 114049586320647788, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d,
-        type: 2}
       propertyPath: uIManager
       value: 
       objectReference: {fileID: 2029523600}
     - target: {fileID: 1602436603072820, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d, type: 2}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 4410842504909816, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d, type: 2}
@@ -15453,7 +15445,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4090033319280160, guid: 425f12db3ecd60848b2c5a78f1dd83d9, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 61126428023948994, guid: 425f12db3ecd60848b2c5a78f1dd83d9,
         type: 2}
@@ -17891,7 +17883,7 @@ Prefab:
     - target: {fileID: 224891920564122482, guid: 778f5121a8efd6547949c0cc42346fd1,
         type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 224891920564122482, guid: 778f5121a8efd6547949c0cc42346fd1,
         type: 2}
@@ -18925,7 +18917,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4728191513833232, guid: a00dd5ec208e0974189ef4a51f7e3d3e, type: 2}
       propertyPath: m_RootOrder
-      value: 25
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 1906690685511556, guid: a00dd5ec208e0974189ef4a51f7e3d3e, type: 2}
       propertyPath: m_Name
@@ -102451,7 +102443,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4106822929739150, guid: 1630fab8aac557e429694c094264f0f9, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1864534930285834, guid: 1630fab8aac557e429694c094264f0f9, type: 2}
       propertyPath: m_Name
@@ -105547,23 +105539,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &2111483332 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1602436603072820, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d,
-    type: 2}
-  m_PrefabInternal: {fileID: 1143025472}
---- !u!114 &2111483342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2111483332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acbc789c38ec34443a2ca2d438a0f4bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: Dash
 --- !u!4 &2112463438 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4106822929739150, guid: 1630fab8aac557e429694c094264f0f9,

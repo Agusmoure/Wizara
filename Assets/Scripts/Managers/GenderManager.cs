@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GenderManager : MonoBehaviour {
     public GameObject girl, boy;
-    public string scene;
     // Use this for initialization
     void Start () {
         if (GameManager.instance.GetGender())
