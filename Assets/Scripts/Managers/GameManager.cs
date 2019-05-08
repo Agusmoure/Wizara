@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
 
     public static GameManager instance = null;
     public float fireBallCooldown, shieldCooldown, lightningCooldown;
+    float crrntVol=1;
     GameObject player;
     LevelManager levelManager;
     BossManager boss;
     UIManager uIManager;
     AudioManager audioManager;
+    Slider volumeSlid;
     PoolManager poolManager;
-   public bool onMenu = false, onDialogue = false;
+    public bool onMenu = false, onDialogue = false, girl = true;
     bool doubleJump = false, wallJump = false, dash = false, fireBall = false, shield = false, lightning = true, invulnerable = false;
 
     //Los checkpoints son structs en los que se guardan dos datos: El transform, para la posición, y la escena, para cargar la escena necesaria al reaparecer.
@@ -44,7 +47,6 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-
     }
 
     //obtiene el level manager
@@ -246,12 +248,7 @@ public class GameManager : MonoBehaviour
     {
         return boss;
     }
-    public void EnableDebugMode()
-    {
-        dash = true;
-        fireBall = true;
-        shield = true;
-    }
+
     public void ActivateAll()
     {
         dash = true;
@@ -264,5 +261,31 @@ public class GameManager : MonoBehaviour
         shield = true;
         lightning = true;
 
+    }
+    public bool GetGender()
+    {
+        return girl;
+    }
+    public void AreYouAGirl(bool areYou)
+    {
+        girl = areYou;
+    }
+    // se recoge la referencia al objeto que lleva el slider para poder usarlo.
+    public void SetVolumeSlider(Slider volume)
+    {
+        volumeSlid = volume;
+    }
+    public Slider GetVolumeSlider()
+    {
+        return volumeSlid;
+    }
+    // los siguientes dos métodos son necesarios para guardar el valor del volumen en el cambio de escena
+    public void SetCurrentVolume(float vol)
+    {
+        crrntVol = vol;
+    }
+    public float GetCurrentVolume()
+    {
+        return crrntVol;
     }
 }

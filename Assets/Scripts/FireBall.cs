@@ -16,11 +16,7 @@ public class FireBall : MonoBehaviour {
         AudioToPlay audio = GetComponent<AudioToPlay>();
         if (audio != null) audio.SendAudioToPlay();
     }
-    // Update is called once per frame
-    private void Update()
-    {
-        anime.Play("FireBallAnimation");
-    }
+
     //movemos la bola de fuego en todo momento
     void FixedUpdate()
     {

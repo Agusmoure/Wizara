@@ -29,7 +29,9 @@ public class CastAbility : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.Q) && GameManager.instance.ReturnAbilityValue("Fireball") && !fireBallOnCD && !GameManager.instance.IsOnMenu() && !GameManager.instance.IsOnDialogue())
         {
+            if(!GameManager.instance.GetGender())
             anim.Play("PlayerShoot");
+            else anim.Play("FemaleShot");
             InstantiateFireBall();
             fireBallOnCD = true;
             Invoke("FireBallCD", GameManager.instance.ReturnCooldown("Fireball"));

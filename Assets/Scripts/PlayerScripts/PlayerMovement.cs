@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
-
-    public float velocity, jumpForce, dashForce, maxFallSpeed, yVelocity;
+    public float velocity, jumpForce, dashForce, maxFallSpeed, yVelocity,xVelocity;
    public int maxJump = 1;
     int jump;
     float inputX;
-    public bool movmentRestriction = false;
+    public bool movRestrictionL = false, movRestrictionR = false;
     bool dash = true;
     Rigidbody2D player;
     Vector3 scale;
@@ -20,8 +19,8 @@ public class PlayerMovement : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+
         player = gameObject.GetComponent<Rigidbody2D>();
-        GameManager.instance.GetPlayer(gameObject);
         scale = transform.localScale;
         jump = maxJump;
         anime = GetComponent<Animator>();
@@ -41,21 +40,23 @@ public class PlayerMovement : MonoBehaviour {
 
         if (player.velocity.y < -maxFallSpeed) player.velocity = new Vector2(player.velocity.x, -maxFallSpeed);
         yVelocity = player.velocity.y;
+        xVelocity = player.velocity.x;
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
         collision.GetContacts(contact);
 
-        if ((contact[0].normal.x > 0.9 && contact[0].normal.x < 1.1) || (contact[0].normal.x < -0.9 && contact[0].normal.x > -1.1))
+        if (contact[0].normal.x > 0.9 && contact[0].normal.x < 1.1)
         {
-            movmentRestriction = true;
+            movRestrictionL = true;
         }
-
-        else if (contact[0].normal.y > 0.9 && contact[0].normal.y < 1.1)
+        else if (contact[0].normal.x < -0.9 && contact[0].normal.x > -1.1)
         {
-            jump = maxJump;
-            movmentRestriction = false;
+            movRestrictionR = true;
+        }
+        if (contact[0].normal.y > 0.9 && contact[0].normal.y < 1.1)
+        {
             dash = true;
         }
     }
@@ -69,13 +70,12 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-
     void OnCollisionExit2D(Collision2D collision)
     {
         collision.GetContacts(contact);
 
-        if ((contact[0].normal.x > 0.9 && contact[0].normal.x < 1.1) || (contact[0].normal.x < -0.9 && contact[0].normal.x > -1.1)) movmentRestriction = false;
-        else if (contact[0].normal.y > 0.9 && contact[0].normal.y < 1.1) jump--;
+         movRestrictionL = false;
+         movRestrictionR = false;
 
         //comprueba si el jugador deja de estar en contacto con una plataforma en movimiento para que ya no tenga que estar sobre ella
         if (collision.gameObject.tag == "MovingPlatform")
@@ -87,13 +87,15 @@ public class PlayerMovement : MonoBehaviour {
 
     void ChangeVelocity()
     {
-        if(!movmentRestriction) player.velocity = new Vector2(velocity * inputX, player.velocity.y);
+        if(!movRestrictionL && !movRestrictionR) player.velocity = new Vector2(velocity * inputX, player.velocity.y);
 
-        if (movmentRestriction)
+        else if (movRestrictionL && inputX > 0)
         {
-            if (contact[0].normal.x < 0 && inputX < 0) player.velocity = new Vector2(velocity * inputX, player.velocity.y);
-
-            else if (contact[0].normal.x > 0 && inputX > 0) player.velocity = new Vector2(velocity * inputX, player.velocity.y);
+           player.velocity = new Vector2(velocity * inputX, player.velocity.y);
+        }
+        else if (movRestrictionR && inputX < 0)
+        {
+            player.velocity = new Vector2(velocity * inputX, player.velocity.y);
         }
     }
 
@@ -122,6 +124,10 @@ public class PlayerMovement : MonoBehaviour {
             jump--;
         }
     }
+    public void JumpReset()
+    {
+        jump = maxJump;
+    }
 
     void DashInput()
     {
@@ -130,9 +136,9 @@ public class PlayerMovement : MonoBehaviour {
             //Frena el movimiento horizontal del jugador.
             player.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
             //Pequeño impulso hacia arriba para levantar al jugador del suelo.
-            player.AddForce(new Vector2(0, 1), ForceMode2D.Impulse);
-            //Retraso de 0.02 para que de tiempo a levantar a jugador.
-            Invoke("DoDash", 0.02f);
+            player.AddForce(new Vector2(0, 4), ForceMode2D.Impulse);
+            //Retraso de 0.04 para que de tiempo a levantar a jugador.
+            Invoke("DoDash", 0.04f);
         }
     }
 
@@ -141,7 +147,11 @@ public class PlayerMovement : MonoBehaviour {
         anime.SetBool("Dash", true);
         player.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         player.AddForce(new Vector2(scale.x * dashForce, 0), ForceMode2D.Impulse);
-        movmentRestriction = true;
+
+        // de esta forma se comprueba hacia el lado al que mira el jugador para saber que movimiento debe restringir
+        if (scale.x < 0)
+            movRestrictionL = true;
+        else movRestrictionR = true;
         dash = false;
         AudioToPlay audio = GetComponent<AudioToPlay>();
         if (audio != null) audio.SendAudioToPlay();
@@ -153,7 +163,8 @@ public class PlayerMovement : MonoBehaviour {
     {
         //Tras finalizar el dash.
         anime.SetBool("Dash", false);
-        movmentRestriction = false;
+        movRestrictionL = false;
+        movRestrictionR = false;
         player.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
     //Método que pasa el maxJump a 2

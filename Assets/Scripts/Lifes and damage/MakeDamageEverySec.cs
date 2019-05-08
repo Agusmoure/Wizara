@@ -22,7 +22,7 @@ public class MakeDamageEverySec : MonoBehaviour {
     void GetCollider(Collider2D collider) {
         triggerCollider = collider;
     }
-    //Al salir del ácido se detiene el invoke, permitiendo que se inicie otro si se entra de nuevo (de esta forma no se superponen).
+    //Al salir se detiene el invoke, permitiendo que se inicie otro si se entra de nuevo (de esta forma no se superponen).
     private void OnTriggerExit2D(Collider2D collision)
     {
             CancelInvoke("Damage");
