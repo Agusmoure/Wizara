@@ -79,12 +79,12 @@ public class CastAbility : MonoBehaviour {
 
     void InstantiateThunderbolt()
     {
-        int layerMask = 1 << 21;
+        int layerMask = 1 << 10;
         RaycastHit2D hit2D = Physics2D.Raycast(transform.position,Vector2.up,80,layerMask);
         //Si choca con algo 
         if (hit2D.collider != null)
         {
-            GameObject newLighting = Instantiate(lighting, hit2D.point, Quaternion.identity, null);
+            GameObject newLighting = Instantiate(lighting, hit2D.point+Vector2.down*0.5f, Quaternion.identity, null);
 
             //muestra en el editor una linea que cubre toda la pantalla
             Debug.DrawLine(hit2D.point, hit2D.point + 10 * Vector2.down, Color.yellow,5);

@@ -16,12 +16,14 @@ public class AumentHeightEveryXseconds : MonoBehaviour
         Instance inst = GetComponent<Instance>();
         if (inst != null)
         {
+            Vector2 hitPoint= new Vector2(0,0);
             foreach (ContactPoint2D contact in collision.contacts)
             {
-                Vector2 hitPoint = contact.point;
-                //Instantiate(explosion, new Vector3(hitPoint.x, hitPoint.y, 0), Quaternion.identity);
-                inst.Instantiate(hitPoint);
+                if(hitPoint==new Vector2(0,0))
+                 hitPoint = contact.point;
+
             }
+            inst.Instantiate(hitPoint);
             Destroy(gameObject);
         }
         else
@@ -31,7 +33,8 @@ public class AumentHeightEveryXseconds : MonoBehaviour
     {
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
         float aumented = sprite.size.y + aument;
-        sprite.size = new Vector2(sprite.size.x, aumented);
         transform.position = transform.position + Vector3.down * aument / 2;
+
+        sprite.size = new Vector2(sprite.size.x, aumented);
     }
 }
