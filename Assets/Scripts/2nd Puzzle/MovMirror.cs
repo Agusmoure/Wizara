@@ -21,7 +21,7 @@ public class MovMirror : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		if(Input.GetButtonUp("a"))
+		if(Input.get)
         {
             Debug.Log("Click");
             selected = !selected;
