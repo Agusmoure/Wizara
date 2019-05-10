@@ -6,13 +6,11 @@ public class FireBall : MonoBehaviour {
 
     public float speed;
     Rigidbody2D fireB;
-    Animator anime;
     // Use this for initialization
     void Start()
     {
         //cacheo de componentes
         fireB = GetComponent<Rigidbody2D>();
-        anime = GetComponent<Animator>();
         AudioToPlay audio = GetComponent<AudioToPlay>();
         if (audio != null) audio.SendAudioToPlay();
     }

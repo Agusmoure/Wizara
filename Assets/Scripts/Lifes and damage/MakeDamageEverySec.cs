@@ -16,7 +16,10 @@ public class MakeDamageEverySec : MonoBehaviour {
     //Método para realizar daño.
     void Damage()
     {
-        if (triggerCollider.GetComponent<Life>() != null && !GameManager.instance.GetInvulnerablePlayer()) triggerCollider.GetComponent<Life>().LoseLife(damage);
+        if (triggerCollider.CompareTag("Player") && triggerCollider.GetComponent<Life>() != null && !GameManager.instance.GetInvulnerablePlayer())
+        {
+            triggerCollider.GetComponent<Life>().LoseLife(damage);
+        }
     }
     //Se guarda other detectado por el trigger para que Damage lo pueda usar, ya que en Invoke no se puede pasar parámetros a los métodos.
     void GetCollider(Collider2D collider) {

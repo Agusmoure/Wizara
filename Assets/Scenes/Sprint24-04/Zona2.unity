@@ -12726,19 +12726,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 4185979726947652, guid: 539ac2d0803113e4297860b8f48298da, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4185979726947652, guid: 539ac2d0803113e4297860b8f48298da, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 2.88
-      objectReference: {fileID: 0}
-    - target: {fileID: 114974905778749788, guid: 539ac2d0803113e4297860b8f48298da,
-        type: 2}
-      propertyPath: speedMovement
-      value: 1.2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 539ac2d0803113e4297860b8f48298da, type: 2}
   m_IsPrefabAsset: 0
@@ -13822,6 +13809,15 @@ Prefab:
     - target: {fileID: 1602436603072820, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d, type: 2}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983798974601146, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d,
+        type: 2}
+      propertyPath: maxWallJump
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1468736456978060, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d, type: 2}
@@ -18526,39 +18522,39 @@ CompositeCollider2D:
   - m_Collider: {fileID: 801565849}
     m_ColliderPaths:
     - - X: 2500000
-        Y: 0
+        Y: -4
       - X: 0
-        Y: 0
+        Y: -4
       - X: 0
-        Y: -75790
+        Y: -75795
       - X: 2500000
-        Y: -75790
+        Y: -75795
   - m_Collider: {fileID: 968481501}
     m_ColliderPaths:
     - - X: 5000000
-        Y: 0
+        Y: -4
       - X: 2500000
-        Y: 0
+        Y: -4
       - X: 2500000
-        Y: -75790
+        Y: -75795
       - X: 5000000
-        Y: -75790
+        Y: -75795
   - m_Collider: {fileID: 529701293}
     m_ColliderPaths:
     - - X: 7500000
-        Y: 0
+        Y: -4
       - X: 5000000
-        Y: 0
+        Y: -4
       - X: 5000000
-        Y: -75790
+        Y: -75795
       - X: 7500000
-        Y: -75790
+        Y: -75795
   m_CompositePaths:
     m_Paths:
-    - - {x: 0, y: -0.007579}
-      - {x: 0.75, y: -0.007579}
-      - {x: 0.75, y: 0}
-      - {x: 0, y: 0}
+    - - {x: 0, y: -0.0075795003}
+      - {x: 0.75, y: -0.0075795003}
+      - {x: 0.75, y: -0.0000004}
+      - {x: 0, y: -0.0000004}
   m_VertexDistance: 0.0005
 --- !u!114 &1938845138
 MonoBehaviour:
