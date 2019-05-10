@@ -16,26 +16,14 @@ public class KnockBackEverySec : MonoBehaviour {
     //Método para realizar KnockBack con el componente Bounce del jugador.
     void KnockBack()
     {
-
-        //Comprobamos si el jugador tiene el script "Bounce" y si es asi hacemos que el script "Bounce" lo haga rebotar hacia arriba.
-        if (triggerCollider != null)
-        {
-            Rigidbody2D playerRigi = triggerCollider.gameObject.GetComponent<Rigidbody2D>();
-            Bounce playerBounce = triggerCollider.gameObject.GetComponent<Bounce>();
-            if (playerBounce != null && playerRigi != null)
-            {
-                playerBounce.BounceTo(0, (-Mathf.Abs(playerRigi.velocity.y) / playerRigi.velocity.y));
-            }
-        }
-
-        //float x = 0;
+        float x = 0;
         //El valor de la x es aleatorio entre -1 y 1. No puede valer 0 para poder hacer un bounce diagonal.
-        //while (x == 0)
-        //{
-        //    x = Random.Range(-1, 2);
-
-        //}
-        //if (triggerCollider.GetComponent<Bounce>() != null && !GameManager.instance.GetInvulnerablePlayer()) triggerCollider.GetComponent<Bounce>().BounceTo(x * knockbackBoostX / 2, knockbackBoostY);
+        while( x == 0)
+        {
+            x = Random.Range(-1, 2); 
+           
+        }
+        if (triggerCollider.GetComponent<Bounce>() != null && !GameManager.instance.GetInvulnerablePlayer()) triggerCollider.GetComponent<Bounce>().BounceTo(x*knockbackBoostX/2,knockbackBoostY);
     }
     //Se guarda other detectado por el trigger para que Damage lo pueda usar, ya que en Invoke no se puede pasar parámetros a los métodos.
     void GetCollider(Collider2D collider)

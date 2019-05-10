@@ -23,7 +23,6 @@ public class PlayerMovement : MonoBehaviour {
         player = gameObject.GetComponent<Rigidbody2D>();
         scale = transform.localScale;
         jump = maxJump;
-        wallJump = maxWallJump;
         anime = GetComponent<Animator>();
         if (GameManager.instance.ReturnAbilityValue("DoubleJump")) DoubleJumpActive();
     }
@@ -102,13 +101,13 @@ public class PlayerMovement : MonoBehaviour {
 
     void PlayerDirection()
     {
-        if (inputX < 0 && !noInput)
+        if (inputX < 0)
         {
             scale.x = -Mathf.Abs(scale.x);
             transform.localScale = scale;
         }
 
-        else if (inputX > 0 && !noInput)
+        else if (inputX > 0)
         {
             scale.x = Mathf.Abs(scale.x);
             transform.localScale = scale;
@@ -118,16 +117,7 @@ public class PlayerMovement : MonoBehaviour {
 
     void JumpInput()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) && jump != maxJump && wallJump > 0 && !GameManager.instance.IsOnMenu() && !GameManager.instance.IsOnDialogue() && movmentRestriction && !noInput)
-        {
-            StartCoroutine(NoInput());
-            player.velocity = new Vector2(0, 0);
-            player.AddForce(new Vector2(-Mathf.Sign(transform.localScale.x) * wallJumpForce, wallJumpForce), ForceMode2D.Impulse);
-            transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
-            wallJump--;
-        }
-
-        if (Input.GetKeyDown(KeyCode.UpArrow) && jump > 0 && !GameManager.instance.IsOnMenu() && !GameManager.instance.IsOnDialogue() && !noInput)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && jump > 0 && !GameManager.instance.IsOnMenu() && !GameManager.instance.IsOnDialogue())
         {
             player.velocity = new Vector2(player.velocity.x, 0);
             player.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
@@ -141,7 +131,7 @@ public class PlayerMovement : MonoBehaviour {
 
     void DashInput()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && dash && !GameManager.instance.IsOnMenu() && !GameManager.instance.IsOnDialogue() && GameManager.instance.ReturnAbilityValue("Dash") && !noInput)
+        if (Input.GetKeyDown(KeyCode.Space) && dash && !GameManager.instance.IsOnMenu() && !GameManager.instance.IsOnDialogue() && GameManager.instance.ReturnAbilityValue("Dash"))
         {
             //Frena el movimiento horizontal del jugador.
             player.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
@@ -181,12 +171,5 @@ public class PlayerMovement : MonoBehaviour {
     public void DoubleJumpActive()
     {
         maxJump = 2;
-    }
-
-    IEnumerator NoInput()
-    {
-        noInput = true;
-        yield return new WaitForSeconds(0.5f);
-        noInput = false;
     }
 }
