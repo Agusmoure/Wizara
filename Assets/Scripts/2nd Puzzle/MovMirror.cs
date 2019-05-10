@@ -5,8 +5,6 @@ using UnityEngine;
 public class MovMirror : MonoBehaviour
 {
     public Material select, defau;
-    //public GameObject[] mirrors = new GameObject[3];
-    public string letter;
     MeshRenderer mesh;
     bool selected;
 
@@ -21,15 +19,16 @@ public class MovMirror : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		if(Input.get)
-        {
-            Debug.Log("Click");
-            selected = !selected;
-            //mesh.material = select;
-            if (!selected)
-                mesh.material = select;
-            else if (selected)
-                mesh.material = defau;
-        }
+
 	}
+
+    //Cambia el material a seleccionado o no seleccionado.
+    public void changeColor()
+    {
+        selected = !selected;
+        if (!selected)
+            mesh.material = select;
+        else if (selected)
+            mesh.material = defau;
+    }
 }
