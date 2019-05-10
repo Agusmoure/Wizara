@@ -35,7 +35,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1015781570266576}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6, y: 2, z: 0}
+  m_LocalPosition: {x: -7, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14fb752b5eaf578479bd444b76f3d48a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reflections: 5
+  reflections: 4
   End: {fileID: 2100000, guid: 2ef746662d220374f967338f906c833e, type: 2}
 --- !u!120 &120663380478186316
 LineRenderer:
@@ -90,11 +90,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -6, y: 2, z: 0}
-  - {x: 2.48674, y: 2, z: 0}
-  - {x: -3.5040164, y: -0.93535775, z: 0}
-  - {x: 3.4918873, y: -2.720368, z: 0}
-  - {x: 4.9613853, y: 3.074266, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 1
@@ -103,7 +100,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.060747147
+        value: 0.11248207
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -142,8 +139,8 @@ LineRenderer:
       m_Mode: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    numCornerVertices: 0
-    numCapVertices: 0
+    numCornerVertices: 4
+    numCapVertices: 4
     alignment: 0
     textureMode: 0
     generateLightingData: 0
