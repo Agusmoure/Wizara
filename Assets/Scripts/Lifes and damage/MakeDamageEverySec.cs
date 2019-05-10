@@ -10,13 +10,17 @@ public class MakeDamageEverySec : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if(other == other.GetComponent<BoxCollider2D>())
+        {
             GetCollider(other);
             InvokeRepeating("Damage", 0, seconds);
+        }
+            
     }
     //Método para realizar daño.
     void Damage()
     {
-        if (triggerCollider.CompareTag("Player") && triggerCollider.GetComponent<Life>() != null && !GameManager.instance.GetInvulnerablePlayer())
+        if (triggerCollider.GetComponent<Life>() != null && !GameManager.instance.GetInvulnerablePlayer())
         {
             triggerCollider.GetComponent<Life>().LoseLife(damage);
         }
