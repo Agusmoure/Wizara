@@ -15,20 +15,27 @@ public class MovMirror : MonoBehaviour
         mesh.material = defau;
         selected = false;
     }
-	
-	// Update is called once per frame
-	void Update ()
-    {
 
-	}
+    // Rota el espejo seleccionado.
+    void Update()
+    {
+        if (selected)
+            RotationInput(Input.GetAxis("Vertical"));
+    }
+
+    //Rota el espejo en el Z para controlar el rayo.
+    void RotationInput(float axis)
+    {
+        transform.Rotate(0, 0, axis);
+    }
 
     //Cambia el material a seleccionado o no seleccionado.
-    public void changeColor()
+    public void changeSelection()
     {
         selected = !selected;
-        if (!selected)
+        if (selected)
             mesh.material = select;
-        else if (selected)
+        else if (!selected)
             mesh.material = defau;
     }
 }

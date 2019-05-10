@@ -5,33 +5,39 @@ using UnityEngine;
 public class SelectMirror : MonoBehaviour
 {
     const int NUM_MIRRORS = 3;
-    int index, aux;
+    int index;
     public GameObject[] go = new GameObject[NUM_MIRRORS];
     public KeyCode keyRight, keyLeft;
 	// Use this for initialization
 	void Start ()
     {
         index = 0;
+        Invoke("iniciar", 1);
+    }
+
+    void iniciar()
+    {
+        go[index].GetComponent<MovMirror>().changeSelection();
     }
 	
-	// Update is called once per frame
+	// Cambia el espejo seleccionado.
 	void Update ()
     {
-        RotationInput(Input.GetAxis("Vertical"));
-        if (Input.GetKeyUp(keyRight) && (index + 1) < go.Length) //right
+        if (Input.GetKeyUp(keyRight) && (index + 1) < go.Length) //Selección right.
         {
+            int aux = index;
             index++;
-            go[index].GetComponent<MovMirror>().changeColor();
+            go[aux].GetComponent<MovMirror>().changeSelection();
+            go[index].GetComponent<MovMirror>().changeSelection();
         }
-        else if (Input.GetKeyUp(keyLeft) && (index - 1) >= 0) //left
+        else if (Input.GetKeyUp(keyLeft) && (index - 1) >= 0) //Selección left.
         {
+            int aux = index;
             index--;
-            go[index].GetComponent<MovMirror>().changeColor();
+            go[aux].GetComponent<MovMirror>().changeSelection();
+            go[index].GetComponent<MovMirror>().changeSelection();
         }
     }
 
-    void RotationInput(float axis)
-    {
-        go[index].transform.Rotate(0, 0, axis);
-    }
+    
 }
