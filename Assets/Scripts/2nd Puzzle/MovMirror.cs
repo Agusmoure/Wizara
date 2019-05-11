@@ -5,8 +5,7 @@ using UnityEngine;
 public class MovMirror : MonoBehaviour
 {
     public Material select, defau;
-    //public GameObject[] mirrors = new GameObject[3];
-    public string letter;
+    public float speed = 15;
     MeshRenderer mesh;
     bool selected;
 
@@ -17,19 +16,27 @@ public class MovMirror : MonoBehaviour
         mesh.material = defau;
         selected = false;
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Rota el espejo seleccionado.
+    void Update()
     {
-		if(Input.GetButtonUp("a"))
-        {
-            Debug.Log("Click");
-            selected = !selected;
-            //mesh.material = select;
-            if (!selected)
-                mesh.material = select;
-            else if (selected)
-                mesh.material = defau;
-        }
-	}
+        if (selected)
+            RotationInput(Input.GetAxis("Vertical"));
+    }
+
+    //Rota el espejo en el Z para controlar el rayo.
+    void RotationInput(float axis)
+    {
+        transform.Rotate(0, 0, axis* Time.deltaTime * speed);
+    }
+
+    //Cambia el material a seleccionado o no seleccionado.
+    public void changeSelection()
+    {
+        selected = !selected;
+        if (selected)
+            mesh.material = select;
+        else if (!selected)
+            mesh.material = defau;
+    }
 }
