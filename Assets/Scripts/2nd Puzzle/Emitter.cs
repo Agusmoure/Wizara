@@ -46,6 +46,7 @@ public class Emitter : MonoBehaviour
                 //Comprueba si ha finalizado.
                 if (hit.transform.tag == "EndMirror")
                 {
+                    GetComponentInChildren<SelectMirror>().StopInput();
                     MeshRenderer mesh = hit.transform.GetComponent<MeshRenderer>();
                     mesh.material = End;
                     Debug.Log("JUEGO FINALIZADO");

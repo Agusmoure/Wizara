@@ -20,8 +20,8 @@ public class MovMirror : MonoBehaviour
     // Rota el espejo seleccionado.
     void Update()
     {
-        if (selected)
-            RotationInput(Input.GetAxis("Horizontal"));
+        if (selected && GetComponentInParent<SelectMirror>().ReturnInputValue())
+            RotationInput(-Input.GetAxis("Horizontal"));
     }
 
     //Rota el espejo en el Z para controlar el rayo.
