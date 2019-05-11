@@ -6,10 +6,10 @@ public class SelectMirror : MonoBehaviour
 {
     int index;
     MovMirror[] mirror;
-    public KeyCode keyRight, keyLeft;
 	// Use this for initialization
 	void Start ()
     {
+        // Se obtiene el componente MovMirror de los hijos en un array.
         mirror = GetComponentsInChildren<MovMirror>();
         index = 0;
         Invoke("iniciar", 1);
@@ -23,21 +23,27 @@ public class SelectMirror : MonoBehaviour
 	// Cambia el espejo seleccionado.
 	void Update ()
     {
-        if (Input.GetKeyUp(keyRight) && (index + 1) < mirror.Length) //Selección right.
+        if (Input.GetKeyDown("down")) //Selección right.
         {
             int aux = index;
             index++;
-            mirror[aux].changeSelection();
-            mirror[index].changeSelection();
+            ChangeSelect(aux,ref index);
         }
-        else if (Input.GetKeyUp(keyLeft) && (index - 1) >= 0) //Selección left.
+        else if (Input.GetKeyDown("up")) //Selección left.
         {
             int aux = index;
             index--;
-            mirror[aux].changeSelection();
-            mirror[index].changeSelection();
+            ChangeSelect(aux,ref index);
         }
     }
 
-    
+    private void ChangeSelect(int aux,ref int index)
+    {
+
+        mirror[aux].changeSelection();
+        if (index < 0) index = (index % mirror.Length) + mirror.Length;
+        else index = index % mirror.Length;
+        mirror[index].changeSelection();
+    }
+
 }
