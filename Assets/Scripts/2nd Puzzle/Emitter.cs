@@ -7,7 +7,7 @@ public class Emitter : MonoBehaviour
     Ray ray;
     RaycastHit hit;
     public int reflections;
-    public Material End;
+    public Material end;
     LineRenderer lineRen;
     bool stop;
     
@@ -48,7 +48,7 @@ public class Emitter : MonoBehaviour
                 {
                     GetComponentInChildren<SelectMirror>().StopInput();
                     MeshRenderer mesh = hit.transform.GetComponent<MeshRenderer>();
-                    mesh.material = End;
+                    mesh.material = end;
                     Debug.Log("JUEGO FINALIZADO");
                 }
             }
