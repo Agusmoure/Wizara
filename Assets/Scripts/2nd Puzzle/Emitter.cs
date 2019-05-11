@@ -34,10 +34,11 @@ public class Emitter : MonoBehaviour
             {
                 //Golpe detectado, actualiza el renderizado de la línea.
                 lineRen.positionCount++;
+                //Se crea la linea desde el punto anterior al nuevo punto de colisión.
                 lineRen.SetPosition(lineRen.positionCount - 1, hit.point);
-                //Se crea el vector de reflexión.
+                //Se crea el vector de reflexión con el rayo incidente de ray y la normal del punto de colisión.
                 Vector3 reflection = Vector3.Reflect(ray.direction, hit.normal);
-                //Se crea el rayo que se refleja.
+                //Se asigna a ray el rayo reflejado para detectar las siguientes colisiones.
                 ray = new Ray(hit.point, reflection);
                 //Si no tocamos un objeto con tag "Mirror", detenemos bucle.
                 if (hit.collider.tag != "Mirror")
