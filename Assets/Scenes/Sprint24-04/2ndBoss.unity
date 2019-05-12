@@ -491,7 +491,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &114167355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3527,7 +3527,8 @@ GameObject:
   - component: {fileID: 242326613}
   - component: {fileID: 242326615}
   - component: {fileID: 242326614}
-  m_Layer: 0
+  - component: {fileID: 242326616}
+  m_Layer: 9
   m_Name: Boss
   m_TagString: Boss
   m_Icon: {fileID: 0}
@@ -3541,8 +3542,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 242326611}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.09, y: 3.11, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 6.35, y: -3.48, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -3568,7 +3569,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 242326611}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bca53b11564e9814f8d1e190245958c7, type: 3}
   m_Name: 
@@ -3610,8 +3611,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 549085075
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 857688fd510d1ec4590f6de5c4dcee92, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3624,6 +3625,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &242326616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 242326611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9205b07f5c8d7d9449cb1ad844b0e702, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireball: {fileID: 1044563080194550, guid: bfc7a7c19bfc0ee4d9f70f4068853b7d, type: 2}
 --- !u!1 &262832907
 GameObject:
   m_ObjectHideFlags: 0
@@ -4077,6 +4090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wolfState: 0
+  wizardState: 0
   boss: {fileID: 0}
   bossName: wolf
   wolfWaitTime: 4
@@ -7063,6 +7077,11 @@ Prefab:
     - target: {fileID: 212786977097245734, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d,
         type: 2}
       propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983798974601146, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d,
+        type: 2}
+      propertyPath: maxJump
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
