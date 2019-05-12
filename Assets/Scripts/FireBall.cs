@@ -24,6 +24,8 @@ public class FireBall : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals("Obstacle")) Destroy(collision.gameObject);
+        DestroyParent parentD=GetComponent<DestroyParent>();
+        if (parentD != null) parentD.DestroyP();
         Destroy(this.gameObject);
     }
     //cambia la direccion del disparo

@@ -5,6 +5,7 @@ using UnityEngine;
 public class BossManager : MonoBehaviour
 {
     public WolfEnums wolfState = WolfEnums.idle;
+    public Wizard wizardState = Wizard.idle;
     public GameObject boss;
     public string bossName;
     public float wolfWaitTime = 8;
@@ -85,6 +86,19 @@ public class BossManager : MonoBehaviour
                 break;
             //en caso de que sea la serpiente
             case "snake":
+                break;
+            case "wizard":
+                switch (state.ToLower())
+                {
+                    case "storm":
+                        break;
+                    case "slying":
+                        break;
+                    case "fireball":
+                        break;
+                    case "idle":
+                        break;
+                }
                 break;
             default:
                 break;
