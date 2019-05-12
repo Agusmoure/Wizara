@@ -23,7 +23,7 @@ public class Emitter : MonoBehaviour
     {
         //Creamos el rayo (raycast) en la misma posición inicial y con una dirección asignada (right).
         stop = false;
-        ray = new Ray(transform.position, Vector3.right);
+        ray = new Ray(transform.position, Vector3.up);
         //Comienza 
         lineRen.positionCount = 1;
         //Bucle para reflexion de "reflections" veces.
