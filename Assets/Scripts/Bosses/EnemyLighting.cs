@@ -7,7 +7,8 @@ public class EnemyLighting : MonoBehaviour
     public GameObject este;
     public bool cosaka;
     public Transform puntako;
-    public float speed;
+    public float speed, timeCd;
+    bool cd=false;
     Vector3 initialPosition, target;
     // Use this for initialization
     void Start()
@@ -26,10 +27,11 @@ public class EnemyLighting : MonoBehaviour
     {
         int layerMask = 1 << 8;
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-        if (Physics2D.Raycast(transform.position, Vector2.down, 900, layerMask))
+        if (Physics2D.Raycast(transform.position, Vector2.down, 900, layerMask)&&!cd)
         {
-
             Instantiate(este, transform.position, Quaternion.identity);
+            cd = true;
+            Invoke("InvokeCd", timeCd);
         }
         if (transform.position == target)
         {
@@ -38,5 +40,9 @@ public class EnemyLighting : MonoBehaviour
         }
 
 
+    }
+    void InvokeCd()
+    {
+        cd = false;
     }
 }
