@@ -36,7 +36,7 @@ public class MovMirror : MonoBehaviour
         selected = !selected;
         if (selected)
             mesh.material = select;
-        else if (!selected)
+        else
             mesh.material = defau;
     }
 }

@@ -6,11 +6,11 @@ public class Emitter : MonoBehaviour
 {
     Ray ray;
     RaycastHit hit;
-    public int reflections;
+    // public int reflections;
     public Material end;
     LineRenderer lineRen;
     bool stop;
-    
+
     //Usamos la componente de unity lineRenderer y marcamos el punto inicial.
     void Start()
     {
@@ -27,7 +27,7 @@ public class Emitter : MonoBehaviour
         //Comienza 
         lineRen.positionCount = 1;
         //Bucle para reflexion de "reflections" veces.
-        for (int i = 0; i < reflections && !stop; i++)
+        while (!stop)//for (int i = 0; i < reflections && !stop; i++)
         {
             //Se detecta si hay colision en el raycast con "hit".
             if (Physics.Raycast(ray.origin, ray.direction, out hit, 10))
@@ -42,19 +42,22 @@ public class Emitter : MonoBehaviour
                 ray = new Ray(hit.point, reflection);
                 //Si no tocamos un objeto con tag "Mirror", detenemos bucle.
                 if (hit.collider.tag != "Mirror")
-                    stop = true;
-                //Comprueba si ha finalizado.
-                if (hit.transform.tag == "EndMirror")
                 {
-                    GetComponentInChildren<SelectMirror>().StopInput();
-                    MeshRenderer mesh = hit.transform.GetComponent<MeshRenderer>();
-                    mesh.material = end;
-                    Debug.Log("JUEGO FINALIZADO");
+                    stop = true;
+                    //Comprueba si ha finalizado.
+                    if (hit.transform.tag == "EndMirror")
+                    {
+                        GetComponentInChildren<SelectMirror>().StopInput();
+                        MeshRenderer mesh = hit.transform.GetComponent<MeshRenderer>();
+                        mesh.material = end;
+                        Debug.Log("JUEGO FINALIZADO");
+                    }
                 }
+
             }
             //Golpe no detectado, actualiza el renderizado de la línea hasta la longitud actual.
             else
-            {                
+            {
                 lineRen.positionCount++;
                 lineRen.SetPosition(lineRen.positionCount - 1, ray.origin + ray.direction * 20);
                 stop = true;
