@@ -6,7 +6,6 @@ public class Emitter : MonoBehaviour
 {
     Ray ray;
     RaycastHit hit;
-    // public int reflections;
     public Material end;
     LineRenderer lineRen;
     bool stop;
@@ -27,7 +26,7 @@ public class Emitter : MonoBehaviour
         //Comienza 
         lineRen.positionCount = 1;
         //Bucle para reflexion de "reflections" veces.
-        while (!stop)//for (int i = 0; i < reflections && !stop; i++)
+        while (!stop)
         {
             //Se detecta si hay colision en el raycast con "hit".
             if (Physics.Raycast(ray.origin, ray.direction, out hit, 10))
@@ -50,7 +49,6 @@ public class Emitter : MonoBehaviour
                         GetComponentInChildren<SelectMirror>().StopInput();
                         MeshRenderer mesh = hit.transform.GetComponent<MeshRenderer>();
                         mesh.material = end;
-                        Debug.Log("JUEGO FINALIZADO");
                     }
                 }
 

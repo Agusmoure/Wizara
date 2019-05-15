@@ -13,7 +13,7 @@ public class SelectMirror : MonoBehaviour
         // Se obtiene el componente MovMirror de los hijos en un array.
         mirror = GetComponentsInChildren<MovMirror>();
         index = 0;
-        Invoke("iniciar", 0.05f);
+        Invoke("iniciar", 0.02f);
     }
 
     void iniciar()
