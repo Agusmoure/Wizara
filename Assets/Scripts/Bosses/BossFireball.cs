@@ -15,7 +15,7 @@ public class BossFireball : MonoBehaviour {
 	}
     void Create()
     {
-        GameObject newFireball = Instantiate(fireball,transform.position/*+(Vector3.up*fireball.transform.localScale.x/2)*/,Quaternion.identity);
+        GameObject newFireball = Instantiate(fireball,transform.position+(Vector3.down*fireball.transform.localScale.x/2),Quaternion.identity);
         newFireball.transform.GetChild(0).GetComponent<FireBall>().ChangeDirection(transform.right * transform.localScale.x);
     }
 }
