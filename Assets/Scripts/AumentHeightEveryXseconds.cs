@@ -13,20 +13,21 @@ public class AumentHeightEveryXseconds : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-            Instance inst = GetComponent<Instance>();
-            if (inst != null)
+        if (GetComponentInChildren<ParticleSystem>() != null) GetComponentInChildren<ParticleSystem>().Play();  
+
+        Instance inst = GetComponent<Instance>();
+        if (inst != null)
+        {
+            foreach (ContactPoint2D contact in collision.contacts)
             {
-                foreach (ContactPoint2D contact in collision.contacts)
-                {
-                    Vector2 hitPoint = contact.point;
-                    //Instantiate(explosion, new Vector3(hitPoint.x, hitPoint.y, 0), Quaternion.identity);
-                    inst.Instantiate(hitPoint);
-                }
-                Destroy(gameObject);
+                Vector2 hitPoint = contact.point;
+                //Instantiate(explosion, new Vector3(hitPoint.x, hitPoint.y, 0), Quaternion.identity);
+                inst.Instantiate(hitPoint);
             }
-            else
-                Destroy(gameObject);
-        
+            Destroy(gameObject);
+        }
+
+        else Destroy(gameObject);
     }
     void Aument()
     {
