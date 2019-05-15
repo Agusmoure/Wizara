@@ -23,6 +23,7 @@ public class KnockBackEverySec : MonoBehaviour {
             x = Random.Range(-1, 2); 
            
         }
+        if(triggerCollider!=null)
         if (triggerCollider.GetComponent<Bounce>() != null && !GameManager.instance.GetInvulnerablePlayer()) triggerCollider.GetComponent<Bounce>().BounceTo(x*knockbackBoostX/2,knockbackBoostY);
     }
     //Se guarda other detectado por el trigger para que Damage lo pueda usar, ya que en Invoke no se puede pasar parámetros a los métodos.
