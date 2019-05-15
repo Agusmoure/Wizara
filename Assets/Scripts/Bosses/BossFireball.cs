@@ -6,6 +6,7 @@ public class BossFireball : MonoBehaviour {
     public GameObject fireball;
 	// Use this for initialization
 	void Start () {
+        InvokeRepeating("Create", 1, 2);
 	}
 	
 	// Update is called once per frame

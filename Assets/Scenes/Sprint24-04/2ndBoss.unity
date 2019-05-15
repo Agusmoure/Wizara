@@ -3569,14 +3569,14 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 242326611}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bca53b11564e9814f8d1e190245958c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   este: {fileID: 1222134243382226, guid: d8eb2524554f7e4428ed52585b24e8ad, type: 2}
-  cosaka: 1
-  puntako: {fileID: 774675346}
+  puntoInicial: {fileID: 774675346}
+  puntoFinal: {fileID: 11099002}
   speed: 5
   timeCd: 0.1
 --- !u!212 &242326615
@@ -3631,7 +3631,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 242326611}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9205b07f5c8d7d9449cb1ad844b0e702, type: 3}
   m_Name: 
@@ -4099,7 +4099,7 @@ MonoBehaviour:
   wolfState: 0
   wizardState: 0
   boss: {fileID: 0}
-  bossName: wolf
+  bossName: Wizard
   wolfWaitTime: 4
 --- !u!114 &601658060
 MonoBehaviour:
