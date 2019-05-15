@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     Slider volumeSlid;
     PoolManager poolManager;
     public bool onMenu = false, onDialogue = false, girl = true;
-    bool doubleJump = false, wallJump = false, dash = false, fireBall = false, shield = false, lightning = true, invulnerable = false;
+    bool doubleJump = false, dash = false, fireBall = false, shield = false, lightning = true, invulnerable = false;
 
     //Los checkpoints son structs en los que se guardan dos datos: El transform, para la posición, y la escena, para cargar la escena necesaria al reaparecer.
     [System.Serializable]
@@ -176,9 +176,6 @@ public class GameManager : MonoBehaviour
             case "Dash":
                 dash = true;
                 break;
-            case "Wall Jump":
-                wallJump = true;
-                break;
             case "Double Jump":
                 //Si el player tiene PlayerMovement entonces setea los saltos a dos
                 PlayerMovement playerM = player.GetComponent<PlayerMovement>();
@@ -203,8 +200,6 @@ public class GameManager : MonoBehaviour
         {
             case "dash":
                 return dash;
-            case "walljump":
-                return wallJump;
             case "doublejump":
                 return doubleJump;
             case "fireball":
@@ -252,14 +247,12 @@ public class GameManager : MonoBehaviour
     public void ActivateAll()
     {
         dash = true;
-        wallJump = true;
         doubleJump = true;
         //Si el player tiene PlayerMovement entonces setea los saltos a dos
         PlayerMovement playerM = player.GetComponent<PlayerMovement>();
         if (playerM != null)
         {
             playerM.DoubleJumpActive();
-            playerM.WallJumpActivate();
         }
         fireBall = true;
         shield = true;
