@@ -3636,7 +3636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9205b07f5c8d7d9449cb1ad844b0e702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireball: {fileID: 1044563080194550, guid: bfc7a7c19bfc0ee4d9f70f4068853b7d, type: 2}
+  fireball: {fileID: 1219399486961986, guid: 7b1270a3863e8c14e8148cfd1f075970, type: 2}
 --- !u!1 &262832907
 GameObject:
   m_ObjectHideFlags: 0
@@ -4049,6 +4049,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &553103012 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1602436603072820, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1414984954}
 --- !u!1 &601658057
 GameObject:
   m_ObjectHideFlags: 0
@@ -4058,6 +4063,8 @@ GameObject:
   m_Component:
   - component: {fileID: 601658058}
   - component: {fileID: 601658059}
+  - component: {fileID: 601658061}
+  - component: {fileID: 601658060}
   m_Layer: 0
   m_Name: BossManager
   m_TagString: Untagged
@@ -4094,6 +4101,30 @@ MonoBehaviour:
   boss: {fileID: 0}
   bossName: wolf
   wolfWaitTime: 4
+--- !u!114 &601658060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 601658057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e38e0829dc857a44962d3a1851867f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &601658061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 601658057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e19688f2410eef4d9c485ce0d29d135, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  girl: {fileID: 0}
+  boy: {fileID: 553103012}
 --- !u!1 &612404515
 GameObject:
   m_ObjectHideFlags: 0
@@ -6078,7 +6109,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1090746739}
   - component: {fileID: 1090746738}
-  - component: {fileID: 1090746740}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -6102,7 +6132,7 @@ MonoBehaviour:
   lightningCooldown: 0
   onMenu: 0
   onDialogue: 0
-  girl: 1
+  girl: 0
   currentCheckpoint:
     playerPosition: {x: 0, y: 0}
     cameraRoom: {x: 0, y: 0}
@@ -6120,17 +6150,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1090746740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1090746737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e38e0829dc857a44962d3a1851867f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1132844225
 GameObject:
   m_ObjectHideFlags: 0
@@ -7077,12 +7096,12 @@ Prefab:
     - target: {fileID: 212786977097245734, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d,
         type: 2}
       propertyPath: m_SortingLayer
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114983798974601146, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d,
         type: 2}
       propertyPath: maxJump
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114983798974601146, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d,
         type: 2}
