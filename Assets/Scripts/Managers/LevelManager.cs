@@ -46,4 +46,11 @@ public class LevelManager : MonoBehaviour {
             TeleportCamera(GameManager.instance.ReturnCurrentCheckpointRoomPosition());
         }
     }
+    public void OpenDoors()
+    {
+        KeyDoor[] doors = FindObjectsOfType<KeyDoor>();
+        for(int i = 0; i < doors.Length; i++){
+            doors[i].Unlock();
+        }
+    }
 }
