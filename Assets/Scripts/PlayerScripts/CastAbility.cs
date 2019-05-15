@@ -84,7 +84,7 @@ public class CastAbility : MonoBehaviour {
         //Si choca con algo 
         if (hit2D.collider != null)
         {
-            GameObject newLighting = Instantiate(lighting, hit2D.point, Quaternion.identity, null);
+            GameObject newLighting = Instantiate(lighting, hit2D.point+Vector2.down*0.1f, Quaternion.identity, null);
 
             //muestra en el editor una linea que cubre toda la pantalla
             Debug.DrawLine(hit2D.point, hit2D.point + 10 * Vector2.down, Color.yellow,5);

@@ -5690,6 +5690,7 @@ MonoBehaviour:
   lightningCooldown: 2
   onMenu: 0
   onDialogue: 0
+  girl: 1
   currentCheckpoint:
     playerPosition: {x: 0, y: 0}
     cameraRoom: {x: 0, y: 0}
@@ -6674,7 +6675,7 @@ Prefab:
         type: 2}
       propertyPath: lighting
       value: 
-      objectReference: {fileID: 1101762702090946, guid: cc0b2d9226b66ce40950b34983f5a392,
+      objectReference: {fileID: 1391941165697216, guid: cc0b2d9226b66ce40950b34983f5a392,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d, type: 2}
