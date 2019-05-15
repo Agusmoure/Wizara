@@ -76,7 +76,7 @@ public class CastAbility : MonoBehaviour {
 
     void InstantiateThunderbolt()
     {
-        int layerMask = 1 << 21;
+        int layerMask = 1 << 10;
         RaycastHit2D hit2D = Physics2D.Raycast(transform.position,Vector2.up,80,layerMask);
         //Si choca con algo 
         if (hit2D.collider != null)

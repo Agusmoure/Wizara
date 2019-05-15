@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Tilemaps;
 public class AumentHeightEveryXseconds : MonoBehaviour
 {
     //le pasamos cuanto aumenta y cada cuanto tiempo
@@ -16,12 +16,22 @@ public class AumentHeightEveryXseconds : MonoBehaviour
             Instance inst = GetComponent<Instance>();
             if (inst != null)
             {
+            if (collision.gameObject.GetComponent<TilemapCollider2D>()!=null)
                 foreach (ContactPoint2D contact in collision.contacts)
                 {
                     Vector2 hitPoint = contact.point;
-                    //Instantiate(explosion, new Vector3(hitPoint.x, hitPoint.y, 0), Quaternion.identity);
-                    inst.Instantiate(hitPoint);
+                    if (hitPoint.y<transform.position.y) {
+                        //Instantiate(explosion, new Vector3(hitPoint.x, hitPoint.y, 0), Quaternion.identity);
+                        inst.Instantiate(hitPoint);
+                    }
+                    
                 }
+            else
+            {
+                ContactPoint2D[] contact = new ContactPoint2D[1];
+                 collision.GetContacts(contact);
+                inst.Instantiate(contact[0].point);
+            }
                 Destroy(gameObject);
             }
             else
