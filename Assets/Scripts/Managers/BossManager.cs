@@ -9,6 +9,7 @@ public class BossManager : MonoBehaviour
     public GameObject boss;
     public string bossName;
     public float wolfWaitTime = 8;
+    Life bossLife;
     // Use this for initialization
     void Start()
     {
@@ -17,10 +18,13 @@ public class BossManager : MonoBehaviour
         InvokeRepeating("RandomAbility", wolfWaitTime, 3);
         //Para evitar que se quede bloqueado.
         InvokeRepeating("WolfToIdle",0,3.5f);
+        bossLife = boss.GetComponentInChildren<Life>();
+
     }
     // Update is called once per frame
     void RandomAbility()
     {
+        if(bossLife.GetActualLife()>0)
         if (Random.Range(1, 7) <= 3)
         {
             ChangeBossState("wolf", "jump");
