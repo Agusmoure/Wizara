@@ -8,17 +8,22 @@ public class BossManager : MonoBehaviour
     public WizardEnums wizardState = WizardEnums.idle;
     public GameObject boss;
     public string bossName;
-    public float wolfWaitTime = 8;
+    public float bossWaitTime = 5;
     Life bossLife;
     // Use this for initialization
     void Start()
     {
         GameManager.instance.GetBossManager(this);
-        //Inicia habilidades en 3 segundos. Cada 2 segundos intenta ejecutar una habilidad.
-        InvokeRepeating("RandomAbility", wolfWaitTime, 3);
-        //Para evitar que se quede bloqueado.
-        InvokeRepeating("WolfToIdle",0,3.5f);
         bossLife = boss.GetComponentInChildren<Life>();
+        if (bossName == "wolf")
+        {
+            //Inicia habilidades en 3 segundos. Cada 2 segundos intenta ejecutar una habilidad.
+            InvokeRepeating("RandomAbility", bossWaitTime, 3);
+            //Para evitar que se quede bloqueado.
+            InvokeRepeating("WolfToIdle", 0, 3.5f);
+        }
+        else WizardAbilities();
+        
 
     }
     // Update is called once per frame
@@ -33,6 +38,16 @@ public class BossManager : MonoBehaviour
         {
             ChangeBossState("wolf", "charge");
         }
+    }
+    void WizardAbilities()
+    {
+        InvokeRepeating("CreateFireball", 1, 2);
+    }
+    void CreateFireball()
+    {
+       ChangeBossState("wizard", "fireball");
+        Debug.Log(bossLife.GetActualLife());
+       if (bossLife.GetActualLife() <= 90) CancelInvoke("CreateFireball");
     }
     //Comprueba que esta saltando, si es asi, espera un par de segundos para que aterrice y vuelve al estado Idle.
     void WolfToIdle()
