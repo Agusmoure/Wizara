@@ -2,39 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour
+{
 
-    public float velocity, jumpForce, dashForce, maxFallSpeed, yVelocity,xVelocity, wallJumpForce;
-   public int maxJump = 1, maxWallJump = 0;
-    int jump, wallJump;
+    public float velocity, jumpForce, dashForce, maxFallSpeed, yVelocity, xVelocity;
+    public int maxJump = 1;
+    int jump;
     float inputX;
-    public bool movRestrictionL = false, movRestrictionR = false, noInput = false;
+    public bool movRestrictionL = false, movRestrictionR = false;
     bool dash = true;
     Rigidbody2D player;
     Vector3 scale;
     Animator anime;
-    ContactPoint2D[] contact = new ContactPoint2D [1];
+    ContactPoint2D[] contact = new ContactPoint2D[1];
 
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         player = gameObject.GetComponent<Rigidbody2D>();
         scale = transform.localScale;
         jump = maxJump;
-        wallJump = maxWallJump;
         anime = GetComponent<Animator>();
         if (GameManager.instance.ReturnAbilityValue("DoubleJump")) DoubleJumpActive();
     }
 
-	// Update is called once per frame
-	void Update ()
+    // Update is called once per frame
+    void Update()
     {
         inputX = Input.GetAxis("Horizontal");
         PlayerDirection();
         ChangeVelocity();
-        anime.SetFloat("VelocityX",Mathf.Abs(player.velocity.x));
-        anime.SetFloat("VelocityY",Mathf.Abs(player.velocity.y));
+        anime.SetFloat("VelocityX", Mathf.Abs(player.velocity.x));
+        anime.SetFloat("VelocityY", Mathf.Abs(player.velocity.y));
         JumpInput();
         DashInput();
 
@@ -78,8 +78,8 @@ public class PlayerMovement : MonoBehaviour {
     {
         collision.GetContacts(contact);
 
-         movRestrictionL = false;
-         movRestrictionR = false;
+        movRestrictionL = false;
+        movRestrictionR = false;
 
         //comprueba si el jugador deja de estar en contacto con una plataforma en movimiento para que ya no tenga que estar sobre ella
         if (collision.gameObject.tag == "MovingPlatform")
@@ -91,13 +91,13 @@ public class PlayerMovement : MonoBehaviour {
 
     void ChangeVelocity()
     {
-        if(!movRestrictionL && !movRestrictionR && !noInput) player.velocity = new Vector2(velocity * inputX, player.velocity.y);
+        if (!movRestrictionL && !movRestrictionR) player.velocity = new Vector2(velocity * inputX, player.velocity.y);
 
-        else if (movRestrictionL && inputX > 0 && !noInput)
+        else if (movRestrictionL && inputX > 0)
         {
-           player.velocity = new Vector2(velocity * inputX, player.velocity.y);
+            player.velocity = new Vector2(velocity * inputX, player.velocity.y);
         }
-        else if (movRestrictionR && inputX < 0 && !noInput)
+        else if (movRestrictionR && inputX < 0)
         {
             player.velocity = new Vector2(velocity * inputX, player.velocity.y);
         }
@@ -105,13 +105,13 @@ public class PlayerMovement : MonoBehaviour {
 
     void PlayerDirection()
     {
-        if (inputX < 0 && !noInput)
+        if (inputX < 0)
         {
             scale.x = -Mathf.Abs(scale.x);
             transform.localScale = scale;
         }
 
-        else if (inputX > 0 && !noInput)
+        else if (inputX > 0)
         {
             scale.x = Mathf.Abs(scale.x);
             transform.localScale = scale;
@@ -127,28 +127,15 @@ public class PlayerMovement : MonoBehaviour {
             player.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
             jump--;
         }
-
-        if (Input.GetKeyDown(KeyCode.UpArrow) && jump < maxJump && wallJump > 0 && !GameManager.instance.IsOnMenu() && !GameManager.instance.IsOnDialogue() && (movRestrictionL || movRestrictionR) && !noInput)
-        {
-            StartCoroutine(NoInput());
-            player.velocity = new Vector2(0, 0);
-            player.AddForce(new Vector2(-Mathf.Sign(transform.localScale.x) * wallJumpForce, wallJumpForce), ForceMode2D.Impulse);
-
-            if (movRestrictionR) transform.localScale = new Vector2(-Mathf.Abs(transform.localScale.x), transform.localScale.y);
-            else if (movRestrictionL) transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), transform.localScale.y);
-
-            wallJump--;
-        }
     }
     public void JumpsReset()
     {
         jump = maxJump;
-        wallJump = maxWallJump;
     }
 
     void DashInput()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && dash && !GameManager.instance.IsOnMenu() && !GameManager.instance.IsOnDialogue() && GameManager.instance.ReturnAbilityValue("Dash") && !noInput)
+        if (Input.GetKeyDown(KeyCode.Space) && dash && !GameManager.instance.IsOnMenu() && !GameManager.instance.IsOnDialogue() && GameManager.instance.ReturnAbilityValue("Dash"))
         {
             //Frena el movimiento horizontal del jugador.
             player.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
@@ -188,16 +175,5 @@ public class PlayerMovement : MonoBehaviour {
     public void DoubleJumpActive()
     {
         maxJump = 2;
-    }
-    public void WallJumpActivate()
-    {
-        maxWallJump = 2;
-    }
-
-    IEnumerator NoInput()
-    {
-        noInput = true;
-        yield return new WaitForSeconds(0.5f);
-        noInput = false;
     }
 }
