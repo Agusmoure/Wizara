@@ -25,16 +25,19 @@ public class AumentHeightEveryXseconds : MonoBehaviour
                     if (hitPoint.y<transform.position.y) {
                         //Instantiate(explosion, new Vector3(hitPoint.x, hitPoint.y, 0), Quaternion.identity);
                         inst.Instantiate(hitPoint);
+                        Destroy(gameObject);
+
                     }
-                    
+
                 }
             else
             {
                 ContactPoint2D[] contact = new ContactPoint2D[1];
                  collision.GetContacts(contact);
                 inst.Instantiate(contact[0].point);
-            }
                 Destroy(gameObject);
+
+            }
         }
 
         else Destroy(gameObject);
