@@ -3322,7 +3322,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!1 &186184489
 GameObject:
@@ -5690,7 +5690,6 @@ MonoBehaviour:
   lightningCooldown: 2
   onMenu: 0
   onDialogue: 0
-  girl: 1
   currentCheckpoint:
     playerPosition: {x: 0, y: 0}
     cameraRoom: {x: 0, y: 0}

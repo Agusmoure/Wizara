@@ -82,10 +82,10 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.12, y: 5.35}
+    oldSize: {x: 5.12, y: 6.826667}
     newSize: {x: 5.12, y: 0.1}
     adaptiveTilingThreshold: 0.5
-    drawMode: 2
+    drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 1
   serializedVersion: 2
@@ -146,12 +146,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 447289c... Merge branch 'Zona2' of https://github.com/Agusmoure/Wizara into Zona2
   seconds: 0.001
   aument: 0.5
-=======
-  seconds: 0.1
-  aument: 8
->>>>>>> GuerrillaBuild
 --- !u!212 &212459866081664734
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -191,7 +190,7 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 2
+  m_DrawMode: 1
   m_Size: {x: 5.12, y: 0.1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
