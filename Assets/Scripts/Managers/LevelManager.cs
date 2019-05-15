@@ -6,6 +6,7 @@ public class LevelManager : MonoBehaviour {
 
     //Instancia del jugador para obtener sus componentes.
     public GameObject camara;
+    public int lockedDoors;
     GameObject player;
     void Start()
     {
@@ -45,5 +46,9 @@ public class LevelManager : MonoBehaviour {
             MoveCamera(GameManager.instance.ReturnCurrentCheckpointRoomPosition());
             TeleportCamera(GameManager.instance.ReturnCurrentCheckpointRoomPosition());
         }
+    }
+    public void SetAllKeysToTrue()
+    {
+
     }
 }
