@@ -17,7 +17,6 @@ public class UIManager : MonoBehaviour
     {
         
         GameManager.instance.ThisUIManager(this);
-        player = GameObject.FindGameObjectWithTag("Player");
         Invoke("UpdateLifeUI", 0.5f * Time.deltaTime);
         Invoke("EnableAbilityIcons", 2f * Time.deltaTime);
 
@@ -110,8 +109,10 @@ public class UIManager : MonoBehaviour
 
     public void UpdateLifeUI()
     {
+        player = GameManager.instance.ReturnPlayer();
         if (player !=null)
         {
+
             int playerActualLife = player.GetComponent<Life>().GetActualLife();
 
             for (int i = 0; i < HeartIcons.Length; i++)
@@ -203,7 +204,7 @@ public class UIManager : MonoBehaviour
         debugMode.SetActive(true);
         GameManager.instance.ActivateAll();
     }
-    //te lleva al canvas del menu y activa el segundo event system
+    //te lleva al canvas del menu
     public void ScenesMenu() {
         if (!GameManager.instance.IsOnDialogue()&&!GameManager.instance.IsOnMenu())
         {

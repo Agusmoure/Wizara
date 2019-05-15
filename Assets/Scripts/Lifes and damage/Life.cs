@@ -21,7 +21,8 @@ public class Life : MonoBehaviour {
             //Cuando la vida sea 0 o menor, el jugador muere.
             if (currentLife <= 0) Dead();
 
-        if (tag == "Player") GameManager.instance.ReturnUIManager().UpdateLifeUI();
+        if (tag == "Player") {
+            GameManager.instance.ReturnUIManager().UpdateLifeUI(); }
 
         if (CompareTag("Boss") && GetComponent<BossLifebar>() != null) GetComponent<BossLifebar>().UpdateLifebar(lifePoints, currentLife);
     }
