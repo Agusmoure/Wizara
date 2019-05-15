@@ -122,7 +122,6 @@ GameObject:
   m_Component:
   - component: {fileID: 20493875}
   - component: {fileID: 20493876}
-  - component: {fileID: 20493877}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -164,17 +163,6 @@ MonoBehaviour:
     playerPosition: {x: -5.5, y: -1}
     cameraRoom: {x: 0, y: 0}
     scene: Zona2
---- !u!114 &20493877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 20493874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e38e0829dc857a44962d3a1851867f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &28484605
 Prefab:
   m_ObjectHideFlags: 0
@@ -17460,6 +17448,7 @@ GameObject:
   - component: {fileID: 1730238492}
   - component: {fileID: 1730238491}
   - component: {fileID: 1730238493}
+  - component: {fileID: 1730238494}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -17505,6 +17494,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   girl: {fileID: 702128050}
   boy: {fileID: 1164968978}
+--- !u!114 &1730238494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1730238490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e38e0829dc857a44962d3a1851867f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1738868191 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4106822929739150, guid: 1630fab8aac557e429694c094264f0f9,
