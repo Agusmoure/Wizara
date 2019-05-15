@@ -5,8 +5,7 @@ using UnityEngine;
 public class EnemyLighting : MonoBehaviour
 {
     public GameObject este;
-    public bool cosaka;
-    public Transform puntako;
+    public Transform puntoFinal;
     public float speed, timeCd;
     bool cd=false;
     Vector3 initialPosition, target;
@@ -14,16 +13,14 @@ public class EnemyLighting : MonoBehaviour
     void Start()
     {
         initialPosition = transform.position;
-        target = puntako.position;
+        target = puntoFinal.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (cosaka)
-            SoltarRayo();
     }
-    void SoltarRayo()
+    public void SoltarRayo()
     {
         int layerMask = 1 << 8;
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
@@ -35,7 +32,7 @@ public class EnemyLighting : MonoBehaviour
         }
         if (transform.position == target)
         {
-            if (target == initialPosition) target = puntako.position;
+            if (target == initialPosition) target = puntoFinal.position;
             else target = initialPosition;
         }
 

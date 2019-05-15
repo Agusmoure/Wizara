@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossManager : MonoBehaviour
 {
     public WolfEnums wolfState = WolfEnums.idle;
-    public Wizard wizardState = Wizard.idle;
+    public WizardEnums wizardState = WizardEnums.idle;
     public GameObject boss;
     public string bossName;
     public float wolfWaitTime = 8;
@@ -46,7 +46,12 @@ public class BossManager : MonoBehaviour
     {
         wolfState = WolfEnums.idle;
     }
-    //devuelve el valor del booleano
+    //devuelve el valor del enum
+    public WizardEnums WizardState()
+    {
+        return wizardState;
+    }
+    //devuelve el valor del enum
     public WolfEnums WolfState()
     {
         return wolfState;
@@ -88,19 +93,33 @@ public class BossManager : MonoBehaviour
                         break;
                 }
                 break;
-            //en caso de que sea la serpiente
-            case "snake":
-                break;
+            //en caso de que sea el mago
             case "wizard":
                 switch (state.ToLower())
                 {
                     case "storm":
+                        if (wizardState == WizardEnums.idle)
+                        {
+                        boss.GetComponent<MutipleLightings>().Storm();
+                        wizardState = WizardEnums.storm;
+                        }
                         break;
-                    case "slying":
+                    case "flying":
+                        if (wizardState == WizardEnums.idle)
+                        {
+                            boss.GetComponent<EnemyLighting>().SoltarRayo();
+                            wizardState = WizardEnums.flying;
+                        }
                         break;
                     case "fireball":
+                        if (wizardState == WizardEnums.idle)
+                        {
+                            boss.GetComponent<BossFireball>().Create();
+                            wizardState = WizardEnums.fireball;
+                        }
                         break;
                     case "idle":
+                        wizardState = WizardEnums.idle;
                         break;
                 }
                 break;

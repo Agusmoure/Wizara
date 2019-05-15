@@ -2,7 +2,7 @@
 {
     idle, jumping, charging
 }
-public enum Wizard
+public enum WizardEnums
 {
     idle, storm, flying, fireball
 }

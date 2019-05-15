@@ -6,14 +6,12 @@ public class CastAbility : MonoBehaviour {
 
     public GameObject fireBall, shield, lighting;
     bool fireBallOnCD, shieldOnCD, thunderBoldOnCD;
-    public UIManager uIManager;
+    UIManager uIManager;
     Animator anim;
-
     private void Start()
     {
         anim = GetComponent<Animator>();
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -55,7 +53,6 @@ public class CastAbility : MonoBehaviour {
             Invoke("ThunderboltCD", GameManager.instance.ReturnCooldown("Lightning"));
         }
     }
-
     //Metodos para instanciar las habilidades.
     void InstantiateFireBall()
     {
@@ -63,6 +60,7 @@ public class CastAbility : MonoBehaviour {
         Vector2 newDirection = transform.lossyScale.x * transform.right;
 
         newFireball.GetComponent<FireBall>().ChangeDirection(newDirection);
+        uIManager = GameManager.instance.ReturnUIManager();
         uIManager.SetSliderValue(0f, "Fireball");
         //uIManager.PressButton("Fireball");
     }
@@ -71,6 +69,7 @@ public class CastAbility : MonoBehaviour {
     {
         //El escudo se hace hijo del jugador para seguir su movimiento.
         GameObject newShield = Instantiate(shield, transform.position, Quaternion.identity, gameObject.transform);
+        uIManager = GameManager.instance.ReturnUIManager();
         uIManager.SetSliderValue(0f, "Shield");
         //uIManager.PressButton("Shield");
     }
@@ -87,6 +86,8 @@ public class CastAbility : MonoBehaviour {
             //muestra en el editor una linea que cubre toda la pantalla
             Debug.DrawLine(hit2D.point, hit2D.point + 10 * Vector2.down, Color.yellow,5);
         }
+        uIManager = GameManager.instance.ReturnUIManager();
+
     }
 
     //Metodos para control de tiempo de enfriamiento.
