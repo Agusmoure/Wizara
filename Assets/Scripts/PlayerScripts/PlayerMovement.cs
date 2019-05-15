@@ -55,6 +55,7 @@ public class PlayerMovement : MonoBehaviour {
         {
             movRestrictionR = true;
         }
+
         if (contact[0].normal.y > 0.9 && contact[0].normal.y < 1.1)
         {
             dash = true;
@@ -76,10 +77,8 @@ public class PlayerMovement : MonoBehaviour {
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        collision.GetContacts(contact);
-
-         movRestrictionL = false;
-         movRestrictionR = false;
+            movRestrictionL = false;
+            movRestrictionR = false;
 
         //comprueba si el jugador deja de estar en contacto con una plataforma en movimiento para que ya no tenga que estar sobre ella
         if (collision.gameObject.tag == "MovingPlatform")
