@@ -5,20 +5,25 @@ using UnityEngine;
 public class EnemyLighting : MonoBehaviour
 {
     public GameObject este;
-    public Transform puntoFinal;
+    public Transform puntoInicial,puntoFinal;
     public float speed, timeCd;
     bool cd=false;
     Vector3 initialPosition, target;
     // Use this for initialization
     void Start()
     {
-        initialPosition = transform.position;
+        initialPosition = puntoInicial.position;
         target = puntoFinal.position;
+        while (transform.position != initialPosition)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, initialPosition, speed * Time.deltaTime);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        SoltarRayo();
     }
     public void SoltarRayo()
     {
