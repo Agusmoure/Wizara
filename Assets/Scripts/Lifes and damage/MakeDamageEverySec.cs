@@ -34,7 +34,9 @@ public class MakeDamageEverySec : MonoBehaviour {
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision == collision.GetComponent<PolygonCollider2D>())
+        {
             CancelInvoke("Damage");
+        }
         
     }
 }
