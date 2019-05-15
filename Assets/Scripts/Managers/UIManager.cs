@@ -213,15 +213,28 @@ public class UIManager : MonoBehaviour
             GameManager.instance.Pause("Menu");
         }
     }
+    //si eres chico
     public void Boy(string scene)
     {
         GameManager.instance.AreYouAGirl(false);
         GameManager.instance.ChangeScene(scene);
     }
+    //si eres chica
     public void Girl(string scene)
     {
         GameManager.instance.AreYouAGirl(true);
         GameManager.instance.ChangeScene(scene);
 
+    }
+    //para el boton de trucos
+    public void Cheat()
+    {
+        GameManager.instance.ActivateAll();
+        GameManager.instance.ReturnUIManager().EnableAbilityIcons();
+    }
+    //Para desbloquear las puertas
+    public void OpenDoors()
+    {
+        GameManager.instance.SetLevelManager().OpenDoors();
     }
 }

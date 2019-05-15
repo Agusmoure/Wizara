@@ -9,50 +9,50 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1101762702090946}
+  m_RootGameObject: {fileID: 1391941165697216}
   m_IsPrefabAsset: 1
---- !u!1 &1101762702090946
+--- !u!1 &1391941165697216
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4239078526409212}
-  - component: {fileID: 212459866081664734}
-  - component: {fileID: 61673537838642864}
-  - component: {fileID: 114494125909234082}
-  - component: {fileID: 50632705246513912}
-  - component: {fileID: 114083892787510616}
-  - component: {fileID: 114329068977388726}
-  - component: {fileID: 95333090119649474}
-  m_Layer: 12
+  - component: {fileID: 4321384984572646}
+  - component: {fileID: 212641782176078246}
+  - component: {fileID: 61274890407013188}
+  - component: {fileID: 114597731136978214}
+  - component: {fileID: 50559773503758168}
+  - component: {fileID: 114510585923439310}
+  - component: {fileID: 95144103360950486}
+  - component: {fileID: 114721188787439696}
+  m_Layer: 9
   m_Name: Provisional_lighting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4239078526409212
+--- !u!4 &4321384984572646
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1101762702090946}
+  m_GameObject: {fileID: 1391941165697216}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.9204555, y: -1.1564764, z: 0}
+  m_LocalPosition: {x: 66, y: -17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50632705246513912
+--- !u!50 &50559773503758168
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1101762702090946}
+  m_GameObject: {fileID: 1391941165697216}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -66,12 +66,12 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 5
---- !u!61 &61673537838642864
+--- !u!61 &61274890407013188
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1101762702090946}
+  m_GameObject: {fileID: 1391941165697216}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -91,13 +91,13 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5088725, y: 6.375703}
   m_EdgeRadius: 0
---- !u!95 &95333090119649474
+--- !u!95 &95144103360950486
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1101762702090946}
+  m_GameObject: {fileID: 1391941165697216}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 1744646b60fc6a945954d1c7cbc1ba54, type: 2}
@@ -109,24 +109,37 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114083892787510616
+--- !u!114 &114510585923439310
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1101762702090946}
+  m_GameObject: {fileID: 1391941165697216}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf1a6e2c01aed0443b7f9d2f0fce76a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
---- !u!114 &114329068977388726
+--- !u!114 &114597731136978214
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1101762702090946}
+  m_GameObject: {fileID: 1391941165697216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68124558732a8bc4e811255ab596c9d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seconds: 0.1
+  aument: 0.5
+--- !u!114 &114721188787439696
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1391941165697216}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a9afe5bfbe43ce43a54f7ba4e02f44c, type: 3}
@@ -134,29 +147,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameObjectToInstance: {fileID: 1496152651178424, guid: 9b1994ee644ce08458ec3b0bbd55f434,
     type: 2}
---- !u!114 &114494125909234082
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1101762702090946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68124558732a8bc4e811255ab596c9d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of 447289c... Merge branch 'Zona2' of https://github.com/Agusmoure/Wizara into Zona2
-  seconds: 0.001
-  aument: 0.5
---- !u!212 &212459866081664734
+--- !u!212 &212641782176078246
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1101762702090946}
+  m_GameObject: {fileID: 1391941165697216}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
