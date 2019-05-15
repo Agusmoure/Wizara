@@ -29,7 +29,7 @@ public class Emitter : MonoBehaviour
         while (!stop)
         {
             //Se detecta si hay colision en el raycast con "hit".
-            if (Physics.Raycast(ray.origin, ray.direction, out hit, 10))
+            if (Physics.Raycast(ray.origin, ray.direction, out hit, 100))
             {
                 //Golpe detectado, actualiza el renderizado de la línea.
                 lineRen.positionCount++;
