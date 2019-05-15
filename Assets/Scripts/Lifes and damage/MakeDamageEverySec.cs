@@ -10,7 +10,7 @@ public class MakeDamageEverySec : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other == other.GetComponent<BoxCollider2D>())
+        if(other == other.GetComponent<PolygonCollider2D>())
         {
             GetCollider(other);
             InvokeRepeating("Damage", 0, seconds);
@@ -33,6 +33,7 @@ public class MakeDamageEverySec : MonoBehaviour {
     //Al salir se detiene el invoke, permitiendo que se inicie otro si se entra de nuevo (de esta forma no se superponen).
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (collision == collision.GetComponent<PolygonCollider2D>())
             CancelInvoke("Damage");
         
     }

@@ -9,9 +9,12 @@ public class KnockBackEverySec : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        GetCollider(other);
+        if (other == other.GetComponent<PolygonCollider2D>())
+        {
+            GetCollider(other);
         InvokeRepeating("KnockBack", 0, seconds);
-        
+        }
+
     }
     //Método para realizar KnockBack con el componente Bounce del jugador.
     void KnockBack()
