@@ -55,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
         {
             movRestrictionR = true;
         }
+
         if (contact[0].normal.y > 0.9 && contact[0].normal.y < 1.1)
         {
             dash = true;
