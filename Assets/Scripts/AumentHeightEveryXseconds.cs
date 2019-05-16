@@ -28,7 +28,7 @@ public class AumentHeightEveryXseconds : MonoBehaviour
                 {
                     if (contact.normal.y > 0)
                     {
-                        Vector2 hitPoint = new Vector2(contact.point.x, contact.point.y + 0.2f);
+                        Vector2 hitPoint = new Vector2(contact.point.x, contact.point.y + 1f);
                         if (hitPoint.y < transform.position.y)
                         {
                             //Instantiate(explosion, new Vector3(hitPoint.x, hitPoint.y, 0), Quaternion.identity);
