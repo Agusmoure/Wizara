@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     Slider volumeSlid;
     PoolManager poolManager;
     public bool onMenu = false, onDialogue = false, girl = true;
-    bool doubleJump = false, dash = false, fireBall = false, shield = false, lightning = true, invulnerable = false;
+    bool doubleJump = false, dash = false, fireBall = false, shield = false, lightning = false, invulnerable = false;
 
     //Los checkpoints son structs en los que se guardan dos datos: El transform, para la posición, y la escena, para cargar la escena necesaria al reaparecer.
     [System.Serializable]
