@@ -177,9 +177,6 @@ public class GameManager : MonoBehaviour
                 dash = true;
                 break;
             case "Double Jump":
-                //Si el player tiene PlayerMovement entonces setea los saltos a dos
-                PlayerMovement playerM = player.GetComponent<PlayerMovement>();
-                if (playerM != null) playerM.DoubleJumpActive();
                 doubleJump = true;
                 break;
             case "Fireball":
@@ -200,7 +197,7 @@ public class GameManager : MonoBehaviour
         {
             case "dash":
                 return dash;
-            case "doublejump":
+            case "double jump":
                 return doubleJump;
             case "fireball":
                 return fireBall;

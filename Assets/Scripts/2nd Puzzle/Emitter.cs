@@ -49,6 +49,9 @@ public class Emitter : MonoBehaviour
                         GetComponentInChildren<SelectMirror>().StopInput();
                         MeshRenderer mesh = hit.transform.GetComponent<MeshRenderer>();
                         mesh.material = end;
+                        GameManager.instance.SetAbilityTrue("Double Jump");
+                        GameManager.instance.ChangeScene("Zona2");
+
                     }
                 }
 
