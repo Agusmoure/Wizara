@@ -18,6 +18,7 @@ TagManager:
   - Boss
   - EndMirror
   - Rayo
+  - Door
   layers:
   - Default
   - TransparentFX
