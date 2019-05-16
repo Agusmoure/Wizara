@@ -149,7 +149,7 @@ public class PlayerMovement : MonoBehaviour
             player.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
             //Pequeño impulso hacia arriba para levantar al jugador del suelo.
             player.AddForce(new Vector2(0, 4), ForceMode2D.Impulse);
-            //Retraso de 0.04 para que de tiempo a levantar a jugador.
+            //Retraso de 0.05 para que de tiempo a levantar a jugador.
             Invoke("DoDash", 0.05f);
         }
     }
