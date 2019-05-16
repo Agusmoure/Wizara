@@ -39,8 +39,12 @@ public class BossManager : MonoBehaviour
         {
             ChangeBossState("wizard", "flying");
             ChangeBossState("wizard", "storm");
-            ChangeBossState("wizard", "fireball");
         }
+     //   else if (wizardState == WizardEnums.fireball && bossLife.GetActualLife() <= 0)
+     //   {
+      //      ChangeBossState("wizard", "storm");
+         //   ChangeBossState("wizard", "fireball");
+      //  }
     }
     void RandomAbility()
     {
@@ -122,11 +126,13 @@ public class BossManager : MonoBehaviour
                         if (wizardState == WizardEnums.idle)
                         {
                         boss.GetComponent<MultipleLightings>().StartStorm();
-                        wizardState = WizardEnums.storm;
+                            boss.GetComponent<BossFireball>().StartCreate();
+                            wizardState = WizardEnums.storm;
                         }
                         else
                         {
                             boss.GetComponent<MultipleLightings>().StopStorm();
+                            boss.GetComponent<BossFireball>().StopCreate();
                             wizardState = WizardEnums.idle;
                         }
                         break;
