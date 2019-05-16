@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MutipleLightings : MonoBehaviour {
+public class MultipleLightings : MonoBehaviour {
     public GameObject lighting, pointA, pointB;
     public int numberOfLightings;
 	// Use this for initialization
