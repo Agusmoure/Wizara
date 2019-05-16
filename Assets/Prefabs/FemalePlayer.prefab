@@ -224,12 +224,9 @@ MonoBehaviour:
   maxFallSpeed: 5
   yVelocity: 0
   xVelocity: 0
-  wallJumpForce: 6
   maxJump: 1
-  maxWallJump: 0
   movRestrictionL: 0
   movRestrictionR: 0
-  noInput: 0
 --- !u!114 &114706905127193276
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -243,8 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireBall: {fileID: 1564833639186900, guid: 5f6bb9a1ef09acd4cb769aa5198f9bc2, type: 2}
   shield: {fileID: 1960320302740486, guid: 78df1723b26a2414b999df0ff99e35c5, type: 2}
-  lighting: {fileID: 0}
-  uIManager: {fileID: 0}
+  lighting: {fileID: 1391941165697216, guid: cc0b2d9226b66ce40950b34983f5a392, type: 2}
 --- !u!114 &114780570125028800
 MonoBehaviour:
   m_ObjectHideFlags: 1
