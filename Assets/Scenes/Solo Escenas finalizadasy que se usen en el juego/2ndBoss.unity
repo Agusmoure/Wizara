@@ -3892,7 +3892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff3548eca26853144b33d0de7f9727a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lighting: {fileID: 1530729658101956, guid: d8eb2524554f7e4428ed52585b24e8ad, type: 2}
+  lighting: {fileID: 1530729658101956, guid: 7f393a518d615124c9427f9b12dccc5b, type: 2}
   pointA: {fileID: 774675345}
   pointB: {fileID: 11099001}
   numberOfLightings: 20
@@ -3907,7 +3907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca53b11564e9814f8d1e190245958c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  este: {fileID: 1222134243382226, guid: d8eb2524554f7e4428ed52585b24e8ad, type: 2}
+  este: {fileID: 1530729658101956, guid: d8eb2524554f7e4428ed52585b24e8ad, type: 2}
   puntoInicial: {fileID: 774675346}
   puntoFinal: {fileID: 11099002}
   speed: 5
@@ -3981,7 +3981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3892fc20da144974fbd360374160befe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifePoints: 120
+  lifePoints: 60
   currentLife: 0
 --- !u!114 &242326618
 MonoBehaviour:
@@ -4904,6 +4904,7 @@ MonoBehaviour:
   boss: {fileID: 242326611}
   bossName: Wizard
   bossWaitTime: 5
+  nextScene: Credits
 --- !u!114 &601658060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7267,7 +7268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireBallCooldown: 1
   shieldCooldown: 4
-  lightningCooldown: 0
+  lightningCooldown: 2
   onMenu: 0
   onDialogue: 0
   girl: 1

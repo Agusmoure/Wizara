@@ -5051,6 +5051,7 @@ MonoBehaviour:
   boss: {fileID: 538874451}
   bossName: wolf
   bossWaitTime: 5
+  nextScene: Zona2
 --- !u!114 &601658060
 MonoBehaviour:
   m_ObjectHideFlags: 0

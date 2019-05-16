@@ -9,6 +9,7 @@ public class BossManager : MonoBehaviour
     public GameObject boss;
     public string bossName;
     public float bossWaitTime = 5;
+    public string nextScene;
     Life bossLife;
     // Use this for initialization
     void Start()
@@ -30,7 +31,7 @@ public class BossManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if(wizardState == WizardEnums.fireball && bossLife.GetActualLife() <= 100)
+        if(wizardState == WizardEnums.fireball && bossLife.GetActualLife() <= 45)
         {
             ChangeBossState("wizard", "fireball");
             ChangeBossState("wizard", "flying");
@@ -39,6 +40,10 @@ public class BossManager : MonoBehaviour
         {
             ChangeBossState("wizard", "flying");
             ChangeBossState("wizard", "storm");
+        }
+        if (bossLife.GetActualLife() <= 0)
+        {
+            GameManager.instance.ChangeScene(nextScene);
         }
     }
     void RandomAbility()

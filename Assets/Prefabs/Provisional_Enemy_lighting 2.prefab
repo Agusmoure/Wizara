@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114065875415698752}
   - component: {fileID: 95411243435657118}
   m_Layer: 23
-  m_Name: Provisional_Enemy_lighting
+  m_Name: Provisional_Enemy_lighting 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68124558732a8bc4e811255ab596c9d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seconds: 0.1
+  seconds: 0.3
   aument: 2
 --- !u!212 &212865575547578044
 SpriteRenderer:
