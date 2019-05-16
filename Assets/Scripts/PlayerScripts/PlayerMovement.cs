@@ -79,8 +79,7 @@ public class PlayerMovement : MonoBehaviour
     {
         collision.GetContacts(contact);
 
-        movRestrictionL = false;
-        movRestrictionR = false;
+        RemoveRestrictions();
 
         //comprueba si el jugador deja de estar en contacto con una plataforma en movimiento para que ya no tenga que estar sobre ella
         if (collision.gameObject.tag == "MovingPlatform")
@@ -88,8 +87,16 @@ public class PlayerMovement : MonoBehaviour
             player.transform.parent = null;
         }
     }
-
-
+    public void RemoveRestrictions()
+    {
+        Invoke("RemoveRestrictionsPrivate", 0.01f);
+        //se retrasa un tiempo el reseteo de restricciones para que de tiempo al objeto a destruirse.
+    }
+    private void RemoveRestrictionsPrivate()
+    {
+        movRestrictionL = false;
+        movRestrictionR = false;
+    }
     void ChangeVelocity()
     {
         if (!movRestrictionL && !movRestrictionR) player.velocity = new Vector2(velocity * inputX, player.velocity.y);

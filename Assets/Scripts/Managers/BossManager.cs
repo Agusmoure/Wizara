@@ -8,20 +8,39 @@ public class BossManager : MonoBehaviour
     public WizardEnums wizardState = WizardEnums.idle;
     public GameObject boss;
     public string bossName;
-    public float wolfWaitTime = 8;
+    public float bossWaitTime = 5;
     Life bossLife;
     // Use this for initialization
     void Start()
     {
         GameManager.instance.GetBossManager(this);
-        //Inicia habilidades en 3 segundos. Cada 2 segundos intenta ejecutar una habilidad.
-        InvokeRepeating("RandomAbility", wolfWaitTime, 3);
-        //Para evitar que se quede bloqueado.
-        InvokeRepeating("WolfToIdle",0,3.5f);
-        bossLife = boss.GetComponentInChildren<Life>();
-
+        bossLife = boss.GetComponent<Life>();
+        if (bossName == "wolf")
+        {
+            //Inicia habilidades en 3 segundos. Cada 2 segundos intenta ejecutar una habilidad.
+            InvokeRepeating("RandomAbility", bossWaitTime, 3);
+            //Para evitar que se quede bloqueado.
+            InvokeRepeating("WolfToIdle", 0, 3.5f);
+        }
+        else
+        {
+            ChangeBossState("wizard", "fireball");
+        }
     }
     // Update is called once per frame
+    private void Update()
+    {
+        if(wizardState == WizardEnums.fireball && bossLife.GetActualLife() <= 90)
+        {
+            ChangeBossState("wizard", "fireball");
+            ChangeBossState("wizard", "flying");
+        }
+        else if(wizardState == WizardEnums.flying && bossLife.GetActualLife() <= 50)
+        {
+            ChangeBossState("wizard", "flying");
+            ChangeBossState("wizard", "storm");
+        }
+    }
     void RandomAbility()
     {
         if(bossLife.GetActualLife()>0)
@@ -34,6 +53,7 @@ public class BossManager : MonoBehaviour
             ChangeBossState("wolf", "charge");
         }
     }
+
     //Comprueba que esta saltando, si es asi, espera un par de segundos para que aterrice y vuelve al estado Idle.
     void WolfToIdle()
     {
@@ -100,22 +120,39 @@ public class BossManager : MonoBehaviour
                     case "storm":
                         if (wizardState == WizardEnums.idle)
                         {
-                        boss.GetComponent<MutipleLightings>().Storm();
-                        wizardState = WizardEnums.storm;
+                        boss.GetComponent<MultipleLightings>().StartStorm();
+                            boss.GetComponent<BossFireball>().StartCreate();
+                            wizardState = WizardEnums.storm;
+                        }
+                        else
+                        {
+                            boss.GetComponent<MultipleLightings>().StopStorm();
+                            boss.GetComponent<BossFireball>().StopCreate();
+                            wizardState = WizardEnums.idle;
                         }
                         break;
                     case "flying":
                         if (wizardState == WizardEnums.idle)
                         {
-                            boss.GetComponent<EnemyLighting>().SoltarRayo();
+                            boss.GetComponent<EnemyLighting>().LightingOn();
                             wizardState = WizardEnums.flying;
+                        }
+                        else
+                        {
+                            boss.GetComponent<EnemyLighting>().LightingOff();
+                            wizardState = WizardEnums.idle;
                         }
                         break;
                     case "fireball":
                         if (wizardState == WizardEnums.idle)
                         {
-                            boss.GetComponent<BossFireball>().Create();
+                            boss.GetComponent<BossFireball>().StartCreate();
                             wizardState = WizardEnums.fireball;
+                        }
+                        else
+                        {
+                            boss.GetComponent<BossFireball>().StopCreate();
+                            wizardState = WizardEnums.idle;
                         }
                         break;
                     case "idle":

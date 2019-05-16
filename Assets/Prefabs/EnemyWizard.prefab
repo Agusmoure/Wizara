@@ -207,8 +207,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42064fe1b017fb04abe37f1413032eb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfBlinks: 0
-  timeBetweenBlinks: 0
+  numberOfBlinks: 6
+  timeBetweenBlinks: 0.1
 --- !u!114 &114233480587856266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 6
-  Cooldown: 1
+  Cooldown: 2
   projectilePool: {fileID: 0}
   fireBall: {fileID: 1932105882264238, guid: 36842a3f9734701439cda487357ce7c8, type: 2}
 --- !u!114 &114477177131147518

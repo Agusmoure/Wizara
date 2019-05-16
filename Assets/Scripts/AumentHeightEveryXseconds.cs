@@ -6,47 +6,61 @@ public class AumentHeightEveryXseconds : MonoBehaviour
 {
     //le pasamos cuanto aumenta y cada cuanto tiempo
     public float seconds, aument;
+    bool noCollision = true;
     // Use this for initialization
     void Start()
     {
-        InvokeRepeating("Aument", 0, seconds);
+        if (GetComponent<AudioToPlay>() != null) GetComponent<AudioToPlay>().SendAudioToPlay();
+        StartCoroutine(Aument());
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (GetComponentInChildren<ParticleSystem>() != null) GetComponentInChildren<ParticleSystem>().Play();  
+        if (GetComponentInChildren<ParticleSystem>() != null) GetComponentInChildren<ParticleSystem>().Play();
+        noCollision = false;
 
-        Instance inst = GetComponent<Instance>();
+        InstantiateObject inst = GetComponent<InstantiateObject>();
         if (inst != null)
         {
-            if (collision.gameObject.GetComponent<TilemapCollider2D>()!=null)
+            if (collision.gameObject.GetComponent<TilemapCollider2D>() != null)
+            {
                 foreach (ContactPoint2D contact in collision.contacts)
                 {
-                    Vector2 hitPoint = contact.point;
-                    if (hitPoint.y<transform.position.y) {
+                    Vector2 hitPoint = new Vector2 (contact.point.x, contact.point.y + 0.2f);
+                    if (hitPoint.y < transform.position.y)
+                    {
                         //Instantiate(explosion, new Vector3(hitPoint.x, hitPoint.y, 0), Quaternion.identity);
                         inst.Instantiate(hitPoint);
-                        Destroy(gameObject);
-
+                        Invoke("DestroyThis", 0.4f);
                     }
-
                 }
+            }
+
             else
             {
                 ContactPoint2D[] contact = new ContactPoint2D[1];
                  collision.GetContacts(contact);
-                inst.Instantiate(contact[0].point);
+                inst.Instantiate(new Vector2 (contact[0].point.x, contact[0].point.y + 0.4f));
                 Destroy(gameObject);
-
             }
         }
 
         else Destroy(gameObject);
     }
-    void Aument()
+
+    void DestroyThis()
     {
-        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
-        float aumented = sprite.size.y + aument;
-        sprite.size = new Vector2(sprite.size.x, aumented);
-        transform.position = transform.position + Vector3.down * aument / 2;
+        Destroy(gameObject);
+    }
+
+    IEnumerator Aument()
+    {
+        while (noCollision)
+        {
+            SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+            float aumented = sprite.size.y + aument;
+            sprite.size = new Vector2(sprite.size.x, aumented);
+            transform.position = transform.position + Vector3.down * aument / 2;
+            yield return new WaitForSeconds(seconds);
+        }
     }
 }
