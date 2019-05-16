@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeToRecover: 4
-  timeToDestroy: 2
+  timeToDestroy: 4
 --- !u!212 &212722576060190204
 SpriteRenderer:
   m_ObjectHideFlags: 1
