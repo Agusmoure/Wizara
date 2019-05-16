@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Solo Escenas finalizadasy que se usen en el juego/Zona2.unity
     guid: 45059983d6a9d814bb7d8112c645f8d5
+  - enabled: 1
+    path: Assets/Scenes/Solo Escenas finalizadasy que se usen en el juego/Zona1Definitiva.unity
+    guid: 385169db792d8a448a66f82fbc8c77df
   m_configObjects: {}
