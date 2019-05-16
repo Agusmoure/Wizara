@@ -171,25 +171,24 @@ public class GameManager : MonoBehaviour
 
     public void SetAbilityTrue(string ability)
     {
-        switch (ability.ToLower())
+        switch (ability)
         {
-            case "dash":
+            case "Dash":
                 dash = true;
                 break;
-            case "double jump":
-            case "doublejump":
+            case "Double Jump":
                 //Si el player tiene PlayerMovement entonces setea los saltos a dos
                 PlayerMovement playerM = player.GetComponent<PlayerMovement>();
                 if (playerM != null) playerM.DoubleJumpActive();
                 doubleJump = true;
                 break;
-            case "fireball":
+            case "Fireball":
                 fireBall = true;
                 break;
-            case "shield":
+            case "Shield":
                 shield = true;
                 break;
-            case "lightning":
+            case "Lightning":
                 lightning = true;
                 break;
         }
