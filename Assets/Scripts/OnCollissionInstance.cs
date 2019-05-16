@@ -5,6 +5,7 @@ using UnityEngine;
 public class OnCollissionInstance : MonoBehaviour {
 
     public GameObject gameObjectToInstance;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         ContactPoint2D[] contacts = new ContactPoint2D[1];
