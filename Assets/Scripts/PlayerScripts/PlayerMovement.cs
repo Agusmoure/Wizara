@@ -89,10 +89,14 @@ public class PlayerMovement : MonoBehaviour
     }
     public void RemoveRestrictions()
     {
+        Invoke("RemoveRestrictionsPrivate", 0.01f);
+        //se retrasa un tiempo el reseteo de restricciones para que de tiempo al objeto a destruirse.
+    }
+    private void RemoveRestrictionsPrivate()
+    {
         movRestrictionL = false;
         movRestrictionR = false;
     }
-
     void ChangeVelocity()
     {
         if (!movRestrictionL && !movRestrictionR) player.velocity = new Vector2(velocity * inputX, player.velocity.y);
