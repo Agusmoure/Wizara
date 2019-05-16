@@ -9,6 +9,7 @@ public class AumentHeightEveryXseconds : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        if (GetComponent<AudioToPlay>() != null) GetComponent<AudioToPlay>().SendAudioToPlay();
         InvokeRepeating("Aument", 0, seconds);
     }
     private void OnCollisionEnter2D(Collision2D collision)
