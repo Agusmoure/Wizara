@@ -30,12 +30,12 @@ public class BossManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if(wizardState == WizardEnums.fireball && bossLife.GetActualLife() <= 90)
+        if(wizardState == WizardEnums.fireball && bossLife.GetActualLife() <= 100)
         {
             ChangeBossState("wizard", "fireball");
             ChangeBossState("wizard", "flying");
         }
-        else if(wizardState == WizardEnums.flying && bossLife.GetActualLife() <= 50)
+        else if(wizardState == WizardEnums.flying && bossLife.GetActualLife() <= 15)
         {
             ChangeBossState("wizard", "flying");
             ChangeBossState("wizard", "storm");
