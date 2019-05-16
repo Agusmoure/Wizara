@@ -2,18 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MutipleLightings : MonoBehaviour {
+public class MultipleLightings : MonoBehaviour {
     public GameObject lighting, pointA, pointB;
     public int numberOfLightings;
+    Vector3 startPos;
 	// Use this for initialization
 	void Start () {
+        startPos = transform.position;
         if (pointA.transform.position.x > pointB.transform.position.x)
         {
             float aux = pointA.transform.position.x;
             pointA.transform.position = new Vector2(pointB.transform.position.x, pointA.transform.position.y);
             pointB.transform.position= new Vector2(aux, pointA.transform.position.y);
         }
-        InvokeRepeating("Storm", 1, 5);
+
 
     }
 	
@@ -49,4 +51,14 @@ public class MutipleLightings : MonoBehaviour {
             else j--;
         }
     }
+    public void StartStorm()
+    {
+        transform.position = startPos;
+        InvokeRepeating("Storm", 1, 5);
+    }
+    public void StopStorm()
+    {
+        CancelInvoke("Storm");
+    }
+
 }

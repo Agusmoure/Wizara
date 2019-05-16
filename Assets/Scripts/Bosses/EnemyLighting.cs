@@ -7,23 +7,18 @@ public class EnemyLighting : MonoBehaviour
     public GameObject este;
     public Transform puntoInicial,puntoFinal;
     public float speed, timeCd;
-    bool cd=false;
+    bool cd=false,ray=false;
     Vector3 initialPosition, target;
     // Use this for initialization
     void Start()
     {
-        initialPosition = puntoInicial.position;
-        target = puntoFinal.position;
-        while (transform.position != initialPosition)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, initialPosition, speed * Time.deltaTime);
-        }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        SoltarRayo();
+        if(ray) SoltarRayo();
     }
     public void SoltarRayo()
     {
@@ -46,5 +41,19 @@ public class EnemyLighting : MonoBehaviour
     void InvokeCd()
     {
         cd = false;
+    }
+    public void LightingOn()
+    {
+        initialPosition = puntoInicial.position;
+        target = puntoFinal.position;
+        while (transform.position != initialPosition)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, initialPosition, speed * Time.deltaTime);
+        }
+        ray = true;
+    }
+    public void LightingOff()
+    {
+        ray = false;
     }
 }
