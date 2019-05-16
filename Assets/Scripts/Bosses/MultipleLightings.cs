@@ -5,8 +5,10 @@ using UnityEngine;
 public class MultipleLightings : MonoBehaviour {
     public GameObject lighting, pointA, pointB;
     public int numberOfLightings;
+    Vector3 startPos;
 	// Use this for initialization
 	void Start () {
+        startPos = transform.position;
         if (pointA.transform.position.x > pointB.transform.position.x)
         {
             float aux = pointA.transform.position.x;
@@ -51,6 +53,7 @@ public class MultipleLightings : MonoBehaviour {
     }
     public void StartStorm()
     {
+        transform.position = startPos;
         InvokeRepeating("Storm", 1, 5);
     }
     public void StopStorm()
