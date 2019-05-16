@@ -14,7 +14,7 @@ public class BossManager : MonoBehaviour
     void Start()
     {
         GameManager.instance.GetBossManager(this);
-        bossLife = boss.GetComponentInChildren<Life>();
+        bossLife = boss.GetComponent<Life>();
         if (bossName == "wolf")
         {
             //Inicia habilidades en 3 segundos. Cada 2 segundos intenta ejecutar una habilidad.
@@ -22,11 +22,24 @@ public class BossManager : MonoBehaviour
             //Para evitar que se quede bloqueado.
             InvokeRepeating("WolfToIdle", 0, 3.5f);
         }
-        else WizardAbilities();
-        
-
+        else
+        {
+            ChangeBossState("wizard", "fireball");
+        }
     }
     // Update is called once per frame
+    private void Update()
+    {
+        if(wizardState == WizardEnums.fireball && bossLife.GetActualLife() <= 90)
+        {
+            ChangeBossState("wizard", "fireball");
+            ChangeBossState("wizard", "flying");
+        }
+        else if(wizardState == WizardEnums.flying && bossLife.GetActualLife() <= 50)
+        {
+            ChangeBossState("wizard", "flying");
+        }
+    }
     void RandomAbility()
     {
         if(bossLife.GetActualLife()>0)
@@ -39,16 +52,7 @@ public class BossManager : MonoBehaviour
             ChangeBossState("wolf", "charge");
         }
     }
-    void WizardAbilities()
-    {
-        InvokeRepeating("CreateFireball", 1, 2);
-    }
-    void CreateFireball()
-    {
-       ChangeBossState("wizard", "fireball");
-        Debug.Log(bossLife.GetActualLife());
-       if (bossLife.GetActualLife() <= 90) CancelInvoke("CreateFireball");
-    }
+
     //Comprueba que esta saltando, si es asi, espera un par de segundos para que aterrice y vuelve al estado Idle.
     void WolfToIdle()
     {
@@ -115,22 +119,37 @@ public class BossManager : MonoBehaviour
                     case "storm":
                         if (wizardState == WizardEnums.idle)
                         {
-                        boss.GetComponent<MutipleLightings>().Storm();
+                        boss.GetComponent<MutipleLightings>().StartStorm();
                         wizardState = WizardEnums.storm;
+                        }
+                        else
+                        {
+                            boss.GetComponent<MutipleLightings>().StopStorm();
+                            wizardState = WizardEnums.idle;
                         }
                         break;
                     case "flying":
                         if (wizardState == WizardEnums.idle)
                         {
-                            boss.GetComponent<EnemyLighting>().SoltarRayo();
+                            boss.GetComponent<EnemyLighting>().LightingOn();
                             wizardState = WizardEnums.flying;
+                        }
+                        else
+                        {
+                            boss.GetComponent<EnemyLighting>().LightingOff();
+                            wizardState = WizardEnums.idle;
                         }
                         break;
                     case "fireball":
                         if (wizardState == WizardEnums.idle)
                         {
-                            boss.GetComponent<BossFireball>().Create();
+                            boss.GetComponent<BossFireball>().StartCreate();
                             wizardState = WizardEnums.fireball;
+                        }
+                        else
+                        {
+                            boss.GetComponent<BossFireball>().StopCreate();
+                            wizardState = WizardEnums.idle;
                         }
                         break;
                     case "idle":
