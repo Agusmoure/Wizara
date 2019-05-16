@@ -38,6 +38,8 @@ public class BossManager : MonoBehaviour
         else if(wizardState == WizardEnums.flying && bossLife.GetActualLife() <= 50)
         {
             ChangeBossState("wizard", "flying");
+            ChangeBossState("wizard", "storm");
+            ChangeBossState("wizard", "fireball");
         }
     }
     void RandomAbility()
@@ -119,12 +121,12 @@ public class BossManager : MonoBehaviour
                     case "storm":
                         if (wizardState == WizardEnums.idle)
                         {
-                        boss.GetComponent<MutipleLightings>().StartStorm();
+                        boss.GetComponent<MultipleLightings>().StartStorm();
                         wizardState = WizardEnums.storm;
                         }
                         else
                         {
-                            boss.GetComponent<MutipleLightings>().StopStorm();
+                            boss.GetComponent<MultipleLightings>().StopStorm();
                             wizardState = WizardEnums.idle;
                         }
                         break;

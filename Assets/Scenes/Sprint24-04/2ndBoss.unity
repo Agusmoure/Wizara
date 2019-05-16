@@ -315,7 +315,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 11099001}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.63, y: 3.95, z: 0}
+  m_LocalPosition: {x: 7.3, y: 3.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3529,6 +3529,7 @@ GameObject:
   - component: {fileID: 242326614}
   - component: {fileID: 242326616}
   - component: {fileID: 242326617}
+  - component: {fileID: 242326618}
   m_Layer: 9
   m_Name: Wizard
   m_TagString: Boss
@@ -3556,7 +3557,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 242326611}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff3548eca26853144b33d0de7f9727a1, type: 3}
   m_Name: 
@@ -3571,7 +3572,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 242326611}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bca53b11564e9814f8d1e190245958c7, type: 3}
   m_Name: 
@@ -3650,8 +3651,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3892fc20da144974fbd360374160befe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifePoints: 135
+  lifePoints: 100
   currentLife: 0
+--- !u!114 &242326618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 242326611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42064fe1b017fb04abe37f1413032eb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfBlinks: 5
+  timeBetweenBlinks: 0.6
 --- !u!1 &262832907
 GameObject:
   m_ObjectHideFlags: 0
@@ -7169,11 +7183,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4410842504909816, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.32
+      value: 7.4
       objectReference: {fileID: 0}
     - target: {fileID: 4410842504909816, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -3.66
+      value: -0.72
       objectReference: {fileID: 0}
     - target: {fileID: 4410842504909816, guid: 1eb1162e65d7bb344a9a4fcb94f0c25d, type: 2}
       propertyPath: m_LocalPosition.z
