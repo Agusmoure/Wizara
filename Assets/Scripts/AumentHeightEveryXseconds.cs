@@ -12,6 +12,7 @@ public class AumentHeightEveryXseconds : MonoBehaviour
     {
         if (GetComponent<AudioToPlay>() != null) GetComponent<AudioToPlay>().SendAudioToPlay();
         StartCoroutine(Aument());
+        Invoke("DestroyThis", 1);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -25,12 +26,15 @@ public class AumentHeightEveryXseconds : MonoBehaviour
             {
                 foreach (ContactPoint2D contact in collision.contacts)
                 {
-                    Vector2 hitPoint = new Vector2 (contact.point.x, contact.point.y + 0.2f);
-                    if (hitPoint.y < transform.position.y)
+                    if (contact.normal.y > 0)
                     {
-                        //Instantiate(explosion, new Vector3(hitPoint.x, hitPoint.y, 0), Quaternion.identity);
-                        inst.Instantiate(hitPoint);
-                        Invoke("DestroyThis", 0.4f);
+                        Vector2 hitPoint = new Vector2(contact.point.x, contact.point.y + 0.2f);
+                        if (hitPoint.y < transform.position.y)
+                        {
+                            //Instantiate(explosion, new Vector3(hitPoint.x, hitPoint.y, 0), Quaternion.identity);
+                            inst.Instantiate(hitPoint);
+                            Invoke("DestroyThis", 0.4f);
+                        }
                     }
                 }
             }
@@ -38,9 +42,13 @@ public class AumentHeightEveryXseconds : MonoBehaviour
             else
             {
                 ContactPoint2D[] contact = new ContactPoint2D[1];
-                 collision.GetContacts(contact);
-                inst.Instantiate(new Vector2 (contact[0].point.x, contact[0].point.y + 0.4f));
-                Destroy(gameObject);
+                collision.GetContacts(contact);
+
+                if (contact[0].normal.y > 0)
+                {
+                    inst.Instantiate(new Vector2(contact[0].point.x, contact[0].point.y + 0.4f));
+                    Invoke("DestroyThis", 0.4f);
+                }
             }
         }
 
