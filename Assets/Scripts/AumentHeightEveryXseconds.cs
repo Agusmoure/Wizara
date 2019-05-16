@@ -24,19 +24,20 @@ public class AumentHeightEveryXseconds : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<TilemapCollider2D>() != null)
             {
-                foreach (ContactPoint2D contact in collision.contacts)
+                ContactPoint2D[] contact = new ContactPoint2D[1];
+                collision.GetContacts(contact);
+
+                if (contact[0].normal.y > 0)
                 {
-                    if (contact.normal.y > 0)
+                    Vector2 hitPoint = new Vector2(contact[0].point.x, contact[0].point.y + 0.25f);
+                    if (hitPoint.y < transform.position.y)
                     {
-                        Vector2 hitPoint = new Vector2(contact.point.x, contact.point.y + 1f);
-                        if (hitPoint.y < transform.position.y)
-                        {
-                            //Instantiate(explosion, new Vector3(hitPoint.x, hitPoint.y, 0), Quaternion.identity);
-                            inst.Instantiate(hitPoint);
-                            Invoke("DestroyThis", 0.4f);
-                        }
+                        //Instantiate(explosion, new Vector3(hitPoint.x, hitPoint.y, 0), Quaternion.identity);
+                        inst.Instantiate(hitPoint);
+                        Invoke("DestroyThis", 0.4f);
                     }
                 }
+
             }
 
             else
