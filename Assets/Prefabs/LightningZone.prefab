@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 50382880903427964}
   - component: {fileID: 95502020112353202}
   m_Layer: 12
-  m_Name: Provisonal_lighting_zone
+  m_Name: LightningZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
