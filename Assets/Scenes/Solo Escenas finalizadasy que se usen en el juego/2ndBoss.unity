@@ -3892,7 +3892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff3548eca26853144b33d0de7f9727a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lighting: {fileID: 1222134243382226, guid: d8eb2524554f7e4428ed52585b24e8ad, type: 2}
+  lighting: {fileID: 1530729658101956, guid: d8eb2524554f7e4428ed52585b24e8ad, type: 2}
   pointA: {fileID: 774675345}
   pointB: {fileID: 11099001}
   numberOfLightings: 20
@@ -4314,7 +4314,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4515700274774382, guid: 5f92f86d82504214b9e60713c5181ab9, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 82724566076588020, guid: 5f92f86d82504214b9e60713c5181ab9,
         type: 2}
@@ -4652,7 +4652,7 @@ Transform:
   m_Children:
   - {fileID: 242326612}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &508854098
 GameObject:
