@@ -13,7 +13,7 @@ public class MutipleLightings : MonoBehaviour {
             pointA.transform.position = new Vector2(pointB.transform.position.x, pointA.transform.position.y);
             pointB.transform.position= new Vector2(aux, pointA.transform.position.y);
         }
-        InvokeRepeating("Storm", 1, 5);
+
 
     }
 	
@@ -49,4 +49,13 @@ public class MutipleLightings : MonoBehaviour {
             else j--;
         }
     }
+    public void StartStorm()
+    {
+        InvokeRepeating("Storm", 1, 5);
+    }
+    public void StopStorm()
+    {
+        CancelInvoke("Storm");
+    }
+
 }
