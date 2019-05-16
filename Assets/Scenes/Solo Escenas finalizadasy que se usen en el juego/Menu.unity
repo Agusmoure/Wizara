@@ -650,7 +650,7 @@ Prefab:
     - target: {fileID: 114769755857364312, guid: 5f92f86d82504214b9e60713c5181ab9,
         type: 2}
       propertyPath: sound.Array.size
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4515700274774382, guid: 5f92f86d82504214b9e60713c5181ab9, type: 2}
       propertyPath: m_LocalPosition.x
@@ -757,7 +757,7 @@ Prefab:
     - target: {fileID: 114769755857364312, guid: 5f92f86d82504214b9e60713c5181ab9,
         type: 2}
       propertyPath: sound.Array.data[8].volume
-      value: 1
+      value: 0.928
       objectReference: {fileID: 0}
     - target: {fileID: 114769755857364312, guid: 5f92f86d82504214b9e60713c5181ab9,
         type: 2}
@@ -772,7 +772,7 @@ Prefab:
     - target: {fileID: 114769755857364312, guid: 5f92f86d82504214b9e60713c5181ab9,
         type: 2}
       propertyPath: sound.Array.data[3].name
-      value: Guerrilla
+      value: Zona1Definitiva
       objectReference: {fileID: 0}
     - target: {fileID: 82724566076588020, guid: 5f92f86d82504214b9e60713c5181ab9,
         type: 2}
@@ -790,6 +790,56 @@ Prefab:
       propertyPath: Volume
       value: 
       objectReference: {fileID: 935482857}
+    - target: {fileID: 114769755857364312, guid: 5f92f86d82504214b9e60713c5181ab9,
+        type: 2}
+      propertyPath: sound.Array.data[9].name
+      value: Puzzle2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114769755857364312, guid: 5f92f86d82504214b9e60713c5181ab9,
+        type: 2}
+      propertyPath: sound.Array.data[9].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: f775e836a79971649a254341f31baa44, type: 3}
+    - target: {fileID: 114769755857364312, guid: 5f92f86d82504214b9e60713c5181ab9,
+        type: 2}
+      propertyPath: sound.Array.data[9].looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114769755857364312, guid: 5f92f86d82504214b9e60713c5181ab9,
+        type: 2}
+      propertyPath: sound.Array.data[9].volume
+      value: 0.912
+      objectReference: {fileID: 0}
+    - target: {fileID: 114769755857364312, guid: 5f92f86d82504214b9e60713c5181ab9,
+        type: 2}
+      propertyPath: sound.Array.data[10].name
+      value: Zona2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114769755857364312, guid: 5f92f86d82504214b9e60713c5181ab9,
+        type: 2}
+      propertyPath: sound.Array.data[10].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 449edd63f58c2f24594720f2f9e405f1, type: 3}
+    - target: {fileID: 114769755857364312, guid: 5f92f86d82504214b9e60713c5181ab9,
+        type: 2}
+      propertyPath: sound.Array.data[10].looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114769755857364312, guid: 5f92f86d82504214b9e60713c5181ab9,
+        type: 2}
+      propertyPath: sound.Array.data[10].volume
+      value: 0.869
+      objectReference: {fileID: 0}
+    - target: {fileID: 114769755857364312, guid: 5f92f86d82504214b9e60713c5181ab9,
+        type: 2}
+      propertyPath: sound.Array.data[3].volume
+      value: 0.903
+      objectReference: {fileID: 0}
+    - target: {fileID: 114769755857364312, guid: 5f92f86d82504214b9e60713c5181ab9,
+        type: 2}
+      propertyPath: sound.Array.data[2].volume
+      value: 0.928
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f92f86d82504214b9e60713c5181ab9, type: 2}
   m_IsPrefabAsset: 0
