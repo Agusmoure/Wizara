@@ -40,11 +40,6 @@ public class BossManager : MonoBehaviour
             ChangeBossState("wizard", "flying");
             ChangeBossState("wizard", "storm");
         }
-     //   else if (wizardState == WizardEnums.fireball && bossLife.GetActualLife() <= 0)
-     //   {
-      //      ChangeBossState("wizard", "storm");
-         //   ChangeBossState("wizard", "fireball");
-      //  }
     }
     void RandomAbility()
     {
