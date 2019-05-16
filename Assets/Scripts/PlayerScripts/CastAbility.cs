@@ -5,17 +5,13 @@ using UnityEngine;
 public class CastAbility : MonoBehaviour {
 
     public GameObject fireBall, shield, lighting;
-    PoolManager pool;
     bool fireBallOnCD, shieldOnCD, thunderBoldOnCD;
-    public UIManager uIManager;
+    UIManager uIManager;
     Animator anim;
-
     private void Start()
     {
-        pool = GameManager.instance.ReturnPoolManager();
         anim = GetComponent<Animator>();
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -57,14 +53,14 @@ public class CastAbility : MonoBehaviour {
             Invoke("ThunderboltCD", GameManager.instance.ReturnCooldown("Lightning"));
         }
     }
-
     //Metodos para instanciar las habilidades.
     void InstantiateFireBall()
     {
-        GameObject newFireball = Instantiate(fireBall, transform.position, Quaternion.identity, /*pool.GetProjectilePool()*/null);
+        GameObject newFireball = Instantiate(fireBall, transform.position, Quaternion.identity, GameManager.instance.ReturnPoolManager().GetProjectilePool());
         Vector2 newDirection = transform.lossyScale.x * transform.right;
 
         newFireball.GetComponent<FireBall>().ChangeDirection(newDirection);
+        uIManager = GameManager.instance.ReturnUIManager();
         uIManager.SetSliderValue(0f, "Fireball");
         //uIManager.PressButton("Fireball");
     }
@@ -73,22 +69,25 @@ public class CastAbility : MonoBehaviour {
     {
         //El escudo se hace hijo del jugador para seguir su movimiento.
         GameObject newShield = Instantiate(shield, transform.position, Quaternion.identity, gameObject.transform);
+        uIManager = GameManager.instance.ReturnUIManager();
         uIManager.SetSliderValue(0f, "Shield");
         //uIManager.PressButton("Shield");
     }
 
     void InstantiateThunderbolt()
     {
-        int layerMask = 1 << 21;
+        int layerMask = 1 << 10;
         RaycastHit2D hit2D = Physics2D.Raycast(transform.position,Vector2.up,80,layerMask);
         //Si choca con algo 
         if (hit2D.collider != null)
         {
-            GameObject newLighting = Instantiate(lighting, hit2D.point+Vector2.down*0.1f, Quaternion.identity, null);
+            GameObject newLighting = Instantiate(lighting, hit2D.point+Vector2.down*0.2f, Quaternion.identity, GameManager.instance.ReturnPoolManager().GetProjectilePool());
 
             //muestra en el editor una linea que cubre toda la pantalla
             Debug.DrawLine(hit2D.point, hit2D.point + 10 * Vector2.down, Color.yellow,5);
         }
+        uIManager = GameManager.instance.ReturnUIManager();
+
     }
 
     //Metodos para control de tiempo de enfriamiento.
