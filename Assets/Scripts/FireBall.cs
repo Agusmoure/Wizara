@@ -23,7 +23,12 @@ public class FireBall : MonoBehaviour {
     //Cuando coincide con un obstaculo lo destruye, y acto seguido se destruye ella misma si choca con cualquier otra cosa != jugador se destruye
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag.Equals("Obstacle")) Destroy(collision.gameObject);
+        if (collision.gameObject.tag.Equals("Obstacle"))
+        {
+            Destroy(collision.gameObject);
+            //Elimina las restricciones de movimiento cuando el jugador esta pegado a una pared y esta se destruye.
+            GameManager.instance.ReturnPlayer().GetComponent<PlayerMovement>().RemoveRestrictions();
+        }
         DestroyParent parentD=GetComponent<DestroyParent>();
         if (parentD != null) parentD.DestroyP();
         Destroy(this.gameObject);

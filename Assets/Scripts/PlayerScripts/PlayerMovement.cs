@@ -79,8 +79,7 @@ public class PlayerMovement : MonoBehaviour
     {
         collision.GetContacts(contact);
 
-        movRestrictionL = false;
-        movRestrictionR = false;
+        RemoveRestrictions();
 
         //comprueba si el jugador deja de estar en contacto con una plataforma en movimiento para que ya no tenga que estar sobre ella
         if (collision.gameObject.tag == "MovingPlatform")
@@ -88,8 +87,16 @@ public class PlayerMovement : MonoBehaviour
             player.transform.parent = null;
         }
     }
-
-
+    public void RemoveRestrictions()
+    {
+        Invoke("RemoveRestrictionsPrivate", 0.01f);
+        //se retrasa un tiempo el reseteo de restricciones para que de tiempo al objeto a destruirse.
+    }
+    private void RemoveRestrictionsPrivate()
+    {
+        movRestrictionL = false;
+        movRestrictionR = false;
+    }
     void ChangeVelocity()
     {
         if (!movRestrictionL && !movRestrictionR) player.velocity = new Vector2(velocity * inputX, player.velocity.y);
@@ -142,8 +149,8 @@ public class PlayerMovement : MonoBehaviour
             player.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
             //Pequeño impulso hacia arriba para levantar al jugador del suelo.
             player.AddForce(new Vector2(0, 4), ForceMode2D.Impulse);
-            //Retraso de 0.04 para que de tiempo a levantar a jugador.
-            Invoke("DoDash", 0.04f);
+            //Retraso de 0.05 para que de tiempo a levantar a jugador.
+            Invoke("DoDash", 0.05f);
         }
     }
 
