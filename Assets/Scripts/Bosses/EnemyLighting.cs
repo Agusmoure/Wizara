@@ -12,7 +12,6 @@ public class EnemyLighting : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -32,11 +31,17 @@ public class EnemyLighting : MonoBehaviour
         }
         if (transform.position == target)
         {
-            if (target == initialPosition) target = puntoFinal.position;
-            else target = initialPosition;
+            if (target == initialPosition)
+            {
+                transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
+                target = puntoFinal.position;
+            }
+            else
+            {
+                transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
+                target = initialPosition;
+            }
         }
-
-
     }
     void InvokeCd()
     {
@@ -50,10 +55,16 @@ public class EnemyLighting : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, initialPosition, speed * Time.deltaTime);
         }
+        transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
         ray = true;
     }
     public void LightingOff()
     {
+        ResetLocalScale();
         ray = false;
+    }
+    public void ResetLocalScale()
+    {
+        transform.localScale = new Vector2(-1, transform.localScale.y);
     }
 }
