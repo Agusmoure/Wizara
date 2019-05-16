@@ -46,7 +46,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1146874859720158}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.214787, y: -2.8058958, z: 0}
+  m_LocalPosition: {x: 5.253787, y: -2.8058958, z: 0}
   m_LocalScale: {x: -1.3, y: 1.3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -224,9 +224,12 @@ MonoBehaviour:
   maxFallSpeed: 5
   yVelocity: 0
   xVelocity: 0
+  wallJumpForce: 6
   maxJump: 1
+  maxWallJump: 0
   movRestrictionL: 0
   movRestrictionR: 0
+  noInput: 0
 --- !u!114 &114706905127193276
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -240,7 +243,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireBall: {fileID: 1564833639186900, guid: 5f6bb9a1ef09acd4cb769aa5198f9bc2, type: 2}
   shield: {fileID: 1960320302740486, guid: 78df1723b26a2414b999df0ff99e35c5, type: 2}
-  lighting: {fileID: 1391941165697216, guid: cc0b2d9226b66ce40950b34983f5a392, type: 2}
+  lighting: {fileID: 0}
+  uIManager: {fileID: 0}
 --- !u!114 &114780570125028800
 MonoBehaviour:
   m_ObjectHideFlags: 1
