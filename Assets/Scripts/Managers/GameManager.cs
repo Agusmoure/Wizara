@@ -176,7 +176,7 @@ public class GameManager : MonoBehaviour
             case "Dash":
                 dash = true;
                 break;
-            case "Double Jump":
+            case "DoubleJump":
                 if (player != null)
                 {
                     //Si el player tiene PlayerMovement entonces setea los saltos a dos

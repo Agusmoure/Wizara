@@ -20,7 +20,6 @@ public class PlayerMovement : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        if (GameManager.instance.ReturnAbilityValue("double jump")) DoubleJumpActive();
         player = gameObject.GetComponent<Rigidbody2D>();
         scale = transform.localScale;
         jump = maxJump;
