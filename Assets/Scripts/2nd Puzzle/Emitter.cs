@@ -6,52 +6,59 @@ public class Emitter : MonoBehaviour
 {
     Ray ray;
     RaycastHit hit;
-    public int reflections = 5;
-    public Material End;
+    public Material end;
     LineRenderer lineRen;
     bool stop;
-    
-    //the number of points at the line renderer
+
+    //Usamos la componente de unity lineRenderer y marcamos el punto inicial.
     void Start()
     {
-        //get the attached LineRenderer component  
-        lineRen = GetComponent<LineRenderer>();
+        lineRen = GetComponent<LineRenderer>(); //Pinta la línea formada por el rayo.        
         lineRen.SetPosition(0, transform.position);
     }
+
+    //Bucle del rayo.
     void Update()
     {
+        //Creamos el rayo (raycast) en la misma posición inicial y con una dirección asignada (right).
         stop = false;
-        ray = new Ray(transform.position, Vector3.right);
-        //start with just the origin
+        ray = new Ray(transform.position, Vector3.up);
+        //Comienza 
         lineRen.positionCount = 1;
         //Bucle para reflexion de "reflections" veces.
-        for (int i = 0; i < reflections && !stop; i++)
+        while (!stop)
         {
-            Debug.Log("ray.direction" + ray.direction);
-            Debug.Log("ray.origin" + ray.origin);
             //Se detecta si hay colision en el raycast con "hit".
-            if (Physics.Raycast(ray.origin, ray.direction, out hit, 10))
+            if (Physics.Raycast(ray.origin, ray.direction, out hit, 100))
             {
-                //we hit, update line renderer
+                //Golpe detectado, actualiza el renderizado de la línea.
                 lineRen.positionCount++;
+                //Se crea la linea desde el punto anterior al nuevo punto de colisión.
                 lineRen.SetPosition(lineRen.positionCount - 1, hit.point);
-                //Se crea el vector de reflexion.
-                Vector3 relfection = Vector3.Reflect(ray.direction, hit.normal);
-                //Se crea el rayo que se refleja.
-                ray = new Ray(hit.point, relfection);
+                //Se crea el vector de reflexión con el rayo incidente de ray y la normal del punto de colisión.
+                Vector3 reflection = Vector3.Reflect(ray.direction, hit.normal);
+                //Se asigna a ray el rayo reflejado para detectar las siguientes colisiones.
+                ray = new Ray(hit.point, reflection);
                 //Si no tocamos un objeto con tag "Mirror", detenemos bucle.
                 if (hit.collider.tag != "Mirror")
-                    stop = true;
-                //Comprueba si ha finalizado.
-                if (hit.transform.tag == "EndMirror")
                 {
-                    MeshRenderer mesh = hit.transform.GetComponent<MeshRenderer>();
-                    mesh.material = End;
+                    stop = true;
+                    //Comprueba si ha finalizado.
+                    if (hit.transform.tag == "EndMirror")
+                    {
+                        GetComponentInChildren<SelectMirror>().StopInput();
+                        MeshRenderer mesh = hit.transform.GetComponent<MeshRenderer>();
+                        mesh.material = end;
+                        GameManager.instance.SetAbilityTrue("Shield");
+                        GameManager.instance.ChangeScene("Zona2");
+
+                    }
                 }
+
             }
+            //Golpe no detectado, actualiza el renderizado de la línea hasta la longitud actual.
             else
             {
-                // We didn't hit anything, draw line to end of ramainingLength
                 lineRen.positionCount++;
                 lineRen.SetPosition(lineRen.positionCount - 1, ray.origin + ray.direction * 20);
                 stop = true;

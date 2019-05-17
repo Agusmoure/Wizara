@@ -2,18 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
 
     public static GameManager instance = null;
     public float fireBallCooldown, shieldCooldown, lightningCooldown;
+    float crrntVol=1;
     GameObject player;
     LevelManager levelManager;
     BossManager boss;
     UIManager uIManager;
-    bool onMenu = false, onDialogue = false;
-    bool doubleJump = false, wallJump = false, dash = true, fireBall = true, shield = true, lightning = false, invulnerable=false;
+    AudioManager audioManager;
+    Slider volumeSlid;
+    PoolManager poolManager;
+    public bool onMenu = false, onDialogue = false, girl = true;
+    bool doubleJump = false, dash = false, fireBall = false, shield = false, lightning = false, invulnerable = false;
 
     //Los checkpoints son structs en los que se guardan dos datos: El transform, para la posición, y la escena, para cargar la escena necesaria al reaparecer.
     [System.Serializable]
@@ -42,7 +47,6 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-
     }
 
     //obtiene el level manager
@@ -79,6 +83,26 @@ public class GameManager : MonoBehaviour
         uIManager = uI;
     }
 
+    public void ThisAudioManager(AudioManager audio)
+    {
+        audioManager = audio;
+    }
+
+    public void ThisPoolManager(PoolManager pool)
+    {
+        poolManager = pool;
+    }
+
+    public PoolManager ReturnPoolManager()
+    {
+        return poolManager;
+    }
+
+    public AudioManager ReturnAudioManager()
+    {
+        return audioManager;
+    }
+
     public UIManager ReturnUIManager()
     {
         return uIManager;
@@ -86,7 +110,13 @@ public class GameManager : MonoBehaviour
 
     public void ChangeScene(string Scene)
     {
+        if (onMenu || onDialogue) {
+        Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+            onMenu = false;
+            onDialogue = false;
+        }
         SceneManager.LoadScene(Scene);
+        audioManager.PlayMainAudio(Scene);
     }
 
     public void Pause(string currentCase)
@@ -117,7 +147,7 @@ public class GameManager : MonoBehaviour
     //Este metodo carga la escena en la que se encuentra el checkpoint actual. Para determinar la posición del jugador el LevelManager accederá a el transform del Checkpoint actual en su metodo Start.
     public void Respawn()
     {
-        SceneManager.LoadScene(currentCheckpoint.scene);
+        ChangeScene(currentCheckpoint.scene);
     }
 
     //Cuando el jugador llegue a un checkpoint este avisará al GameManager para que cambie la información del checkpoint actual. Como es lógico la escena de este checkpoint será aquella en la que nos encontremos en este momento.
@@ -126,6 +156,11 @@ public class GameManager : MonoBehaviour
         currentCheckpoint.playerPosition = new Vector2(checkpointTransform.position.x, checkpointTransform.position.y);
         currentCheckpoint.cameraRoom = new Vector2(roomTransform.position.x, roomTransform.position.y);
         currentCheckpoint.scene = SceneManager.GetActiveScene().name;
+    }
+
+    public void ChangeCheckpointPosition(Vector2 position)
+    {
+        currentCheckpoint.playerPosition = position;
     }
 
     //Este metodo devuelve el transform del checkpoint actual. Esta información es util para que el LevelManager situe al jugador en la posición correcta al spawnear.
@@ -146,13 +181,16 @@ public class GameManager : MonoBehaviour
             case "Dash":
                 dash = true;
                 break;
-            case "Wall Jump":
-                wallJump = true;
-                break;
-            case "Double Jump":
-                //Si el player tiene PlayerMovement entonces setea los saltos a dos
-                PlayerMovement playerM=player.GetComponent<PlayerMovement>();
-                if (playerM != null) playerM.DoubleJumpActive();
+            case "DoubleJump":
+                if (player != null)
+                {
+                    //Si el player tiene PlayerMovement entonces setea los saltos a dos
+                    PlayerMovement playerM = player.GetComponent<PlayerMovement>();
+                    if (playerM != null)
+                    {
+                        playerM.DoubleJumpActive();
+                    }
+                }
                 doubleJump = true;
                 break;
             case "Fireball":
@@ -169,19 +207,17 @@ public class GameManager : MonoBehaviour
 
     public bool ReturnAbilityValue(string ability)
     {
-        switch (ability)
+        switch (ability.ToLower())
         {
-            case "Dash":
+            case "dash":
                 return dash;
-            case "WallJump":
-                return wallJump;
-            case "DoubleJump":
+            case "double jump":
                 return doubleJump;
-            case "Fireball":
+            case "fireball":
                 return fireBall;
-            case "Shield":
+            case "shield":
                 return shield;
-            case "Lightning":
+            case "lightning":
                 return lightning;
             default: return false;
         }
@@ -217,5 +253,47 @@ public class GameManager : MonoBehaviour
     public BossManager ReturnBossManager()
     {
         return boss;
+    }
+
+    public void ActivateAll()
+    {
+        dash = true;
+        doubleJump = true;
+        //Si el player tiene PlayerMovement entonces setea los saltos a dos
+        PlayerMovement playerM = player.GetComponent<PlayerMovement>();
+        if (playerM != null)
+        {
+            playerM.DoubleJumpActive();
+        }
+        fireBall = true;
+        shield = true;
+        lightning = true;
+
+    }
+    public bool GetGender()
+    {
+        return girl;
+    }
+    public void AreYouAGirl(bool areYou)
+    {
+        girl = areYou;
+    }
+    // se recoge la referencia al objeto que lleva el slider para poder usarlo.
+    public void SetVolumeSlider(Slider volume)
+    {
+        volumeSlid = volume;
+    }
+    public Slider GetVolumeSlider()
+    {
+        return volumeSlid;
+    }
+    // los siguientes dos métodos son necesarios para guardar el valor del volumen en el cambio de escena
+    public void SetCurrentVolume(float vol)
+    {
+        crrntVol = vol;
+    }
+    public float GetCurrentVolume()
+    {
+        return crrntVol;
     }
 }

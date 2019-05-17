@@ -5,7 +5,7 @@ using UnityEngine;
 public class Life : MonoBehaviour {
 
     public int lifePoints;
-    int currentLife;
+    public int currentLife;
 
     private void Start()
     {
@@ -16,22 +16,26 @@ public class Life : MonoBehaviour {
     public void LoseLife(int damage)
     {
         currentLife -= damage;
+        if (GetComponent<BlinkAfterDamage>() != null) GetComponent<BlinkAfterDamage>().Blink();
 
-        //Cuando la vida sea 0 o menor, el jugador muere.
-        if (currentLife <= 0) Dead();
+            //Cuando la vida sea 0 o menor, el jugador muere.
+            if (currentLife <= 0) Dead();
 
-        if (tag == "Player") GameManager.instance.ReturnUIManager().UpdateLifeUI();
+        if (tag == "Player") {
+            GameManager.instance.ReturnUIManager().UpdateLifeUI(); }
 
         if (CompareTag("Boss") && GetComponent<BossLifebar>() != null) GetComponent<BossLifebar>().UpdateLifebar(lifePoints, currentLife);
     }
 
-    //Método que destruye al jugador al morir (es llamado por GM).
+    //Método que destruye al gameObject al morir.
     public void Dead()
     {
         DropObjectOnDeath drop = GetComponent<DropObjectOnDeath>();
         if (drop != null) drop.DropObject();
         DestroyParent destroy = GetComponent <DestroyParent>();
         if (destroy != null) destroy.DestroyP();
+        AudioToPlay audio = GetComponent<AudioToPlay>();
+        if (audio != null) audio.SendAudioToPlay(); 
         if (tag == "Player") GameManager.instance.Respawn();
         else Destroy(gameObject);
     }

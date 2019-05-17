@@ -108,6 +108,8 @@ GameObject:
   - component: {fileID: 114869609279626370}
   - component: {fileID: 114974120907522392}
   - component: {fileID: 114422870815136156}
+  - component: {fileID: 114399865612435588}
+  - component: {fileID: 114286569912600504}
   m_Layer: 9
   m_Name: Bat Enemy
   m_TagString: Untagged
@@ -181,7 +183,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1496672959093568}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.670119, y: -0.24170732, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4042277432850884}
@@ -358,7 +360,7 @@ Animator:
   m_GameObject: {fileID: 1932087880856178}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dd619190d4c52784f92989838419bc81, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -379,6 +381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifePoints: 4
+  currentLife: 0
 --- !u!114 &114263295921942670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -390,6 +393,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 548469197cb92724eaa386f132065360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointPrefab: {fileID: 1578763608846338, guid: 7469d067133a405428d638df0aa6cd32,
+    type: 2}
+--- !u!114 &114286569912600504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1932087880856178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42064fe1b017fb04abe37f1413032eb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfBlinks: 6
+  timeBetweenBlinks: 0.1
 --- !u!114 &114344877866414064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -404,7 +422,18 @@ MonoBehaviour:
   probability: 60
   droppedObject: {fileID: 1823006112532908, guid: 2a1ba307356fbf44fb281c9f6a57ca10,
     type: 2}
-  objectPool: {fileID: 0}
+--- !u!114 &114399865612435588
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1932087880856178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acbc789c38ec34443a2ca2d438a0f4bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Bat
 --- !u!114 &114422870815136156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -440,7 +469,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyProjectile: {fileID: 1575353207133300, guid: 0cb2e7b2b4da09e4798afcc001de9da4,
     type: 2}
-  projectilePool: {fileID: 0}
   time: 2
 --- !u!114 &114904221367645836
 MonoBehaviour:

@@ -11,9 +11,9 @@ public class LevelManager : MonoBehaviour {
     {
         //Indica al GameManager cual es el LevelManager.
         GameManager.instance.GetLevelManager(this);
-        player = GameManager.instance.ReturnPlayer();
-        player = GameObject.FindGameObjectWithTag("Player");
         Invoke("SpawnPlayer", 1f * Time.deltaTime);
+        if (GameManager.instance.GetGender()) player = gameObject.GetComponent<GenderManager>().GetGirl();
+        else player = gameObject.GetComponent<GenderManager>().GetBoy();
     }
 
     public void GetCamera(GameObject thisCamera)
@@ -44,6 +44,14 @@ public class LevelManager : MonoBehaviour {
             player.transform.position = new Vector2(GameManager.instance.ReturnCurrentCheckpointPosition().x, GameManager.instance.ReturnCurrentCheckpointPosition().y);
             MoveCamera(GameManager.instance.ReturnCurrentCheckpointRoomPosition());
             TeleportCamera(GameManager.instance.ReturnCurrentCheckpointRoomPosition());
+        }
+    }
+
+    public void OpenDoors()
+    {
+        KeyDoor[] doors = FindObjectsOfType<KeyDoor>();
+        for(int i = 0; i < doors.Length; i++){
+            doors[i].Unlock();
         }
     }
 }

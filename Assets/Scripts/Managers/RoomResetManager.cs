@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RoomResetManager : MonoBehaviour
 {
+    public bool loadedOnStart = false;
 
     public GameObject[] prefabs;
 
@@ -25,6 +26,8 @@ public class RoomResetManager : MonoBehaviour
     {
         StoreInfo();
         DestroyEnemies();
+
+        if (loadedOnStart) RespawnEnemies();
     }
 
     //Este metodo almacena en un array de structs la información importante de los objetos a resetear: el prefab, la escala, la velocidad, la posición en la que spawnean y los puntos por los que se guia su movimiento
@@ -80,11 +83,13 @@ public class RoomResetManager : MonoBehaviour
 
         else for (int j = 0; j < transform.GetChild(i).childCount; j++)
             {
-                if (transform.GetChild(i).transform.GetChild(j).name.Contains("Rat") || transform.GetChild(i).transform.GetChild(j).name.Contains("Bat")
-                        || transform.GetChild(i).transform.GetChild(j).name.Contains("Slime"))
+                for (int k = 0; k < prefabs.Length; k++)
                 {
-                    enemyArray[i].enemyScale.x = transform.GetChild(i).transform.GetChild(j).transform.localScale.x;
-                    enemyArray[i].enemyScale.y = transform.GetChild(i).transform.GetChild(j).transform.localScale.y;
+                    if (transform.GetChild(i).transform.GetChild(j).name.Contains(prefabs[k].name) && !transform.GetChild(i).name.Contains("Wizard") && !transform.GetChild(i).name.Contains("Platform"))
+                    {
+                        enemyArray[i].enemyScale.x = transform.GetChild(i).transform.GetChild(j).transform.localScale.x;
+                        enemyArray[i].enemyScale.y = transform.GetChild(i).transform.GetChild(j).transform.localScale.y;
+                    }
                 }
             }
     }

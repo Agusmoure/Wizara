@@ -17,6 +17,8 @@ TagManager:
   - DialogueBox
   - Boss
   - EndMirror
+  - Rayo
+  - Door
   layers:
   - Default
   - TransparentFX
@@ -38,10 +40,10 @@ TagManager:
   - NPC
   - Platforms
   - NPC things
-  - 
-  - 
-  - 
-  - 
+  - Slime Triggers
+  - Lighting
+  - PlayerThings
+  - EnemyAttacks
   - 
   - 
   - 

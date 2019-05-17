@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114238762232692294}
   - component: {fileID: 114233480587856266}
   - component: {fileID: 114879778382097526}
+  - component: {fileID: 114137991627490638}
   m_Layer: 9
   m_Name: BadWizard
   m_TagString: Enemy
@@ -43,7 +44,7 @@ GameObject:
   - component: {fileID: 4628301643251130}
   - component: {fileID: 50196621655309138}
   - component: {fileID: 61586497122128800}
-  m_Layer: 15
+  m_Layer: 19
   m_Name: EnemyWizardBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +87,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1793339108340756}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.62, y: -3.428, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4048143978042362}
@@ -100,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1920334070155926}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 6.55, y: 0.87, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4628301643251130}
@@ -126,7 +127,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 5
 --- !u!61 &61586497122128800
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -168,7 +169,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.3, y: 0.56}
+    oldSize: {x: 0.5714286, y: 0.5714286}
     newSize: {x: 0.3, y: 0.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -184,9 +185,9 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1105849691690526}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 09cae03a49ea5d84f940030854107765, type: 2}
+  m_Controller: {fileID: 9100000, guid: 210ef0abdc0e4f248a5244a513af5d5b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -195,6 +196,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114137991627490638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1105849691690526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42064fe1b017fb04abe37f1413032eb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfBlinks: 6
+  timeBetweenBlinks: 0.1
 --- !u!114 &114233480587856266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -207,7 +221,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seconds: 0.3
-  knockbackBoost: 1
+  knockbackBoostX: 1
+  knockbackBoostY: 0
 --- !u!114 &114238762232692294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -220,9 +235,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 6
-  Cooldown: 1
+  Cooldown: 2
   projectilePool: {fileID: 0}
-  fireBall: {fileID: 1932105882264238, guid: c8eeb266559cbcb4fa440b5881e32342, type: 2}
+  fireBall: {fileID: 1932105882264238, guid: 36842a3f9734701439cda487357ce7c8, type: 2}
 --- !u!114 &114477177131147518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -234,6 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 548469197cb92724eaa386f132065360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointPrefab: {fileID: 0}
 --- !u!114 &114722413850071852
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -245,7 +261,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3892fc20da144974fbd360374160befe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifePoints: 12
+  lifePoints: 9
+  currentLife: 0
 --- !u!114 &114879778382097526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -294,9 +311,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fcc4b042f308dd44ab319ead93e9a415, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 02e31a50cf38f904bb9384266ec1b546, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.3, y: 0.56}

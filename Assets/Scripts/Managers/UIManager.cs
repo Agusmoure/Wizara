@@ -2,22 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
     public Image[] HeartIcons;
-    public GameObject fireballIcon, shieldIcon, lightningIcon, dialogueBox;
-    public Slider fireballSlider, shieldSlider, lightningSlider, bossSlider;
-    GameObject player;
+    public GameObject fireballIcon, shieldIcon, lightningIcon, dialogueBox, debugMode;
+    public GameObject[] FirstsBottons;
+    public Slider bossSlider, fireballSlider, shieldSlider, lightningSlider, qSlider, wSlider, eSlider;
     float fireballSliderValue, shieldSliderValue, lightningSliderValue;
-
+    GameObject player;
+    public EventSystem eventSystem;
     void Start()
     {
         GameManager.instance.ThisUIManager(this);
-        player = GameObject.FindGameObjectWithTag("Player");
         Invoke("UpdateLifeUI", 0.5f * Time.deltaTime);
         Invoke("EnableAbilityIcons", 2f * Time.deltaTime);
-        
+
     }
 
     private void Update()
@@ -25,6 +26,10 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Pausa("Escape");
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            ScenesMenu();
         }
     }
 
@@ -56,6 +61,7 @@ public class UIManager : MonoBehaviour
 
     public void Pausa(string cause)
     {
+        eventSystem.SetSelectedGameObject(FirstsBottons[0]);
         if (cause == "Escape")
         {
             if (!GameManager.instance.IsOnDialogue())
@@ -102,8 +108,10 @@ public class UIManager : MonoBehaviour
 
     public void UpdateLifeUI()
     {
-        if (player !=null)
+        player = GameManager.instance.ReturnPlayer();
+        if (player != null)
         {
+
             int playerActualLife = player.GetComponent<Life>().GetActualLife();
 
             for (int i = 0; i < HeartIcons.Length; i++)
@@ -113,7 +121,7 @@ public class UIManager : MonoBehaviour
                 else HeartIcons[i].enabled = false;
             }
         }
-        
+
     }
 
     public void EnableAbilityIcons()
@@ -150,6 +158,7 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+
     public void SetSliderValue(float value, string slider)
     {
         switch (slider)
@@ -157,19 +166,21 @@ public class UIManager : MonoBehaviour
             case "Fireball":
                 fireballSliderValue = value;
                 fireballSlider.value = fireballSliderValue;
+                //qSlider.value = fireballSliderValue;
                 break;
             case "Shield":
                 shieldSliderValue = value;
                 shieldSlider.value = shieldSliderValue;
+                //eSlider.value = shieldSliderValue;
                 break;
             case "Lightning":
                 lightningSliderValue = value;
                 lightningSlider.value = lightningSliderValue;
+                //wSlider.value = lightningSliderValue;
                 break;
             case "Boss":
                 bossSlider.value = value;
                 break;
-
         }
     }
 
@@ -186,5 +197,50 @@ public class UIManager : MonoBehaviour
             default:
                 return 0;
         }
+    }
+    public void EnableDebugMode()
+    {
+        debugMode.SetActive(true);
+        GameManager.instance.ActivateAll();
+    }
+    //te lleva al canvas del menu
+    public void ScenesMenu()
+    {
+        if (!GameManager.instance.IsOnDialogue() && !GameManager.instance.IsOnMenu())
+        {
+            eventSystem.SetSelectedGameObject(FirstsBottons[1]);
+            if (GetActiveMenu() != null) GetActiveMenu().SetActive(false);
+            else gameObject.transform.GetChild(transform.childCount - 1).gameObject.SetActive(true);
+            GameManager.instance.Pause("Menu");
+        }
+    }
+    //si eres chico
+    public void Boy(string scene)
+    {
+        GameManager.instance.AreYouAGirl(false);
+        GameManager.instance.ChangeScene(scene);
+    }
+    //si eres chica
+    public void Girl(string scene)
+    {
+        GameManager.instance.AreYouAGirl(true);
+        GameManager.instance.ChangeScene(scene);
+
+    }
+    //para el boton de trucos
+    public void Cheat()
+    {
+        GameManager.instance.ActivateAll();
+        GameManager.instance.ReturnUIManager().EnableAbilityIcons();
+    }
+    //Para desbloquear las puertas
+    public void OpenDoors()
+    {
+        GameManager.instance.SetLevelManager().OpenDoors();
+    }
+
+    public void ChangeImage(GameObject image, Sprite newSprite)
+    {
+        image.GetComponent<Image>().sprite = newSprite;
     }
 }

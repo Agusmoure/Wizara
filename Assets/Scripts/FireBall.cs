@@ -6,19 +6,15 @@ public class FireBall : MonoBehaviour {
 
     public float speed;
     Rigidbody2D fireB;
-    Animator anime;
     // Use this for initialization
     void Start()
     {
         //cacheo de componentes
         fireB = GetComponent<Rigidbody2D>();
-        anime = GetComponent<Animator>();
+        AudioToPlay audio = GetComponent<AudioToPlay>();
+        if (audio != null) audio.SendAudioToPlay();
     }
-    // Update is called once per frame
-    private void Update()
-    {
-        anime.Play("FireBallAnimation");
-    }
+
     //movemos la bola de fuego en todo momento
     void FixedUpdate()
     {
@@ -27,7 +23,14 @@ public class FireBall : MonoBehaviour {
     //Cuando coincide con un obstaculo lo destruye, y acto seguido se destruye ella misma si choca con cualquier otra cosa != jugador se destruye
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag.Equals("Obstacle")) Destroy(collision.gameObject);
+        if (collision.gameObject.tag.Equals("Obstacle"))
+        {
+            Destroy(collision.gameObject);
+            //Elimina las restricciones de movimiento cuando el jugador esta pegado a una pared y esta se destruye.
+            GameManager.instance.ReturnPlayer().GetComponent<PlayerMovement>().RemoveRestrictions();
+        }
+        DestroyParent parentD=GetComponent<DestroyParent>();
+        if (parentD != null) parentD.DestroyP();
         Destroy(this.gameObject);
     }
     //cambia la direccion del disparo

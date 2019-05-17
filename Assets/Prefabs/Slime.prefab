@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 95852041461465426}
   - component: {fileID: 114884032338499110}
   - component: {fileID: 114386560717900950}
+  - component: {fileID: 114291519741615280}
   m_Layer: 9
   m_Name: SlimeEnemy
   m_TagString: Untagged
@@ -59,7 +60,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4579459242661452}
   - component: {fileID: 61464254621007842}
-  m_Layer: 16
+  m_Layer: 20
   m_Name: Point1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +76,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4938583362977160}
   - component: {fileID: 61393431272447780}
-  m_Layer: 16
+  m_Layer: 20
   m_Name: Point3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4096740483178086}
   - component: {fileID: 61604450905727636}
-  m_Layer: 16
+  m_Layer: 20
   m_Name: Point4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4549847376720010}
   - component: {fileID: 61432788699450730}
-  m_Layer: 16
+  m_Layer: 20
   m_Name: Point2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -372,6 +373,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: -1
+--- !u!114 &114291519741615280
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1053951189192652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42064fe1b017fb04abe37f1413032eb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfBlinks: 6
+  timeBetweenBlinks: 0.1
 --- !u!114 &114386560717900950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -395,6 +409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifePoints: 2
+  currentLife: 0
 --- !u!114 &114958757698978744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -418,6 +433,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 548469197cb92724eaa386f132065360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointPrefab: {fileID: 1578763608846338, guid: 7469d067133a405428d638df0aa6cd32,
+    type: 2}
 --- !u!212 &212654576469217630
 SpriteRenderer:
   m_ObjectHideFlags: 1
