@@ -140,9 +140,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edebbb0336ead6e43a52e43bb36abffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireBallCooldown: 0
-  shieldCooldown: 0
-  lightningCooldown: 0
+  fireBallCooldown: 0.5
+  shieldCooldown: 4
+  lightningCooldown: 3
+  onMenu: 0
+  onDialogue: 0
+  girl: 1
   currentCheckpoint:
     playerPosition: {x: 0, y: 0}
     cameraRoom: {x: 0, y: 0}
@@ -593,10 +596,16 @@ MonoBehaviour:
   shieldIcon: {fileID: 0}
   lightningIcon: {fileID: 0}
   dialogueBox: {fileID: 0}
+  debugMode: {fileID: 0}
+  FirstsBottons: []
+  bossSlider: {fileID: 0}
   fireballSlider: {fileID: 0}
   shieldSlider: {fileID: 0}
   lightningSlider: {fileID: 0}
-  bossSlider: {fileID: 0}
+  qSlider: {fileID: 0}
+  wSlider: {fileID: 0}
+  eSlider: {fileID: 0}
+  eventSystem: {fileID: 0}
 --- !u!1 &1244087838
 GameObject:
   m_ObjectHideFlags: 0
