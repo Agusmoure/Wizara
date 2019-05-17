@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Solo Escenas finalizadasy que se usen en el juego/Zona1Definitiva.unity
     guid: 385169db792d8a448a66f82fbc8c77df
+  - enabled: 1
+    path: Assets/Scenes/Solo Escenas finalizadasy que se usen en el juego/2ndBoss.unity
+    guid: d001e81a2717208408b798f0a89eee0a
   m_configObjects: {}
