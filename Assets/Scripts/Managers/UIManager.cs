@@ -243,4 +243,9 @@ public class UIManager : MonoBehaviour
     {
         image.GetComponent<Image>().sprite = newSprite;
     }
+
+    public void ResetCheckPoint()
+    {
+        GameManager.instance.ChangeCheckpointPosition(new Vector2(-5.54f, -3.77f));
+    }
 }
