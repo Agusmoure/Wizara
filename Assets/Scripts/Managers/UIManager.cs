@@ -109,7 +109,7 @@ public class UIManager : MonoBehaviour
     public void UpdateLifeUI()
     {
         player = GameManager.instance.ReturnPlayer();
-        if (player !=null)
+        if (player != null)
         {
 
             int playerActualLife = player.GetComponent<Life>().GetActualLife();
@@ -121,7 +121,7 @@ public class UIManager : MonoBehaviour
                 else HeartIcons[i].enabled = false;
             }
         }
-        
+
     }
 
     public void EnableAbilityIcons()
@@ -204,12 +204,13 @@ public class UIManager : MonoBehaviour
         GameManager.instance.ActivateAll();
     }
     //te lleva al canvas del menu
-    public void ScenesMenu() {
-        if (!GameManager.instance.IsOnDialogue()&&!GameManager.instance.IsOnMenu())
+    public void ScenesMenu()
+    {
+        if (!GameManager.instance.IsOnDialogue() && !GameManager.instance.IsOnMenu())
         {
-        eventSystem.SetSelectedGameObject(FirstsBottons[1]);
+            eventSystem.SetSelectedGameObject(FirstsBottons[1]);
             if (GetActiveMenu() != null) GetActiveMenu().SetActive(false);
-            else gameObject.transform.GetChild(transform.childCount-1).gameObject.SetActive(true);
+            else gameObject.transform.GetChild(transform.childCount - 1).gameObject.SetActive(true);
             GameManager.instance.Pause("Menu");
         }
     }
