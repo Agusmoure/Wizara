@@ -10,6 +10,7 @@ public class BossManager : MonoBehaviour
     public string bossName;
     public float bossWaitTime = 5;
     public string nextScene;
+    public Vector2 nextRoomPosition;
     Life bossLife;
     // Use this for initialization
     void Start()
@@ -43,6 +44,7 @@ public class BossManager : MonoBehaviour
         }
         if (bossLife.GetActualLife() <= 0)
         {
+            GameManager.instance.ChangeCheckpointPosition(nextRoomPosition);
             GameManager.instance.ChangeScene(nextScene);
         }
     }

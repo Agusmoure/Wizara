@@ -5214,6 +5214,7 @@ MonoBehaviour:
   bossName: wolf
   bossWaitTime: 5
   nextScene: Zona2
+  nextRoomPosition: {x: 4.87, y: -2.97}
 --- !u!114 &601658060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5929,9 +5930,9 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: FinalDialogue
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &768757077
@@ -6261,7 +6262,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114167355}
         m_MethodName: OpenDoors
         m_Mode: 1
         m_Arguments:
@@ -6938,7 +6939,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114167355}
         m_MethodName: Cheat
         m_Mode: 1
         m_Arguments:
@@ -8486,7 +8487,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: Zona2
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1232646156
@@ -32466,7 +32467,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: Puzzle2
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2033228903

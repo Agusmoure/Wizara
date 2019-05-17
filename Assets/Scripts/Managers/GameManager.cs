@@ -158,6 +158,11 @@ public class GameManager : MonoBehaviour
         currentCheckpoint.scene = SceneManager.GetActiveScene().name;
     }
 
+    public void ChangeCheckpointPosition(Vector2 position)
+    {
+        currentCheckpoint.playerPosition = position;
+    }
+
     //Este metodo devuelve el transform del checkpoint actual. Esta información es util para que el LevelManager situe al jugador en la posición correcta al spawnear.
     public Vector2 ReturnCurrentCheckpointPosition()
     {
