@@ -87,7 +87,7 @@ public class CastAbility : MonoBehaviour {
             Debug.DrawLine(hit2D.point, hit2D.point + 10 * Vector2.down, Color.yellow,5);
         }
         uIManager = GameManager.instance.ReturnUIManager();
-
+        uIManager.SetSliderValue(0f, "Lightning");
     }
 
     //Metodos para control de tiempo de enfriamiento.
