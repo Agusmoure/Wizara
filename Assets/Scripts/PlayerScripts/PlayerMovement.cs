@@ -183,5 +183,6 @@ public class PlayerMovement : MonoBehaviour
     public void DoubleJumpActive()
     {
         maxJump = 2;
+        jump = maxJump;
     }
 }
