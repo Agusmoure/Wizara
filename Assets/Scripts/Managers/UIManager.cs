@@ -15,7 +15,6 @@ public class UIManager : MonoBehaviour
     public EventSystem eventSystem;
     void Start()
     {
-        
         GameManager.instance.ThisUIManager(this);
         Invoke("UpdateLifeUI", 0.5f * Time.deltaTime);
         Invoke("EnableAbilityIcons", 2f * Time.deltaTime);
@@ -237,5 +236,10 @@ public class UIManager : MonoBehaviour
     public void OpenDoors()
     {
         GameManager.instance.SetLevelManager().OpenDoors();
+    }
+
+    public void ChangeImage(GameObject image, Sprite newSprite)
+    {
+        image.GetComponent<Image>().sprite = newSprite;
     }
 }
