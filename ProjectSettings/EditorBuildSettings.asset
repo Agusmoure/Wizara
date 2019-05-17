@@ -6,33 +6,33 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Solo Escenas finalizadasy que se usen en el juego/Menu.unity
+    path: Assets/Scenes/FinalBuild/Menu.unity
     guid: b5204940fdd9d1c4f88ccbc6640427f6
   - enabled: 1
-    path: Assets/Scenes/Solo Escenas finalizadasy que se usen en el juego/Credits.unity
+    path: Assets/Scenes/FinalBuild/Credits.unity
     guid: 7c96d087b74d4fd45ab503c000725260
   - enabled: 1
-    path: Assets/Scenes/Solo Escenas finalizadasy que se usen en el juego/GenderMenu.unity
+    path: Assets/Scenes/FinalBuild/GenderMenu.unity
     guid: 2b69242f181191a4d83abab7cf69ddd6
   - enabled: 1
-    path: Assets/Scenes/Solo Escenas finalizadasy que se usen en el juego/Puzzle.unity
-    guid: 6bd3e15a16f0c0d4fbd89d3faebfd553
-  - enabled: 1
-    path: Assets/Scenes/Solo Escenas finalizadasy que se usen en el juego/1stBoss(Wolf).unity
-    guid: b077d54e5b6ef9348914b45ae4a7485f
-  - enabled: 1
-    path: Assets/Scenes/Solo Escenas finalizadasy que se usen en el juego/Puzzle2.unity
-    guid: 94b66fc2fbfc214458f3f585434ac8f3
-  - enabled: 1
-    path: Assets/Scenes/Solo Escenas finalizadasy que se usen en el juego/Zona2.unity
-    guid: 45059983d6a9d814bb7d8112c645f8d5
-  - enabled: 1
-    path: Assets/Scenes/Solo Escenas finalizadasy que se usen en el juego/Zona1Definitiva.unity
+    path: Assets/Scenes/FinalBuild/Zona1Definitiva.unity
     guid: 385169db792d8a448a66f82fbc8c77df
   - enabled: 1
-    path: Assets/Scenes/Solo Escenas finalizadasy que se usen en el juego/FinalDialogue.unity
+    path: Assets/Scenes/FinalBuild/Puzzle.unity
+    guid: 6bd3e15a16f0c0d4fbd89d3faebfd553
+  - enabled: 1
+    path: Assets/Scenes/FinalBuild/1stBoss(Wolf).unity
+    guid: b077d54e5b6ef9348914b45ae4a7485f
+  - enabled: 1
+    path: Assets/Scenes/FinalBuild/Zona2.unity
+    guid: 45059983d6a9d814bb7d8112c645f8d5
+  - enabled: 1
+    path: Assets/Scenes/FinalBuild/Puzzle2.unity
+    guid: 94b66fc2fbfc214458f3f585434ac8f3
+  - enabled: 1
+    path: Assets/Scenes/FinalBuild/FinalDialogue.unity
     guid: a596f66fd5c3c0746bd9a42b06d89dd3
   - enabled: 1
-    path: Assets/Scenes/Solo Escenas finalizadasy que se usen en el juego/2ndBoss.unity
+    path: Assets/Scenes/FinalBuild/2ndBoss.unity
     guid: d001e81a2717208408b798f0a89eee0a
   m_configObjects: {}
