@@ -35,7 +35,12 @@ public class FinalDialogueManager : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return)) NextSentence();
-        if (Input.GetKeyDown(KeyCode.Escape)) LoadNextScene();
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GameManager.instance.SetAbilityTrue("Lightning");
+            LoadNextScene();
+        }
+
     }
 
     void NextSentence()
@@ -51,7 +56,11 @@ public class FinalDialogueManager : MonoBehaviour
             }
         }
 
-        else LoadNextScene();
+        else
+        {
+            GameManager.instance.SetAbilityTrue("Lightning");
+            LoadNextScene();
+        }
     }
 
     void WriteText()
