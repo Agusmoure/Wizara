@@ -5095,7 +5095,6 @@ GameObject:
   m_Component:
   - component: {fileID: 601658058}
   - component: {fileID: 601658059}
-  - component: {fileID: 601658061}
   - component: {fileID: 601658060}
   m_Layer: 0
   m_Name: BossManager
@@ -5147,17 +5146,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   girl: {fileID: 1037803951}
   boy: {fileID: 536453997}
---- !u!114 &601658061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 601658057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e38e0829dc857a44962d3a1851867f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &612404515
 GameObject:
   m_ObjectHideFlags: 0
