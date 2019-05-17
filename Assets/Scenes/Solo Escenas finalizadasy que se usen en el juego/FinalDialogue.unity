@@ -989,24 +989,25 @@ MonoBehaviour:
     numberOfSentences: 4
     sprite: {fileID: 21300000, guid: 1987a3b6176c5ac4c9018b215c40764f, type: 3}
   sentences:
-  - "Veo que has completado tu entrenamiento. Enhorabuena, joven.\nPocos consiguieron
-    superar todos estos desaf\xEDos\ncomo t\xFA lo has hecho."
+  - "Veo que has completado tu <b>entrenamiento</b>. Enhorabuena, <color=#F4F843FF>joven</color>.\nPocos
+    consiguieron superar todos estos desaf\xEDos\ncomo t\xFA lo has hecho."
   - "Ahora que has llegado a tu m\xE1ximo potencial, me enorgullezco\nde poder darte
-    mi \xFAltimo conocimiento."
-  - "Se trata del poder del rayo. Cuando est\xE9s en el suelo o en el aire, \npulsa
-    la tecla W para lanzar un rayo que caer\xE1 desde\nlos cielos destrozando todo
-    lo que pase."
-  - "Ya no puedo ense\xF1arte nada m\xE1s. Has llegado a mi nivel, no,\nlo has superado.
-    El mundo espera con ansias tu regreso.\n\xA1Sal ah\xED, y marav..."
-  - "\xA1\xA1\xA1\xA1AAAAAAAAAGH!!!"
-  - "\xA1\xA1\xA1MUERE!!!"
-  - "\xA1JAJAJAJAJA! Por fin, tras a\xF1os siguiendo sigui\xE9ndote, \nhe podido llegar
-    hasta ti. \xA1Qu\xE9 ganas ten\xEDa\nde acabar contigo, viejo!"
-  - "Me tem\xEDas, y por eso despu\xE9s de mi entrenamiento me\nencerraste en este
-    asqueroso castillo. Lo que no\npensaste es que me aprender\xEDa todos sus secretos."
-  - "Y bien. \xBFQu\xE9 tenemos aqu\xED? Vaya, otro pupilo.\nSeguro que piensas igual
-    que este carcamal.\nQu\xE9 desperdicio."
-  - "\xA1\xA1TENDR\xC9 QUE ACABAR CONTIGO TAMBI\xC9N!!"
+    mi <b><color=#F4F843FF>\xFAltimo conocimiento</color></b>."
+  - "Se trata del <i>poder del <color=#BDF367FF>rayo</color></i>. Cuando est\xE9s
+    en el suelo o en el aire, \npulsa la tecla <color=#E34737FF><b>W</b></color> para
+    lanzar un rayo que caer\xE1 desde\nlos cielos destrozando todo lo que pase."
+  - "Ya no puedo ense\xF1arte nada m\xE1s. Has llegado a mi nivel, no,\n<i>lo has
+    superado</i>. El mundo espera con ansias tu regreso.\n\xA1Sal ah\xED, y marav..."
+  - "<b><color=#E34737FF>\xA1\xA1\xA1\xA1AAAAAAAAAGH!!!</color></b>"
+  - "<b><color=#E34737FF>\xA1\xA1\xA1MUERE!!</color></b>"
+  - "<b>\xA1JAJAJAJAJA!</b> Por fin, tras a\xF1os siguiendo sigui\xE9ndote, \nhe podido
+    llegar hasta ti. \xA1Qu\xE9 ganas ten\xEDa\nde acabar contigo, <color=#F4F843FF>viejo</color>!"
+  - "Me tem\xEDas, y por eso despu\xE9s de mi entrenamiento <color=#BDF367FF>me\nencerraste</color>
+    en este asqueroso castillo. Lo que no\npensaste es que me aprender\xEDa todos
+    sus secretos."
+  - "Y bien. \xBFQu\xE9 tenemos aqu\xED? Vaya, otro <color=#F4F843FF>pupilo</color>.\nSeguro
+    que piensas igual que este carcamal.\nQu\xE9 desperdicio."
+  - "<b><color=#E34737FF>\xA1\xA1TENDR\xC9 QUE ACABAR CONTIGO TAMBI\xC9N!!</color></b>"
 --- !u!114 &569876959
 MonoBehaviour:
   m_ObjectHideFlags: 0
